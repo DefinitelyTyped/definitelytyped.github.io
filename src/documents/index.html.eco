@@ -1,0 +1,9 @@
+---
+layout: 'default'
+---
+
+<div class="col">
+	<p><a href="https://github.com/borisyankov/DefinitelyTyped"><img src="/img/dt-logo-smallish.png" title="<%- @site.title %>"/></a></p>
+	<p>DefinitelyTyped</p>
+	<p><small>The <a href="https://github.com/borisyankov/DefinitelyTyped">repository</a> for high quality <a href="http://typescriptlang.org/">TypeScript</a> type definitions.</small></p>
+</div>
