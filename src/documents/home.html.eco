@@ -1,0 +1,28 @@
+---
+layout: 'default'
+title: 'Home'
+---
+
+<div class="col">
+	<p><a href="<%= @site.github %>"><img src="/img/dt-logo-smallish.png" title="<%= @site.title %>"/></a></p>
+	<h1>DefinitelyTyped</h1>
+	<p>The repository for high quality TypeScript type definitions.</p>
+
+	<div class="what">
+		<h3>Guides</h3>
+		<% for item in @getCollection('guides').sortArray(date: -1): %>
+		<p><a href="<%= item.url %>"><%- item.title or item.name %></a></h3>
+		<%- item.description %>
+		</p>
+		<% end %>
+	</div>
+
+	<div class="what">
+		<h3>Posts</h3>
+		<% for item in @getCollection('posts').sortArray(date: -1): %>
+		<p><a href="<%= item.url %>"><%- item.title or item.name %></a></h3>
+		<%- item.description %>
+		</p>
+		<% end %>
+	</div>
+</div>

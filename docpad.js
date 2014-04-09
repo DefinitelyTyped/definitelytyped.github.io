@@ -4,6 +4,7 @@ var docpadConfig = {
 	templateData: {
 		site: {
 			url: 'http://definitelytyped.github.io',
+			github: 'https://github.com/borisyankov/DefinitelyTyped',
 			oldUrls: [],
 			title: 'DefinitelyTyped',
 			description: 'The repository for high quality TypeScript type definitions.',
@@ -11,7 +12,17 @@ var docpadConfig = {
 			styles: ['/vendor/normalize.css', '/vendor/h5bp.css', '/styles/style.css'],
 			scripts: ['<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>'
 				+ '<script>window.jQuery || document.write(\'<script src=\"/vendor/jquery.js\"><\\/script>\')</script>',
-				'/vendor/log.js', '/vendor/modernizr.js', '/scripts/script.js']
+				'/vendor/log.js', '/vendor/modernizr.js', '/scripts/script.js'],
+			analytics: {
+				id: 'UA-47495295-3',
+				site: 'definitelytyped.github.io'
+			}
+		},
+		link: {
+			tsd: {
+				web: 'http://www.tsdpm.com',
+				npm: 'https://www.npmjs.org/package/tsd'
+			}
 		},
 		getPreparedTitle: function() {
 			if (this.document.title) {
@@ -32,6 +43,11 @@ var docpadConfig = {
 			return this.getCollection('documents').findAllLive({
 				relativeOutDirPath: 'posts'
 			});
+		},
+		guides: function() {
+			return this.getCollection('documents').findAllLive({
+				relativeOutDirPath: 'guides'
+			});
 		}
 	},
 	environments: {
@@ -40,6 +56,14 @@ var docpadConfig = {
 				site: {
 					url: false
 				}
+			}
+		}
+	},
+	plugins: {
+		marked: {
+			//TODO haxx a highlight.js TypeScript filter
+			markedOptions: {
+
 			}
 		}
 	},

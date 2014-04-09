@@ -1,0 +1,45 @@
+---
+layout: 'guide'
+title: 'Pull Request FAQ'
+---
+
+## Getting latest upstream changes
+
+You don't need to do this unless we request you to do so.
+
+Initially make sure you have DT added as an upstream remote in your fork. Do this by :
+```
+git remote add upstream <%- @site.github %>.git
+```
+
+Now whenever you want the latest changes from DT added to your local branch just run these two commands :
+```
+git fetch upstream
+# Fetches any new changes from DefinitelyTyped
+git merge upstream/master
+# Merges any changes fetched into your working files
+```
+
+## Broken Build
+
+If tests fail and you know how to fix them, just add a commit to fix that error in your local branch and push it to your DT fork. If the Pull Request uses the same branch it will be update automatically and the tests will run again.
+
+If you need multiple tries to make it work then please flatten your commits so the history is moderately clean (please also minimise the commit message). You could `git push --force` (*careful!*) the flat commit over your earlier commits in the same branch and the PR will be automatically updated.
+
+## Multiple contributions
+
+It is recommended to split your contributions for different JS packages into their own git branches so you can have multiple pending PR's.
+
+## Travis CI for your DT fork
+
+You can enable Travis for your own DT fork if you like: go to [Travis](https://travis-ci.org/) and sign-up for free if you haven't yet. Then go to your [account](https://travis-ci.org/profile) and enable your DT fork. This will run Travis same as on DT and allows you to experiment freely. You can review your fork's build status via the menu on the left side of the [Travis homepage](https://travis-ci.org/) after you enabled the hook AND pushed some code to the repo.
+
+## Large contributions and changes
+
+If you plan to start a new definition make sure to check the issues first and/or leave a message that you are working on it so you're not do duplicating work. Coordination with fellow users is always recommended.
+
+If you think you need to make big changes to a existing definition it could be handy to review the git history and create a new Issue where you @mention previous authors and see if they agree and/or want to get involved again.
+
+## Merging
+
+DefinitelyTyped is managed by a group of enthusiasts who volunteer their free time to review and merge the contributions. This means it can potentially take a few days or up to a week before someone has the focus+time to look at a PR and merge it. If your contributions stays pending and get buried then feel free to politely ping/bump.

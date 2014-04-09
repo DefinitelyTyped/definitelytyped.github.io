@@ -1,0 +1,9 @@
+
+
+<a href="<%= @site.url %>">Home</a>
+ -
+<a href="<%= @site.github %>">Repository</a>
+ -
+<a href="<%= @link.tsd.url %>">TSD</a>
+ -
+<a href="http://typescriptlang.org/">TypeScript</a>

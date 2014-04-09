@@ -1,0 +1,20 @@
+---
+layout: default
+---
+
+<%- @partial('header') %>
+
+<h1><%- @document.title or @document.name %></a></h1>
+<div>
+	<%- @content %>
+</div>
+<div>
+	<h2>See more</h2>
+	<% for item in @getCollection('posts').sortArray(date: -1): %>
+	<p><a href="<%= item.url %>"><%- item.title or item.name %></a></h3>
+	<%- item.description %>
+	</p>
+	<% end %>
+</div>
+
+<%- @partial('footer') %>

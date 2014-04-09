@@ -1,0 +1,100 @@
+---
+layout: 'guide'
+title: 'Contribution guide'
+---
+
+## Creating a definition file
+
+The official TypeScript wiki on codeplex.com has a [great article](https://typescript.codeplex.com/wikipage?title=Writing%20Definition%20%28.d.ts%29%20Files) on how to write a good type declaration file. It is recommended you read this as it covers some important choices.
+
+## Quality Criteria
+
+To ensure the quality of `DefinitelyTyped` repository, the typings must meet the following criteria:
+
+### Version
+
+* Definition files should be called `library.d.ts`. In case there are multiple versions supported, the latest one will be without a version number in the file name. Older versions will be in the form of `library-1.0.d.ts`.
+
+### Header
+
+* The typing must have a header with the following format:
+
+````
+// Type definitions for [LIBRARY NAME]
+// Project: [LIBRARY URL]
+// Definitions by: [AUTHOR NAME] <[AUTHOR URL]>
+// Definitions: https://github.com/borisyankov/DefinitelyTyped
+````
+
+> Example:
+
+````
+// Type definitions for Backbone 0.9.10
+// Project: http://backbonejs.org/
+// Definitions by: Boris Yankov <https://github.com/borisyankov/>
+// Definitions: https://github.com/borisyankov/DefinitelyTyped
+````
+
+### Location
+
+* The typing must be placed in a folder. The folder name must be similar to library name.
+
+> Example: `qunit.d.ts` in in a folder named `qunit`
+
+### Documentation
+
+* Take advantage of TypeScript [JSDoc support](http://blogs.msdn.com/b/typescript/archive/2013/01/21/announcing-typescript-0-8-2.aspx).
+
+### Tests
+
+* The typing must have tests. These tests must be in a files called `library-tests.ts`. They are not runnable, in the TDD way. They contain code that should compile with no errors, usually taken from the documentation samples of the library.
+
+> Example: `backbone.d.ts` has a test file named `backbone-tests.ts`
+> [Here](<%- @site.github %>/blob/master/backbone/backbone-tests.ts) you can see a real test file.
+
+* Check your code. There are a few way to do this:
+    1. Simply compile the test file:
+        * `tsc --noImplicitAny your/code.tests.ts`.
+    1. Run `npm test` before sending your pull request.        
+        * If you created new files add them to git so the tester picks them as changes.
+        * Tests must be run from the DefinitelyTyped project's root directory.
+        * You'll need to run `npm update` once to download the packages required by the test suite.
+    1. Enable Travis on your DT fork and test online. 
+        * See note below on how to enable this.
+        * This takes a few steps to do but is faster for big cascading changes (like changing JQuery)
+    1. Depend on the automated test on Travis that runs after you send a PR. 
+        * If you need many attempts to fix errors then please flatten the history and clean the commit message.
+
+If you need to use `tscparams` note that the contents of tscparams should be quoted. i.e. "" e.g. https://github.com/borisyankov/DefinitelyTyped/blob/master/ace/all-tests.ts.tscparams
+
+## Namespacing
+
+* Be careful to use a module to avoid conflicts to your internal interfaces and the interfaces from another typings. See [the TypeScript wiki](https://typescript.codeplex.com/wikipage?title=Writing%20Definition%20%28.d.ts%29%20Files) for some tips.
+
+> The [`jQuery.bbq` typing]<%- @site.github %>/blob/master/jquery.bbq/jquery.bbq.d.ts) has the interfaces in a module named `JQueryBbq`
+
+Example:
+
+````javascript
+    module JQueryBbq {
+        interface JQuery {
+            //...
+        }
+        //...
+    }
+    interface JQueryStatic {
+        bbq: JQueryBbq.JQuery;
+        //...
+    }
+````
+
+### Readme
+
+* Update the README file to put a reference to your definition with the following style:
+
+``* [LIBRARY NAME WITH LINK]  (by [AUTHOR NAME WITH LINK])``
+
+> Example: 
+> * [Ace Cloud9 Editor](http://ace.ajax.org/) (by [Diullei Gomes](https://github.com/Diullei))
+
+Thanks for contributing!

@@ -1,0 +1,3 @@
+<p><a href="<%= @site.github %>"><img src="/img/dt-logo-smallish.png" title="<%= @site.title %>"/></a></p>
+	<p>DefinitelyTyped</p>
+	<p><small>The <a href="<%= @site.github %>">repository</a> for high quality <a href="http://typescriptlang.org/">TypeScript</a> type definitions.</small></p>
