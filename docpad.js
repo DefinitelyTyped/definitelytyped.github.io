@@ -1,17 +1,21 @@
+/* jshint -W014 */
+
 var docpadConfig = {
 	templateData: {
 		site: {
-			url: "http://definitelytyped.github.io",
+			url: 'http://definitelytyped.github.io',
 			oldUrls: [],
-			title: "DefinitelyTyped",
-			description: "The repository for high quality TypeScript type definitions.",
-			keywords: "typescript, type, definition, declaration, repository, typing",
+			title: 'DefinitelyTyped',
+			description: 'The repository for high quality TypeScript type definitions.',
+			keywords: 'typescript, type, definition, declaration, repository, typing',
 			styles: ['/vendor/normalize.css', '/vendor/h5bp.css', '/styles/style.css'],
-			scripts: ["<script src=\"//ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js\"></script>\n<script>window.jQuery || document.write('<script src=\"/vendor/jquery.js\"><\\/script>')</script>", '/vendor/log.js', '/vendor/modernizr.js', '/scripts/script.js']
+			scripts: ['<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>'
+				+ '<script>window.jQuery || document.write(\'<script src=\"/vendor/jquery.js\"><\\/script>\')</script>',
+				'/vendor/log.js', '/vendor/modernizr.js', '/scripts/script.js']
 		},
 		getPreparedTitle: function() {
 			if (this.document.title) {
-				return "" + this.document.title + " | " + this.site.title;
+				return '' + this.document.title + ' | ' + this.site.title;
 			} else {
 				return this.site.title;
 			}

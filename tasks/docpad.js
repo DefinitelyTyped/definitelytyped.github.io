@@ -1,8 +1,5 @@
 /*
- * grunt-docs
- * https://github.com/shama/grunt-docs
- *
- * Copyright (c) 2013 Kyle Robinson Young
+ * may contain a few left-over bytes from https://github.com/shama/grunt-docs,  2013 by Kyle Robinson Young (but not much)
  * Licensed under the MIT license.
  */
 

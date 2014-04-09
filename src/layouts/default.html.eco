@@ -15,7 +15,7 @@
 	<%- @getBlock('meta').toHTML() %>
 	<%- @getBlock('styles').add(@site.styles).toHTML() %>
 
-	<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+	<link rel="shortcut icon" href="/favicon.ico" >
 </head>
 <body>
 	<!--[if lt IE 7]>
@@ -23,5 +23,6 @@
 	<![endif]-->
     <%- @content %>
 	<%- @getBlock('scripts').add(@site.scripts).toHTML() %>
+	<%- @partial('analytics') %>
 </body>
 </html>
