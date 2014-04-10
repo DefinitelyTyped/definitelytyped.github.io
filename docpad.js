@@ -1,5 +1,19 @@
 /* jshint -W014 */
 
+
+var hljs;
+function highlightCode(code, lang) {
+	if (!hljs) {
+		hljs = require('highlight.js');
+		hljs.configure({tabReplace: '    '}); // 4 spaces
+		hljs.registerLanguage('typescript', require('./lib/highlight/typescript'));
+	}
+	if (lang) {
+		return hljs.highlight(lang, code).value;
+	}
+	return hljs.highlightAuto(code).value;
+}
+
 var docpadConfig = {
 	templateData: {
 		site: {
@@ -18,6 +32,7 @@ var docpadConfig = {
 			keywords: 'typescript, type, definition, declaration, repository, typing',
 			styles: [
 				'/styles/semantic.min.css',
+				'/styles/highlight.css',
 				'/styles/style.css'
 			],
 			scripts: [
@@ -68,10 +83,9 @@ var docpadConfig = {
 	},
 	plugins: {
 		marked: {
-			//TODO haxx a highlight.js TypeScript filter
 			markedOptions: {
-				highlighter: function() {
-				}
+				gfm: true,
+				highlight: highlightCode
 			}
 		}
 	},
