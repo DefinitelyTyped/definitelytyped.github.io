@@ -20,7 +20,7 @@ var docpadConfig = {
 			url: 'http://definitelytyped.github.io',
 			github: 'https://github.com/borisyankov/DefinitelyTyped',
 			ref: 'github.com/borisyankov/DefinitelyTyped',
-			home: '/index.html',
+			home: '/',
 			gh: {
 				user: 'borisyankov',
 				repo: 'DefinitelyTyped'
