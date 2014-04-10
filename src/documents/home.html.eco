@@ -13,29 +13,31 @@ title: 'Home'
 
 <div class="ui row">
 	<h2 class="header">
+		Get the definitions
+	</h2>
+	<ul class="ui list">
+		<a class="item" href="<%= @site.github %>">Github repository</a>
+		<a class="item" href="http://nuget.org/packages?q=Definitelytyped">NuGet packages</a>
+		<a class="item" href="<%= @link.tsd.web %>">TypeScript Definition manager</a>
+	</ul>
+</div>
+
+<div class="ui row">
+	<h2 class="header">
 		Contributing
 	</h2>
 	<p>See the <a href="/guides/contributing.html">contribution guide</a>.</p>
 </div>
 
-
 <div class="ui row">
 	<h2 class="header">
-		Means to get the definitions
+		Guides
 	</h2>
-	<p>There are various ways to get the definitions:</p>
-	<ul>
-		<li>Install as <a class="item" href="http://nuget.org/packages?q=Definitelytyped">NuGet packages</a>.</li>
-		<li>Use the dedicated CLI client <a class="item" href="<%= @link.tsd.web %>">TypeScript Definition manager</a>.</li>
-		<li>Browse the <a class="item" href="<%= @site.github %>">Github repository</a>.</li>
-	</ul>
-</div>
-
-<div class="ui row">
-	<p><a href="/guides.html">Guides</a></p>
+	<ul class="ui list">
 	<% for item in @getCollection('guides').sortArray(date: -1): %>
-	<p><a href="<%= item.url %>"><%- item.title or item.name %></a>
+	<a class="item" href="<%= item.url %>"><%- item.title or item.name %></a>
 		<%- item.description %>
-	</p>
+	</a>
 	<% end %>
+	</ul>
 </div>

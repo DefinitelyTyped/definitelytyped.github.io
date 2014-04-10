@@ -5,7 +5,7 @@ title: 'TypeScript Tools'
 
 ## Tools
 
-* [tsd](https://github.com/Diullei/tsd) Definitions package manager
+* [TSD](https://github.com/Diullei/tsd) Definitions package manager
 * [TypeLITE](http://type.litesolutions.net/) Generate TypeScript interfaces from .NET classes
 * [typescript-compile](https://github.com/niutech/typescript-compile) Automatically compile TypeScript to JavaScript on the fly
 * [typescript-require](https://github.com/eknkc/typescript-require) Require extension for easy TypeScript interop within Node.JS

@@ -1,0 +1,10 @@
+<h2 class="header">
+	See more
+</h2>
+<ul class="ui list">
+	<% for item in @getCollection('guides').sortArray(date: -1): %>
+	<li><a href="<%= item.url %>"><%- item.title or item.name %></a>
+		<%- item.description %>
+	</li>
+	<% end %>
+</ul>

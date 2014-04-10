@@ -5,6 +5,7 @@ var docpadConfig = {
 		site: {
 			url: 'http://definitelytyped.github.io',
 			github: 'https://github.com/borisyankov/DefinitelyTyped',
+			ref: 'github.com/borisyankov/DefinitelyTyped',
 			home: '/home.html', // should be index
 			gh: {
 				user: 'borisyankov',
@@ -14,14 +15,14 @@ var docpadConfig = {
 			title: 'DefinitelyTyped',
 			description: 'The repository for high quality TypeScript type definitions.',
 			tagline: 'The repository for high quality TypeScript type definitions.',
-			ref: 'github.com/borisyankov/DefinitelyTyped',
 			keywords: 'typescript, type, definition, declaration, repository, typing',
 			styles: [
-				'/packaged/css/semantic.css',
+				'/styles/semantic.min.css',
 				'/styles/style.css'
 			],
-			scripts: ['//ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js',
-				'/packaged/javascript/semantic.js',
+			scripts: [
+				'//ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js',
+				'/scripts/semantic.min.js',
 				'/scripts/script.js'
 			],
 			analytics: {

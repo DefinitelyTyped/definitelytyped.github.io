@@ -93,4 +93,6 @@ interface JQueryStatic {
 > Example:
 > * [Ace Cloud9 Editor](http://ace.ajax.org/) (by [Diullei Gomes](https://github.com/Diullei))
 
-Thanks for contributing!
+### Further reading
+
+Continue to the [Pull Request guide](/guides/pull-request.html).

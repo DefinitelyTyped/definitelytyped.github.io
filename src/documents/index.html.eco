@@ -3,9 +3,15 @@ layout: 'default'
 title: 'Home (placeholder)'
 ---
 
-<div class="col">
-	<p><a href="<%= @site.github %>"><img src="/img/dt-logo-smallish.png" title="<%= @site.title %>"/></a></p>
-	<h1>DefinitelyTyped</h1>
-	<p>The repository for high quality TypeScript type definitions.</p>
-	<p>Soon...</p>
+<div class="ui one column page grid">
+	<div class="column">
+		<div class="ui row">
+			<a class="logo" href="<%= @site.github %>"><img src="/images/dt-logo-smallish.png" title="<%= @site.title %>"/></a>
+
+			<h1 class="ui header">DefinitelyTyped</h1>
+
+			<p><%- @site.tagline %></p>
+			<p>(soon..)</p>
+		</div>
+	</div>
 </div>
