@@ -1,0 +1,23 @@
+---
+layout: 'guide'
+title: 'Best practices'
+---
+
+Ghostin' modules:
+
+````typescript
+// this pattern has 3 name in top level.
+interface NodeFoo {}
+interface NodeBar {}
+interface NodeBuzz {}
+
+// this pattern has 1 name in top level. Non instantiable module
+declare module NodeJS {
+    interface Foo {}
+    interface Bar {}
+    interface Buzz {}
+}
+
+// safety!
+var n = NodeJS; // TS Error : Could not find symbol NodeJS
+````

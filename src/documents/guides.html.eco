@@ -4,15 +4,15 @@ title: 'Guides'
 ---
 
 <div class="ui row">
-	<h1 class="header"><%- @document.title or @document.name %></a></h1>
+	<h1 class="header"><%- @document.title or @document.name %></h1>
 </div>
 
 <div class="ui row">
 	<ul class="ui list">
 		<% for item in @getCollection('guides').sortArray(date: -1): %>
-		<a class="item" href="<%= item.url %>"><%- item.title or item.name %></a>
+		<a class="item" href="<%= item.url %>">
+			<i class="right triangle icon"></i> <%- item.title or item.name %></a>
 		<%- item.description %>
-		</a>
 		<% end %>
 	</ul>
 </div>

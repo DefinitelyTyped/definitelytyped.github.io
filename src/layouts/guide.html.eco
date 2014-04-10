@@ -3,7 +3,7 @@ layout: content
 ---
 
 <div class="ui vertical segment">
-	<h1><%- @document.title or @document.name %></a></h1>
+	<h1><%- @document.title or @document.name %></h1>
 </div>
 
 <div class="ui vertical segment">
@@ -12,8 +12,7 @@ layout: content
 
 <ul class="ui list">
 	<% for item in @getCollection('guides').sortArray(date: -1): %>
-	<a class="item" href="<%= item.url %>"><%- item.title or item.name %></a>
+	<a class="item" href="<%= item.url %>"><i class="right triangle icon"></i> <%- item.title or item.name %></a>
 	<%- item.description %>
-	</a>
 	<% end %>
 </ul>
