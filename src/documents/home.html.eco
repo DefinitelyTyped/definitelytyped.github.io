@@ -1,28 +1,41 @@
 ---
-layout: 'default'
+layout: 'content'
 title: 'Home'
 ---
 
-<div class="col">
-	<p><a href="<%= @site.github %>"><img src="/img/dt-logo-smallish.png" title="<%= @site.title %>"/></a></p>
-	<h1>DefinitelyTyped</h1>
-	<p>The repository for high quality TypeScript type definitions.</p>
+<div class="ui row">
+	<h2 class="header">
+		Usage
+	</h2>
+	<p>Include a line like this:</p>
+	<pre><code>/// &lt;reference path="jquery/jquery.d.ts" /&gt;</code></pre>
+</div>
 
-	<div class="what">
-		<h3>Guides</h3>
-		<% for item in @getCollection('guides').sortArray(date: -1): %>
-		<p><a href="<%= item.url %>"><%- item.title or item.name %></a></h3>
-		<%- item.description %>
-		</p>
-		<% end %>
-	</div>
+<div class="ui row">
+	<h2 class="header">
+		Contributing
+	</h2>
+	<p>See the <a href="/guides/contributing.html">contribution guide</a>.</p>
+</div>
 
-	<div class="what">
-		<h3>Posts</h3>
-		<% for item in @getCollection('posts').sortArray(date: -1): %>
-		<p><a href="<%= item.url %>"><%- item.title or item.name %></a></h3>
+
+<div class="ui row">
+	<h2 class="header">
+		Means to get the definitions
+	</h2>
+	<p>There are various ways to get the definitions:</p>
+	<ul>
+		<li>Install as <a class="item" href="http://nuget.org/packages?q=Definitelytyped">NuGet packages</a>.</li>
+		<li>Use the dedicated CLI client <a class="item" href="<%= @link.tsd.web %>">TypeScript Definition manager</a>.</li>
+		<li>Browse the <a class="item" href="<%= @site.github %>">Github repository</a>.</li>
+	</ul>
+</div>
+
+<div class="ui row">
+	<p><a href="/guides.html">Guides</a></p>
+	<% for item in @getCollection('guides').sortArray(date: -1): %>
+	<p><a href="<%= item.url %>"><%- item.title or item.name %></a>
 		<%- item.description %>
-		</p>
-		<% end %>
-	</div>
+	</p>
+	<% end %>
 </div>

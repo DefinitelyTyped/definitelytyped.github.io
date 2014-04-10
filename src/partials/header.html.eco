@@ -1,3 +1,24 @@
-<p><a href="<%= @site.github %>"><img src="/img/dt-logo-smallish.png" title="<%= @site.title %>"/></a></p>
-	<p>DefinitelyTyped</p>
-	<p><small>The <a href="<%= @site.github %>">repository</a> for high quality <a href="http://typescriptlang.org/">TypeScript</a> type definitions.</small></p>
+<div class="ui menu">
+	<a class="item" href="<%= @site.home %>"><i class="home icon"></i> Home</a>
+	<a class="item" href="/guides.html"><i class="wrench icon"></i> Guides</a>
+	<a class="item" href="<%= @site.github %>"><i class="github icon"></i> Repository</a>
+	<a class="item" href="http://nuget.org/packages?q=Definitelytyped"><i class="download disk icon"></i> NuGet</a>
+	<a class="item" href="<%= @link.tsd.web %>"><i class="terminal icon"></i> TSD</a>
+	<a class="item" href="http://typescriptlang.org/"><i class="forward mail icon"></i> TypeScript</a>
+<!--
+	<div class="right menu">
+		<div class="item">
+			<iframe src="http://ghbtns.com/github-btn.html?user=<%-@site.gh.user%>&repo=<%-@site.gh.repo%>&type=watch&count=true"
+					allowtransparency="true" frameborder="0" scrolling="0" width="95" height="20"></iframe>
+			<iframe src="http://ghbtns.com/github-btn.html?user=<%-@site.gh.user%>&repo=<%-@site.gh.repo%>&type=fork&count=true"
+					allowtransparency="true" frameborder="0" scrolling="0" width="95" height="20"></iframe>
+		</div>
+	</div>
+	-->
+</div>
+<div class="ui row">
+	<a class="logo" href="<%= @site.home %>"><img src="/img/dt-logo-smallish.png" title="<%= @site.title %>"/></a>
+
+	<h1 class="ui header">DefinitelyTyped</h1>
+	<p><%- @site.tagline %></p>
+</div>

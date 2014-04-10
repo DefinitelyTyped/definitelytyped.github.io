@@ -1,18 +1,16 @@
 ---
-layout: content
+layout: 'content'
+title: 'Guides'
 ---
 
 <div class="ui vertical segment">
 	<h1><%- @document.title or @document.name %></a></h1>
 </div>
 
-<div class="ui vertical segment">
-	<%- @content %>
-</div>
-
-<h2 class="ui header">See more</h2>
+<div class="ui row">
 <% for item in @getCollection('guides').sortArray(date: -1): %>
-<p><a href="<%= item.url %>"><%- item.title or item.name %></a></h3>
+<p><a href="<%= item.url %>"><%- item.title or item.name %></a>
 <%- item.description %>
 </p>
 <% end %>
+</div>

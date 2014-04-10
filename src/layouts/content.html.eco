@@ -1,0 +1,13 @@
+---
+layout: default
+---
+
+<div class="ui one column page grid">
+	<div class="column">
+		<%- @partial('header') %>
+
+		<%- @content %>
+
+		<%- @partial('footer') %>
+	</div>
+</div>

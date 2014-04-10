@@ -1,9 +1,15 @@
+<div class="ui horizontal icon divider">
+	<i class="heart icon"></i>
+</div>
 
+<div class="ui center aligned one column grid">
+	<div class="row">
+		<div class="column">
+			<a href="<%= @site.url %>">Home</a>
+			- <a href="<%= @site.github %>">Github</a>
+			- <a href="http://nuget.org/packages?q=Definitelytyped">NuGet</a>
+			- <a href="<%= @link.tsd.web %>">TSD</a>
 
-<a href="<%= @site.url %>">Home</a>
- -
-<a href="<%= @site.github %>">Repository</a>
- -
-<a href="<%= @link.tsd.url %>">TSD</a>
- -
-<a href="http://typescriptlang.org/">TypeScript</a>
+		</div>
+	</div>
+</div>

@@ -1,18 +1,76 @@
 @background: #fff;
 @main: #0785e2;
+@color: #888;
 
-html, body {
-	background-color:white;
-	color: #888;
+html,
+body {
+	color: #666;
 }
-.col {
-	font-family: sans-serif;
-	margin-top: 10em;
-	text-align: center;
+
+body > .content {
+	background: @background;
 }
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+	font-family: "Source Sans Pro", "Helvetica Neue", "Helvetica", "Arial", sans-serif /*rtl:prepend:"Droid Arabic Kufi","Droid Sans", */;
+}
+
+p,
+a,
+ul,
+.ui.grid,
+li {
+  font-family: "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+}
+
+/* text and headers */
+pre {
+}
+code {
+	background-color: rgba(0, 0, 0, 0.02);
+	border: 1px solid rgba(0, 0, 0, 0.2);
+	font-family: 'Courier New', 'source-code-pro', monospace;
+	vertical-align: middle;
+	display: inline-block;
+	margin: 0.05em 0.05em;
+	padding: 0.0em 0.25em;
+	font-size: 0.9em;
+}
+
+pre code {
+	display: block;
+	font-size: 14px;
+	margin: 0.25em;
+	padding: 0.5em 0.5em;
+}
+
+p {
+	margin: 1em 0em;
+}
+
+/* links */
 a, a:visited {
 	color: @main;
+	text-decoration: none;
 }
-a, a:active {
-	color: saturate(@main, 10%);
+
+a:active {
+	color: saturate(@main, 110%);
+}
+
+.logo {
+	float: left;
+	margin-right: 1em;
+}
+.toppest {
+	padding-top: 0em;
+	margin-top: 0em;
+}
+.nopad {
+	padding: 0em;
+	margin: 0em;
 }
