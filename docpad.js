@@ -6,7 +6,7 @@ var docpadConfig = {
 			url: 'http://definitelytyped.github.io',
 			github: 'https://github.com/borisyankov/DefinitelyTyped',
 			ref: 'github.com/borisyankov/DefinitelyTyped',
-			home: '/home.html', // should be index
+			home: '/index.html',
 			gh: {
 				user: 'borisyankov',
 				repo: 'DefinitelyTyped'
@@ -70,9 +70,7 @@ var docpadConfig = {
 		marked: {
 			//TODO haxx a highlight.js TypeScript filter
 			markedOptions: {
-				highlighter: function(str) {
-					process.stdout.writeln('yooo');
-					process.stdout.writeln(str);
+				highlighter: function() {
 				}
 			}
 		}
