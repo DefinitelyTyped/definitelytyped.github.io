@@ -51,11 +51,6 @@ var docpadConfig = {
 		}
 	},
 	collections: {
-		posts: function() {
-			return this.getCollection('documents').findAllLive({
-				relativeOutDirPath: 'posts'
-			});
-		},
 		guides: function() {
 			return this.getCollection('documents').findAllLive({
 				relativeOutDirPath: 'guides'
@@ -75,7 +70,10 @@ var docpadConfig = {
 		marked: {
 			//TODO haxx a highlight.js TypeScript filter
 			markedOptions: {
-
+				highlighter: function(str) {
+					process.stdout.writeln('yooo');
+					process.stdout.writeln(str);
+				}
 			}
 		}
 	},

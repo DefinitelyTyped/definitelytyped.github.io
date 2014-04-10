@@ -1,10 +1,9 @@
 <div class="ui menu">
 	<a class="item" href="<%= @site.home %>"><i class="home icon"></i> Home</a>
-	<a class="item" href="/guides/index.html"><i class="wrench icon"></i> Guides</a>
+	<a class="item" href="/guides.html"><i class="wrench icon"></i> Guides</a>
 	<a class="item" href="<%= @site.github %>"><i class="github icon"></i> Repository</a>
-	<a class="item" href="http://nuget.org/packages?q=Definitelytyped"><i class="download disk icon"></i> NuGet</a>
 	<a class="item" href="<%= @link.tsd.web %>"><i class="terminal icon"></i> TSD</a>
-	<a class="item" href="http://typescriptlang.org/"><i class="forward mail icon"></i> TypeScript</a>
+	<a class="item" href="http://nuget.org/packages?q=Definitelytyped"><i class="download disk icon"></i> NuGet</a>
 <!--
 	<div class="right menu">
 		<div class="item">

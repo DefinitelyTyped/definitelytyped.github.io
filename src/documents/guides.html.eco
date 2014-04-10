@@ -3,8 +3,8 @@ layout: 'content'
 title: 'Guides'
 ---
 
-<div class="ui vertical segment">
-	<h1><%- @document.title or @document.name %></a></h1>
+<div class="ui row">
+	<h1 class="header"><%- @document.title or @document.name %></a></h1>
 </div>
 
 <div class="ui row">

@@ -21,5 +21,6 @@
 	<%- @content %>
 	<%- @getBlock('scripts').add(@site.scripts).toHTML() %>
 	<%- @partial('analytics') %>
+
 </body>
 </html>
