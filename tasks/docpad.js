@@ -24,7 +24,7 @@ module.exports = function (grunt) {
 		// To allow paths config to use patterns
 		Object.keys(options).forEach(function (key) {
 			if (key.slice(-5) === 'Paths') {
-				options[key] = grunt.file.expand(config[key]);
+				options[key] = grunt.file.expand(options[key]);
 			}
 		});
 
