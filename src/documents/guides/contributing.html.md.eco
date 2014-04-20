@@ -71,7 +71,7 @@ If you need to use `tscparams` note that the contents of tscparams should be quo
 
 Example:
 
-````javascript
+````typescript
 module JQueryBbq {
 	interface JQuery {
 		//...
@@ -86,7 +86,7 @@ interface JQueryStatic {
 
 ### Readme
 
-* Update the README file to put a reference to your definition with the following style:
+* Update the [CONTRIBUTORS.md](<%-@site.github%>/blob/master/CONTRIBUTORS.md) file to put a reference to your definition with the following style:
 
 ``* [LIBRARY NAME WITH LINK]  (by [AUTHOR NAME WITH LINK])``
 
