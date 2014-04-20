@@ -17,7 +17,7 @@ function highlightCode(code, lang) {
 var docpadConfig = {
 	templateData: {
 		site: {
-			url: 'http://definitelytyped.github.io',
+			url: 'http://definitelytyped.org',
 			github: 'https://github.com/borisyankov/DefinitelyTyped',
 			ref: 'github.com/borisyankov/DefinitelyTyped',
 			home: '/',
@@ -42,7 +42,7 @@ var docpadConfig = {
 			],
 			analytics: {
 				id: 'UA-47495295-3',
-				site: 'definitelytyped.github.io'
+				site: 'definitelytyped.org'
 			}
 		},
 		link: {
