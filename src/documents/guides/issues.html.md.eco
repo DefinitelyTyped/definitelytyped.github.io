@@ -1,0 +1,52 @@
+---
+layout: 'guide'
+title: 'Known issues'
+---
+
+There are a few problems in TypeScript that limit the expressiveness of the type declarations. This page tracks the known issues that we submitted or found on the TypeScript [codeplex bugtracker](https://typescript.codeplex.com/workitem/list/basic).
+
+If you know of a typing related issue not linked here please leave and issue in this [repos](https://github.com/DefinitelyTyped/definitelytyped.github.io) or make a PR on the *source*-branch.
+
+### [260](https://typescript.codeplex.com/workitem/260)
+
+> Get/set accessors in interfaces
+
+### [482](https://typescript.codeplex.com/workitem/482) and [1085](https://typescript.codeplex.com/workitem/1085)
+
+> Allow to extend global variables like Date or Object to support libs like sugar.js
+
+> Use Static interfaces for ambient declarations in lib.d.ts
+
+### [507](https://typescript.codeplex.com/workitem/507) and [2364](https://typescript.codeplex.com/workitem/2364)
+
+> Support optional ambient "this" pointer typing in callback/function signatures
+
+> declaring callback scope members
+
+### [1124](https://typescript.codeplex.com/workitem/1124)
+
+> Allow additional parameters after ..rest in declarations
+
+### [1364](https://typescript.codeplex.com/workitem/1364)
+
+> Add support for type unions
+
+### [2194](https://typescript.codeplex.com/workitem/2194)
+
+> declarations cannot describe function 'try' on module
+
+### [2323](https://typescript.codeplex.com/workitem/2323)
+
+> decaring types for array-based tuples
+
+### [2333](https://typescript.codeplex.com/workitem/2333) (pending)
+
+> Cleanup or select lib.d.ts global namespace
+
+### [2387](https://typescript.codeplex.com/workitem/2387) (closed)
+
+> `export =` not usable without claiming a name in the global namespace
+
+### [2451](https://typescript.codeplex.com/workitem/2451)
+
+> Allow operators to work on custom types (via valueOf)
