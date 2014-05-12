@@ -10,6 +10,10 @@ layout: content
 	<%- @content %>
 </div>
 
+<div class="ui segment">
+	Updates and fixes for the directory are welcome via the <a href="/pages/website-contributions.html">website contribution guide</a>.
+</div>
+
 <ul class="ui list">
 	<% for item in @getCollection('directory').sortArray(date: -1): %>
 	<a class="item" href="<%= item.url %>"><i class="right triangle icon"></i> <%- item.title or item.name %></a>

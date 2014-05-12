@@ -5,12 +5,16 @@ title: 'Website contributions'
 
 Contributions to the content of this website are very welcome.
 
-Especially content fot the
+Especially the [DefinitelyTyped guides](/guides.html) and the [TypeScript directory](/directory.html) are open for updates.
 
-The site DefinitelyTyped website is hosted on [pages.github.com](https://pages.github.com/) as [definitelytyped.github.io](http://definitelytyped.github.io/) and the repository is located at [github.com/DefinitelyTyped/definitelytyped.github.io](https://github.com/DefinitelyTyped/definitelytyped.github.io).
-
-The site build with [Grunt](http://www.gruntjs.com) and generated using [docpad](http://docpad.org), a static site generator complete with watch tasks, development server with LiveReload and [many plugins](http://docpad.org/docs/plugins).
+If you have feedback or an idea for new pages then please let us know in the [issues](https://github.com/DefinitelyTyped/definitelytyped.github.io).
 
 ## How to edit
 
-See the readme at [github.com/DefinitelyTyped/definitelytyped.github.io](https://github.com/DefinitelyTyped/definitelytyped.github.io), an feel free to post and [issue](https://github.com/DefinitelyTyped/definitelytyped.github.io/issues) if you have any questions.
+The repository is located at [github.com/DefinitelyTyped/definitelytyped.github.io](https://github.com/DefinitelyTyped/definitelytyped.github.io).
+
+Create a fork, switch to the `source` branch and do your work on the content sources (mostly in markdown). Then send a PR with the changed source files and after review a team member will rebuild and publish the site to `master`.
+
+The site is build with [Grunt](http://www.gruntjs.com) and generated using [docpad](http://docpad.org), a static site generator complete with watch tasks and a LiveReload development server .
+
+See the [readme](https://github.com/DefinitelyTyped/definitelytyped.github.io) for more information and feel free to post an [issue](https://github.com/DefinitelyTyped/definitelytyped.github.io/issues) if you have any questions.

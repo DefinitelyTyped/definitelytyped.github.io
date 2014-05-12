@@ -3,6 +3,11 @@ layout: 'guide'
 title: 'Contribution guide''
 ---
 
+<div class="ui small message">
+    This guide covers contributing **definitions**. For information on contributing to the **website** go the <a href="/pages/website-contributions.html">website update guide</a>.
+</div>
+
+
 ## Quality Criteria
 
 To ensure the quality of `DefinitelyTyped` repository, the typings must meet the following criteria:

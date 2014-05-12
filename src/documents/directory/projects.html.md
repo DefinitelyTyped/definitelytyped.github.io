@@ -3,7 +3,7 @@ layout: 'directory'
 title: 'Projects'
 ---
 
-## Notable Projects Written In TypeScript
+Notable projects written In TypeScript
 
 * [FeatureMap](http://www.featuremap.co/)
 * [Socl](http://www.so.cl/) Service where people connect over shared interests
