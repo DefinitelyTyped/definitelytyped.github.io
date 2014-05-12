@@ -1,5 +1,5 @@
 ---
-layout: 'guide'
+layout: 'directory'
 title: 'Learn TypeScript'
 ---
 
@@ -9,6 +9,7 @@ title: 'Learn TypeScript'
 * [Codeplex project site](http://typescript.codeplex.com)
 * [DefinitelyTyped](<%-@site.github%>)
 
+
 ## Language
 
 * [TypeScript Playground](http://www.typescriptlang.org/playground)
@@ -16,15 +17,6 @@ title: 'Learn TypeScript'
 * [TypeScript Handbook](http://www.typescriptlang.org/handbook)
 * [TypeScript Documentation](https://typescript.codeplex.com/documentation)
 * [TypeScript Specification](http://www.typescriptlang.org/Content/TypeScript%20Language%20Specification.pdf)
-
-## Discussion
-
-* [TypeScript on CodePlex](http://typescript.codeplex.com/discussions) Official discussion forums for TypeScript
-* [TypeScript on StackOverflow](http://stackoverflow.com/questions/tagged/typescript)
-* [TypeScript on MSDN](http://blogs.msdn.com/b/typescript/)
-* [TypeScript on Twitter](https://twitter.com/search?q=%23typescript)
-* [TypeScript on Reddit](http://www.reddit.com/r/typescriptt)
-* [TypeScript on Freenode IRC](irc://irc.freenode.net/#typescript)
 
 
 ## Books/Big Reads

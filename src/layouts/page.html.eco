@@ -1,0 +1,18 @@
+---
+layout: content
+---
+
+<div class="ui vertical segment">
+	<h1><%- @document.title or @document.name %></h1>
+</div>
+
+<div class="ui vertical segment">
+	<%- @content %>
+</div>
+
+<ul class="ui list">
+	<% for item in @getCollection('pages').sortArray(date: -1): %>
+	<a class="item" href="<%= item.url %>"><i class="right triangle icon"></i> <%- item.title or item.name %></a>
+	<%- item.description %>
+	<% end %>
+</ul>

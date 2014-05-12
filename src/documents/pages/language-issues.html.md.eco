@@ -1,6 +1,6 @@
 ---
-layout: 'guide'
-title: 'Known issues'
+layout: 'page'
+title: 'Language issues'
 ---
 
 There are a few problems in TypeScript that limit the expressiveness of the type declarations. This page tracks the known issues that we submitted or found on the TypeScript [codeplex bugtracker](https://typescript.codeplex.com/workitem/list/basic).

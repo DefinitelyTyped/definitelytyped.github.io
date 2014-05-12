@@ -1,0 +1,16 @@
+---
+layout: 'page'
+title: 'Website contributions'
+---
+
+Contributions to the content of this website are very welcome.
+
+Especially content fot the
+
+The site DefinitelyTyped website is hosted on [pages.github.com](https://pages.github.com/) as [definitelytyped.github.io](http://definitelytyped.github.io/) and the repository is located at [github.com/DefinitelyTyped/definitelytyped.github.io](https://github.com/DefinitelyTyped/definitelytyped.github.io).
+
+The site build with [Grunt](http://www.gruntjs.com) and generated using [docpad](http://docpad.org), a static site generator complete with watch tasks, development server with LiveReload and [many plugins](http://docpad.org/docs/plugins).
+
+## How to edit
+
+See the readme at [github.com/DefinitelyTyped/definitelytyped.github.io](https://github.com/DefinitelyTyped/definitelytyped.github.io), an feel free to post and [issue](https://github.com/DefinitelyTyped/definitelytyped.github.io/issues) if you have any questions.
