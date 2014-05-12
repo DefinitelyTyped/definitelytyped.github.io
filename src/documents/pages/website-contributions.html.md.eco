@@ -3,15 +3,15 @@ layout: 'page'
 title: 'Website contributions'
 ---
 
-Contributions to the content of this website are very welcome.
+The content of this website is open for updates by users.
 
-Especially the [DefinitelyTyped guides](/guides.html) and the [TypeScript directory](/directory.html) are open for updates.
+Especially the [DefinitelyTyped guides](/guides.html) and the [TypeScript directory](/directory.html) need your help to staying fresh.
 
 If you have feedback or an idea for new pages then please let us know in the [issues](https://github.com/DefinitelyTyped/definitelytyped.github.io).
 
 ## How to edit
 
-The repository is located at [github.com/DefinitelyTyped/definitelytyped.github.io](https://github.com/DefinitelyTyped/definitelytyped.github.io).
+The repository is located at [github.com/DefinitelyTyped/definitelytyped.github.io](https://github.com/DefinitelyTyped/definitelytyped.github.io)
 
 Create a fork, switch to the `source` branch and do your work on the content sources (mostly in markdown). Then send a PR with the changed source files and after review a team member will rebuild and publish the site to `master`.
 
