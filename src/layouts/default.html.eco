@@ -18,9 +18,9 @@
 	<link rel="shortcut icon" href="/favicon.ico" >
 </head>
 <body class="ui">
+<a href="https://github.com/DefinitelyTyped/definitelytyped.github.io"><img style="position: absolute; top: 0; right: 0; border: 0;" class="ribbon" src="/images/forkme-blue.png" alt="Fork me on GitHub"></a>
 	<%- @content %>
 	<%- @getBlock('scripts').add(@site.scripts).toHTML() %>
 	<%- @partial('analytics') %>
-
 </body>
 </html>
