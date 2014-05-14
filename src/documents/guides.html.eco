@@ -11,8 +11,10 @@ title: 'Guides'
 	<ul class="ui list">
 		<% for item in @getCollection('guides').sortArray(date: -1): %>
 		<a class="item" href="<%= item.url %>">
-			<i class="right triangle icon"></i> <%- item.title or item.name %></a>
+			<%- item.title or item.name %></a>
 		<%- item.description %>
 		<% end %>
 	</ul>
 </div>
+
+<%- @partial('contribute') %>

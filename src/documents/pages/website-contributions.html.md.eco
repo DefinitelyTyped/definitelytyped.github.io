@@ -9,12 +9,14 @@ Especially the [DefinitelyTyped guides](/guides.html) and the [TypeScript direct
 
 If you have feedback or an idea for new pages then please let us know in the [issues](https://github.com/DefinitelyTyped/definitelytyped.github.io).
 
-## How to edit
+## Editing content
 
-The repository is located at [github.com/DefinitelyTyped/definitelytyped.github.io](https://github.com/DefinitelyTyped/definitelytyped.github.io)
+If you only want to add some links to the [TypeScript directory](/directory.html) then you can edit the markdown using the github website interface and send a pull request from your browser. For more involved contributions you can fork the repos and work in a checkout before you send the pull request.
 
-Create a fork, switch to the `source` branch and do your work on the content (mostly in markdown). Send a PR with the changed files and after review a team member will merge and the site gets rebuild autmatically.
+The repository with the site content is located at [github.com/DefinitelyTyped/definitelytyped.github.io](https://github.com/DefinitelyTyped/definitelytyped.github.io)
 
-This site is generated using [docpad](http://docpad.org), a static site generator complete with watch tasks and a LiveReload development server. The build runs on [Grunt](http://www.gruntjs.com) and [Travis-CI](https://travis-ci.org/DefinitelyTyped/definitelytyped.github.io).
+This site is generated using [docpad](http://docpad.org), a static site generator complete with watch tasks and a LiveReload development server.
 
-See the [readme](https://github.com/DefinitelyTyped/definitelytyped.github.io) for more information and feel free to post an [issue](https://github.com/DefinitelyTyped/definitelytyped.github.io/issues) if you have any questions.
+The automated build runs [Grunt](http://www.gruntjs.com) on [Travis-CI](https://travis-ci.org/DefinitelyTyped/definitelytyped.github.io.svg?branch=source).
+
+See the [readme](https://github.com/DefinitelyTyped/definitelytyped.github.io/blob/source/README.md) for more detailed information and feel free to post a [ticket](https://github.com/DefinitelyTyped/definitelytyped.github.io/issues) if you have any questions.
