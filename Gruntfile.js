@@ -34,10 +34,27 @@ module.exports = function (grunt) {
 		'gh-pages': {
 			options: {
 				base: 'out',
-				branch: 'master',
-				repo: 'https://github.com/DefinitelyTyped/definitelytyped.github.io.git'
+				branch: 'master'
 			},
-			src: '**/*'
+			publish: {
+				options: {
+					repo: 'https://github.com/DefinitelyTyped/definitelytyped.github.io.git',
+					message: 'Publish (cli)'
+				},
+				src: ['**']
+			},
+			deploy: {
+				options: {
+					repo: 'https://' + process.env.GH_TOKEN + '@github.com/DefinitelyTyped/definitelytyped.github.io.git',
+					message: 'Publish (auto)',
+					silent: true,
+					user: {
+						name: 'dt-bot',
+						email: 'definitelytypedbot@gmail.com'
+					}
+				},
+				src: ['**']
+			}
 		},
 		docpad: {
 			options: require('./docpad'),
@@ -53,6 +70,18 @@ module.exports = function (grunt) {
 			run: {
 				action: 'run'
 			}
+		}
+	});
+
+	grunt.registerTask('check-deploy', function() {
+		this.requires(['build']);
+
+		if (process.env.TRAVIS === 'true' && process.env.TRAVIS_SECURE_ENV_VARS === 'true' && process.env.TRAVIS_PULL_REQUEST === 'false') {
+			grunt.log.writeln('executing deployment');
+			grunt.task.run('gh-pages:deploy');
+		}
+		else {
+			grunt.log.writeln('skipping deployment');
 		}
 	});
 
@@ -80,10 +109,14 @@ module.exports = function (grunt) {
 		'copy:rootfiles'
 	]);
 
-	//
-	grunt.registerTask('publish', 'Build and push to master.', [
+	grunt.registerTask('publish', 'Build and push to master using CLI.', [
 		'build',
-		'gh-pages',
+		'gh-pages:publish'
+	]);
+
+	grunt.registerTask('deploy', 'Build with production env for bot.', [
+		'build',
+		'check-deploy'
 	]);
 
 	grunt.registerTask('default', ['build']);
