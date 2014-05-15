@@ -8,6 +8,19 @@ module.exports = function (grunt) {
 
 	grunt.loadTasks('./tasks');
 
+	function getDeployMessage() {
+		var ret = '\n\n';
+		if (process.env.TRAVIS !== 'true') {
+			ret += 'did not run on travis-ci';
+			return ret;
+		}
+		ret += 'branch:       ' + (process.env.TRAVIS_BRANCH || '<unknown>') + '\n';
+		ret += 'SHA:          ' + (process.env.TRAVIS_COMMIT || '<unknown>') + '\n';
+		ret += 'build id:     ' + (process.env.TRAVIS_BUILD_ID || '<unknown>') + '\n';
+		ret += 'build number: ' + (process.env.TRAVIS_BUILD_NUMBER || '<unknown>') + '\n';
+		return ret;
+	}
+
 	grunt.initConfig({
 		pkg: grunt.file.readJSON('package.json'),
 		clean: {
@@ -39,14 +52,14 @@ module.exports = function (grunt) {
 			publish: {
 				options: {
 					repo: 'https://github.com/DefinitelyTyped/definitelytyped.github.io.git',
-					message: 'Publish (cli)'
+					message: 'publish (cli)'
 				},
 				src: ['**']
 			},
 			deploy: {
 				options: {
 					repo: 'https://' + process.env.GH_TOKEN + '@github.com/DefinitelyTyped/definitelytyped.github.io.git',
-					message: 'Publish (auto)',
+					message: 'publish (auto)' + getDeployMessage(),
 					silent: true,
 					user: {
 						name: 'dt-bot',
