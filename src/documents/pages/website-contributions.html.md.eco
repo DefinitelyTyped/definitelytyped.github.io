@@ -13,7 +13,7 @@ If you have feedback or an idea for new pages then please let us know in the [is
 
 The repository is located at [github.com/DefinitelyTyped/definitelytyped.github.io](https://github.com/DefinitelyTyped/definitelytyped.github.io)
 
-Create a fork, switch to the `source` branch and do your work on the content sources (mostly in markdown). Send a PR with the changed files and after review a team member will merge and the site rebuilds automatically.
+Create a fork, switch to the `source` branch and do your work on the content (mostly in markdown). Send a PR with the changed files and after review a team member will merge and the site gets rebuild autmatically.
 
 This site is generated using [docpad](http://docpad.org), a static site generator complete with watch tasks and a LiveReload development server. The build runs on [Grunt](http://www.gruntjs.com) and [Travis-CI](https://travis-ci.org/DefinitelyTyped/definitelytyped.github.io).
 
