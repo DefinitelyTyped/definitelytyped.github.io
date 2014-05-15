@@ -16,11 +16,11 @@ module.exports = function (grunt) {
 		}
 		ret += 'branch:       ' + (process.env.TRAVIS_BRANCH || '<unknown>') + '\n';
 		ret += 'SHA:          ' + (process.env.TRAVIS_COMMIT || '<unknown>') + '\n';
+		ret += 'range SHA:    ' + (process.env.TRAVIS_COMMIT_RANGE || '<unknown>') + '\n';
 		ret += 'build id:     ' + (process.env.TRAVIS_BUILD_ID || '<unknown>') + '\n';
 		ret += 'build number: ' + (process.env.TRAVIS_BUILD_NUMBER || '<unknown>') + '\n';
 		return ret;
 	}
-
 	grunt.initConfig({
 		pkg: grunt.file.readJSON('package.json'),
 		clean: {
