@@ -19,6 +19,10 @@ title: 'Tools & Editors'
 * [grunt-ts](https://github.com/grunt-ts/grunt-ts) Grunt.js plugin for TypeScript build workflow.
 * [grunt-typescript](https://github.com/k-maru/grunt-typescript) Grunt.js plugin to compile TypeScript as part of your automated build process
 
+## Linters
+
+* [TSLint](https://github.com/palantir/tslint) Linter for the TypeScript language.
+
 ## Cloud support
 
 * [Heroku Typescript Buildpack](https://github.com/pk11/heroku-buildpack-typescript)
