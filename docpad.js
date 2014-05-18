@@ -1,19 +1,5 @@
 /* jshint -W014 */
 
-
-var hljs;
-function highlightCode(code, lang) {
-	if (!hljs) {
-		hljs = require('highlight.js');
-		hljs.configure({tabReplace: '    '}); // 4 spaces
-		hljs.registerLanguage('typescript', require('./lib/highlight/typescript'));
-	}
-	if (lang) {
-		return hljs.highlight(lang, code).value;
-	}
-	return hljs.highlightAuto(code).value;
-}
-
 var docpadConfig = {
 	templateData: {
 		site: {
@@ -119,27 +105,10 @@ var docpadConfig = {
 	},
 	plugins: {
 		marked: {
-			markedOptions: {
-				gfm: true,
-				highlight: highlightCode
-			}
+			markedOptions: require('./lib/marked')
 		}
 	},
 	events: {
-		serverExtend: function(opts) {
-			var server = opts.server;
-			var docpad = this.docpad;
-			var latestConfig = docpad.getConfig();
-			var oldUrls = latestConfig.templateData.site.oldUrls || [];
-			var newUrl = latestConfig.templateData.site.url;
-			return server.use(function(req, res, next) {
-				if (oldUrls.indexOf(req.headers.host) >= 0) {
-					return res.redirect(newUrl + req.url, 301);
-				} else {
-					return next();
-				}
-			});
-		}
 	}
 };
 

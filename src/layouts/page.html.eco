@@ -10,9 +10,9 @@ layout: content
 	<%- @content %>
 </div>
 
-<ul class="ui list">
+<div class="ui list">
 	<% for item in @getCollection('pages').sortArray(date: -1): %>
 	<a class="item" href="<%= item.url %>"><%- item.title or item.name %></a>
 	<%- item.description %>
 	<% end %>
-</ul>
+</div>

@@ -8,13 +8,13 @@ title: 'TypeScript Directory'
 </div>
 
 <div class="ui row">
-	<ul class="ui list">
+	<div class="ui list">
 		<% for item in @getCollection('directory').sortArray(date: -1): %>
 		<a class="item" href="<%= item.url %>">
 			<%- item.title or item.name %></a>
 		<%- item.description %>
 		<% end %>
-	</ul>
+	</div>
 </div>
 
 <%- @partial('contribute') %>

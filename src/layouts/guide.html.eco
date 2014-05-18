@@ -12,9 +12,9 @@ layout: content
 	<%- @partial('contribute') %>
 </div>
 
-<ul class="ui list">
+<div class="ui list">
 	<% for item in @getCollection('guides').sortArray(date: -1): %>
 	<a class="item" href="<%= item.url %>"><%- item.title or item.name %></a>
 	<%- item.description %>
 	<% end %>
-</ul>
+</div>

@@ -7,7 +7,7 @@ title: 'Badges'
 JavaScript libraries that have TypeScript definitions on DefinitelyTyped can show their support by adding a badge to their README.
 
 <div class="ui message">
-**Experimental** Currently we offer a simple badge that links to [definitelytyped.org](http://definitelytyped.org). <br><br/>We are working on a CDN with `https;//` support, and a feature to link to a definition-specific information page.
+**Experimental** Currently we offer a simple badge that links to [definitelytyped.org](http://definitelytyped.org). <br><br/>We are working on a CDN with https support, and a feature to link to a definition-specific information page.
 </div>
 
 

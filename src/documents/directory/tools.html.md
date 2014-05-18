@@ -42,4 +42,4 @@ title: 'Tools & Editors'
 * [CATS](https://github.com/jbaron/cats) Code Assistant for TypeScript
 * [typescript-vim](https://github.com/leafgarland/typescript-vim)
 * [sublime-typescript](https://github.com/raph-amiard/sublime-typescript)
-* [typescript-tools](https://github.com/clausreinke/typescript-tools) Command line access to TypeScript language services (types, completion, jump to definition, errors); Vim plugin
+* [typescript-tools](https://github.com/clausreinke/typescript-tools) CLI access to TypeScript language services; Vim plugin
