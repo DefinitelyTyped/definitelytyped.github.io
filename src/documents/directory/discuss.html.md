@@ -3,8 +3,6 @@ layout: 'directory'
 title: 'Discuss'
 ---
 
-## Language Discussion
-
 TypeScript on:
 
 * [CodePlex](http://typescript.codeplex.com/discussions) (official discussion forums)
