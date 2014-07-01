@@ -27,7 +27,7 @@ var n = NodeJS; // TS Error : Could not find symbol NodeJS
 ````
 This also allows you to open up further customization in external modules as interfaces declared *inside* external module declarations cannot be extended e.g. the following is good as people can customize `foo` further in other library definitions.
 ```typescript
-// For external only modules like
+// Usage when declaring an external module
 declare module 'foo' {
     var foo: NodeJS.Foo;
     export = foo;
