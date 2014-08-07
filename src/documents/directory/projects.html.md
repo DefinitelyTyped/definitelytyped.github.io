@@ -5,6 +5,7 @@ title: 'Projects'
 
 Notable projects written In TypeScript
 
+* [Sublight Web App](http://www.sublight.me/swa/): crowdsourced YouTube subtitle editor
 * [FeatureMap](http://www.featuremap.co/)
 * [Socl](http://www.so.cl/) Service where people connect over shared interests
 * [TypeScript Compiler](http://typescript.codeplex.com/)
