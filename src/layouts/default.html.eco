@@ -1,8 +1,5 @@
 <!DOCTYPE html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<html>
 <head>
 	<meta charset="utf-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -18,9 +15,11 @@
 	<link rel="shortcut icon" href="/favicon.ico" >
 </head>
 <body class="ui">
-<a href="https://github.com/DefinitelyTyped/definitelytyped.github.io"><img style="position: absolute; top: 0; right: 0; border: 0;" class="ribbon" src="/images/forkme-blue.png" alt="Fork me on GitHub"></a>
-	<%- @content %>
-	<%- @getBlock('scripts').add(@site.scripts).toHTML() %>
-	<%- @partial('analytics') %>
+
+<%- @content %>
+
+<%- @getBlock('scripts').add(@site.scripts).toHTML() %>
+<%- @partial('analytics') %>
+
 </body>
 </html>

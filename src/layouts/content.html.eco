@@ -1,18 +1,15 @@
 ---
 layout: default
 ---
-<div class="outer">
-	<!--[if lt IE 7]>
-	<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-	<![endif]-->
+<%- @partial('header') %>
 
-	<div class="ui one column grid">
-		<div class="column centeroid">
-			<%- @partial('header') %>
-
+<div class="container">
+	<div class="row">
+		<div class="col-12 typography">
 			<%- @content %>
-
-			<%- @partial('footer') %>
+            <%- @partial('contribute') %>
 		</div>
 	</div>
 </div>
+
+<%- @partial('footer') %>

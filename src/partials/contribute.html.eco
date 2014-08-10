@@ -1,3 +1,6 @@
-<div class="ui small segment">
-	Contribute to the site via the <a href="/pages/website-contributions.html">contribution guide</a>.
-</div>
+<aside>
+    <hr />
+    <a href="<%= @site.edit %><%= @document.relativePath.replace('\\', '/') %>">Edit this page</a>
+    or read more in our
+	<a href="/pages/website-contributions.html">contribution guide</a>.
+</aside>

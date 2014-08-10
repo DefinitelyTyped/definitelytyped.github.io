@@ -1,24 +1,22 @@
-<div class="ui menu">
-	<a class="item" href="<%= @site.home %>"><i class="home icon"></i> Home</a>
-	<a class="item" href="/guides.html"><i class="wrench icon"></i> Guides</a>
-	<a class="item" href="/directory.html"><i class="unordered list icon"></i> Directory</a>
-	<a class="item" href="<%= @site.github %>"><i class="github icon"></i> Repository</a>
-	<a class="item" href="<%= @link.tsd.web %>"><i class="terminal icon"></i> TSD</a>
-	<a class="item" href="http://nuget.org/packages?q=DefinitelyTyped"><i class="download disk icon"></i> NuGet</a>
-<!--
-	<div class="right menu">
-		<div class="item">
-			<iframe src="http://ghbtns.com/github-btn.html?user=<%-@site.gh.user%>&repo=<%-@site.gh.repo%>&type=watch&count=true"
-					allowtransparency="true" frameborder="0" scrolling="0" width="95" height="20"></iframe>
-			<iframe src="http://ghbtns.com/github-btn.html?user=<%-@site.gh.user%>&repo=<%-@site.gh.repo%>&type=fork&count=true"
-					allowtransparency="true" frameborder="0" scrolling="0" width="95" height="20"></iframe>
-		</div>
-	</div>
-	-->
-</div>
-<div class="ui row">
-	<a class="logo" href="<%= @site.home %>"><img src="/images/dt-logo-smallish.png" title="<%= @site.title %>"/></a>
+<header>
+    <div class="container">
+        <a class="logo" href="<%= @site.home %>"><img src="/assets/images/dt-logo-smallish.png" title="<%= @site.title %>" width="73" height="73" /></a>
+        <nav>
+            <ul>
+                <li><a <%- 'class="current"' if @document.section is "home" %> href="<%= @site.home %>">Home</a></li>
+                <li><a <%- 'class="current"' if @document.section is "guides" %> href="/guides/contributing.html">Guides</a></li>
+                <li><a <%- 'class="current"' if @document.section is "directory" %> href="/directory/learn.html">Directory</a></li>
+                <li><a <%- 'class="current"' if @document.section is "pages" %> href="/pages/badges.html">Pages</a></li>
+                <li><a href="<%= @site.github %>">Repository</a></li>
+                <li><a href="<%= @link.tsd.web %>">TSD</a></li>
+                <li><a href="http://nuget.org/packages?q=DefinitelyTyped">NuGet</a></li>
+            </ul>
+        </nav>
 
-	<h1 class="ui header">DefinitelyTyped</h1>
-	<p><%- @site.tagline %></p>
-</div>
+        <% if @document.pageTitle?: %>
+            <%- @document.pageTitle %>
+        <% else: %>
+            <h1><%- @document.title or @document.name %></h1>
+        <% end %>
+    </div>
+</header>
