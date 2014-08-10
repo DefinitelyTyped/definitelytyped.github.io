@@ -1,6 +1,8 @@
 ---
 layout: 'page'
 title: 'Website contributions'
+section: 'pages'
+menuOrder: 1
 ---
 
 The content of this website is open for updates by users.

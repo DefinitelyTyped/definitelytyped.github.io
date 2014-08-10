@@ -1,6 +1,8 @@
 ---
 layout: 'directory'
 title: 'Projects'
+section: 'directory'
+menuOrder: 4
 ---
 
 Notable projects written In TypeScript

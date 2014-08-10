@@ -1,6 +1,8 @@
 ---
 layout: 'directory'
 title: 'Tools & Editors'
+section: 'directory'
+menuOrder: 1
 ---
 
 ## General

@@ -1,40 +1,39 @@
 ---
 layout: 'page'
 title: 'Badges'
+section: 'pages'
+menuOrder: 0
 ---
 
+<div class="message">
+    **Experimental** Currently we offer a simple badge that links to [definitelytyped.org](http://definitelytyped.org)
+
+    We are working on a CDN with https support, and a feature to link to a definition-specific information page.
+</div>
 
 JavaScript libraries that have TypeScript definitions on DefinitelyTyped can show their support by adding a badge to their README.
 
-<div class="ui message">
-**Experimental** Currently we offer a simple badge that links to [definitelytyped.org](http://definitelytyped.org). <br><br/>We are working on a CDN with https support, and a feature to link to a definition-specific information page.
-</div>
 
-
-Github style
+### Github style
 
 <%= @getBadgeMarkdown() %>
 
-<div class="ui mini fluid input">
-    <label>Markdown</label>
-    <input type="text" value="<%= @getBadgeMarkdown() %>" onClick="this.setSelectionRange(0, this.value.length)">
+**Markdown**
+<input type="text" value="<%= @getBadgeMarkdown() %>" onClick="this.setSelectionRange(0, this.value.length)">
 
-    <label>HTML</label>
-    <input type="text" value="<%= @getBadgeHTML() %>" onClick="this.setSelectionRange(0, this.value.length)">
-</div>
+**HTML**
+<input type="text" value="<%= @getBadgeHTML() %>" onClick="this.setSelectionRange(0, this.value.length)">
 
 
-Flat version
+### Flat version
 
 <%= @getBadgeMarkdown('flat') %>
 
-<div class="ui mini fluid input">
-    <label>Markdown</label>
-    <input type="text" value="<%= @getBadgeMarkdown('flat') %>" onClick="this.setSelectionRange(0, this.value.length)">
+**Markdown**
+<input type="text" value="<%= @getBadgeMarkdown('flat') %>" onClick="this.setSelectionRange(0, this.value.length)">
 
-    <label>HTML</label>
-    <input type="text" value="<%= @getBadgeHTML('flat') %>" onClick="this.setSelectionRange(0, this.value.length)">
-</div>
+**HTML**
+<input type="text" value="<%= @getBadgeHTML('flat') %>" onClick="this.setSelectionRange(0, this.value.length)">
 
 
 Discussion at [github.com/DefinitelyTyped/badges](https://github.com/DefinitelyTyped/badges/issues)

@@ -1,6 +1,8 @@
 ---
 layout: 'directory'
 title: 'Learn TypeScript'
+section: 'directory'
+menuOrder: 0
 ---
 
 ## Resources

@@ -1,6 +1,8 @@
 ---
 layout: 'directory'
 title: 'Discuss'
+section: 'directory'
+menuOrder: 2
 ---
 
 TypeScript on:

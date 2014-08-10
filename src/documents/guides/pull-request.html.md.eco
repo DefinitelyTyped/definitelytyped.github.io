@@ -1,6 +1,8 @@
 ---
 layout: 'guide'
 title: 'Pull Requests'
+section: 'guides'
+menuOrder: 2
 ---
 
 ## Getting latest upstream changes

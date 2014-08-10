@@ -1,9 +1,11 @@
 ---
 layout: 'guide'
 title: 'Contribution guide''
+section: 'guides'
+menuOrder: 0
 ---
 
-<div class="ui small message">
+<div class="message">
     This guide covers contributing **definitions**. For information on contributing to the **website** go the <a href="/pages/website-contributions.html">website update guide</a>.
 </div>
 
@@ -92,14 +94,14 @@ There are a few ways to test changes:
 1. Simply compile the test file:
     * `tsc --noImplicitAny your/code.-tests.ts`
     * `tsc --noImplicitAny --module commonjs your/code-tests.ts`
-1. Run `npm test` before sending your pull request.
+2. Run `npm test` before sending your pull request.
     * If you created new files add them to git so the tester picks them as changes.
     * Tests must be run from the DefinitelyTyped project's root directory.
     * You'll need to run `npm update` once to download the packages required by the test suite.
-1. Enable Travis on your DT fork and test online.
+3. Enable Travis on your DT fork and test online.
     * See note below on how to enable this.
     * This takes a few steps to do but is faster for big cascading changes (like changing JQuery)
-1. Depend on the automated test on Travis that runs after you send a PR.
+4. Depend on the automated test on Travis that runs after you send a PR.
     * If you need many attempts to fix errors then please flatten the history and clean the commit message.
 
 If you need to use `tscparams` note that the contents of tscparams should be quoted. i.e. "" e.g. [ace/all-tests.ts.tscparams](<%-@site.github%>/blob/master/ace/all-tests.ts.tscparams)
