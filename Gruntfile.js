@@ -102,18 +102,18 @@ module.exports = function (grunt) {
 	grunt.registerTask('prep', 'Clean and prepare.', [
 		'clean:out',
 		'jshint:support',
-		'jshint:source',
+		'jshint:source'
 	]);
 
 	grunt.registerTask('test', 'Build in development env and run tests.', [
 		'prep',
-		'docpad:generate',
+		'docpad:generate'
 		// more
 	]);
 
 	grunt.registerTask('watch', 'Start watch and run LiveReload server on  development env.', [
 		'prep',
-		'docpad:run',
+		'docpad:run'
 	]);
 
 	grunt.registerTask('build', 'Build with production env.', [
