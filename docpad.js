@@ -5,6 +5,7 @@ var docpadConfig = {
 		site: {
 			url: 'http://definitelytyped.org',
 			github: 'https://github.com/borisyankov/DefinitelyTyped',
+            edit: 'https://github.com/DefinitelyTyped/definitelytyped.github.io/edit/source/src/documents/',
 			ref: 'github.com/borisyankov/DefinitelyTyped',
 			home: '/',
 			gh: {
@@ -17,14 +18,15 @@ var docpadConfig = {
 			tagline: 'The repository for high quality TypeScript type definitions',
 			keywords: 'typescript, type, definition, declaration, repository, typing',
 			styles: [
-				'/styles/semantic.min.css',
-				'/styles/highlight.css',
-				'/styles/style.css'
+				'//fonts.googleapis.com/css?family=Montserrat',
+				'/assets/styles/normalize.css',
+				'/assets/styles/highlight.css',
+				'/assets/styles/style.css'
 			],
 			scripts: [
 				'//ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js',
-				'/scripts/semantic.min.js',
-				'/scripts/script.js'
+				'/assets/scripts/underscore-min.js',
+				'/assets/scripts/script.js'
 			],
 			analytics: {
 				id: 'UA-47495295-3',
