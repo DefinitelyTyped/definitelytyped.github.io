@@ -104,7 +104,7 @@ There are a few ways to test changes:
 4. Depend on the automated test on Travis that runs after you send a PR.
     * If you need many attempts to fix errors then please flatten the history and clean the commit message.
 
-If you need to use `tscparams` note that the contents of tscparams should be quoted. i.e. "" e.g. [ace/all-tests.ts.tscparams](<%-@site.github%>/blob/master/ace/all-tests.ts.tscparams)
+You can use a `tscparams` file to specify custom compiler arguments e.g. [atom/atom-tests.ts.tscparams](<%-@site.github%>/blob/master/atom/atom-tests.ts.tscparams)
 
 ## Code style
 
