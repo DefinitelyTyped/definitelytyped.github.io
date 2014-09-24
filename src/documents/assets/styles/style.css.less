@@ -1,22 +1,113 @@
-/**
- * Constants
- * -------------------------------------------
- */
+// definitelytyped.org
+//
+// You can convert this stylesheet into a simple styleguide using kss:
+// $ kss-node src/documents/assets/styles etc/styleguide --css src/documents/assets/styles/normalize.css --less src/documents/assets/styles/style.css.less
+
+
+
+// Constants
+//
+// Styleguide 1
+
+
+// Colors
+//
+// <table>
+//   <tr><th>Name      </th><th>Less constant    </th><th>Color</th></tr>
+//   <tr><td>Black     </td><td>@COLOR_BLACK     </td><td><div style="background:#000000;">#000000</div></td></tr>
+//   <tr><td>White     </td><td>@COLOR_WHITE     </td><td><div style="background:#ffffff;">#ffffff</div></td></tr>
+//   <tr><td>Accent    </td><td>@COLOR_ACCENT    </td><td><div style="background:#eeeeee;">#eeeeee</div></td></tr>
+//   <tr><td>Main      </td><td>@COLOR_MAIN      </td><td><div style="background:#0077d2;">#0077d2</div></td></tr>
+//   <tr><td>Main dark </td><td>@COLOR_MAIN_DARK </td><td><div style="background:#162943;">#162943</div></td></tr>
+//   <tr><td>Main light</td><td>@COLOR_MAIN_LIGHT</td><td><div style="background:#6481a1;">#6481a1</div></td></tr>
+// </table>
+//
+// Styleguide 1.1
 
 @COLOR_BLACK: #000;
+@COLOR_GRAY: #939393;
 @COLOR_WHITE: #fff;
 @COLOR_ACCENT: #eee;
-@COLOR_MAIN: #1c77d0;
-@COLOR_MAIN_DARK: #222c45;
-@COLOR_MAIN_LIGHT: #7f8cac;
+@COLOR_MAIN: #0077d2;
+@COLOR_MAIN_DARK: #162943;
+@COLOR_MAIN_LIGHT: #6481a1;
+@COLOR: #a1a7b0;
 
 
+// Fonts
+//
+// Styleguide 1.2
 
-/**
- * Mixins
- * -------------------------------------------
- * @see https://github.com/JoelSutherland/LESS-Prefixer/blob/master/prefixer.less
- */
+@import url(http://fonts.googleapis.com/css?family=Raleway:400,700|Open+Sans:400italic,400,700);
+
+@FONT_SANS: 'Open Sans', sans-serif;
+@FONT_RALEWAY: 'Raleway', sans-serif;
+
+@SIZE_SMALL: 12px;
+@SIZE_NORMAL: 16px;
+@SIZE_LEAD: 24px;
+@SIZE_LARGE: 28px;
+@SIZE_LARGER: 36px;
+@SIZE_HUGE: 48px;
+
+@HIGH_DPI: ~"(-webkit-min-device-pixel-ratio: 1.5), (min--moz-device-pixel-ratio: 1.5), (-o-min-device-pixel-ratio: 3/2), (min-resolution: 1.5dppx)";
+
+
+// Fonts
+//
+// Styleguide 1.3
+
+body {
+    font-family: @FONT_SANS;
+    font-size: @SIZE_NORMAL;
+}
+
+.font-raleway {
+    font-family: @FONT_RALEWAY;
+}
+
+.style-default-lead {
+    font-family: @FONT_SANS;
+    font-size: @SIZE_LEAD;
+    font-weight: normal;
+}
+
+.style-raleway-lead {
+    .font-raleway;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.style-raleway-normal {
+    .font-raleway;
+    font-size: @SIZE_NORMAL;
+    font-weight: bold;
+}
+
+.style-raleway-large {
+    .font-raleway;
+    font-size: @SIZE_LARGE;
+    font-weight: bold;
+}
+
+.style-raleway-larger {
+    .font-raleway;
+    font-size: @SIZE_LARGER;
+    font-weight: bold;
+}
+
+.style-raleway-huge {
+    .font-raleway;
+    font-size: @SIZE_HUGE;
+    font-weight: normal;
+}
+
+
+// Mixins
+//
+// see https://github.com/JoelSutherland/LESS-Prefixer/blob/master/prefixer.less
+//
+// Styleguide 1.4
 
 .list-style-none() {
     list-style: none;
@@ -60,100 +151,28 @@
     .box-sizing(content-box);
 }
 
-
-
-/**
- * Grid
- * -------------------------------------------
- */
-
-.accent {
-    background-color: @COLOR_ACCENT;
+.box-shadow(@x-axis: 0, @y-axis: 1px, @blur: 2px, @alpha: 0.1) {
+    -webkit-box-shadow: @x-axis @y-axis @blur rgba(0, 0, 0, @alpha);
+    -moz-box-shadow: @x-axis @y-axis @blur rgba(0, 0, 0, @alpha);
+    box-shadow: @x-axis @y-axis @blur rgba(0, 0, 0, @alpha);
 }
 
-.container {
-    margin: 0 auto;
-    padding: 0 40px;
-    max-width: 1200px;
+.arrow() {
+    width: 24px;
+    height: 16px;
+    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAQCAMAAAA7+k+nAAAANlBMVEUAd9L///8Ad9IAd9IAd9IAd9IAd9IAd9IAd9IAd9IAd9IAd9IAd9IAd9IAd9IAd9IAd9IAd9Lg387oAAAAEXRSTlMAAMMJtxIGoslX2B60nwOKPxhOozsAAABFSURBVHheY2AEAQZMQAUJTlwSTOxsOCQEWZgZsAEmQUEOVhwSglzcYAlBTMCCQwcTK3YJHmbsruLlY8AqwY/DgwJkByIAF6YC6vXi/zoAAAAASUVORK5CYII=);
+    background-repeat: no-repeat;
 
-    &.main {
-        margin-top: 40px;
-        margin-bottom: 80px;
+    @media @HIGH_DPI {
+        background-image: url(../images/action-arrow@2x.png);
+        background-size: 24px 16px;
     }
 }
 
-.row {
-    list-style: none;
-    position: relative;
-    margin: 40px -10px;
-    padding: 0;
-    font-size: 0;
 
-    &.table {
-        display: table;
-        width: 100%;
-        margin-left: 0;
-        margin-right: 0;
-
-        > * {
-            display: table-cell;
-            vertical-align: middle;
-        }
-
-        > *:first-child {
-            padding-left: 0;
-        }
-
-        > *:last-child {
-            padding-right: 0;
-        }
-    }
-}
-
-.col {
-    .border-box;
-    display: inline-block;
-    position: relative;
-    font-size: 16px;
-    vertical-align: top;
-    padding: 0 10px;
-    margin: 0;
-
-    > *:first-child {
-        margin-top: 0 !important;
-    }
-
-    > *:last-child {
-        margin-bottom: 0 !important;
-    }
-}
-
-.columns(@n, @i: 1) when (@i =< @n) {
-    .col-@{i} {
-        .col;
-        width: 100% * (@i / 12);
-    }
-
-    .columns(@n, (@i + 1));
-}
-
-.offsets(@n, @i: 1) when (@i =< @n) {
-    .offset-@{i} {
-        margin-left: 100% * (@i / 12);
-    }
-
-    .offsets(@n, (@i + 1));
-}
-
-.columns(12);
-.offsets(12);
-
-
-
-/**
- * Animations
- * -------------------------------------------
- */
+// Animations
+//
+// Styleguide 1.5
 
 .no-transition {
     .transition(none) !important;
@@ -195,58 +214,565 @@
 
 
 
-/**
- * Typography
- * -------------------------------------------
- */
+// Grid
+//
+// Markup:
+// <div class="container">
+//   <div class="row">
+//     <div class="col">Column</div>
+//     <div class="col">Column</div>
+//     <div class="col">Column</div>
+//     <div class="col">Column</div>
+//     <div class="col">Column</div>
+//     <div class="col">Column</div>
+//     <div class="col">Column</div>
+//     <div class="col">Column</div>
+//     <div class="col">Column</div>
+//     <div class="col">Column</div>
+//   </div>
+// </div>
+//
+// Styleguide 2
 
-.font-montserrat {
-    font-family: Montserrat, Arial, Helvetica, sans-serif;
+.container {
+    margin: 0 auto;
+    padding: 0 40px;
+    max-width: 1200px;
+
+    &.main {
+        margin-top: 40px;
+        margin-bottom: 80px;
+    }
 }
 
-.style-default-lead {
-    font-size: 24px;
-    font-weight: normal;
+
+// Row
+//
+// Markup:
+// <div class="container">
+//   <div class="row {$modifiers}">
+//     <div class="col-6">6 columns</div>
+//     <div class="col-6">6 columns</div>
+//   </div>
+// </div>
+//
+// .no-margin-top        - A row with no margin at the top.
+// .no-margin-bottom     - A row with no margin at the bottom.
+// .medium-margin-top    - A row with medium margin at the top.
+// .medium-margin-bottom - A row with medium margin at the bottom.
+// .large-margin-top     - A row with double margin at the top.
+// .large-margin-bottom  - A row with double margin at the bottom.
+// .table                - A row whose cols behave like table cells and will have equal height.
+//
+// Styleguide 2.1
+
+.row {
+    list-style: none;
+    position: relative;
+    margin: 40px -10px;
+    padding: 0;
+    font-size: 0;
+
+    &.no-margin-top {
+        margin-top: 0;
+    }
+
+    &.no-margin-bottom {
+        margin-bottom: 0;
+    }
+
+    &.medium-margin-top {
+        margin-top: 60px;
+    }
+
+    &.medium-margin-bottom {
+        margin-bottom: 60px;
+    }
+
+    &.large-margin-top {
+        margin-top: 80px;
+    }
+
+    &.large-margin-bottom {
+        margin-bottom: 80px;
+    }
+
+    &.table {
+        display: table;
+        width: 100%;
+        margin-left: 0;
+        margin-right: 0;
+
+        > * {
+            display: table-cell;
+            vertical-align: middle;
+        }
+
+        > *:first-child {
+            padding-left: 0;
+        }
+
+        > *:last-child {
+            padding-right: 0;
+        }
+    }
 }
 
-.style-montserrat-huge {
-    .font-montserrat;
-    font-size: 42px;
-    font-weight: normal;
+
+// Column widths
+//
+// Markup:
+// <div class="container">
+//   <div class="row">
+//     <div class="col-12">12 columns</div>
+//   </div>
+//   <div class="row">
+//     <div class="col-6">6 columns</div>
+//     <div class="col-6">6 columns</div>
+//   </div>
+//   <div class="row">
+//     <div class="col-4">4 columns</div>
+//     <div class="col-4">4 columns</div>
+//     <div class="col-4">4 columns</div>
+//   </div>
+//   <div class="row">
+//     <div class="col-2">2 columns</div>
+//     <div class="col-2">2 columns</div>
+//     <div class="col-2">2 columns</div>
+//     <div class="col-2">2 columns</div>
+//     <div class="col-2">2 columns</div>
+//   </div>
+// </div>
+//
+// Styleguide 2.2
+
+.col {
+    .border-box;
+    display: inline-block;
+    position: relative;
+    width: 100% / 12;
+    font-size: 16px;
+    vertical-align: top;
+    padding: 0 10px;
+    margin: 0;
+
+    > *:first-child {
+        margin-top: 0 !important;
+    }
+
+    > *:last-child {
+        margin-bottom: 0 !important;
+    }
 }
 
-.style-montserrat-larger {
-    .font-montserrat;
-    font-size: 34px;
-    font-weight: normal;
+.columns(@n, @i: 1) when (@i =< @n) {
+    .col-@{i} {
+        .col;
+        width: 100% * (@i / 12);
+    }
+
+    .columns(@n, (@i + 1));
+}
+.columns(12);
+
+
+// Column offsets
+//
+// Markup:
+// <div class="container">
+//   <div class="row">
+//     <div class="col-2 offset-1">2 columns, offset 1</div>
+//     <div class="col-2 offset-3">2 columns, offset 3</div>
+//   </div>
+// </div>
+//
+// Styleguide 2.3
+
+.offsets(@n, @i: 1) when (@i =< @n) {
+    .offset-@{i} {
+        margin-left: 100% * (@i / 12);
+    }
+
+    .offsets(@n, (@i + 1));
+}
+.offsets(12);
+
+
+.accent {
+    overflow: hidden;
+    background-color: @COLOR_ACCENT;
 }
 
-.style-montserrat-large {
-    .font-montserrat;
-    font-size: 24px;
-    font-weight: normal;
-}
 
-.style-montserrat-normal {
-    .font-montserrat;
-    font-size: 17px;
-    font-weight: normal;
-}
+
+// Page
+//
+// Styleguide 3
 
 html {
     font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
 }
 
+
+// Header
+//
+// Markup:
+// <header class="dt-header {$modifiers}">
+//   <div class="container">
+//     <a class="logo" href="/">DefinitelyTyped</a>
+//   </div>
+// </header>
+//
+// .skyline - Add the skyline background to the header.
+//
+// Styleguide 3.1
+
+header.dt-header {
+    position: relative;
+    background-color: @COLOR_MAIN_DARK;
+    padding-bottom: 20px;
+    min-height: 80px;
+
+    &.skyline {
+        background-image: url(../images/header-stars.gif);
+        background-position: center bottom;
+        min-height: 300px;
+
+        &:before {
+            content: '';
+            position: absolute;
+            z-index: 1;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 365px;
+            background-image: url(../images/header-skyline.png);
+            background-position: center bottom;
+        }
+
+        .container {
+            position: relative;
+            z-index: 2;
+        }
+    }
+
+    .logo {
+        .style-raleway-large;
+        display: block;
+        float: left;
+        margin: 20px 0 0 0;
+        padding: 0 0 0 75px;
+        height: 60px;
+        background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADwAAAA8CAMAAAANIilAAAAAnFBMVEUAAAAAdtIAdtIAW7gAW7gAW7gAdtIAW7gAdtIQZbwAXbqArdwAb8zP4PKfwuRAhMpgmdNwo9cAdNBAmN3f6/b///8AY8AAbsowkNqPt+AgcMEQf9Xv9fu/3fRAh82vzOnP5PUQds3f7vnv9vxwsua/1u1Qjs4AacUAcc0AYL0Ac88AYr8AascAbMgAZcIAXrsAZ8MQbMOv1PFgqeN7TYCxAAAAB3RSTlMAUN8A31AAbiElfgAAAR9JREFUeF7t19lqwzAQhWHZSTqSvC/Z033ft/d/t6Y+DaTGAnF0USj57z8GYY1BSkWxpoqjIxVpukjFPI6VDuj/4wM+4HWza7EHFs1Q6z5upntdfHwCH0+HOkmdGF1euXEhs9qJ0dm5G4udOzHK3lMnlu3wPs6TbXm201ImKO9Q8tNKvrN9XEjX6hQ6ESRFh+V3AxiVHd4YCkvS6YrDpsWpKSxLDOMwhhUclnBc/QE2IWcuOBz+qcwm4JIsA65nRSwGsZLun4E/7pcZHl/DMrgtRTjc5jdAnljfikcurO/ueYzhPNYPjyRGT5bFGE5i9Gw5jOoZidHcchjVLyRG6SuHUf1GYwwnsO+yOJ5GXssyxqOMGz5Ro/5z0Pe+jiejL1wdj2VAtgzNAAAAAElFTkSuQmCC);
+        background-repeat: no-repeat;
+        color: @COLOR_WHITE;
+        line-height: 60px;
+        letter-spacing: 1px;
+        text-decoration: none;
+    }
+}
+
+
+// Main navigation
+//
+// Markup:
+// <header class="dt-header">
+//   <div class="container">
+//     <nav>
+//       <ul>
+//         <li><a class="current" href="#">Guides</a></li>
+//         <li><a href="#">Directory</a></li>
+//         <li><a href="#">Pages</a></li>
+//       </ul>
+//     </nav>
+//   </div>
+// </header>
+//
+// Styleguide 3.1.1
+
+header.dt-header nav {
+    text-align: right;
+    line-height: 0;
+    font-size: 0;
+
+    ul {
+        .list-style-none;
+        margin: 0 -15px;
+    }
+
+    li {
+        display: inline;
+    }
+
+    li:before {
+        .style-raleway-normal;
+        content: '|';
+        display: inline-block;
+        padding-top: 14px;
+        color: #4c4668;
+        line-height: 60px;
+    }
+
+    li:first-child:before {
+        display: none;
+    }
+
+    a {
+        .style-raleway-normal;
+        .transition(color 0.2s);
+        display: inline-block;
+        padding: 14px 0 0 0;
+        margin: 0 15px;
+        color: @COLOR_MAIN_LIGHT;
+        border-top: 6px solid transparent;
+        line-height: 60px;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        text-decoration: none;
+
+        &:hover {
+            color: @COLOR_MAIN;
+        }
+
+        &.current {
+            color: @COLOR_MAIN;
+            border-top-color: @COLOR_MAIN;
+        }
+    }
+}
+
+// Jumbotron
+//
+// Markup:
+// <header class="dt-header">
+//   <div class="container">
+//     <div class="dt-jumbotron">
+//       <h1>The repository for high quality <br><strong>TypeScript type definitions.</strong></h1>
+//       <p class="dt-buttons">
+//         <a href="#" class="dt-button github">GitHub repository</a>
+//         <a href="#" class="dt-button guide">Contribution guide</a>
+//       </p>
+//     </div>
+//   </div>
+// </header>
+//
+// Styleguide 3.1.2
+
+header.dt-header .dt-jumbotron {
+    padding: 80px 0;
+    text-align: center;
+
+    h1 {
+        .style-raleway-larger;
+        font-weight: normal;
+        color: @COLOR_WHITE;
+        margin: 0 0 30px 0;
+    }
+}
+
+
+// Footer
+//
+// Markup:
+// <footer class="dt-footer">
+//   <div class="container">
+//     <div class="row">
+//       <div class="col-3">
+//         <h2>Guides</h2>
+//         <ul>
+//           <li><a href="#">Title</a></li>
+//         </ul>
+//       </div>
+//     </div>
+//   </div>
+// </footer>
+//
+// Styleguide 3.2
+
+footer.dt-footer {
+    margin-top: 80px;
+    padding-top: 80px;
+    padding-bottom: 80px;
+    background-color: @COLOR_MAIN_DARK;
+    color: @COLOR_WHITE;
+
+    h2 {
+        .style-raleway-normal;
+        color: @COLOR_WHITE;
+        margin: 0 0 13px 0;
+
+        &:before {
+            content: '';
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            margin: 0 6px -4px 0;
+            background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAA8BAMAAACUWIdlAAAAKlBMVEWhp7D///+hp7Chp7Chp7Chp7Chp7Chp7Chp7Chp7Chp7Chp7Chp7Chp7Bu8poCAAAADXRSTlMAAAw/Qkh4e37J5Of2bHkX8QAAALZJREFUeF610b8JwlAUxeEjGIhCIG7gCGnTOYKNlQiO4AgukMoFskAgjWVGENII/uHs4r335SapRER/pPh4L83hIc0JkPdsgrQxshYysH3D+NizuDml3/EAS7kcuO9Z0SqFW9NzLQT8h0UfRuW6NrDRtYG07OrirsEVPGJEn/E1Nz0rdpWwETYDH1RQOqniMD4ctsCUdqgEZxmSjkk9sIV8+Auvqkg5p/UQRo3xLPR2Sn9Dob/hC/xnERzi7fKHAAAAAElFTkSuQmCC);
+            background-repeat: no-repeat;
+
+            @media @HIGH_DPI {
+                background-image: url(../images/footer-icons@2x.png);
+                background-size: 20px 80px;
+            }
+        }
+
+        &.directory:before {
+            background-position: 0 -20px;
+        }
+
+        &.pages:before {
+            background-position: 0 -40px;
+        }
+    }
+
+    ul {
+        .list-style-none;
+    }
+
+    li {
+        margin: 0.25em 0;
+    }
+
+    a {
+        color: #a1a7b0;
+        text-decoration: none;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+
+    ul.quick {
+        margin-top: -13px !important;
+
+        li {
+            border-bottom: 1px solid @COLOR_MAIN;
+            margin: 0;
+
+            &:last-child {
+                border-bottom: none;
+            }
+        }
+
+        a {
+            .transition(all 0.1s);
+            .style-raleway-normal;
+            display: block;
+            position: relative;
+            margin: -1px 0;
+            padding: 13px 45px 13px 5px;
+            color: @COLOR_WHITE;
+
+            &:after {
+                .arrow();
+                .transition(opacity 0.1s);
+                content: '';
+                position: absolute;
+                display: block;
+                right: 15px;
+                top: 15px;
+                opacity: 0;
+            }
+
+            &:hover {
+                background: #2d3b57;
+                padding-left: 13px;
+                text-decoration: none;
+
+                &:after {
+                    opacity: 1;
+                }
+            }
+        }
+    }
+}
+
+
+// Footer
+//
+// Markup:
+// <footer class="dt-footer">
+//   <div class="container">[...]</div>
+// </footer>
+// <div class="container">
+//   <p class="icons">DefinitelyTyped, an independent project about <a href="#">TypeScript</a>.</p>
+// </div>
+//
+// Styleguide 3.2.1
+
+footer + .container {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    color: @COLOR_GRAY;
+    font-size: @SIZE_SMALL;
+    font-style: italic;
+
+    p {
+        margin: 0;
+
+        &.icons {
+            height: 24px;
+            padding-left: 130px;
+            background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHAAAAAYCAYAAAAiR3l8AAAENElEQVR42u3af2jUdRzH8W03l26JgzYXqGOdoY6dI0mDGYkwoywJIf+o/mhB/ZEICalhUiLl5kJFEGcYpqV/2AY6f2OCZTLsmHqbbtYlZ7ZVrjl/4fy1Mfn45HgPruP7uft+776f+Cb3gQe77/fe9/l87/Pa9/u97/cu69tde9ugDGvLyjQzzXh44n8wDyPhd1BfgtJMgN4J8HXcx1G8jAJMwnOowgz4UY7VuIZW5GYC/Pf2jEYtOnEVl7AFFRa1T6AOv0ptBA3wpzAPi6FidGEobt0ABqFELwoN5+NDGV7EO1iB73DacwHKf3i7po9+vBlTW4kLmto+zHU4UTVQDoWR40JIeRiPSuRLUJuxD524YzW+pwKUQ1YoST+DmC61kSS1t1DuYBI/gXKoH9MdhjUOr2ElvsIBhKWvBwho5sHzAS6y2VcjltusbbI5qZW4D5WCn5DjIMDPk/RXgRMpB2jVBgYHVeT3bvX9sZa4On1r7wg7DfA4lA1duGCzts/mpK6yGKMV59GNHvwpy624DCWGUOGxAPWtJRgyFWDEZihDQtlw3eakboQSqzBS1vuQj9EogE/WP44GKDHPQYCfwXyAw3scoo9j2+79R+U5wOo11JgJULgc4Dqp/0GWSzFXUzsHEyXcLihUeyVA7R7UGurQPadb7zTAYwYC7E0yZo4EsVDqP5X1X8tyQVz9Y7iLJlneL3UB5Epf2UnGrIVKIICTrgSoe677rx4TAS4xEOA+i3HGohxVqMbzeAX3sF1q3sdBjLC4JtuDpbIcxB+okn5mY6b0X6x5n8vQg8sak9GcqEb0pBzgP719JgIsQZ/LAVZbjDMJU/GUhDkG2fgQCmU2D4VTpH4+clEo/flRiYma1+WjGEUaPoxJVCOKnQQYPacNt19+u+h6gLItb7sY3peaMUYkGP9jHMRCTEZe3PO5KEMNDmOF5SFTahNcLnUk8DS+QUcytgPctftQ9LAZ80nUnQD1k6jS1IQ8BzexN+FVWR6PD9CAs+IM2nEK9RJCaYp3XepsnAODaZ8Db9++Ez1UInodONyu37gptWYClG1amUZ4W+FzOF4AYbwQs26apv9pmm488ilU36JhsjcaD1C26z30Owxvg4TnuMleN4D1qEMIl3AFEVwRX3g6QEICBNd20WBi78LoXiOHVkspvtlncQYqib/xhgvfB+6IP4/K+D8jhAPY6cEAzUtzYmvxQNP3dpS4+PXNBPhxGDvRhqD83YMdafZf/2gHqH/jL8XdA+3HoixDTcJrxFmckgCbsS3NfsvxERrQLP3exBAUpuL0IxegbGsxGnESzxgMr0DG2IIwjqATW3Eco1wcKxtPIoA5KEQ9griIW1BWMj+p0E/qAqxBDX5EAC14F2sx7z/8nc44zMJbWIZtCOFaJsAkTQ5nRfK4CAEvbuQ5KMPOZWWakfYQEn9w26vxMBoAAAAASUVORK5CYII=);
+            background-repeat: no-repeat;
+            line-height: 24px;
+
+            @media @HIGH_DPI {
+                background-image: url(../images/footer-love@2x.png);
+                background-size: 24px 112px;
+            }
+        }
+    }
+
+    a {
+        color: @COLOR_GRAY;
+        text-decoration: none;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+}
+
+
+
+// Content
+//
+// Styleguide 4
+
+// Typography
+//
+// Styleguide 4.1
+
 .typography {
-    h1, h2 {
-        .style-montserrat-larger;
+    h1 {
+        .style-raleway-huge;
         margin: 1.5em 0 0.5em 0;
     }
 
-    h3, h4, h5, h6 {
-        .style-montserrat-large;
+    h2 {
+        .style-raleway-larger;
+        margin: 1.5em 0 0.5em 0;
+    }
+
+    h3 {
+        .style-raleway-large;
         margin: 1.5em 0 0.75em 0;
+    }
+
+    h4, h5, h6 {
+        .style-raleway-normal;
+        margin: 1.5em 0 0.75em 0;
+    }
+
+    .label {
+        .style-raleway-lead;
+        margin: 1em 0 0 0;
+
+        & + p {
+            margin-top: 0.5em;
+        }
     }
 
     img + h1, img + h2, img + h3,
@@ -292,6 +818,17 @@ html {
         &:hover {
             text-decoration: underline;
         }
+
+        &.action {
+            .style-raleway-normal;
+
+            &:after {
+                .arrow();
+                content: '';
+                display: inline-block;
+                margin: 0 0 -1px 5px;
+            }
+        }
     }
 
     img {
@@ -301,6 +838,11 @@ html {
             width: 100%;
             height: auto;
         }
+    }
+
+    .shadow {
+        .border-radius(4px);
+        .box-shadow(0, 0, 20px, 0.4);
     }
 
     code {
@@ -356,11 +898,11 @@ html {
     }
 
     .lead {
-        font-size: 1.4em;
+        font-size: @SIZE_LEAD;
     }
 
     h2 + .lead {
-        margin-top: -0.6em;
+        margin-top: -0.4em;
     }
 
     .message {
@@ -375,136 +917,9 @@ html {
     }
 }
 
-
-
-/**
- * Header
- * -------------------------------------------
- */
-
-header {
-    position: relative;
-    background-color: @COLOR_MAIN_DARK;
-    padding-bottom: 20px;
-
-    .logo {
-        display: block;
-        position: absolute;
-        padding-top: 20px;
-
-        img {
-            display: block;
-        }
-    }
-
-    nav {
-        text-align: right;
-        line-height: 0;
-        font-size: 0;
-        padding-left: 100px;
-
-        ul {
-            .list-style-none;
-        }
-
-        li {
-            display: inline;
-        }
-
-        a {
-            .style-montserrat-normal;
-            .transition(color 0.2s);
-            display: inline-block;
-            padding-top: 17px;
-            margin-left: 30px;
-            color: @COLOR_MAIN_LIGHT;
-            border-top: 3px solid transparent;
-            line-height: 73px;
-            text-transform: uppercase;
-            text-decoration: none;
-
-            &:hover {
-                color: @COLOR_MAIN;
-            }
-
-            &.current {
-                color: @COLOR_MAIN;
-                border-top-color: @COLOR_MAIN;
-            }
-        }
-    }
-
-    h1 {
-        .style-montserrat-huge;
-        color: @COLOR_WHITE;
-        margin: 20px 0 10px 0;
-    }
-
-    p {
-        .style-default-lead;
-        color: @COLOR_WHITE;
-        margin: 0;
-    }
-
-    h1 + p {
-
-    }
-}
-
-
-
-/**
- * Footer
- * -------------------------------------------
- */
-
-footer {
-    padding-top: 40px;
-    padding-bottom: 40px;
-
-    h2 {
-        .style-montserrat-large;
-        margin-bottom: 0.5em;
-    }
-
-    ul {
-        .list-style-none;
-    }
-
-    li {
-        margin: 0.25em 0;
-    }
-
-    a {
-        color: @COLOR_BLACK;
-        text-decoration: none;
-
-        &:hover {
-            text-decoration: underline;
-        }
-    }
-}
-
-footer + .container {
-    padding-top: 15px;
-    padding-bottom: 15px;
-
-    a {
-        color: @COLOR_BLACK;
-        text-decoration: none;
-
-        &:hover {
-            text-decoration: underline;
-        }
-    }
-}
-
-
-
-/**
- * Menu
- * -------------------------------------------
- */
+// Menu
+//
+// Styleguide 4.2
 
 nav.menu {
     ul {
@@ -525,27 +940,142 @@ nav.menu {
     }
 }
 
+// Buttons
+//
+// Markup:
+// <a href="#" class="dt-button {$modifiers}">Button title</a>
+//
+// .github  - A button with a GitHub icon.
+// .guide   - A button with a book icon, intended to be used within the header only.
+//
+// Styleguide 4.3
+
+.dt-button {
+    .border-radius(4px);
+    .style-raleway-normal;
+    .transition(all 0.1s);
+    display: inline-block;
+    padding: 0 20px;
+    height: 50px;
+    background-color: @COLOR_MAIN;
+    background-repeat: no-repeat;
+    background-position: left center;
+    color: @COLOR_WHITE;
+    line-height: 50px;
+    text-transform: uppercase;
+    text-decoration: none;
+
+    &:hover {
+        background-color: #0b508b;
+    }
+
+    &.github {
+        padding-left: 75px;
+        background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADwAAAA8CAMAAAANIilAAAACB1BMVEUAjesAJEEAecoAhd4AHjYAc8EAToUAi+cAaK8AiOIAeMgAi+gAUowAZakAYKEAh+EAPmsAXp8Ad8cAI0AAGjAAW5oAHjgAiOQAftMAdMMAc8AAJUIAiucAIj0ARXcAgNYAdsYAMlgALU8AHDMAe84AjOkAOGIAWpgAZKkAdMIAO2YAecsAjeoAabAAhNwAU40Ab7sAN2AAY6cAOWMAVpEAWZYAVpEAfM8AZ60ALlEAHTYANFoARncAHTUATIIAbbcAZasANV0AYaQARXYAGzMAUYoAITwAcLwALE0ARncAITwAPWoAJkQAfdAAVpIASn8ANFoAMFUAhuAAgdcAQnEAZqwAPGkAHDQAbLYAO2YAeMkAYqYAV5MAHzkAYaMAQXEASHwAPmsAXJwAQXAAS4EAY6YAdcUAUIgAdcQATYQAL1IAW5sAJUMAW5kAR3kAb7oASHsAhN0Ah+EAieUARHQAJ0YAcr8AGzIAcsAAieQAJkQAR3oAUosAMlcAQG4AJUIAGzMAJ0UAdsUAYqUAK0wAQW8AarIAgtkAM1oAOmUAQ3MAZKgAg9oAcb4AVI4AarMAMFQAGjEAIz8AQ3QAes0AMVYAUIcAR3oAfdEAHjgAUIcAS38AYKEAXJsAV5QAQG4Af9UAHTUAIDsALE4Ab7oAgtkAOWMAVI8ASX0AX6AAUYoAGS8AGjCD+ZoLAAAAq3RSTlPE+MzH/M/gxdTGzcXe1djG6NjN+f7a/MbKzs/4xfnlyc3v8/3LxOza1c7rzMTTyN7Q7Nbr3dvcy9Ty/O7l/OHR1e7X5f3f+dDz5Prp9svc4u/wx8nm1On90urN1tz71+fj6dnn4dbO387g8dr32uTQ48fHxeb2z/7Pxvfj3vDn9/72zdf059PI7+vm1sjQ3dPx/vnmzPDf5Mr74OLX2dzoyv3689HJ7N3j2N6h60eKAAACD0lEQVR4Xu3URW8cQRCG4ZpZ5vWC7WVGIzMzQ+LEDGFmZmZmZs6XH5msNbKyysjqycGnee+PqlUtFa1CcnJyt5QX9k7/DVSb7I51jNgPIFcd3VKyuHD28I6qoo4IgP2MuAyZ6pHVBkZcAZE6GLFaDFcy4rQYHqxhslUQrYLFWnaLY4ebARdBPJxmwAkAaBo3t7bvqjZ2Gas3lidnxwBgPQMeBsCVUnabATQwYCeAGSKNYlkWE9FOoIwBmwAuj2JxT1SwPb4+ohLgJgN+r0SIaOgY9gj4FDgvmYDhFdCatTaVKqjn+TAuF5KiG1oBz6I3RvOAmed5W0pVcFsE5w/Zeo5vDbq2GxHhiZLbNALWNbcQ9eHIUddF/bTKzUdF8PN9+lTgwMFDmsKBf38l0A+TwatTFNe4g6Ui2KIhobwpjCuyX1WHrmVwglYucXLQr9UHFBad5c8qtH5PmO2QFIw26oi8ycYzvbkPuXOc3TeaVrcQW4aZ820GyrSApTovkYRqcSVjr0Ko+5oUfR03clqddZjrnAihXwmtFHynCUvd9eQaMZCGmaR07/7Er8gDmDilGtZHyCFpPXYVPEE5V/8U1mcCllQD2u2ZySP/g+Mw+168hPUVXkvHU3gzx73FuxHMS7aTHz5qHZ8+I16LsS8SbX7oa+obKgvbMOkMf5eIYwai5h9EeT8TRBpaneTk5H4DtNnu8k73Pk0AAAAASUVORK5CYII=);
+
+        @media @HIGH_DPI {
+            background-image: url(../images/button-github@2x.png);
+            background-size: 60px 60px;
+        }
+    }
+
+    &.guide {
+        padding-left: 75px;
+        background-color: @COLOR_MAIN_DARK;
+        background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADwAAAA8CAYAAAA6/NlyAAACt0lEQVR4AezBgQAAAACAoP2pF6kCAACA27OXkKiiMIDjx0hFSzQwMUMMQl1IQQbSQwh6QWhUBBVYIoTQsgjDIoOK0jBqkxRkCBYJEr2kpEUFLUqx2pTkQmp6jVhBmtZUI379F7P4uOC767kjV/jNwm/1Z87MHL5r4686mIYanMAmZMJMG16mUzLaIEo/OnARZViKOTMhOA73IWMYRgAtOIqNyIjG4EbIJH1HG+pQijyvB5+F/Edh1Ho1uAKi3EYFGvEGYcgkvPBicBlEuQKjxCIPZZHZK/yBjCGEtV4LLsJfiFKCRJgRzEYuduMSuiFO2OO1z/AK9EOc8F4d60LMgxnBEYhDpde+pXMRhIxTEK2owjqkYhaKMQBR6mCQ5ZXgBeiCTEEvOjEEUe7AoBqDOGQ7OAlPIS7oQBIS0ANBs83gWLRAXBBQR3gxwhDb73ADxAV9WA4TkYYBCE7bCj4DcUEYxTDKGvyC4JaN4HKIS/bBKIvwEYJhFE13cDq+QVxwCkaZi3Y1r7Dxs7Qf4oJGGIcmNb9s6+LRCkEIB7EV1WjHb8gkPEQ8jHJczR8j3lZwFwR3YRxyUI4b+AwZh9eYD6OUqHk30m0uAL5AcB5mFClYjxq0IwRx6EEOjLISPyHoR77tjUcAguswE5CNvWhGEO+wGkbJxAcIhrEdxnbwPQi+TmHzmIJkGCXRcUU97JUl3jZIxHOsQizMFF2DRDR4aWsZg6sQpRN12IxUmAk6Bol4ggTvBANxuIAhiEMvbqIc2TBj2AWJeIsML++ll6ESj/AD4hDCM5xEoXPNgwIMQjCAgmhaxGehFE34BHFCN+qxBfkIqNnOaH7UkoINqMXLEY6+/l/VTHq2FIMlOIAH6Bv9Dh39wU4LsQP1OIcE+8H2+cF+sB/sB/vBfrAf7Af7wX6wH+wH2/EPE7nCCEpIJXoAAAAASUVORK5CYII=);
+        border: 1px solid @COLOR_MAIN;
+
+        @media @HIGH_DPI {
+            background-image: url(../images/button-guides@2x.png);
+            background-size: 60px 60px;
+        }
+
+        &:hover {
+            background-color: #0b508b;
+        }
+    }
+}
+
+// Button container
+//
+// Markup:
+// <p class="dt-buttons">
+//   <a href="#" class="dt-button">First button</a>
+//   <a href="#" class="dt-button">Second button</a>
+// </p>
+//
+// Styleguide 4.3.1
+
+.dt-buttons {
+    margin: -5px;
+    font-size: 0;
+    line-height: 0;
+
+    .dt-button {
+        margin: 5px;
+    }
+}
 
 
-/**
- * Repository
- * -------------------------------------------
- */
+// Benefits
+//
+// Styleguide 4.4
+
+ul.benefits {
+    .list-style-none();
+
+    li {
+        position: relative;
+        margin: 0 0 0 130px;
+
+        &:before {
+            content: '';
+            display: block;
+            position: absolute;
+            left: -130px;
+            top: 0;
+            width: 120px;
+            height: 120px;
+            background-image: url(../images/benefits-icons.png);
+        }
+
+        &.ide:before {
+            background-position: 0 -120px;
+        }
+
+        &.opensource:before {
+            background-position: 0 -240px;
+        }
+
+        @media @HIGH_DPI {
+            background-image: url(../images/benefits-icons@2x.png);
+            background-size: 120px 360px;
+        }
+    }
+}
+
+
+// Components
+//
+// Styleguide 5
+
+// Repository
+//
+// Styleguide 5.1
 
 #repository-search {
-    background-color: @COLOR_ACCENT;
-    padding: 30px 0;
+    background-color: #1a2e49;
+    padding: 0 0 30px 0;
     margin-bottom: 1px;
 
     input {
-        .style-montserrat-large;
-        .border-radius(0);
+        .border-radius(4px);
         width: 100%;
-        background-color: transparent;
-        border-color: @COLOR_BLACK;
-        border-style: solid;
-        border-width: 0 0 1px 0;
+        padding: 10px 15px;
+        background-color: @COLOR_WHITE;
+        border: none;
         outline: none;
+        font-size: @SIZE_LARGE;
     }
 }
 
@@ -559,7 +1089,7 @@ nav.menu {
         background-color: @COLOR_ACCENT;
 
         .header {
-            .style-montserrat-large;
+            .style-raleway-large;
             padding-top: 10px;
             padding-bottom: 10px;
 

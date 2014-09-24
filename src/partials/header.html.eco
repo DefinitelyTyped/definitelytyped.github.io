@@ -1,22 +1,5 @@
-<header>
+<header class="dt-header">
     <div class="container">
-        <a class="logo" href="<%= @site.home %>"><img src="/assets/images/dt-logo-smallish.png" title="<%= @site.title %>" width="73" height="73" /></a>
-        <nav>
-            <ul>
-                <li><a <%- 'class="current"' if @document.section is "home" %> href="<%= @site.home %>">Home</a></li>
-                <li><a <%- 'class="current"' if @document.section is "guides" %> href="/guides/contributing.html">Guides</a></li>
-                <li><a <%- 'class="current"' if @document.section is "directory" %> href="/directory/learn.html">Directory</a></li>
-                <li><a <%- 'class="current"' if @document.section is "pages" %> href="/pages/badges.html">Pages</a></li>
-                <li><a href="<%= @site.github %>">Repository</a></li>
-                <li><a href="<%= @link.tsd.web %>">TSD</a></li>
-                <li><a href="http://nuget.org/packages?q=DefinitelyTyped">NuGet</a></li>
-            </ul>
-        </nav>
-
-        <% if @document.pageTitle?: %>
-            <%- @document.pageTitle %>
-        <% else: %>
-            <h1><%- @document.title or @document.name %></h1>
-        <% end %>
+        <%- @partial('header_nav') %>
     </div>
 </header>

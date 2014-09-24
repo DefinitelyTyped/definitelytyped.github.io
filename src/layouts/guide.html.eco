@@ -5,6 +5,11 @@ layout: default
 
 <div class="container main">
     <div class="row">
+        <div class="col-12 typography">
+            <h1><%- @document.title or @document.name %></h1>
+        </div>
+    </div>
+    <div class="row">
         <div class="col-3">
             <%- @partial('menu.html.eco', {menuItems: @generateMenu(@document.url, 'guides')}) %>
         </div>

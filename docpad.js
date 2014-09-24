@@ -18,7 +18,6 @@ var docpadConfig = {
 			tagline: 'The repository for high quality TypeScript type definitions',
 			keywords: 'typescript, type, definition, declaration, repository, typing',
 			styles: [
-				'//fonts.googleapis.com/css?family=Montserrat',
 				'/assets/styles/normalize.css',
 				'/assets/styles/highlight.css',
 				'/assets/styles/style.css'

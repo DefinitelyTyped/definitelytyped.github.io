@@ -2,10 +2,20 @@
 layout: 'default'
 title: 'Home'
 section: 'home'
-pageTitle: '<h1>Definitely Typed</h1><p>The repository for high quality TypeScript type definitions</p>'
 ---
 
-<%- @partial('header') %>
+<header class="dt-header skyline">
+    <div class="container">
+        <%- @partial('header_nav') %>
+        <div class="dt-jumbotron">
+            <h1>The repository for high quality <br><strong>TypeScript type definitions.</strong></h1>
+            <p class="dt-buttons">
+                <a href="<%= @site.github %>" class="dt-button github">GitHub repository</a>
+                <a href="/guides/contributing.html" class="dt-button guide">Contribution guide</a>
+            </p>
+        </div>
+    </div>
+</header>
 
 <div id="repository-search" data-prompting="true">
     <div class="container">
@@ -16,9 +26,9 @@ pageTitle: '<h1>Definitely Typed</h1><p>The repository for high quality TypeScri
 <%- @partial('repository-list') %>
 
 <div class="container main typography">
-    <div class="row" style="margin-top:60px;margin-bottom:80px;">
+    <div class="row large-margin-top">
         <div class="col-8 offset-2 centered">
-            <h2 class="color-main">Get the definitions</h2>
+            <h2>Get the definitions</h2>
             <p class="lead">
                 Accessing DefinitelyTyped is a breeze. Simply download the definitions from GitHub or use
                 one of our supported package managers.
@@ -26,11 +36,11 @@ pageTitle: '<h1>Definitely Typed</h1><p>The repository for high quality TypeScri
         </div>
     </div>
     <div class="row table">
-        <div class="col-6" style="padding-right:40px;">
-            <img src="/assets/images/dummy.png" class="responsive" />
+        <div class="col-6">
+            <img src="/media/index/get-github.png" class="responsive" />
         </div>
         <div class="col-6" style="padding-left:40px;">
-            <h3>From GitHub</h3>
+            <h3 class="label">From GitHub</h3>
             <p>
                 DefinitelyTyped is open source hearted and driven by a great GitHub community. GitHub is the
                 home of all our definitions - just grab the definitions you need, download them to your
@@ -38,78 +48,90 @@ pageTitle: '<h1>Definitely Typed</h1><p>The repository for high quality TypeScri
                 submitting pull requests or reporting issues.
             </p>
             <p>
-                <a href="<%= @site.github %>">&gt; Visit GitHub repository</a><br />
-                <a href="/guides/contributing.html">&gt; Learn how to contribute</a>
+                <a href="<%= @site.github %>" class="action">Visit GitHub repository</a><br />
+                <a href="/guides/contributing.html" class="action">Learn how to contribute</a>
             </p>
         </div>
     </div>
     <div class="row">
         <div class="col-6" style="padding-right:40px;">
-            <img src="/assets/images/dummy.png" class="responsive" />
-            <h3>Using Node.js? Say hello to TSD!</h3>
+            <div class="shadow">
+                <img src="/media/index/get-tsd.png" class="responsive" />
+            </div>
+            <h3 class="label">Using Node.js? Say hello to TSD!</h3>
             <p>
                 The TypeScript Definition Manager or, in short, TSD is a powerful utility that allows you to
                 query the repository and install definitions directly from your command line. TSD keeps track
                 of all used definitions and can update them for you automatically.
             </p>
-            <p><a href="http://www.tsdpm.com/">&gt; Find out more about TSD</a></p>
+            <p><a href="http://www.tsdpm.com/" class="action">Find out more about TSD</a></p>
         </div>
         <div class="col-6" style="padding-left:40px;">
-            <img src="/assets/images/dummy.png" class="responsive" />
-            <h3>Using VisualStudio? Keep using NuGet!</h3>
+            <div class="shadow">
+                <img src="/media/index/get-nuget.png" class="responsive" />
+            </div>
+            <h3 class="label">Using VisualStudio? Keep using NuGet!</h3>
             <p>
                 All DefinitelyTyped definitions are also available through the NuGet package manager right
                 from within your VisualStudio IDE. We push changes from our repositories immediately to NuGet
                 so you don't have to worry about outdated definitions.
             </p>
-            <p><a href="http://nuget.org/packages?q=DefinitelyTyped">&gt; Browse packages on NuGet</a></p>
+            <p><a href="http://nuget.org/packages?q=DefinitelyTyped" class="action">Browse packages on NuGet</a></p>
         </div>
     </div>
-    <div class="row" style="margin-top:60px;margin-bottom:40px;">
-        <div class="col-8 offset-2 centered">
-            <h2 class="color-main">Contribute to the repository</h2>
-            <p class="lead">
-                All you can find here was created and shared by others willing to contribute. Wouldn't it be
-                great to give something back?
-            </p>
+</div>
+
+<div class="accent">
+    <div class="container typography">
+        <div class="row large-margin-top medium-margin-bottom">
+            <div class="col-8 offset-2 centered">
+                <h2>Contribute to the repository</h2>
+                <p class="lead">
+                    All you can find here was created and shared by others willing to contribute. Wouldn't it be
+                    great to give something back?
+                </p>
+            </div>
         </div>
-        <div class="row">
+        <div class="row large-margin-bottom">
             <div class="col-4 centered">
-                <h3>Report an issue</h3>
+                <h3 class="label">Report an issue</h3>
                 <p>
                     Found an error? Head over to the issue tracker on GitHub and let us know what's going wrong.
                 </p>
-                <p><a href="https://github.com/borisyankov/DefinitelyTyped/issues">Issue tracker</a></p>
+                <p><a href="https://github.com/borisyankov/DefinitelyTyped/issues" class="action">Issue tracker</a></p>
             </div>
             <div class="col-4 centered">
-                <h3>Create a pull request</h3>
+                <h3 class="label">Create a pull request</h3>
                 <p>
-                    From just fixing a little mistake to creating an entire new definition, always
+                    From just fixing a bug to creating an entire new definition, always
                     feel free to start a pull request.
                 </p>
-                <p><a href="/guides/contributing.html">Contribution guide</a></p>
+                <p><a href="/guides/contributing.html" class="action">Contribution guide</a></p>
             </div>
             <div class="col-4 centered">
-                <h3>Spread the world</h3>
+                <h3 class="label">Spread the world</h3>
                 <p>
                     Let everybody know that your project supports DefinitelyTyped by adding a badge to
                     your readme.
                 </p>
-                <p><a href="/pages/badges.html">Badges</a></p>
+                <p><a href="/pages/badges.html" class="action">Badges</a></p>
             </div>
         </div>
     </div>
-    <div class="row" style="margin-top:60px;margin-bottom:40px;">
+</div>
+
+<div class="container typography">
+    <div class="row large-margin-top">
         <div class="col-8 offset-2 centered">
-            <h2 class="color-main">Why use DefinitelyTyped?</h2>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-5">
+            <h2>Why use DefinitelyTyped?</h2>
             <p class="lead">
                 DefinitelyTyped is the repository for high quality TypeScript type definitions. It contains
                 more than 500 definitions for the most important libraries out there.
             </p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-5">
             <p>
                 Code written in TypeScript includes additional typing information on properties, functions
                 and classes that allow the compiler to perform advanced syntax checks. This ensures that the
@@ -128,26 +150,31 @@ pageTitle: '<h1>Definitely Typed</h1><p>The repository for high quality TypeScri
             </p>
         </div>
         <div class="col-6 offset-1">
-
-            <h3>Type checking</h3>
-            <p>
-                With definition files for external libraries the TypeScript compiler is able to
-                check your code against otherwise unknown dependencies and provides useful
-                compile time errors.
-            </p>
-
-            <h3>Better IDE support</h3>
-            <p>
-                Get more productive by utilizing the full functionality of your IDE like code-completion
-                or inline documentation. Be sure to check our <a href="/directory/tools.html">list of editors</a>
-                with advanced TypeScript support.
-            </p>
-
-            <h3>Open source community</h3>
-            <p>
-                Stop writing custom, partial definitions for your projects. Access and share definitions
-                backed by a great open source community that maintains and updates the repository.
-            </p>
+            <ul class="benefits">
+                <li class="check">
+                    <h3 class="label">Type checking</h3>
+                    <p>
+                        With definition files for external libraries the TypeScript compiler is able to
+                        check your code against otherwise unknown dependencies and provides useful
+                        compile time errors.
+                    </p>
+                </li>
+                <li class="ide">
+                    <h3 class="label">Better IDE support</h3>
+                    <p>
+                        Get more productive by utilizing the full functionality of your IDE like code-completion
+                        or inline documentation. Be sure to check our <a href="/directory/tools.html">list of editors</a>
+                        with advanced TypeScript support.
+                    </p>
+                </li>
+                <li class="opensource">
+                    <h3 class="label">Open source community</h3>
+                    <p>
+                        Stop writing custom, partial definitions for your projects. Access and share definitions
+                        backed by a great open source community that maintains and updates the repository.
+                    </p>
+                </li>
+            </ul>
         </div>
     </div>
 </div>
