@@ -3,7 +3,19 @@
 // You can convert this stylesheet into a simple styleguide using kss:
 // $ kss-node src/documents/assets/styles etc/styleguide --css src/documents/assets/styles/normalize.css --less src/documents/assets/styles/style.css.less
 
+.box {
+    background-color: #ccc;
+    padding: 20px;
+}
 
+
+// Constants
+//
+// <style>
+//   table { width:100%; }
+//   td, th { padding:8px;vertical-align:middle;text-align:left; }
+//   tr.i { color:#fff; }
+// </style>
 
 // Constants
 //
@@ -13,13 +25,14 @@
 // Colors
 //
 // <table>
-//   <tr><th>Name      </th><th>Less constant    </th><th>Color</th></tr>
-//   <tr><td>Black     </td><td>@COLOR_BLACK     </td><td><div style="background:#000000;">#000000</div></td></tr>
-//   <tr><td>White     </td><td>@COLOR_WHITE     </td><td><div style="background:#ffffff;">#ffffff</div></td></tr>
-//   <tr><td>Accent    </td><td>@COLOR_ACCENT    </td><td><div style="background:#eeeeee;">#eeeeee</div></td></tr>
-//   <tr><td>Main      </td><td>@COLOR_MAIN      </td><td><div style="background:#0077d2;">#0077d2</div></td></tr>
-//   <tr><td>Main dark </td><td>@COLOR_MAIN_DARK </td><td><div style="background:#162943;">#162943</div></td></tr>
-//   <tr><td>Main light</td><td>@COLOR_MAIN_LIGHT</td><td><div style="background:#6481a1;">#6481a1</div></td></tr>
+//   <tr><th>Name</th><th>Less constant</th><th>Color</th></tr>
+//   <tr style="background:#000000;" class="i"><td>Black     </td><td>@COLOR_BLACK     </td><td>#000000</td></tr>
+//   <tr style="background:#939393;" class="d"><td>Gray      </td><td>@COLOR_GRAY      </td><td>#939393</td></tr>
+//   <tr style="background:#ffffff;" class="d"><td>White     </td><td>@COLOR_WHITE     </td><td>#ffffff</td></tr>
+//   <tr style="background:#eeeeee;" class="d"><td>Accent    </td><td>@COLOR_ACCENT    </td><td>#eeeeee</td></tr>
+//   <tr style="background:#0077d2;" class="i"><td>Main      </td><td>@COLOR_MAIN      </td><td>#0077d2</td></tr>
+//   <tr style="background:#162943;" class="i"><td>Main dark </td><td>@COLOR_MAIN_DARK </td><td>#162943</td></tr>
+//   <tr style="background:#6481a1;" class="i"><td>Main light</td><td>@COLOR_MAIN_LIGHT</td><td>#6481a1</td></tr>
 // </table>
 //
 // Styleguide 1.1
@@ -31,17 +44,37 @@
 @COLOR_MAIN: #0077d2;
 @COLOR_MAIN_DARK: #162943;
 @COLOR_MAIN_LIGHT: #6481a1;
-@COLOR: #a1a7b0;
 
 
-// Fonts
+// Font families
+//
+// <table>
+//   <tr><th>Name</th><th>Type</th><th>Less constant</th></tr>
+//   <tr><td style="font-family:'Open Sans';font-size:24px;">Open Sans</td><td>Body font   </td><td>@FONT_DEFAULT   </td></tr>
+//   <tr><td style="font-family:'Raleway';font-size:24px;">Raleway    </td><td>Display font</td><td>@FONT_RALEWAY</td></tr>
+// </table>
 //
 // Styleguide 1.2
 
 @import url(http://fonts.googleapis.com/css?family=Raleway:400,700|Open+Sans:400italic,400,700);
 
-@FONT_SANS: 'Open Sans', sans-serif;
+@FONT_DEFAULT: 'Open Sans', sans-serif;
 @FONT_RALEWAY: 'Raleway', sans-serif;
+
+
+// Font sizes
+//
+// <table>
+//   <tr><th>Example</th><th>Less constant</th></tr>
+//   <tr><td style="font-size:12px;">Lorem ipsum dolor sit amet</td><td>@SIZE_SMALL</td></tr>
+//   <tr><td style="font-size:16px;">Lorem ipsum dolor sit amet</td><td>@SIZE_NORMAL</td></tr>
+//   <tr><td style="font-size:24px;">Lorem ipsum dolor sit amet</td><td>@SIZE_LEAD</td></tr>
+//   <tr><td style="font-size:28px;">Lorem ipsum dolor sit amet</td><td>@SIZE_LARGE</td></tr>
+//   <tr><td style="font-size:36px;">Lorem ipsum dolor sit amet</td><td>@SIZE_LARGER</td></tr>
+//   <tr><td style="font-size:48px;">Lorem ipsum               </td><td>@SIZE_HUGE</td></tr>
+// </table>
+//
+// Styleguide 1.3
 
 @SIZE_SMALL: 12px;
 @SIZE_NORMAL: 16px;
@@ -50,64 +83,86 @@
 @SIZE_LARGER: 36px;
 @SIZE_HUGE: 48px;
 
-@HIGH_DPI: ~"(-webkit-min-device-pixel-ratio: 1.5), (min--moz-device-pixel-ratio: 1.5), (-o-min-device-pixel-ratio: 3/2), (min-resolution: 1.5dppx)";
 
-
-// Fonts
+// Styles
 //
-// Styleguide 1.3
+// <table>
+//   <tr><th>Example</th><th>Selector/Mixin</th></tr>
+//   <tr><td>Lorem ipsum dolor sit amet</td><td>-</td></tr>
+//   <tr><td class="style-default-lead">Lorem ipsum dolor sit amet  </td><td>.style-default-lead</td></tr>
+//   <tr><td class="style-raleway-normal">Lorem ipsum dolor sit amet</td><td>.style-raleway-normal</td></tr>
+//   <tr><td class="style-raleway-lead">Lorem ipsum dolor sit amet  </td><td>.style-raleway-lead</td></tr>
+//   <tr><td class="style-raleway-large">Lorem ipsum dolor sit amet </td><td>.style-raleway-large</td></tr>
+//   <tr><td class="style-raleway-larger">Lorem ipsum dolor sit     </td><td>.style-raleway-larger</td></tr>
+//   <tr><td class="style-raleway-huge">Lorem ipsum dolor           </td><td>.style-raleway-huge</td></tr>
+// </table>
+//
+// Styleguide 1.4
+
+html {
+    font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+}
 
 body {
-    font-family: @FONT_SANS;
+    font-family: @FONT_DEFAULT;
     font-size: @SIZE_NORMAL;
 }
 
-.font-raleway {
-    font-family: @FONT_RALEWAY;
-}
-
 .style-default-lead {
-    font-family: @FONT_SANS;
+    font-family: @FONT_DEFAULT;
     font-size: @SIZE_LEAD;
     font-weight: normal;
 }
 
-.style-raleway-lead {
-    .font-raleway;
-    font-size: 20px;
-    font-weight: bold;
-}
-
 .style-raleway-normal {
-    .font-raleway;
+    font-family: @FONT_RALEWAY;
     font-size: @SIZE_NORMAL;
     font-weight: bold;
 }
 
+.style-raleway-lead {
+    font-family: @FONT_RALEWAY;
+    font-size: 20px;
+    font-weight: bold;
+}
+
 .style-raleway-large {
-    .font-raleway;
+    font-family: @FONT_RALEWAY;
     font-size: @SIZE_LARGE;
     font-weight: bold;
 }
 
 .style-raleway-larger {
-    .font-raleway;
+    font-family: @FONT_RALEWAY;
     font-size: @SIZE_LARGER;
     font-weight: bold;
 }
 
 .style-raleway-huge {
-    .font-raleway;
+    font-family: @FONT_RALEWAY;
     font-size: @SIZE_HUGE;
     font-weight: normal;
 }
+
+
+// Media queries
+//
+// <table>
+//   <tr><th>Less constant</th><th>Description</th></tr>
+//   <tr><td>@HIGH_DPI</td><td>Select devices with high pixel density.</td></tr>
+// </table>
+//
+// Styleguide 1.5
+
+@HIGH_DPI: ~"(-webkit-min-device-pixel-ratio: 1.5), (min--moz-device-pixel-ratio: 1.5), (-o-min-device-pixel-ratio: 3/2), (min-resolution: 1.5dppx)";
 
 
 // Mixins
 //
 // see https://github.com/JoelSutherland/LESS-Prefixer/blob/master/prefixer.less
 //
-// Styleguide 1.4
+// Styleguide 1.6
 
 .list-style-none() {
     list-style: none;
@@ -219,16 +274,16 @@ body {
 // Markup:
 // <div class="container">
 //   <div class="row">
-//     <div class="col">Column</div>
-//     <div class="col">Column</div>
-//     <div class="col">Column</div>
-//     <div class="col">Column</div>
-//     <div class="col">Column</div>
-//     <div class="col">Column</div>
-//     <div class="col">Column</div>
-//     <div class="col">Column</div>
-//     <div class="col">Column</div>
-//     <div class="col">Column</div>
+//     <div class="col"><p class="box">Column</p></div>
+//     <div class="col"><p class="box">Column</p></div>
+//     <div class="col"><p class="box">Column</p></div>
+//     <div class="col"><p class="box">Column</p></div>
+//     <div class="col"><p class="box">Column</p></div>
+//     <div class="col"><p class="box">Column</p></div>
+//     <div class="col"><p class="box">Column</p></div>
+//     <div class="col"><p class="box">Column</p></div>
+//     <div class="col"><p class="box">Column</p></div>
+//     <div class="col"><p class="box">Column</p></div>
 //   </div>
 // </div>
 //
@@ -251,8 +306,8 @@ body {
 // Markup:
 // <div class="container">
 //   <div class="row {$modifiers}">
-//     <div class="col-6">6 columns</div>
-//     <div class="col-6">6 columns</div>
+//     <div class="col-6"><p class="box">6 columns</p></div>
+//     <div class="col-6"><p class="box">6 columns</p></div>
 //   </div>
 // </div>
 //
@@ -324,23 +379,23 @@ body {
 // Markup:
 // <div class="container">
 //   <div class="row">
-//     <div class="col-12">12 columns</div>
+//     <div class="col-12"><p class="box">12 columns</p></div>
 //   </div>
 //   <div class="row">
-//     <div class="col-6">6 columns</div>
-//     <div class="col-6">6 columns</div>
+//     <div class="col-6"><p class="box">6 columns</p></div>
+//     <div class="col-6"><p class="box">6 columns</p></div>
 //   </div>
 //   <div class="row">
-//     <div class="col-4">4 columns</div>
-//     <div class="col-4">4 columns</div>
-//     <div class="col-4">4 columns</div>
+//     <div class="col-4"><p class="box">4 columns</p></div>
+//     <div class="col-4"><p class="box">4 columns</p></div>
+//     <div class="col-4"><p class="box">4 columns</p></div>
 //   </div>
 //   <div class="row">
-//     <div class="col-2">2 columns</div>
-//     <div class="col-2">2 columns</div>
-//     <div class="col-2">2 columns</div>
-//     <div class="col-2">2 columns</div>
-//     <div class="col-2">2 columns</div>
+//     <div class="col-2"><p class="box">2 columns</p></div>
+//     <div class="col-2"><p class="box">2 columns</p></div>
+//     <div class="col-2"><p class="box">2 columns</p></div>
+//     <div class="col-2"><p class="box">2 columns</p></div>
+//     <div class="col-2"><p class="box">2 columns</p></div>
 //   </div>
 // </div>
 //
@@ -381,8 +436,9 @@ body {
 // Markup:
 // <div class="container">
 //   <div class="row">
-//     <div class="col-2 offset-1">2 columns, offset 1</div>
-//     <div class="col-2 offset-3">2 columns, offset 3</div>
+//     <div class="col-1"><p class="box">1 column</p></div>
+//     <div class="col-2 offset-1"><p class="box">2 columns, offset 1</p></div>
+//     <div class="col-4 offset-4"><p class="box">4 columns, offset 4</p></div>
 //   </div>
 // </div>
 //
@@ -408,12 +464,6 @@ body {
 // Page
 //
 // Styleguide 3
-
-html {
-    font-smoothing: antialiased;
-    text-rendering: optimizeLegibility;
-}
-
 
 // Header
 //
@@ -467,9 +517,15 @@ header.dt-header {
         background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADwAAAA8CAMAAAANIilAAAAAnFBMVEUAAAAAdtIAdtIAW7gAW7gAW7gAdtIAW7gAdtIQZbwAXbqArdwAb8zP4PKfwuRAhMpgmdNwo9cAdNBAmN3f6/b///8AY8AAbsowkNqPt+AgcMEQf9Xv9fu/3fRAh82vzOnP5PUQds3f7vnv9vxwsua/1u1Qjs4AacUAcc0AYL0Ac88AYr8AascAbMgAZcIAXrsAZ8MQbMOv1PFgqeN7TYCxAAAAB3RSTlMAUN8A31AAbiElfgAAAR9JREFUeF7t19lqwzAQhWHZSTqSvC/Z033ft/d/t6Y+DaTGAnF0USj57z8GYY1BSkWxpoqjIxVpukjFPI6VDuj/4wM+4HWza7EHFs1Q6z5upntdfHwCH0+HOkmdGF1euXEhs9qJ0dm5G4udOzHK3lMnlu3wPs6TbXm201ImKO9Q8tNKvrN9XEjX6hQ6ESRFh+V3AxiVHd4YCkvS6YrDpsWpKSxLDOMwhhUclnBc/QE2IWcuOBz+qcwm4JIsA65nRSwGsZLun4E/7pcZHl/DMrgtRTjc5jdAnljfikcurO/ueYzhPNYPjyRGT5bFGE5i9Gw5jOoZidHcchjVLyRG6SuHUf1GYwwnsO+yOJ5GXssyxqOMGz5Ro/5z0Pe+jiejL1wdj2VAtgzNAAAAAElFTkSuQmCC);
         background-repeat: no-repeat;
         color: @COLOR_WHITE;
+        font-weight: normal;
         line-height: 60px;
         letter-spacing: 1px;
         text-decoration: none;
+
+        @media @HIGH_DPI {
+            background-image: url(../images/dt-logo-120x120.png);
+            background-size: 60px 60px;
+        }
     }
 }
 
@@ -578,10 +634,28 @@ header.dt-header .dt-jumbotron {
 // <footer class="dt-footer">
 //   <div class="container">
 //     <div class="row">
-//       <div class="col-3">
-//         <h2>Guides</h2>
+//       <div class="col-4">
+//         <h2 class="guides">Guides</h2>
 //         <ul>
-//           <li><a href="#">Title</a></li>
+//           <li><a href="#">Link</a></li>
+//           <li><a href="#">Link</a></li>
+//           <li><a href="#">Link</a></li>
+//         </ul>
+//       </div>
+//       <div class="col-4">
+//         <h2 class="directory">Directory</h2>
+//         <ul>
+//           <li><a href="#">Link</a></li>
+//           <li><a href="#">Link</a></li>
+//         </ul>
+//       </div>
+//       <div class="col-4">
+//         <h2 class="pages">Pages</h2>
+//         <ul>
+//           <li><a href="#">Link</a></li>
+//           <li><a href="#">Link</a></li>
+//           <li><a href="#">Link</a></li>
+//           <li><a href="#">Link</a></li>
 //         </ul>
 //       </div>
 //     </div>
@@ -613,7 +687,7 @@ footer.dt-footer {
 
             @media @HIGH_DPI {
                 background-image: url(../images/footer-icons@2x.png);
-                background-size: 20px 80px;
+                background-size: 20px 60px;
             }
         }
 
@@ -642,64 +716,84 @@ footer.dt-footer {
             text-decoration: underline;
         }
     }
+}
 
-    ul.quick {
-        margin-top: -13px !important;
 
-        li {
-            border-bottom: 1px solid @COLOR_MAIN;
-            margin: 0;
+// Quick navigation
+//
+// Markup:
+// <footer class="dt-footer">
+//   <div class="container">
+//     <div class="row">
+//       <div class="col-4">
+//         <ul class="quick">
+//           <li><a href="#">Link</a></li>
+//           <li><a href="#">Link</a></li>
+//           <li><a href="#">Link</a></li>
+//         </ul>
+//       </div>
+//     </div>
+//   </div>
+// </footer>
+//
+// Styleguide 3.2.1
 
-            &:last-child {
-                border-bottom: none;
-            }
+footer.dt-footer ul.quick {
+    margin-top: -13px !important;
+
+    li {
+        border-bottom: 1px solid @COLOR_MAIN;
+        margin: 0;
+
+        &:last-child {
+            border-bottom: none;
+        }
+    }
+
+    a {
+        .transition(all 0.1s);
+        .style-raleway-normal;
+        display: block;
+        position: relative;
+        margin: -1px 0;
+        padding: 13px 45px 13px 5px;
+        color: @COLOR_WHITE;
+
+        &:after {
+            .arrow();
+            .transition(opacity 0.1s);
+            content: '';
+            position: absolute;
+            display: block;
+            right: 15px;
+            top: 15px;
+            opacity: 0;
         }
 
-        a {
-            .transition(all 0.1s);
-            .style-raleway-normal;
-            display: block;
-            position: relative;
-            margin: -1px 0;
-            padding: 13px 45px 13px 5px;
-            color: @COLOR_WHITE;
+        &:hover {
+            background: #2d3b57;
+            padding-left: 13px;
+            text-decoration: none;
 
             &:after {
-                .arrow();
-                .transition(opacity 0.1s);
-                content: '';
-                position: absolute;
-                display: block;
-                right: 15px;
-                top: 15px;
-                opacity: 0;
-            }
-
-            &:hover {
-                background: #2d3b57;
-                padding-left: 13px;
-                text-decoration: none;
-
-                &:after {
-                    opacity: 1;
-                }
+                opacity: 1;
             }
         }
     }
 }
 
 
-// Footer
+// Love
 //
 // Markup:
 // <footer class="dt-footer">
-//   <div class="container">[...]</div>
+//   <div class="container"></div>
 // </footer>
 // <div class="container">
 //   <p class="icons">DefinitelyTyped, an independent project about <a href="#">TypeScript</a>.</p>
 // </div>
 //
-// Styleguide 3.2.1
+// Styleguide 3.2.2
 
 footer + .container {
     padding-top: 15px;
@@ -720,7 +814,7 @@ footer + .container {
 
             @media @HIGH_DPI {
                 background-image: url(../images/footer-love@2x.png);
-                background-size: 24px 112px;
+                background-size: 112px 24px;
             }
         }
     }
@@ -1037,6 +1131,11 @@ ul.benefits {
             width: 120px;
             height: 120px;
             background-image: url(../images/benefits-icons.png);
+
+            @media @HIGH_DPI {
+                background-image: url(../images/benefits-icons@2x.png);
+                background-size: 120px 360px;
+            }
         }
 
         &.ide:before {
@@ -1045,11 +1144,6 @@ ul.benefits {
 
         &.opensource:before {
             background-position: 0 -240px;
-        }
-
-        @media @HIGH_DPI {
-            background-image: url(../images/benefits-icons@2x.png);
-            background-size: 120px 360px;
         }
     }
 }
@@ -1070,6 +1164,7 @@ ul.benefits {
 
     input {
         .border-radius(4px);
+        .border-box();
         width: 100%;
         padding: 10px 15px;
         background-color: @COLOR_WHITE;
