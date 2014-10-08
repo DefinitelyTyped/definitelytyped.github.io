@@ -26,13 +26,14 @@
 //
 // <table>
 //   <tr><th>Name</th><th>Less constant</th><th>Color</th></tr>
-//   <tr style="background:#000000;" class="i"><td>Black     </td><td>@COLOR_BLACK     </td><td>#000000</td></tr>
-//   <tr style="background:#939393;" class="d"><td>Gray      </td><td>@COLOR_GRAY      </td><td>#939393</td></tr>
-//   <tr style="background:#ffffff;" class="d"><td>White     </td><td>@COLOR_WHITE     </td><td>#ffffff</td></tr>
-//   <tr style="background:#eeeeee;" class="d"><td>Accent    </td><td>@COLOR_ACCENT    </td><td>#eeeeee</td></tr>
-//   <tr style="background:#0077d2;" class="i"><td>Main      </td><td>@COLOR_MAIN      </td><td>#0077d2</td></tr>
-//   <tr style="background:#162943;" class="i"><td>Main dark </td><td>@COLOR_MAIN_DARK </td><td>#162943</td></tr>
-//   <tr style="background:#6481a1;" class="i"><td>Main light</td><td>@COLOR_MAIN_LIGHT</td><td>#6481a1</td></tr>
+//   <tr style="background:#000000;" class="i"><td>Black      </td><td>@COLOR_BLACK      </td><td>#000000</td></tr>
+//   <tr style="background:#939393;" class="d"><td>Gray       </td><td>@COLOR_GRAY       </td><td>#939393</td></tr>
+//   <tr style="background:#ffffff;" class="d"><td>White      </td><td>@COLOR_WHITE      </td><td>#ffffff</td></tr>
+//   <tr style="background:#eeeeee;" class="d"><td>Accent     </td><td>@COLOR_ACCENT     </td><td>#eeeeee</td></tr>
+//   <tr style="background:#0077d2;" class="i"><td>Main       </td><td>@COLOR_MAIN       </td><td>#0077d2</td></tr>
+//   <tr style="background:#1c263d;" class="i"><td>Main darker</td><td>@COLOR_MAIN_DARKER</td><td>#1c263d</td></tr>
+//   <tr style="background:#162943;" class="i"><td>Main dark  </td><td>@COLOR_MAIN_DARK  </td><td>#162943</td></tr>
+//   <tr style="background:#6481a1;" class="i"><td>Main light </td><td>@COLOR_MAIN_LIGHT </td><td>#6481a1</td></tr>
 // </table>
 //
 // Styleguide 1.1
@@ -42,6 +43,7 @@
 @COLOR_WHITE: #fff;
 @COLOR_ACCENT: #eee;
 @COLOR_MAIN: #0077d2;
+@COLOR_MAIN_DARKER: #1c263d;
 @COLOR_MAIN_DARK: #162943;
 @COLOR_MAIN_LIGHT: #6481a1;
 
@@ -1157,69 +1159,164 @@ ul.benefits {
 //
 // Styleguide 5.1
 
-#repository-search {
+.dt-repository-search {
     background-color: #1a2e49;
     padding: 0 0 30px 0;
     margin-bottom: 1px;
 
-    input {
-        .border-radius(4px);
-        .border-box();
+    .search-form {
+        display: table;
         width: 100%;
-        padding: 10px 15px;
-        background-color: @COLOR_WHITE;
-        border: none;
-        outline: none;
-        font-size: @SIZE_LARGE;
+
+        .field {
+            display: table-cell;
+            padding-left: 10px;
+
+            &:first-child {
+                width: 100%;
+                padding-left: 0;
+            }
+        }
+
+        button, input {
+            .border-radius(4px);
+            .border-box();
+            height: 60px;
+            padding: 0 15px;
+            border: none;
+            outline: none;
+            line-height: 60px;
+            vertical-align: top;
+            font-size: @SIZE_LARGE;
+        }
+
+        button {
+            background: @COLOR_MAIN_DARKER;
+            color: @COLOR_WHITE;
+        }
+
+        input {
+            width: 100%;
+            background-color: @COLOR_WHITE;
+        }
     }
-}
 
-#repository-list {
-    .list-style-none;
+    .sword {
+        display: table;
+        width: 100%;
+        margin: 0;
 
-    li {
-        .transition(~"background-color 0.2s, height 0.2s");
-        overflow: hidden;
-        border-bottom: 1px solid @COLOR_WHITE;
-        background-color: @COLOR_ACCENT;
+        dt, dd {
+            display: table-cell;
+            margin: 0;
+        }
 
-        .header {
-            .style-raleway-large;
-            padding-top: 10px;
-            padding-bottom: 10px;
+        dt {
+            width: 100%
+        }
+
+        input {
+            .border-radius(4px 0 0 4px);
+        }
+
+        button {
+            .border-radius(0 4px 4px 0);
+        }
+    }
+
+    .list {
+        margin: 40px 0;
+
+        &.empty {
+            display: none;
+        }
+
+        ul {
+            .list-style-none;
+        }
+    }
+
+    ul.list-rows {
+        border-top: 1px solid @COLOR_MAIN_LIGHT;
+
+        li {
+            .transition(~"background-color 0.2s, height 0.2s");
+            overflow: hidden;
+            position: relative;
+            color: @COLOR_WHITE;
+            border-bottom: 1px solid @COLOR_MAIN_LIGHT;
 
             a {
-                color: @COLOR_BLACK;
+                color: @COLOR_WHITE;
                 text-decoration: none;
             }
-        }
 
-        .details {
-            position: absolute;
-            width: 100%;
-            visibility: hidden;
+            .header {
+                .style-raleway-lead;
+                padding-top: 20px;
+                padding-bottom: 20px;
+                text-align: right;
 
-            .row {
-                margin-top: 20px;
+                a {
+                    display: inline-block;
+                    text-decoration: none;
+                    margin: 0 10px;
+                }
+
+                a:first-child {
+                    float: left;
+                    margin: 0;
+                }
             }
-        }
-
-        &.expanded {
-            background-color: @COLOR_WHITE;
-            border-bottom-color: @COLOR_ACCENT;
 
             .details {
-                position: static;
-                visibility: visible;
+                position: absolute;
+                width: 100%;
+                visibility: hidden;
+
+                .row {
+                    margin-top: 20px;
+                }
+            }
+
+            &.expanded {
+                .details {
+                    position: static;
+                    visibility: visible;
+                }
+            }
+
+            &.expanding .details {
+                .animation(fade-in 0.2s);
+            }
+
+            &.collapsing .details {
+                .animation(fade-out 0.2s);
             }
         }
+    }
 
-        &.expanding .details {
-            .animation(fade-in 0.2s);
+    ul.list-pagination {
+        margin-top: 20px;
+        text-align: center;
+
+        &.empty {
+            display: none;
         }
 
-        &.collapsing .details {
-            .animation(fade-out 0.2s);
+        li {
+            display: inline-block;
+            margin: 0 20px;
+        }
+
+        a {
+            .style-raleway-large;
+            text-decoration: none;
+            color: @COLOR_MAIN_LIGHT;
+        }
+
+        .current a {
+            color: @COLOR_WHITE;
         }
     }
 }

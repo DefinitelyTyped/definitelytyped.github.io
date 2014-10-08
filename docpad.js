@@ -1,6 +1,7 @@
 /* jshint -W014 */
 
 var docpadConfig = {
+    ignoreCustomPatterns: /\.d\.ts$/i,
 	templateData: {
 		site: {
 			url: 'http://definitelytyped.org',
@@ -23,9 +24,9 @@ var docpadConfig = {
 				'/assets/styles/style.css'
 			],
 			scripts: [
-				'//ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js',
-				'/assets/scripts/underscore-min.js',
-				'/assets/scripts/script.js'
+				'/assets/scripts/lib/jquery-min.js',
+				'/assets/scripts/lib/underscore-min.js',
+				'/assets/scripts/repository.js'
 			],
 			analytics: {
 				id: 'UA-47495295-3',

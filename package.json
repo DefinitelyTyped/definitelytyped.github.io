@@ -40,6 +40,7 @@
     "docpad-plugin-less": "~2.4.1",
     "docpad-plugin-livereload": "~2.6.0",
     "docpad-plugin-menu": "^2.1.0",
+    "docpad-plugin-tsc": "^2.0.2",
     "grunt": "^0.4.5",
     "grunt-cli": "^0.1.13",
     "grunt-gh-pages": "0.9.1",

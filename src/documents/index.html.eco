@@ -17,13 +17,7 @@ section: 'home'
     </div>
 </header>
 
-<div id="repository-search" data-prompting="true">
-    <div class="container">
-        <input placeholder="Search for a definition" />
-    </div>
-</div>
-
-<%- @partial('repository-list') %>
+<%- @partial('repository') %>
 
 <div class="container main typography">
     <div class="row large-margin-top">
