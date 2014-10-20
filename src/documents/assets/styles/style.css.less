@@ -26,14 +26,15 @@
 //
 // <table>
 //   <tr><th>Name</th><th>Less constant</th><th>Color</th></tr>
-//   <tr style="background:#000000;" class="i"><td>Black      </td><td>@COLOR_BLACK      </td><td>#000000</td></tr>
-//   <tr style="background:#939393;" class="d"><td>Gray       </td><td>@COLOR_GRAY       </td><td>#939393</td></tr>
-//   <tr style="background:#ffffff;" class="d"><td>White      </td><td>@COLOR_WHITE      </td><td>#ffffff</td></tr>
-//   <tr style="background:#eeeeee;" class="d"><td>Accent     </td><td>@COLOR_ACCENT     </td><td>#eeeeee</td></tr>
-//   <tr style="background:#0077d2;" class="i"><td>Main       </td><td>@COLOR_MAIN       </td><td>#0077d2</td></tr>
-//   <tr style="background:#1c263d;" class="i"><td>Main darker</td><td>@COLOR_MAIN_DARKER</td><td>#1c263d</td></tr>
-//   <tr style="background:#162943;" class="i"><td>Main dark  </td><td>@COLOR_MAIN_DARK  </td><td>#162943</td></tr>
-//   <tr style="background:#6481a1;" class="i"><td>Main light </td><td>@COLOR_MAIN_LIGHT </td><td>#6481a1</td></tr>
+//   <tr style="background:#000000;" class="i"><td>Black       </td><td>@COLOR_BLACK       </td><td>#000000</td></tr>
+//   <tr style="background:#939393;" class="d"><td>Gray        </td><td>@COLOR_GRAY        </td><td>#939393</td></tr>
+//   <tr style="background:#ffffff;" class="d"><td>White       </td><td>@COLOR_WHITE       </td><td>#ffffff</td></tr>
+//   <tr style="background:#eeeeee;" class="d"><td>Accent      </td><td>@COLOR_ACCENT      </td><td>#eeeeee</td></tr>
+//   <tr style="background:#6481a1;" class="i"><td>Main light  </td><td>@COLOR_MAIN_LIGHT  </td><td>#6481a1</td></tr>
+//   <tr style="background:#0077d2;" class="i"><td>Main        </td><td>@COLOR_MAIN        </td><td>#0077d2</td></tr>
+//   <tr style="background:#162943;" class="i"><td>Main dark   </td><td>@COLOR_MAIN_DARK   </td><td>#162943</td></tr>
+//   <tr style="background:#1a2e49;" class="i"><td>Main darker </td><td>@COLOR_MAIN_DARKER </td><td>#1a2e49</td></tr>
+//   <tr style="background:#1c263d;" class="i"><td>Main darkest</td><td>@COLOR_MAIN_DARKEST</td><td>#1c263d</td></tr>
 // </table>
 //
 // Styleguide 1.1
@@ -42,10 +43,11 @@
 @COLOR_GRAY: #939393;
 @COLOR_WHITE: #fff;
 @COLOR_ACCENT: #eee;
-@COLOR_MAIN: #0077d2;
-@COLOR_MAIN_DARKER: #1c263d;
-@COLOR_MAIN_DARK: #162943;
 @COLOR_MAIN_LIGHT: #6481a1;
+@COLOR_MAIN: #0077d2;
+@COLOR_MAIN_DARK: #162943;
+@COLOR_MAIN_DARKER: #1a2e49;
+@COLOR_MAIN_DARKEST: #1c263d;
 
 
 // Font families
@@ -158,6 +160,7 @@ body {
 // Styleguide 1.5
 
 @HIGH_DPI: ~"(-webkit-min-device-pixel-ratio: 1.5), (min--moz-device-pixel-ratio: 1.5), (-o-min-device-pixel-ratio: 3/2), (min-resolution: 1.5dppx)";
+@MOBILE: ~"only screen and (max-width : 640px)";
 
 
 // Mixins
@@ -308,8 +311,8 @@ body {
 // Markup:
 // <div class="container">
 //   <div class="row {$modifiers}">
-//     <div class="col-6"><p class="box">6 columns</p></div>
-//     <div class="col-6"><p class="box">6 columns</p></div>
+//     <div class="col width-6"><p class="box">6 columns</p></div>
+//     <div class="col width-6"><p class="box">6 columns</p></div>
 //   </div>
 // </div>
 //
@@ -381,23 +384,23 @@ body {
 // Markup:
 // <div class="container">
 //   <div class="row">
-//     <div class="col-12"><p class="box">12 columns</p></div>
+//     <div class="col width-12"><p class="box">12 columns</p></div>
 //   </div>
 //   <div class="row">
-//     <div class="col-6"><p class="box">6 columns</p></div>
-//     <div class="col-6"><p class="box">6 columns</p></div>
+//     <div class="col width-6"><p class="box">6 columns</p></div>
+//     <div class="col width-6"><p class="box">6 columns</p></div>
 //   </div>
 //   <div class="row">
-//     <div class="col-4"><p class="box">4 columns</p></div>
-//     <div class="col-4"><p class="box">4 columns</p></div>
-//     <div class="col-4"><p class="box">4 columns</p></div>
+//     <div class="col width-4"><p class="box">4 columns</p></div>
+//     <div class="col width-4"><p class="box">4 columns</p></div>
+//     <div class="col width-4"><p class="box">4 columns</p></div>
 //   </div>
 //   <div class="row">
-//     <div class="col-2"><p class="box">2 columns</p></div>
-//     <div class="col-2"><p class="box">2 columns</p></div>
-//     <div class="col-2"><p class="box">2 columns</p></div>
-//     <div class="col-2"><p class="box">2 columns</p></div>
-//     <div class="col-2"><p class="box">2 columns</p></div>
+//     <div class="col width-2"><p class="box">2 columns</p></div>
+//     <div class="col width-2"><p class="box">2 columns</p></div>
+//     <div class="col width-2"><p class="box">2 columns</p></div>
+//     <div class="col width-2"><p class="box">2 columns</p></div>
+//     <div class="col width-2"><p class="box">2 columns</p></div>
 //   </div>
 // </div>
 //
@@ -420,17 +423,24 @@ body {
     > *:last-child {
         margin-bottom: 0 !important;
     }
+
+    &.medium-padding-left {
+        padding-left: 40px;
+    }
+
+    &.medium-padding-right {
+        padding-right: 40px;
+    }
 }
 
-.columns(@n, @i: 1) when (@i =< @n) {
-    .col-@{i} {
-        .col;
+.widths(@n, @i: 1) when (@i =< @n) {
+    .col.width-@{i} {
         width: 100% * (@i / 12);
     }
 
-    .columns(@n, (@i + 1));
+    .widths(@n, (@i + 1));
 }
-.columns(12);
+.widths(12);
 
 
 // Column offsets
@@ -438,16 +448,16 @@ body {
 // Markup:
 // <div class="container">
 //   <div class="row">
-//     <div class="col-1"><p class="box">1 column</p></div>
-//     <div class="col-2 offset-1"><p class="box">2 columns, offset 1</p></div>
-//     <div class="col-4 offset-4"><p class="box">4 columns, offset 4</p></div>
+//     <div class="col width-1"><p class="box">1 column</p></div>
+//     <div class="col width-2 offset-1"><p class="box">2 columns, offset 1</p></div>
+//     <div class="col width-4 offset-4"><p class="box">4 columns, offset 4</p></div>
 //   </div>
 // </div>
 //
 // Styleguide 2.3
 
 .offsets(@n, @i: 1) when (@i =< @n) {
-    .offset-@{i} {
+    .col.offset-@{i} {
         margin-left: 100% * (@i / 12);
     }
 
@@ -636,7 +646,7 @@ header.dt-header .dt-jumbotron {
 // <footer class="dt-footer">
 //   <div class="container">
 //     <div class="row">
-//       <div class="col-4">
+//       <div class="col width-4">
 //         <h2 class="guides">Guides</h2>
 //         <ul>
 //           <li><a href="#">Link</a></li>
@@ -644,14 +654,14 @@ header.dt-header .dt-jumbotron {
 //           <li><a href="#">Link</a></li>
 //         </ul>
 //       </div>
-//       <div class="col-4">
+//       <div class="col width-4">
 //         <h2 class="directory">Directory</h2>
 //         <ul>
 //           <li><a href="#">Link</a></li>
 //           <li><a href="#">Link</a></li>
 //         </ul>
 //       </div>
-//       <div class="col-4">
+//       <div class="col width-4">
 //         <h2 class="pages">Pages</h2>
 //         <ul>
 //           <li><a href="#">Link</a></li>
@@ -727,7 +737,7 @@ footer.dt-footer {
 // <footer class="dt-footer">
 //   <div class="container">
 //     <div class="row">
-//       <div class="col-4">
+//       <div class="col width-4">
 //         <ul class="quick">
 //           <li><a href="#">Link</a></li>
 //           <li><a href="#">Link</a></li>
@@ -1151,6 +1161,7 @@ ul.benefits {
 }
 
 
+
 // Components
 //
 // Styleguide 5
@@ -1160,7 +1171,7 @@ ul.benefits {
 // Styleguide 5.1
 
 .dt-repository-search {
-    background-color: #1a2e49;
+    background-color: @COLOR_MAIN_DARKER;
     padding: 0 0 30px 0;
     margin-bottom: 1px;
 
@@ -1191,13 +1202,62 @@ ul.benefits {
         }
 
         button {
-            background: @COLOR_MAIN_DARKER;
+            background: @COLOR_MAIN_DARKEST;
             color: @COLOR_WHITE;
         }
 
         input {
             width: 100%;
             background-color: @COLOR_WHITE;
+        }
+    }
+
+    button.search,
+    button.all:before,
+    a.download,
+    a.expand {
+        content: '';
+        overflow: hidden;
+        display: inline-block;
+        width: 60px;
+        height: 60px;
+        background-image: url(../images/repository-icons.png);
+        text-indent: 1024px;
+
+        @media @HIGH_DPI {
+            background-image: url(../images/repository-icons@2x.png);
+            background-size: 60px 300px;
+        }
+    }
+
+    &.has-sword button.search {
+        background-position: 0 -60px;
+    }
+
+    button.all {
+        white-space: nowrap;
+        padding-left: 0;
+
+        &:before {
+            background-position: 0 -120px;
+        }
+    }
+
+    a.download {
+        background-position: 0 -180px;
+    }
+
+    a.expand {
+        background-position: 0 -240px;
+    }
+
+    a.download,
+    a.expand {
+        .transition(~"opacity 0.1s");
+        opacity: 0.8;
+
+        &:hover {
+            opacity: 1;
         }
     }
 
@@ -1237,45 +1297,28 @@ ul.benefits {
     }
 
     ul.list-rows {
-        border-top: 1px solid @COLOR_MAIN_LIGHT;
-
         li {
-            .transition(~"background-color 0.2s, height 0.2s");
+            .transition(~"all 0.2s");
             overflow: hidden;
             position: relative;
             color: @COLOR_WHITE;
-            border-bottom: 1px solid @COLOR_MAIN_LIGHT;
+            border-top: 2px solid #313d55;
 
-            a {
-                color: @COLOR_WHITE;
-                text-decoration: none;
+            &:last-child {
+                border-bottom: 2px solid #313d55;
             }
 
-            .header {
-                .style-raleway-lead;
-                padding-top: 20px;
-                padding-bottom: 20px;
-                text-align: right;
+            &:hover,
+            &.expanded {
+                background: #313d55;
+                border-top-color: @COLOR_MAIN_DARKER;
 
-                a {
-                    display: inline-block;
-                    text-decoration: none;
-                    margin: 0 10px;
+                & + li {
+                    border-top-color: @COLOR_MAIN_DARKER;
                 }
 
-                a:first-child {
-                    float: left;
-                    margin: 0;
-                }
-            }
-
-            .details {
-                position: absolute;
-                width: 100%;
-                visibility: hidden;
-
-                .row {
-                    margin-top: 20px;
+                &:last-child {
+                    border-bottom-color: @COLOR_MAIN_DARKER;
                 }
             }
 
@@ -1292,6 +1335,39 @@ ul.benefits {
 
             &.collapsing .details {
                 .animation(fade-out 0.2s);
+            }
+
+            a {
+                color: @COLOR_WHITE;
+                text-decoration: none;
+            }
+
+            .header {
+                .style-raleway-lead;
+                text-align: right;
+                padding: 0 20px;
+                line-height: 0;
+                cursor: pointer;
+
+                .title {
+                    float: left;
+                    margin: 0;
+                    line-height: 60px;
+                    text-decoration: none;
+                }
+            }
+
+            .details {
+                position: absolute;
+                width: 100%;
+                padding: 0 20px;
+                visibility: hidden;
+                box-sizing: border-box;
+                -moz-box-sizing: border-box;
+
+                .row {
+                    margin-top: 20px;
+                }
             }
         }
     }
@@ -1317,6 +1393,93 @@ ul.benefits {
 
         .current a {
             color: @COLOR_WHITE;
+        }
+    }
+}
+
+
+
+// Mobile
+//
+
+@media @MOBILE {
+    .container.main {
+        margin-top: 20px;
+        margin-bottom: 30px;
+    }
+
+    .row {
+        margin-top: 20px;
+        margin-bottom: 20px;
+
+        &.medium-margin-top {
+            margin-top: 30px;
+        }
+
+        &.medium-margin-bottom {
+            margin-bottom: 30px;
+        }
+
+        &.large-margin-top {
+            margin-top: 40px;
+        }
+
+        &.large-margin-bottom {
+            margin-bottom: 40px;
+        }
+
+        &.table {
+            display: block;
+            width: 100%;
+
+            > * {
+                display: block;
+                padding: 0;
+            }
+        }
+    }
+
+    .col {
+        width: 100% !important;
+        margin: 20px 0 !important;
+        padding: 0 !important;
+        font-size: 14px;
+    }
+
+    footer.dt-footer {
+        margin-top: 40px;
+        padding-top: 20px;
+        padding-bottom: 20px;
+
+        .row {
+            margin-top: 0;
+            margin-bottom: 0;
+        }
+    }
+
+    footer + .container p.icons {
+        text-indent: -1024px;
+    }
+
+    .typography {
+        h2 {
+            font-size: 24px;
+
+            & + .lead {
+                margin-top: 0;
+            }
+        }
+
+        .lead {
+            font-size: 16px;
+        }
+    }
+
+    ul.benefits li {
+        margin: 0;
+
+        &:before {
+            display: none;
         }
     }
 }

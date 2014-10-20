@@ -15,8 +15,8 @@
             <script class="list-row" type="text/template">
                 <li data-repository-id="<%= id %>">
                     <div class="header">
-                        <a href="#" class="toggle"><%= name %></a>
-                        <a href="<%= info.reposUrl %>/raw/master/<%= path %>">Download</a>
+                        <span class="title"><%= name %></span>
+                        <a href="<%= info.reposUrl %>/raw/master/<%= path %>" class="download">Download</a>
                         <a href="#" class="expand">Details</a>
                     </div>
                 </li>
@@ -26,8 +26,8 @@
             </script>
             <script class="list-details" type="text/template">
                 <div class="details">
-                    <div class="row">
-                        <div class="col-3">
+                    <div class="row typography">
+                        <div class="col width-3">
                             <dl>
                                 <dt>Project</dt>
                                 <dd><a href="<%= info.projectUrl %>">Homepage</a></dd>
@@ -60,7 +60,7 @@
                                 <% } %>
                             </dl>
                         </div>
-                        <div class="col-9">
+                        <div class="col width-9">
                             <% if (info.description) { %>
                             <p><%= info.description %></p>
                             <% } %>

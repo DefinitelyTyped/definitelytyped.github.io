@@ -21,7 +21,7 @@ section: 'home'
 
 <div class="container main typography">
     <div class="row large-margin-top">
-        <div class="col-8 offset-2 centered">
+        <div class="col width-8 offset-2 centered">
             <h2>Get the definitions</h2>
             <p class="lead">
                 Accessing DefinitelyTyped is a breeze. Simply download the definitions from GitHub or use
@@ -30,10 +30,10 @@ section: 'home'
         </div>
     </div>
     <div class="row table">
-        <div class="col-6">
+        <div class="col width-6">
             <img src="/media/index/get-github.png" class="responsive" />
         </div>
-        <div class="col-6" style="padding-left:40px;">
+        <div class="col width-6 medium-padding-left">
             <h3 class="label">From GitHub</h3>
             <p>
                 DefinitelyTyped is open source hearted and driven by a great GitHub community. GitHub is the
@@ -48,7 +48,7 @@ section: 'home'
         </div>
     </div>
     <div class="row">
-        <div class="col-6" style="padding-right:40px;">
+        <div class="col width-6 medium-padding-right">
             <div class="shadow">
                 <img src="/media/index/get-tsd.png" class="responsive" />
             </div>
@@ -60,7 +60,7 @@ section: 'home'
             </p>
             <p><a href="http://www.tsdpm.com/" class="action">Find out more about TSD</a></p>
         </div>
-        <div class="col-6" style="padding-left:40px;">
+        <div class="col width-6 medium-padding-left">
             <div class="shadow">
                 <img src="/media/index/get-nuget.png" class="responsive" />
             </div>
@@ -78,7 +78,7 @@ section: 'home'
 <div class="accent">
     <div class="container typography">
         <div class="row large-margin-top medium-margin-bottom">
-            <div class="col-8 offset-2 centered">
+            <div class="col width-8 offset-2 centered">
                 <h2>Contribute to the repository</h2>
                 <p class="lead">
                     All you can find here was created and shared by others willing to contribute. Wouldn't it be
@@ -87,14 +87,14 @@ section: 'home'
             </div>
         </div>
         <div class="row large-margin-bottom">
-            <div class="col-4 centered">
+            <div class="col width-4 centered">
                 <h3 class="label">Report an issue</h3>
                 <p>
                     Found an error? Head over to the issue tracker on GitHub and let us know what's going wrong.
                 </p>
                 <p><a href="https://github.com/borisyankov/DefinitelyTyped/issues" class="action">Issue tracker</a></p>
             </div>
-            <div class="col-4 centered">
+            <div class="col width-4 centered">
                 <h3 class="label">Create a pull request</h3>
                 <p>
                     From just fixing a bug to creating an entire new definition, always
@@ -102,7 +102,7 @@ section: 'home'
                 </p>
                 <p><a href="/guides/contributing.html" class="action">Contribution guide</a></p>
             </div>
-            <div class="col-4 centered">
+            <div class="col width-4 centered">
                 <h3 class="label">Spread the world</h3>
                 <p>
                     Let everybody know that your project supports DefinitelyTyped by adding a badge to
@@ -116,7 +116,7 @@ section: 'home'
 
 <div class="container typography">
     <div class="row large-margin-top">
-        <div class="col-8 offset-2 centered">
+        <div class="col width-8 offset-2 centered">
             <h2>Why use DefinitelyTyped?</h2>
             <p class="lead">
                 DefinitelyTyped is the repository for high quality TypeScript type definitions. It contains
@@ -125,7 +125,7 @@ section: 'home'
         </div>
     </div>
     <div class="row">
-        <div class="col-5">
+        <div class="col width-5">
             <p>
                 Code written in TypeScript includes additional typing information on properties, functions
                 and classes that allow the compiler to perform advanced syntax checks. This ensures that the
@@ -143,7 +143,7 @@ section: 'home'
                 definition files.
             </p>
         </div>
-        <div class="col-6 offset-1">
+        <div class="col width-6 offset-1">
             <ul class="benefits">
                 <li class="check">
                     <h3 class="label">Type checking</h3>

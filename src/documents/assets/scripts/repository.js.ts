@@ -64,6 +64,8 @@ module dt
         id:number;
         project:string;
         name:string;
+        sword:string;
+        score:number;
         path:string;
         reposUrl:string;
         info:{
@@ -114,7 +116,11 @@ module dt
                 dataType: 'json',
                 url: this.url
             }).then((data:IRepositoryData) => {
-                _(data.content).forEach((content, id) => content.id = id);
+                _(data.content).forEach((content, id) => {
+                    content.id = id;
+                    content.sword = content.name.toLowerCase();
+                });
+                data.content.sort((a, b) => a.sword == b.sword ? 0 : (a.sword > b.sword ? 1 : -1));
                 this.data = data;
                 this.request = null;
                 return data;
@@ -132,8 +138,18 @@ module dt
 
         query(sword:string, callback:{(packages:IRepositoryPackageData[]);}) {
             this.require((data:IRepositoryData) => {
+                sword = sword.toLowerCase();
                 callback(_(data.content).filter((content:IRepositoryPackageData) => {
-                    return content.name.indexOf(sword) != -1;
+                    var n = content.name.indexOf(sword);
+                    content.score = (content.name == sword ? -1 : (n == 0 ? 0 : 1));
+                    return n != -1;
+                }).sort((a, b) => {
+                    if (a.score == b.score) {
+                        if (a.name == b.name) return 0;
+                        return a.sword > b.sword ? 1 : -1;
+                    } else {
+                        return a.score > b.score ? 1 : -1;
+                    }
                 }));
             });
         }
@@ -222,7 +238,12 @@ module dt
             this.$el.on('click', '.list-pagination a', (e:JQueryMouseEventObject) => {
                 this.setPage(parseInt($(e.target).attr('data-page')));
                 e.preventDefault();
-            }).on('click', '.toggle', (e:JQueryMouseEventObject) => {
+            }).on('click', '.header', (e:JQueryMouseEventObject) => {
+                var el = e.target;
+                while (el.parentNode) {
+                    if (el.tagName == 'A') return;
+                    el = el.parentNode;
+                }
                 this.setExpanded($(e.target));
                 e.preventDefault();
             }).on('click', '.expand', (e:JQueryMouseEventObject) => {
@@ -340,7 +361,9 @@ module dt
                 var value = $.trim($query.val());
                 if (value == '') {
                     this.list.setList([]);
+                    this.$el.removeClass('has-sword');
                 } else {
+                    this.$el.addClass('has-sword');
                     this.repository.query(value, (result) => {
                         this.list.setList(result);
                     });
@@ -349,6 +372,7 @@ module dt
                 e.preventDefault();
                 if ($query.val() != '') {
                     $query.val('').focus();
+                    this.$el.removeClass('has-sword');
                     this.list.setList([]);
                 } else {
                     $query.focus();
@@ -357,6 +381,7 @@ module dt
                 e.preventDefault();
                 this.repository.require((data) => {
                     $query.val('');
+                    this.$el.removeClass('has-sword');
                     this.list.setList(data.content);
                 });
             });
