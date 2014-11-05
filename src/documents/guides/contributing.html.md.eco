@@ -117,13 +117,7 @@ You can use a `tscparams` file to specify custom compiler arguments e.g. [atom/a
 
 ## Contributors link
 
-Update the [CONTRIBUTORS.md](<%-@site.github%>/blob/master/CONTRIBUTORS.md) file to put a reference to your definition with the following style:
-
-``* <LIBRARY NAME WITH LINK> (by <AUTHOR NAME WITH LINK>)``
-
-Example: [Ace Cloud9 Editor](http://ace.ajax.org/) (by [Diullei Gomes](https://github.com/Diullei))
-
-This is recommended for significant contributions but not essential for small definitions. At some point we might generate this list from the headers and github data.
+[CONTRIBUTORS.md](<%-@site.github%>/blob/master/CONTRIBUTORS.md) will update automatically.
 
 ### Note
 
