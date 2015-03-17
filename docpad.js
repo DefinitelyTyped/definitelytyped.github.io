@@ -41,7 +41,7 @@ var docpadConfig = {
 		},
 		link: {
 			tsd: {
-				web: 'http://www.tsdpm.com',
+				web: 'http://definitelytyped.org/tsd/',
 				npm: 'https://www.npmjs.org/package/tsd'
 			}
 		},
