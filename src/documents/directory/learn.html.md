@@ -51,3 +51,4 @@ title: 'Learn TypeScript'
 ## Courses
 
 * [TypeScript Fundamentals @ PluralSight](http://pluralsight.com/training/Courses/TableOfContents/typescript)
+* [Introduction to TypeScript @ edX](https://www.edx.org/course/introduction-typescript-microsoft-dev201x)
