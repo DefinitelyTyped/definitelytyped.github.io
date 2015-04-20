@@ -90,7 +90,7 @@ Example: `backbone.d.ts` has a test file named `backbone-tests.ts`, with this [e
 There are a few ways to test changes:
 
 1. Simply compile the test file:
-    * `tsc --noImplicitAny your/code.-tests.ts`
+    * `tsc --noImplicitAny your/code-tests.ts`
     * `tsc --noImplicitAny --module commonjs your/code-tests.ts`
 1. Run `npm test` before sending your pull request.
     * If you created new files add them to git so the tester picks them as changes.
