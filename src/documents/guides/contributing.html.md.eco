@@ -104,6 +104,8 @@ There are a few ways to test changes:
 
 You can use a `tscparams` file to specify custom compiler arguments e.g. [atom/atom-tests.ts.tscparams](<%-@site.github%>/blob/master/atom/atom-tests.ts.tscparams)
 
+Note: By default `npm test` only runs tests for the changed / new definition files. To run all tests just execute `npm run all`.
+
 ## Code style
 
 * At this point we do not enforce a specific *general* code style, but we do like idiomatic code in each *individual* file.
