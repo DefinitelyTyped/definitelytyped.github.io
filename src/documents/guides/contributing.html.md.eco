@@ -92,7 +92,7 @@ Example: `backbone.d.ts` has a test file named `backbone-tests.ts`, with this [e
 There are a few ways to test changes:
 
 1. Simply compile the test file:
-    * `tsc --noImplicitAny your/code.-tests.ts`
+    * `tsc --noImplicitAny your/code-tests.ts`
     * `tsc --noImplicitAny --module commonjs your/code-tests.ts`
 2. Run `npm test` before sending your pull request.
     * If you created new files add them to git so the tester picks them as changes.
@@ -105,6 +105,8 @@ There are a few ways to test changes:
     * If you need many attempts to fix errors then please flatten the history and clean the commit message.
 
 You can use a `tscparams` file to specify custom compiler arguments e.g. [atom/atom-tests.ts.tscparams](<%-@site.github%>/blob/master/atom/atom-tests.ts.tscparams)
+
+Note: By default `npm test` only runs tests for the changed / new definition files. To run all tests just execute `npm run all`.
 
 ## Code style
 
@@ -119,13 +121,7 @@ You can use a `tscparams` file to specify custom compiler arguments e.g. [atom/a
 
 ## Contributors link
 
-Update the [CONTRIBUTORS.md](<%-@site.github%>/blob/master/CONTRIBUTORS.md) file to put a reference to your definition with the following style:
-
-``* <LIBRARY NAME WITH LINK> (by <AUTHOR NAME WITH LINK>)``
-
-Example: [Ace Cloud9 Editor](http://ace.ajax.org/) (by [Diullei Gomes](https://github.com/Diullei))
-
-This is recommended for significant contributions but not essential for small definitions. At some point we might generate this list from the headers and github data.
+[CONTRIBUTORS.md](<%-@site.github%>/blob/master/CONTRIBUTORS.md) will update automatically.
 
 ### Note
 

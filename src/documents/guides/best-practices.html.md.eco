@@ -36,16 +36,6 @@ declare module 'foo' {
 }
 ```
 
-### Type Unions
-For config objects / object bags where a particular member can be one of many things (e.g. a number or a string), you will need to use `any` at the moment with a comment that might replace the `any` in a future TypeScript version.
-
-```typescript
-interface FooConfig {
-	something: any; // number | string
-}
-declare function foo(config: FooConfig);
-```
-There is a feature request open to [add Type Unions to the language (vote)](https://typescript.codeplex.com/workitem/1364).
 
 ### Extending built-in types
 There isn't a way to add *static members* to native objects at the moment as `lib.d.ts` defines them as a `var Date:{/*members*/}` and `var`s are not extendable.
