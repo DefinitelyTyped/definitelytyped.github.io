@@ -107,7 +107,8 @@ var docpadConfig = {
 	},
 	plugins: {
 		marked: {
-			markedOptions: require('./lib/marked')
+			markedOptions: require('./lib/markedOptions'),
+            markedRenderer: require('./lib/markedRenderer')
 		}
 	},
 	events: {
