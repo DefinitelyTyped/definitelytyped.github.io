@@ -1,0 +1,186 @@
+
+
+// Footer
+//
+// Markup:
+// <footer class="dt-footer">
+//   <div class="container">
+//     <div class="row">
+//       <div class="col width-4">
+//         <h2 class="guides">Guides</h2>
+//         <ul>
+//           <li><a href="#">Link</a></li>
+//           <li><a href="#">Link</a></li>
+//           <li><a href="#">Link</a></li>
+//         </ul>
+//       </div>
+//       <div class="col width-4">
+//         <h2 class="directory">Directory</h2>
+//         <ul>
+//           <li><a href="#">Link</a></li>
+//           <li><a href="#">Link</a></li>
+//         </ul>
+//       </div>
+//       <div class="col width-4">
+//         <h2 class="pages">Pages</h2>
+//         <ul>
+//           <li><a href="#">Link</a></li>
+//           <li><a href="#">Link</a></li>
+//           <li><a href="#">Link</a></li>
+//           <li><a href="#">Link</a></li>
+//         </ul>
+//       </div>
+//     </div>
+//   </div>
+// </footer>
+//
+// Styleguide 3.2
+
+footer.dt-footer
+	margin-top: 80px
+	padding-top: 80px
+	padding-bottom: 80px
+	background-color: $color-main-dark
+	color: $color-white
+
+	h2
+		@extend .style-raleway-normal
+		color: $color-white
+		margin: 0 0 13px 0
+
+		&:before
+			content: ''
+			display: inline-block
+			width: 20px
+			height: 20px
+			margin: 0 6px -4px 0
+			background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAA8BAMAAACUWIdlAAAAKlBMVEWhp7D///+hp7Chp7Chp7Chp7Chp7Chp7Chp7Chp7Chp7Chp7Chp7Chp7Bu8poCAAAADXRSTlMAAAw/Qkh4e37J5Of2bHkX8QAAALZJREFUeF610b8JwlAUxeEjGIhCIG7gCGnTOYKNlQiO4AgukMoFskAgjWVGENII/uHs4r335SapRER/pPh4L83hIc0JkPdsgrQxshYysH3D+NizuDml3/EAS7kcuO9Z0SqFW9NzLQT8h0UfRuW6NrDRtYG07OrirsEVPGJEn/E1Nz0rdpWwETYDH1RQOqniMD4ctsCUdqgEZxmSjkk9sIV8+Auvqkg5p/UQRo3xLPR2Sn9Dob/hC/xnERzi7fKHAAAAAElFTkSuQmCC)
+			background-repeat: no-repeat
+
+			+high-dpi
+				background-image: url(#{$image-path}footer-icons@2x.png)
+				background-size: 20px 60px
+
+
+		&.directory:before
+			background-position: 0 -20px
+
+		&.pages:before
+			background-position: 0 -40px
+
+
+	ul
+		@extend .list-style-none
+
+	li
+		margin: 0.25em 0
+
+	a
+		color: #a1a7b0
+		text-decoration: none
+
+		&:hover
+			text-decoration: underline
+
+
+// Quick navigation
+//
+// Markup:
+// <footer class="dt-footer">
+//   <div class="container">
+//     <div class="row">
+//       <div class="col width-4">
+//         <ul class="quick">
+//           <li><a href="#">Link</a></li>
+//           <li><a href="#">Link</a></li>
+//           <li><a href="#">Link</a></li>
+//         </ul>
+//       </div>
+//     </div>
+//   </div>
+// </footer>
+//
+// Styleguide 3.2.1
+
+footer.dt-footer ul.quick
+	margin-top: -13px !important
+
+	li
+		border-bottom: 1px solid $color-main
+		margin: 0
+
+		&:last-child
+			border-bottom: none
+
+
+	a
+		+transition(all 0.1s)
+		@extend .style-raleway-normal
+		display: block
+		position: relative
+		margin: -1px 0
+		padding: 13px 45px 13px 5px
+		color: $color-white
+
+		&:after
+			+arrow()
+			+transition(opacity 0.1s)
+			content: ''
+			position: absolute
+			display: block
+			right: 15px
+			top: 15px
+			opacity: 0
+
+		&:hover
+			background: #2d3b57
+			padding-left: 13px
+			text-decoration: none
+
+			&:after
+				opacity: 1
+
+
+// Love
+//
+// Markup:
+// <footer class="dt-footer">
+//   <div class="container"></div>
+// </footer>
+// <div class="container">
+//   <p class="icons">DefinitelyTyped, an independent project about <a href="#">TypeScript</a>.</p>
+// </div>
+//
+// Styleguide 3.2.2
+
+footer + .container
+	padding-top: 15px
+	padding-bottom: 15px
+	color: $color-gray
+	font-size: $size-small
+	font-style: italic
+
+	p
+		margin: 0
+
+		&.icons
+			height: 24px
+			padding-left: 130px
+			background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHAAAAAYCAYAAAAiR3l8AAAENElEQVR42u3af2jUdRzH8W03l26JgzYXqGOdoY6dI0mDGYkwoywJIf+o/mhB/ZEICalhUiLl5kJFEGcYpqV/2AY6f2OCZTLsmHqbbtYlZ7ZVrjl/4fy1Mfn45HgPruP7uft+776f+Cb3gQe77/fe9/l87/Pa9/u97/cu69tde9ugDGvLyjQzzXh44n8wDyPhd1BfgtJMgN4J8HXcx1G8jAJMwnOowgz4UY7VuIZW5GYC/Pf2jEYtOnEVl7AFFRa1T6AOv0ptBA3wpzAPi6FidGEobt0ABqFELwoN5+NDGV7EO1iB73DacwHKf3i7po9+vBlTW4kLmto+zHU4UTVQDoWR40JIeRiPSuRLUJuxD524YzW+pwKUQ1YoST+DmC61kSS1t1DuYBI/gXKoH9MdhjUOr2ElvsIBhKWvBwho5sHzAS6y2VcjltusbbI5qZW4D5WCn5DjIMDPk/RXgRMpB2jVBgYHVeT3bvX9sZa4On1r7wg7DfA4lA1duGCzts/mpK6yGKMV59GNHvwpy624DCWGUOGxAPWtJRgyFWDEZihDQtlw3eakboQSqzBS1vuQj9EogE/WP44GKDHPQYCfwXyAw3scoo9j2+79R+U5wOo11JgJULgc4Dqp/0GWSzFXUzsHEyXcLihUeyVA7R7UGurQPadb7zTAYwYC7E0yZo4EsVDqP5X1X8tyQVz9Y7iLJlneL3UB5Epf2UnGrIVKIICTrgSoe677rx4TAS4xEOA+i3HGohxVqMbzeAX3sF1q3sdBjLC4JtuDpbIcxB+okn5mY6b0X6x5n8vQg8sak9GcqEb0pBzgP719JgIsQZ/LAVZbjDMJU/GUhDkG2fgQCmU2D4VTpH4+clEo/flRiYma1+WjGEUaPoxJVCOKnQQYPacNt19+u+h6gLItb7sY3peaMUYkGP9jHMRCTEZe3PO5KEMNDmOF5SFTahNcLnUk8DS+QUcytgPctftQ9LAZ80nUnQD1k6jS1IQ8BzexN+FVWR6PD9CAs+IM2nEK9RJCaYp3XepsnAODaZ8Db9++Ez1UInodONyu37gptWYClG1amUZ4W+FzOF4AYbwQs26apv9pmm488ilU36JhsjcaD1C26z30Owxvg4TnuMleN4D1qEMIl3AFEVwRX3g6QEICBNd20WBi78LoXiOHVkspvtlncQYqib/xhgvfB+6IP4/K+D8jhAPY6cEAzUtzYmvxQNP3dpS4+PXNBPhxGDvRhqD83YMdafZf/2gHqH/jL8XdA+3HoixDTcJrxFmckgCbsS3NfsvxERrQLP3exBAUpuL0IxegbGsxGnESzxgMr0DG2IIwjqATW3Eco1wcKxtPIoA5KEQ9griIW1BWMj+p0E/qAqxBDX5EAC14F2sx7z/8nc44zMJbWIZtCOFaJsAkTQ5nRfK4CAEvbuQ5KMPOZWWakfYQEn9w26vxMBoAAAAASUVORK5CYII=)
+			background-repeat: no-repeat
+			line-height: 24px
+
+			+high-dpi
+				background-image: url(#{$image-path}footer-love@2x.png)
+				background-size: 112px 24px
+
+
+
+	a
+		color: $color-gray
+		text-decoration: none
+
+		&:hover
+			text-decoration: underline
+
+

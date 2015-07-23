@@ -1,0 +1,170 @@
+
+
+// Grid
+//
+// Markup:
+// <div class="container">
+//   <div class="row">
+//     <div class="col"><p class="box">Column</p></div>
+//     <div class="col"><p class="box">Column</p></div>
+//     <div class="col"><p class="box">Column</p></div>
+//     <div class="col"><p class="box">Column</p></div>
+//     <div class="col"><p class="box">Column</p></div>
+//     <div class="col"><p class="box">Column</p></div>
+//     <div class="col"><p class="box">Column</p></div>
+//     <div class="col"><p class="box">Column</p></div>
+//     <div class="col"><p class="box">Column</p></div>
+//     <div class="col"><p class="box">Column</p></div>
+//   </div>
+// </div>
+//
+// Styleguide 2
+
+.container
+	margin: 0 auto
+	padding: 0 40px
+	max-width: 1200px
+
+	&.main
+		margin-top: 40px
+		margin-bottom: 80px
+
+
+// Row
+//
+// Markup:
+// <div class="container">
+//   <div class="row {$modifiers}">
+//     <div class="col width-6"><p class="box">6 columns</p></div>
+//     <div class="col width-6"><p class="box">6 columns</p></div>
+//   </div>
+// </div>
+//
+// .no-margin-top        - A row with no margin at the top.
+// .no-margin-bottom     - A row with no margin at the bottom.
+// .medium-margin-top    - A row with medium margin at the top.
+// .medium-margin-bottom - A row with medium margin at the bottom.
+// .large-margin-top     - A row with double margin at the top.
+// .large-margin-bottom  - A row with double margin at the bottom.
+// .table                - A row whose cols behave like table cells and will have equal height.
+//
+// Styleguide 2.1
+
+.row
+	list-style: none
+	position: relative
+	margin: 40px -10px
+	padding: 0
+	font-size: 0
+
+	&.no-margin-top
+		margin-top: 0
+
+	&.no-margin-bottom
+		margin-bottom: 0
+
+	&.medium-margin-top
+		margin-top: 60px
+
+	&.medium-margin-bottom
+		margin-bottom: 60px
+
+	&.large-margin-top
+		margin-top: 80px
+
+	&.large-margin-bottom
+		margin-bottom: 80px
+
+	&.table
+		display: table
+		width: 100%
+		margin-left: 0
+		margin-right: 0
+
+		> *
+			display: table-cell
+			vertical-align: middle
+
+		> *:first-child
+			padding-left: 0
+
+		> *:last-child
+			padding-right: 0
+
+
+// Column widths
+//
+// Markup:
+// <div class="container">
+//   <div class="row">
+//     <div class="col width-12"><p class="box">12 columns</p></div>
+//   </div>
+//   <div class="row">
+//     <div class="col width-6"><p class="box">6 columns</p></div>
+//     <div class="col width-6"><p class="box">6 columns</p></div>
+//   </div>
+//   <div class="row">
+//     <div class="col width-4"><p class="box">4 columns</p></div>
+//     <div class="col width-4"><p class="box">4 columns</p></div>
+//     <div class="col width-4"><p class="box">4 columns</p></div>
+//   </div>
+//   <div class="row">
+//     <div class="col width-2"><p class="box">2 columns</p></div>
+//     <div class="col width-2"><p class="box">2 columns</p></div>
+//     <div class="col width-2"><p class="box">2 columns</p></div>
+//     <div class="col width-2"><p class="box">2 columns</p></div>
+//     <div class="col width-2"><p class="box">2 columns</p></div>
+//   </div>
+// </div>
+//
+// Styleguide 2.2
+
+.col
+	+box-sizing(border-box)
+	display: inline-block
+	position: relative
+	width: 100% / 12
+	font-size: 16px
+	vertical-align: top
+	padding: 0 10px
+	margin: 0
+
+	> *:first-child
+		margin-top: 0 !important
+
+	> *:last-child
+		margin-bottom: 0 !important
+
+	&.medium-padding-left
+		padding-left: 40px
+
+	&.medium-padding-right
+		padding-right: 40px
+
+	@for $i from 1 through 12
+		&.width-#{$i}
+			width: 100% * ($i / 12)
+
+		&.offset-#{$i}
+			margin-left: 100% * ($i / 12)
+
+
+// Column offsets
+//
+// Markup:
+// <div class="container">
+//   <div class="row">
+//     <div class="col width-1"><p class="box">1 column</p></div>
+//     <div class="col width-2 offset-1"><p class="box">2 columns, offset 1</p></div>
+//     <div class="col width-4 offset-4"><p class="box">4 columns, offset 4</p></div>
+//   </div>
+// </div>
+//
+// Styleguide 2.3
+
+
+
+.accent
+	overflow: hidden
+	background-color: $color-accent
+

@@ -1,0 +1,53 @@
+// Styles
+//
+// <table>
+//   <tr><th>Example</th><th>Selector/Mixin</th></tr>
+//   <tr><td>Lorem ipsum dolor sit amet</td><td>-</td></tr>
+//   <tr><td class="style-default-lead">Lorem ipsum dolor sit amet  </td><td>.style-default-lead</td></tr>
+//   <tr><td class="style-raleway-normal">Lorem ipsum dolor sit amet</td><td>.style-raleway-normal</td></tr>
+//   <tr><td class="style-raleway-lead">Lorem ipsum dolor sit amet  </td><td>.style-raleway-lead</td></tr>
+//   <tr><td class="style-raleway-large">Lorem ipsum dolor sit amet </td><td>.style-raleway-large</td></tr>
+//   <tr><td class="style-raleway-larger">Lorem ipsum dolor sit     </td><td>.style-raleway-larger</td></tr>
+//   <tr><td class="style-raleway-huge">Lorem ipsum dolor           </td><td>.style-raleway-huge</td></tr>
+// </table>
+//
+// Styleguide 1.4
+
+html
+	font-smoothing: antialiased
+	text-rendering: optimizeLegibility
+
+body
+	font-family: $font-default
+	font-size: $size-normal
+
+.style-default-lead
+	font-family: $font-default
+	font-size: $size-lead
+	font-weight: normal
+
+.style-raleway-normal
+	font-family: $font-raleway
+	font-size: $size-normal
+	font-weight: bold
+
+.style-raleway-lead
+	font-family: $font-raleway
+	font-size: 20px
+	font-weight: bold
+
+.style-raleway-large
+	font-family: $font-raleway
+	font-size: $size-large
+	font-weight: bold
+
+.style-raleway-larger
+	font-family: $font-raleway
+	font-size: $size-larger
+	font-weight: bold
+
+.style-raleway-huge
+	font-family: $font-raleway
+	font-size: $size-huge
+	font-weight: normal
+

@@ -1,0 +1,153 @@
+
+
+// Page
+//
+// Styleguide 3
+
+// Header
+//
+// Markup:
+// <header class="dt-header {$modifiers}">
+//   <div class="container">
+//     <a class="logo" href="/">DefinitelyTyped</a>
+//   </div>
+// </header>
+//
+// .skyline - Add the skyline background to the header.
+//
+// Styleguide 3.1
+
+header.dt-header
+	position: relative
+	background-color: $color-main-dark
+	padding-bottom: 20px
+	min-height: 80px
+
+	&.skyline
+		background-image: url(#{$image-path}header-stars.gif)
+		background-position: center bottom
+		min-height: 300px
+
+		&:before
+			content: ''
+			position: absolute
+			z-index: 1
+			bottom: 0
+			left: 0
+			right: 0
+			height: 365px
+			background-image: url(#{$image-path}header-skyline.png)
+			background-position: center bottom
+
+		.container
+			position: relative
+			z-index: 2
+
+
+	.logo
+		@extend .style-raleway-large
+		display: block
+		float: left
+		margin: 20px 0 0 0
+		padding: 0 0 0 75px
+		height: 60px
+		background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADwAAAA8CAMAAAANIilAAAAAnFBMVEUAAAAAdtIAdtIAW7gAW7gAW7gAdtIAW7gAdtIQZbwAXbqArdwAb8zP4PKfwuRAhMpgmdNwo9cAdNBAmN3f6/b///8AY8AAbsowkNqPt+AgcMEQf9Xv9fu/3fRAh82vzOnP5PUQds3f7vnv9vxwsua/1u1Qjs4AacUAcc0AYL0Ac88AYr8AascAbMgAZcIAXrsAZ8MQbMOv1PFgqeN7TYCxAAAAB3RSTlMAUN8A31AAbiElfgAAAR9JREFUeF7t19lqwzAQhWHZSTqSvC/Z033ft/d/t6Y+DaTGAnF0USj57z8GYY1BSkWxpoqjIxVpukjFPI6VDuj/4wM+4HWza7EHFs1Q6z5upntdfHwCH0+HOkmdGF1euXEhs9qJ0dm5G4udOzHK3lMnlu3wPs6TbXm201ImKO9Q8tNKvrN9XEjX6hQ6ESRFh+V3AxiVHd4YCkvS6YrDpsWpKSxLDOMwhhUclnBc/QE2IWcuOBz+qcwm4JIsA65nRSwGsZLun4E/7pcZHl/DMrgtRTjc5jdAnljfikcurO/ueYzhPNYPjyRGT5bFGE5i9Gw5jOoZidHcchjVLyRG6SuHUf1GYwwnsO+yOJ5GXssyxqOMGz5Ro/5z0Pe+jiejL1wdj2VAtgzNAAAAAElFTkSuQmCC)
+		background-repeat: no-repeat
+		color: $color-white
+		font-weight: normal
+		line-height: 60px
+		letter-spacing: 1px
+		text-decoration: none
+
+		+high-dpi
+			background-image: url(#{$image-path}dt-logo-120x120.png)
+			background-size: 60px 60px
+
+
+// Main navigation
+//
+// Markup:
+// <header class="dt-header">
+//   <div class="container">
+//     <nav>
+//       <ul>
+//         <li><a class="current" href="#">Guides</a></li>
+//         <li><a href="#">Directory</a></li>
+//         <li><a href="#">Pages</a></li>
+//       </ul>
+//     </nav>
+//   </div>
+// </header>
+//
+// Styleguide 3.1.1
+
+header.dt-header nav
+	text-align: right
+	line-height: 0
+	font-size: 0
+
+	ul
+		@extend .list-style-none
+		margin: 0 -15px
+
+	li
+		display: inline
+
+	li:before
+		@extend .style-raleway-normal
+		content: '|'
+		display: inline-block
+		padding-top: 14px
+		color: #4c4668
+		line-height: 60px
+
+	li:first-child:before
+		display: none
+
+	a
+		@extend .style-raleway-normal
+		+transition(color 0.2s)
+		display: inline-block
+		padding: 14px 0 0 0
+		margin: 0 15px
+		color: $color-main-light
+		border-top: 6px solid transparent
+		line-height: 60px
+		letter-spacing: 1px
+		text-transform: uppercase
+		text-decoration: none
+
+		&:hover
+			color: $color-main
+
+		&.current
+			color: $color-main
+			border-top-color: $color-main
+
+// Jumbotron
+//
+// Markup:
+// <header class="dt-header">
+//   <div class="container">
+//     <div class="dt-jumbotron">
+//       <h1>The repository for high quality <br><strong>TypeScript type definitions.</strong></h1>
+//       <p class="dt-buttons">
+//         <a href="#" class="dt-button github">GitHub repository</a>
+//         <a href="#" class="dt-button guide">Contribution guide</a>
+//       </p>
+//     </div>
+//   </div>
+// </header>
+//
+// Styleguide 3.1.2
+
+header.dt-header .dt-jumbotron
+	padding: 80px 0
+	text-align: center
+
+	h1
+		@extend .style-raleway-larger
+		font-weight: normal
+		color: $color-white
+		margin: 0 0 30px 0
+

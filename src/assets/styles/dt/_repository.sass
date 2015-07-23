@@ -1,0 +1,200 @@
+
+// Repository
+//
+// Styleguide 5.1
+
+.dt-repository-search
+	background-color: $color-main-darker
+	padding: 0 0 30px 0
+	margin-bottom: 1px
+
+	.search-form
+		display: table
+		width: 100%
+
+		.field
+			display: table-cell
+			padding-left: 10px
+
+			&:first-child
+				width: 100%
+				padding-left: 0
+
+
+		button, input
+			border-radius: 4px
+			height: 60px
+			padding: 0 15px
+			border: none
+			outline: none
+			line-height: 60px
+			vertical-align: top
+			font-size: $size-large
+
+		button
+			background: $color-main-darkest
+			color: $color-white
+
+		input
+			width: 100%
+			background-color: $color-white
+
+
+	button.search,
+	button.all:before,
+	a.download,
+	a.expand
+		content: ''
+		overflow: hidden
+		display: inline-block
+		width: 60px
+		height: 60px
+		background-image: url(#{$image-path}repository-icons.png)
+		text-indent: 1024px
+
+		+high-dpi
+			background-image: url(#{$image-path}repository-icons@2x.png)
+			background-size: 60px 300px
+
+
+	&.has-sword button.search
+		background-position: 0 -60px
+
+	button.all
+		white-space: nowrap
+		padding-left: 0
+
+		&:before
+			background-position: 0 -120px
+
+
+	a.download
+		background-position: 0 -180px
+
+	a.expand
+		background-position: 0 -240px
+
+	a.download,
+	a.expand
+		+transition(opacity 0.1s)
+		opacity: 0.8
+
+		&:hover
+			opacity: 1
+
+
+	.sword
+		display: table
+		width: 100%
+		margin: 0
+
+		dt, dd
+			display: table-cell
+			margin: 0
+
+		dt
+			width: 100%
+
+		input
+			border-radius: 4px 0 0 4px
+
+		button
+			border-radius: 0 4px 4px 0
+
+
+	.list
+		margin: 40px 0
+
+		&.empty
+			display: none
+
+		ul
+			@extend .list-style-none
+
+
+	ul.list-rows
+		li
+			+transition(all 0.2s)
+			overflow: hidden
+			position: relative
+			color: $color-white
+			border-top: 2px solid #313d55
+
+			&:last-child
+				border-bottom: 2px solid #313d55
+
+			&:hover,
+			&.expanded
+				background: #313d55
+				border-top-color: $color-main-darker
+
+				& + li
+					border-top-color: $color-main-darker
+
+				&:last-child
+					border-bottom-color: $color-main-darker
+
+
+			&.expanded
+				.details
+					position: static
+					visibility: visible
+
+
+			&.expanding .details
+				+animation(fade-in 0.2s)
+
+			&.collapsing .details
+				+animation(fade-out 0.2s)
+
+			a
+				color: $color-white
+				text-decoration: none
+
+			.header
+				@extend .style-raleway-lead
+				text-align: right
+				padding: 0 20px
+				line-height: 0
+				cursor: pointer
+
+				.title
+					float: left
+					margin: 0
+					line-height: 60px
+					text-decoration: none
+
+
+			.details
+				position: absolute
+				width: 100%
+				padding: 0 20px
+				visibility: hidden
+				box-sizing: border-box
+				-moz-box-sizing: border-box
+
+				.row
+					margin-top: 20px
+
+
+
+
+	ul.list-pagination
+		margin-top: 20px
+		text-align: center
+
+		&.empty
+			display: none
+
+		li
+			display: inline-block
+			margin: 0 20px
+
+		a
+			@extend .style-raleway-large
+			text-decoration: none
+			color: $color-main-light
+
+		.current a
+			color: $color-white
+

@@ -1,0 +1,147 @@
+
+// Typography
+//
+// Styleguide 4.1
+
+.typography
+	h1
+		@extend .style-raleway-huge
+		margin: 1.5em 0 0.5em 0
+
+	h2
+		@extend .style-raleway-larger
+		margin: 1.5em 0 0.5em 0
+
+	h3
+		@extend .style-raleway-large
+		margin: 1.5em 0 0.75em 0
+
+	h4, h5, h6
+		@extend .style-raleway-normal
+		margin: 1.5em 0 0.75em 0
+
+	.label
+		@extend .style-raleway-lead
+		margin: 1em 0 0 0
+
+		& + p
+			margin-top: 0.5em
+
+
+	img + h1, img + h2, img + h3,
+	img + h4, img + h5, img + h6
+		margin-top: 20px
+
+	p, dl, ul, ol, blockquote
+		margin: 1em 0
+		line-height: 1.5em
+
+	ul, ol
+		padding-left: 22px
+
+	ul ul, ul ol, ol ul, ol ol
+		margin: 0 0 1em 0
+
+	li
+		margin: 0.5em 0
+
+	dt
+		margin: 1em 0 0 0
+		font-weight: bold
+
+		&:first-child
+			margin: 0
+
+
+	dd
+		padding: 0
+		margin: 0
+
+	a
+		color: $color-main
+		text-decoration: none
+
+		&:hover
+			text-decoration: underline
+
+		&.action
+			@extend .style-raleway-normal
+
+			&:after
+				+arrow()
+				content: ''
+				display: inline-block
+				margin: 0 0 -1px 5px
+
+
+
+	img
+		display: block
+
+		&.responsive
+			width: 100%
+			height: auto
+
+
+	.shadow
+		+box-shadow(0, 0, 20px, 0.4)
+		border-radius: 4px
+
+	code
+		background-color: rgba(0, 0, 0, 0.02)
+		border: 1px solid rgba(0, 0, 0, 0.2)
+		font-family: 'Courier New', 'source-code-pro', monospace
+		vertical-align: middle
+		display: inline-block
+		margin: 0.05em 0.05em
+		padding: 0.0em 0.25em
+		font-size: 0.8em
+		line-height: normal
+
+	pre code
+		display: block
+		font-size: 0.8em
+		padding: 0.5em 0.5em
+
+	blockquote
+		padding-left: 20px
+		border-left: 2px solid $color-accent
+
+	input
+		border-radius: .325em
+		width: 100%
+		margin: 0
+		padding: .65em 1em
+		border: 1px solid $color-accent
+		outline: 0
+		font-size: 1em
+		color: rgba(0, 0, 0, .7)
+
+	hr
+		margin: 3em 0 0.75em 0
+		width: 60px
+		height: 1px
+		border: none
+		background: $color-black
+		text-align: left
+
+	.centered
+		text-align: center
+
+	.color-main
+		color: $color-main
+
+	.lead
+		font-size: $size-lead
+
+	h2 + .lead
+		margin-top: -0.4em
+
+	.message
+		border-radius: .325em
+		padding: 1em
+		margin: 1em 0
+		background-color: $color-accent
+		line-height: 1.33
+		font-size: .875em
+		color: rgba(0, 0, 0, .6)

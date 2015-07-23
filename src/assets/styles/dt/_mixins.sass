@@ -1,0 +1,35 @@
+
+// Media queries
+//
+// <table>
+//   <tr><th>Less constant</th><th>Description</th></tr>
+//   <tr><td>$high-dpi</td><td>Select devices with high pixel density.</td></tr>
+// </table>
+//
+// Styleguide 1.5
+
+=high-dpi
+	@media (-webkit-min-device-pixel-ratio: 1.5), (min--moz-device-pixel-ratio: 1.5), (-o-min-device-pixel-ratio: 3/2), (min-resolution: 1.5dppx)
+		&
+
+
+// Mixins
+//
+// see https://github.com/JoelSutherland/LESS-Prefixer/blob/master/prefixer.less
+//
+// Styleguide 1.6
+
+.list-style-none
+	list-style: none
+	margin: 0
+	padding: 0
+
+=arrow
+	width: 24px
+	height: 16px
+	background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAQCAMAAAA7+k+nAAAANlBMVEUAd9L///8Ad9IAd9IAd9IAd9IAd9IAd9IAd9IAd9IAd9IAd9IAd9IAd9IAd9IAd9IAd9IAd9Lg387oAAAAEXRSTlMAAMMJtxIGoslX2B60nwOKPxhOozsAAABFSURBVHheY2AEAQZMQAUJTlwSTOxsOCQEWZgZsAEmQUEOVhwSglzcYAlBTMCCQwcTK3YJHmbsruLlY8AqwY/DgwJkByIAF6YC6vXi/zoAAAAASUVORK5CYII=)
+	background-repeat: no-repeat
+
+	+high-dpi
+		background-image: url(#{$image-path}action-arrow@2x.png)
+		background-size: 24px 16px

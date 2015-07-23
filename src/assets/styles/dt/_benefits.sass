@@ -1,0 +1,31 @@
+// Benefits
+//
+// Styleguide 4.4
+
+ul.benefits
+	@extend .list-style-none
+
+	li
+		position: relative
+		margin: 0 0 0 130px
+
+		&:before
+			content: ''
+			display: block
+			position: absolute
+			left: -130px
+			top: 0
+			width: 120px
+			height: 120px
+			background-image: url(#{$image-path}benefits-icons.png)
+
+			+high-dpi
+				background-image: url(#{$image-path}benefits-icons@2x.png)
+				background-size: 120px 360px
+
+
+		&.ide:before
+			background-position: 0 -120px
+
+		&.opensource:before
+			background-position: 0 -240px
