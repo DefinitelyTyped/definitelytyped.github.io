@@ -5,12 +5,12 @@ layout: default
 
 <div class="container">
     <div class="row">
-        <div class="col width-12 typography">
+        <div class="col-md-12 typography">
             <h1><%- @document.title or @document.name %></h1>
         </div>
     </div>
 	<div class="row">
-		<div class="col width-12 typography">
+		<div class="col-md-12 typography">
 			<%- @content %>
             <%- @partial('contribute') %>
 		</div>

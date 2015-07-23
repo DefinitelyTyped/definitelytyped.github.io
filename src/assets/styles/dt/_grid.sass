@@ -1,5 +1,3 @@
-
-
 // Grid
 //
 // Markup:
@@ -19,15 +17,6 @@
 // </div>
 //
 // Styleguide 2
-
-.container
-	margin: 0 auto
-	padding: 0 40px
-	max-width: 1200px
-
-	&.main
-		margin-top: 40px
-		margin-bottom: 80px
 
 
 // Row
@@ -51,11 +40,8 @@
 // Styleguide 2.1
 
 .row
-	list-style: none
-	position: relative
-	margin: 40px -10px
-	padding: 0
-	font-size: 0
+	margin-top: 40px
+	margin-bottom: 40px
 
 	&.no-margin-top
 		margin-top: 0
@@ -84,6 +70,7 @@
 		> *
 			display: table-cell
 			vertical-align: middle
+			float: none
 
 		> *:first-child
 			padding-left: 0
@@ -119,34 +106,11 @@
 //
 // Styleguide 2.2
 
-.col
-	+box-sizing(border-box)
-	display: inline-block
-	position: relative
-	width: 100% / 12
-	font-size: 16px
-	vertical-align: top
-	padding: 0 10px
-	margin: 0
+.medium-padding-left
+	padding-left: 40px
 
-	> *:first-child
-		margin-top: 0 !important
-
-	> *:last-child
-		margin-bottom: 0 !important
-
-	&.medium-padding-left
-		padding-left: 40px
-
-	&.medium-padding-right
-		padding-right: 40px
-
-	@for $i from 1 through 12
-		&.width-#{$i}
-			width: 100% * ($i / 12)
-
-		&.offset-#{$i}
-			margin-left: 100% * ($i / 12)
+.medium-padding-right
+	padding-right: 40px
 
 
 // Column offsets
@@ -161,8 +125,6 @@
 // </div>
 //
 // Styleguide 2.3
-
-
 
 .accent
 	overflow: hidden
