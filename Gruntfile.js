@@ -4,10 +4,12 @@ module.exports = function (grunt) {
 	grunt.loadNpmTasks('grunt-contrib-clean');
 	grunt.loadNpmTasks('grunt-contrib-copy');
 	grunt.loadNpmTasks('grunt-contrib-jshint');
+	grunt.loadNpmTasks('grunt-contrib-watch');
 	grunt.loadNpmTasks('grunt-gh-pages');
 	grunt.loadNpmTasks('grunt-sass');
 
 	grunt.loadTasks('./tasks');
+    grunt.renameTask('watch', 'grunt-watch');
 
 	function getDeployMessage() {
 		var ret = '\n\n';
@@ -94,7 +96,13 @@ module.exports = function (grunt) {
 					'src/files/assets/styles.css': 'src/assets/styles/styles.sass'
 				}
 			}
-		}
+		},
+        'grunt-watch': {
+            styles: {
+                files: ['src/assets/styles/**/*'],
+                tasks: ['sass']
+            }
+        }
 	});
 
 	grunt.registerTask('check-deploy', function() {
