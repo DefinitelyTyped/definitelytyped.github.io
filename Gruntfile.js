@@ -5,6 +5,7 @@ module.exports = function (grunt) {
 	grunt.loadNpmTasks('grunt-contrib-copy');
 	grunt.loadNpmTasks('grunt-contrib-jshint');
 	grunt.loadNpmTasks('grunt-gh-pages');
+	grunt.loadNpmTasks('grunt-sass');
 
 	grunt.loadTasks('./tasks');
 
@@ -82,6 +83,16 @@ module.exports = function (grunt) {
 			},
 			run: {
 				action: 'run'
+			}
+		},
+		sass: {
+			options: {
+				sourceMap: false
+			},
+			dist: {
+				files: {
+					'src/files/assets/style.css': 'src/assets/styles/style.sass'
+				}
 			}
 		}
 	});
