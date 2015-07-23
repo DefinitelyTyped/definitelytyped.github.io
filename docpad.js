@@ -20,7 +20,7 @@ var docpadConfig = {
 			keywords: 'typescript, type, definition, declaration, repository, typing',
 			styles: [
 				'http://fonts.googleapis.com/css?family=Raleway:400,700|Open+Sans:400italic,400,700',
-				'/assets/styles.css'
+				'/assets/styles/main.css'
 			],
 			scripts: [
 				'/assets/scripts/lib/jquery-min.js',
