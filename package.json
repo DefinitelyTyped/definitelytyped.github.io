@@ -35,7 +35,6 @@
   "devDependencies": {
     "docpad": "~6.78.1",
     "docpad-plugin-eco": "~2.1.0",
-    "docpad-plugin-less": "~2.4.1",
     "docpad-plugin-livereload": "~2.6.1",
     "docpad-plugin-marked": "~2.3.0",
     "docpad-plugin-menu": "^2.1.0",
