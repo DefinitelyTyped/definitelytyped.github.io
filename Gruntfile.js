@@ -91,7 +91,7 @@ module.exports = function (grunt) {
 			},
 			dist: {
 				files: {
-					'src/files/assets/style.css': 'src/assets/styles/style.sass'
+					'src/files/assets/styles.css': 'src/assets/styles/styles.sass'
 				}
 			}
 		}
