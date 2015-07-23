@@ -25,7 +25,7 @@ var docpadConfig = {
 			scripts: [
 				'/assets/scripts/lib/jquery-min.js',
 				'/assets/scripts/lib/underscore-min.js',
-				'/assets/scripts/repository.js'
+				'/assets/scripts/main.js'
 			],
 			analytics: {
 				id: 'UA-47495295-3',

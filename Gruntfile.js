@@ -105,7 +105,8 @@ module.exports = function (grunt) {
                     dest: 'src/files/assets/scripts/main.js'
                 }],
                 options: {
-                    fast: 'never'
+                    fast: 'never',
+                    sourceMap: false
                 }
             }
         },
