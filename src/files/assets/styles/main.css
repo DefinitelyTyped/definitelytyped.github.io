@@ -485,7 +485,7 @@ header.dt-header {
   padding-bottom: 20px;
   min-height: 80px; }
   header.dt-header.skyline {
-    background-image: url(./images/header-stars.gif);
+    background-image: url(../images/header-stars.gif);
     background-position: center bottom;
     min-height: 300px; }
     header.dt-header.skyline:before {
@@ -496,7 +496,7 @@ header.dt-header {
       left: 0;
       right: 0;
       height: 365px;
-      background-image: url(./images/header-skyline.png);
+      background-image: url(../images/header-skyline.png);
       background-position: center bottom; }
     header.dt-header.skyline .container {
       position: relative;
@@ -827,7 +827,7 @@ ul.benefits li {
     top: 0;
     width: 120px;
     height: 120px;
-    background-image: url(./images/benefits-icons.png); }
+    background-image: url(../images/benefits-icons.png); }
   ul.benefits li.ide:before {
     background-position: 0 -120px; }
   ul.benefits li.opensource:before {
@@ -870,7 +870,7 @@ ul.benefits li {
     display: inline-block;
     width: 60px;
     height: 60px;
-    background-image: url(./images/repository-icons.png);
+    background-image: url(../images/repository-icons.png);
     text-indent: 1024px; }
   .dt-repository-search.has-sword button.search {
     background-position: 0 -60px; }
