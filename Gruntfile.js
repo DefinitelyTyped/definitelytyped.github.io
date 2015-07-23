@@ -7,6 +7,7 @@ module.exports = function (grunt) {
 	grunt.loadNpmTasks('grunt-contrib-watch');
 	grunt.loadNpmTasks('grunt-gh-pages');
 	grunt.loadNpmTasks('grunt-sass');
+	grunt.loadNpmTasks('grunt-ts');
 
 	grunt.loadTasks('./tasks');
     grunt.renameTask('watch', 'grunt-watch');
@@ -91,16 +92,31 @@ module.exports = function (grunt) {
 			options: {
 				sourceMap: false
 			},
-			dist: {
+            default: {
 				files: {
 					'src/files/assets/styles/main.css': 'src/assets/styles/main.sass'
 				}
 			}
 		},
+        ts: {
+            default : {
+                files: [{
+                    src: ['src/assets/scripts/**/*.ts'],
+                    dest: 'src/files/assets/scripts/main.js'
+                }],
+                options: {
+                    fast: 'never'
+                }
+            }
+        },
         'grunt-watch': {
-            styles: {
+            sass: {
                 files: ['src/assets/styles/**/*'],
                 tasks: ['sass']
+            },
+            ts: {
+                files: ['src/assets/scripts/**/*'],
+                tasks: ['ts']
             }
         }
 	});
@@ -137,6 +153,8 @@ module.exports = function (grunt) {
 
 	grunt.registerTask('build', 'Build with production env.', [
 		'prep',
+        'sass',
+        'ts',
 		'docpad:publish',
 		'copy:rootfiles'
 	]);
