@@ -19,9 +19,8 @@ var docpadConfig = {
 			tagline: 'The repository for high quality TypeScript type definitions',
 			keywords: 'typescript, type, definition, declaration, repository, typing',
 			styles: [
-				'/assets/styles/normalize.css',
-				'/assets/styles/highlight.css',
-				'/assets/styles/style.css'
+				'http://fonts.googleapis.com/css?family=Raleway:400,700|Open+Sans:400italic,400,700',
+				'/assets/styles.css'
 			],
 			scripts: [
 				'/assets/scripts/lib/jquery-min.js',
