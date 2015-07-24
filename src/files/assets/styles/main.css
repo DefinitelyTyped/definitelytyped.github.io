@@ -840,11 +840,60 @@ hr {
   .col-lg-offset-12 {
     margin-left: 100%; } }
 
-.list-style-none, ul.benefits, header.dt-header nav ul, footer.dt-footer ul, .dt-repository-search .list ul, nav.menu ul {
+.list-style-none, ul.benefits, footer.dt-footer ul, .dt-repository-search .list ul, nav.menu ul {
   list-style: none;
   margin: 0;
   padding: 0; }
 
+/*
+  SASS variables are information about icon's compiled state, stored under its original file name
+
+  .icon-home
+    width: $icon-home-width
+
+  The large array-like variables contain all information about a single icon
+  $icon-home: x y offset_x offset_y width height total_width total_height image_path
+
+  At the bottom of this section, we provide information about the spritesheet itself
+  $spritesheet: width height image $spritesheet-sprites
+  */
+/*
+  These "retina group" variables are mappings for the naming and pairing of normal and retina sprites.
+
+  The list formatted variables are intended for mixins like `retina-sprite` and `retina-sprites`.
+  */
+/*
+  The provided mixins are intended to be used with the array-like variables
+
+  .icon-home
+    @include sprite-width($icon-home)
+
+  .icon-email
+    @include sprite($icon-email)
+  */
+/*
+  The `retina-sprite` mixin sets up rules and a media query for a sprite/retina sprite.
+    It should be used with a "retina group" variable.
+
+  The media query is from CSS Tricks: https://css-tricks.com/snippets/css/retina-display-media-query/
+
+  $icon-home-group: ('icon-home', $icon-home, $icon-home-2x, )
+
+  .icon-home
+    @include retina-sprite($icon-home-group)
+  */
+/*
+  The `sprites` mixin generates identical output to the CSS template
+    but can be overridden inside of SASS
+
+  @include sprites($spritesheet-sprites)
+  */
+/*
+  The `retina-sprites` mixin generates a CSS rule and media query for retina groups
+    This yields the same output as CSS retina template but can be overridden in SASS
+
+  @include retina-sprites($retina-groups)
+  */
 html {
   font-smoothing: antialiased;
   text-rendering: optimizeLegibility; }
@@ -858,20 +907,35 @@ body {
   font-size: 24px;
   font-weight: normal; }
 
-.style-raleway-normal, .dt-button, header.dt-header nav li:before, header.dt-header nav a, footer.dt-footer h2, footer.dt-footer ul.quick a, .typography h4, .typography h5, .typography h6, .typography a.action {
+.style-raleway-normal, .dt-button, .dt-header .dt-menu li:before,
+.dt-header .dt-menu a, footer.dt-footer h2, footer.dt-footer ul.quick a, .typography h4, .typography h5, .typography h6, .typography a.action {
   font-family: "Raleway", sans-serif;
-  font-size: 16px;
+  font-size: 12.8px;
   font-weight: bold; }
+  @media (min-width: 768px) {
+    .style-raleway-normal, .dt-button, .dt-header .dt-menu li:before,
+    .dt-header .dt-menu a, footer.dt-footer h2, footer.dt-footer ul.quick a, .typography h4, .typography h5, .typography h6, .typography a.action {
+      font-size: 14.4px; } }
+  @media (min-width: 992px) {
+    .style-raleway-normal, .dt-button, .dt-header .dt-menu li:before,
+    .dt-header .dt-menu a, footer.dt-footer h2, footer.dt-footer ul.quick a, .typography h4, .typography h5, .typography h6, .typography a.action {
+      font-size: 16px; } }
 
 .style-raleway-lead, .dt-repository-search ul.list-rows li .header, .typography .label {
   font-family: "Raleway", sans-serif;
   font-size: 20px;
   font-weight: bold; }
 
-.style-raleway-large, header.dt-header .logo, .dt-repository-search ul.list-pagination a, .typography h3 {
+.style-raleway-large, .dt-header .dt-logo span, .dt-repository-search ul.list-pagination a, .typography h3 {
   font-family: "Raleway", sans-serif;
-  font-size: 28px;
+  font-size: 21px;
   font-weight: bold; }
+  @media (min-width: 768px) {
+    .style-raleway-large, .dt-header .dt-logo span, .dt-repository-search ul.list-pagination a, .typography h3 {
+      font-size: 25.2px; } }
+  @media (min-width: 992px) {
+    .style-raleway-large, .dt-header .dt-logo span, .dt-repository-search ul.list-pagination a, .typography h3 {
+      font-size: 28px; } }
 
 .style-raleway-larger, header.dt-header .dt-jumbotron h1, .typography h2 {
   font-family: "Raleway", sans-serif;
@@ -1132,80 +1196,130 @@ ul.benefits li {
 .xml .hljs-attribute {
   color: #f00; }
 
-header.dt-header {
+.dt-header {
   position: relative;
-  background-color: #162943;
-  padding-bottom: 20px;
-  min-height: 80px; }
-  header.dt-header.skyline {
-    background-image: url(../images/header-stars.gif);
-    background-position: center bottom;
+  background-color: #162943; }
+  .dt-header.skyline {
+    overflow: hidden;
+    background: #162943 url(../images/header-stars.gif) center bottom;
     min-height: 300px; }
-    header.dt-header.skyline:before {
-      content: '';
+    .dt-header.skyline:before {
       position: absolute;
-      z-index: 1;
+      right: 0;
       bottom: 0;
       left: 0;
-      right: 0;
+      content: '';
+      z-index: 1;
       height: 365px;
-      background-image: url(../images/header-skyline.png);
-      background-position: center bottom; }
-    header.dt-header.skyline .container {
+      background: url(../images/header-skyline.png) center bottom; }
+    .dt-header.skyline .container {
       position: relative;
       z-index: 2; }
-  header.dt-header .logo {
-    display: block;
-    float: left;
-    margin: 20px 0 0 0;
-    padding: 0 0 0 75px;
-    height: 60px;
-    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADwAAAA8CAMAAAANIilAAAAAnFBMVEUAAAAAdtIAdtIAW7gAW7gAW7gAdtIAW7gAdtIQZbwAXbqArdwAb8zP4PKfwuRAhMpgmdNwo9cAdNBAmN3f6/b///8AY8AAbsowkNqPt+AgcMEQf9Xv9fu/3fRAh82vzOnP5PUQds3f7vnv9vxwsua/1u1Qjs4AacUAcc0AYL0Ac88AYr8AascAbMgAZcIAXrsAZ8MQbMOv1PFgqeN7TYCxAAAAB3RSTlMAUN8A31AAbiElfgAAAR9JREFUeF7t19lqwzAQhWHZSTqSvC/Z033ft/d/t6Y+DaTGAnF0USj57z8GYY1BSkWxpoqjIxVpukjFPI6VDuj/4wM+4HWza7EHFs1Q6z5upntdfHwCH0+HOkmdGF1euXEhs9qJ0dm5G4udOzHK3lMnlu3wPs6TbXm201ImKO9Q8tNKvrN9XEjX6hQ6ESRFh+V3AxiVHd4YCkvS6YrDpsWpKSxLDOMwhhUclnBc/QE2IWcuOBz+qcwm4JIsA65nRSwGsZLun4E/7pcZHl/DMrgtRTjc5jdAnljfikcurO/ueYzhPNYPjyRGT5bFGE5i9Gw5jOoZidHcchjVLyRG6SuHUf1GYwwnsO+yOJ5GXssyxqOMGz5Ro/5z0Pe+jiejL1wdj2VAtgzNAAAAAElFTkSuQmCC);
-    background-repeat: no-repeat;
-    color: #fff;
-    font-weight: normal;
-    line-height: 60px;
-    letter-spacing: 1px;
-    text-decoration: none; }
-    @media (-webkit-min-device-pixel-ratio: 1.5), (min--moz-device-pixel-ratio: 1.5), (-o-min-device-pixel-ratio: 3/2), (min-resolution: 1.5dppx) {
-      header.dt-header .logo {
-        background-image: url(../images/dt-logo-120x120.png);
-        background-size: 60px 60px; } }
 
-header.dt-header nav {
-  text-align: right;
-  line-height: 0;
-  font-size: 0; }
-  header.dt-header nav ul {
-    margin: 0 -15px; }
-  header.dt-header nav li {
-    display: inline; }
-  header.dt-header nav li:before {
-    content: '|';
+.dt-header nav {
+  position: relative;
+  z-index: 3;
+  font-size: 0;
+  line-height: 60px; }
+  .dt-header nav a {
+    text-decoration: none; }
+  @media (min-width: 768px) {
+    .dt-header nav {
+      line-height: 80px;
+      text-align: right; } }
+  @media (min-width: 992px) {
+    .dt-header nav {
+      line-height: 100px; } }
+
+.dt-header .dt-logo {
+  display: block; }
+  .dt-header .dt-logo:before,
+  .dt-header .dt-logo span {
     display: inline-block;
-    padding-top: 14px;
-    color: #4c4668;
-    line-height: 60px; }
-  header.dt-header nav li:first-child:before {
-    display: none; }
-  header.dt-header nav a {
+    vertical-align: middle; }
+  .dt-header .dt-logo:before {
+    background-image: url(../images/sprites.png);
+    background-position: 0px -62px;
+    width: 32px;
+    height: 32px;
+    content: '';
+    margin-right: 10px; }
+    @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+      .dt-header .dt-logo:before {
+        background-image: url(../images/sprites-2x.png);
+        background-size: 110px 94px; } }
+  .dt-header .dt-logo span {
+    line-height: 1em;
+    letter-spacing: 1px;
+    color: #fff;
+    font-weight: normal; }
+  @media (min-width: 768px) {
+    .dt-header .dt-logo {
+      float: left; }
+      .dt-header .dt-logo:before {
+        background-image: url(../images/sprites.png);
+        background-position: -62px 0px;
+        width: 48px;
+        height: 48px; } }
+    @media (min-width: 768px) and (-webkit-min-device-pixel-ratio: 2), (min-width: 768px) and (min-resolution: 192dpi) {
+      .dt-header .dt-logo:before {
+        background-image: url(../images/sprites-2x.png);
+        background-size: 110px 94px; } }
+  @media (min-width: 992px) {
+    .dt-header .dt-logo:before {
+      background-image: url(../images/sprites.png);
+      background-position: 0px 0px;
+      width: 60px;
+      height: 60px; } }
+  @media (min-width: 992px) and (-webkit-min-device-pixel-ratio: 2), (min-width: 992px) and (min-resolution: 192dpi) {
+    .dt-header .dt-logo:before {
+      background-image: url(../images/sprites-2x.png);
+      background-size: 110px 94px; } }
+
+.dt-header .dt-menu {
+  list-style: none;
+  margin: -10px 0 0 0;
+  padding: 0 0 10px 35px;
+  line-height: normal; }
+  .dt-header .dt-menu li:before,
+  .dt-header .dt-menu a {
+    display: inline-block;
+    vertical-align: top; }
+  .dt-header .dt-menu li {
+    display: inline; }
+    .dt-header .dt-menu li:before {
+      content: '|';
+      color: #4c4668; }
+    .dt-header .dt-menu li:first-child:before {
+      display: none; }
+  .dt-header .dt-menu a {
     -webkit-transition: color 0.2s;
     -o-transition: color 0.2s;
     transition: color 0.2s;
-    display: inline-block;
-    padding: 14px 0 0 0;
-    margin: 0 15px;
+    margin: 0 7px;
     color: #6481a1;
-    border-top: 6px solid transparent;
-    line-height: 60px;
     letter-spacing: 1px;
-    text-transform: uppercase;
-    text-decoration: none; }
-    header.dt-header nav a:hover {
+    text-transform: uppercase; }
+    .dt-header .dt-menu a:hover,
+    .dt-header .dt-menu a.current {
       color: #0077d2; }
-    header.dt-header nav a.current {
-      color: #0077d2;
-      border-top-color: #0077d2; }
+  @media (min-width: 768px) {
+    .dt-header .dt-menu {
+      margin: 0 -15px;
+      padding: 0;
+      line-height: inherit; }
+      .dt-header .dt-menu a {
+        position: relative;
+        margin: 0 15px;
+        vertical-align: top; }
+        .dt-header .dt-menu a.current:before {
+          position: absolute;
+          top: 0;
+          right: 0;
+          left: 0;
+          content: '';
+          height: 6px;
+          background-color: #0077d2; } }
 
 header.dt-header .dt-jumbotron {
   padding: 80px 0;

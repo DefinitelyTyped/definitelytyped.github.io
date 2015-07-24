@@ -1,6 +1,6 @@
-<a class="logo" href="<%= @site.home %>">Definitely<strong>Typed</strong></a>
 <nav>
-    <ul>
+	<a class="dt-logo" href="<%= @site.home %>"><span>Definitely<strong>Typed</strong></span></a>
+    <ul class="dt-menu">
         <li><a <%- 'class="current"' if @document.section is "guides" %> href="/guides/contributing.html">Guides</a></li>
         <li><a <%- 'class="current"' if @document.section is "directory" %> href="/directory/learn.html">Directory</a></li>
         <li><a <%- 'class="current"' if @document.section is "pages" %> href="/pages/badges.html">Pages</a></li>

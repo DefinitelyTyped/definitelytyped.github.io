@@ -24,6 +24,23 @@
 	margin: 0
 	padding: 0
 
+=position($position, $top:false, $right:false, $bottom:false, $left:false)
+	position: $position
+	@if $top
+		top: $top
+	@if $right
+		right: $right
+	@if $bottom
+		bottom: $bottom
+	@if $left
+		left: $left
+
+=absolute($top:false, $right:false, $bottom:false, $left:false)
+	+position(absolute, $top, $right, $bottom, $left)
+
+=relative($top:false, $right:false, $bottom:false, $left:false)
+	+position(relative, $top, $right, $bottom, $left)
+
 =arrow
 	width: 24px
 	height: 16px

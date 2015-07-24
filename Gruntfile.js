@@ -117,6 +117,7 @@ module.exports = function (grunt) {
 				dest: 'src/files/assets/images/sprites.png',
 				destCss: 'src/assets/styles/dt/_sprites.sass',
 				imgPath: '../images/sprites.png',
+				padding: 2,
 				retinaSrcFilter: 'src/assets/images/**/*-2x.png',
 				retinaDest: 'src/files/assets/images/sprites-2x.png',
 				retinaImgPath: '../images/sprites-2x.png'

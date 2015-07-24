@@ -17,10 +17,32 @@ $logo-large-offset-x: 0px
 $logo-large-offset-y: 0px
 $logo-large-width: 60px
 $logo-large-height: 60px
-$logo-large-total-width: 60px
-$logo-large-total-height: 60px
+$logo-large-total-width: 110px
+$logo-large-total-height: 94px
 $logo-large-image: '../images/sprites.png'
-$logo-large: (0px, 0px, 0px, 0px, 60px, 60px, 60px, 60px, '../images/sprites.png', 'logo-large', )
+$logo-large: (0px, 0px, 0px, 0px, 60px, 60px, 110px, 94px, '../images/sprites.png', 'logo-large', )
+$logo-medium-name: 'logo-medium'
+$logo-medium-x: 62px
+$logo-medium-y: 0px
+$logo-medium-offset-x: -62px
+$logo-medium-offset-y: 0px
+$logo-medium-width: 48px
+$logo-medium-height: 48px
+$logo-medium-total-width: 110px
+$logo-medium-total-height: 94px
+$logo-medium-image: '../images/sprites.png'
+$logo-medium: (62px, 0px, -62px, 0px, 48px, 48px, 110px, 94px, '../images/sprites.png', 'logo-medium', )
+$logo-small-name: 'logo-small'
+$logo-small-x: 0px
+$logo-small-y: 62px
+$logo-small-offset-x: 0px
+$logo-small-offset-y: -62px
+$logo-small-width: 32px
+$logo-small-height: 32px
+$logo-small-total-width: 110px
+$logo-small-total-height: 94px
+$logo-small-image: '../images/sprites.png'
+$logo-small: (0px, 62px, 0px, -62px, 32px, 32px, 110px, 94px, '../images/sprites.png', 'logo-small', )
 $logo-large-2x-name: 'logo-large-2x'
 $logo-large-2x-x: 0px
 $logo-large-2x-y: 0px
@@ -28,20 +50,42 @@ $logo-large-2x-offset-x: 0px
 $logo-large-2x-offset-y: 0px
 $logo-large-2x-width: 120px
 $logo-large-2x-height: 120px
-$logo-large-2x-total-width: 120px
-$logo-large-2x-total-height: 120px
+$logo-large-2x-total-width: 220px
+$logo-large-2x-total-height: 188px
 $logo-large-2x-image: '../images/sprites-2x.png'
-$logo-large-2x: (0px, 0px, 0px, 0px, 120px, 120px, 120px, 120px, '../images/sprites-2x.png', 'logo-large-2x', )
-$spritesheet-width: 60px
-$spritesheet-height: 60px
+$logo-large-2x: (0px, 0px, 0px, 0px, 120px, 120px, 220px, 188px, '../images/sprites-2x.png', 'logo-large-2x', )
+$logo-medium-2x-name: 'logo-medium-2x'
+$logo-medium-2x-x: 124px
+$logo-medium-2x-y: 0px
+$logo-medium-2x-offset-x: -124px
+$logo-medium-2x-offset-y: 0px
+$logo-medium-2x-width: 96px
+$logo-medium-2x-height: 96px
+$logo-medium-2x-total-width: 220px
+$logo-medium-2x-total-height: 188px
+$logo-medium-2x-image: '../images/sprites-2x.png'
+$logo-medium-2x: (124px, 0px, -124px, 0px, 96px, 96px, 220px, 188px, '../images/sprites-2x.png', 'logo-medium-2x', )
+$logo-small-2x-name: 'logo-small-2x'
+$logo-small-2x-x: 0px
+$logo-small-2x-y: 124px
+$logo-small-2x-offset-x: 0px
+$logo-small-2x-offset-y: -124px
+$logo-small-2x-width: 64px
+$logo-small-2x-height: 64px
+$logo-small-2x-total-width: 220px
+$logo-small-2x-total-height: 188px
+$logo-small-2x-image: '../images/sprites-2x.png'
+$logo-small-2x: (0px, 124px, 0px, -124px, 64px, 64px, 220px, 188px, '../images/sprites-2x.png', 'logo-small-2x', )
+$spritesheet-width: 110px
+$spritesheet-height: 94px
 $spritesheet-image: '../images/sprites.png'
-$spritesheet-sprites: ($logo-large, )
-$spritesheet: (60px, 60px, '../images/sprites.png', $spritesheet-sprites, )
-$retina-spritesheet-width: 120px
-$retina-spritesheet-height: 120px
+$spritesheet-sprites: ($logo-large, $logo-medium, $logo-small, )
+$spritesheet: (110px, 94px, '../images/sprites.png', $spritesheet-sprites, )
+$retina-spritesheet-width: 220px
+$retina-spritesheet-height: 188px
 $retina-spritesheet-image: '../images/sprites-2x.png'
-$retina-spritesheet-sprites: ($logo-large-2x, )
-$retina-spritesheet: (120px, 120px, '../images/sprites-2x.png', $retina-spritesheet-sprites, )
+$retina-spritesheet-sprites: ($logo-large-2x, $logo-medium-2x, $logo-small-2x, )
+$retina-spritesheet: (220px, 188px, '../images/sprites-2x.png', $retina-spritesheet-sprites, )
 
 /*
   These "retina group" variables are mappings for the naming and pairing of normal and retina sprites.
@@ -50,7 +94,11 @@ $retina-spritesheet: (120px, 120px, '../images/sprites-2x.png', $retina-spritesh
   */
 $logo-large-group-name: 'logo-large'
 $logo-large-group: ('logo-large', $logo-large, $logo-large-2x, )
-$retina-groups: ($logo-large-group, )
+$logo-medium-group-name: 'logo-medium'
+$logo-medium-group: ('logo-medium', $logo-medium, $logo-medium-2x, )
+$logo-small-group-name: 'logo-small'
+$logo-small-group: ('logo-small', $logo-small, $logo-small-2x, )
+$retina-groups: ($logo-large-group, $logo-medium-group, $logo-small-group, )
 
 /*
   The provided mixins are intended to be used with the array-like variables
