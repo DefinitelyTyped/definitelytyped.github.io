@@ -1,0 +1,132 @@
+/*
+  SASS variables are information about icon's compiled state, stored under its original file name
+
+  .icon-home
+    width: $icon-home-width
+
+  The large array-like variables contain all information about a single icon
+  $icon-home: x y offset_x offset_y width height total_width total_height image_path
+
+  At the bottom of this section, we provide information about the spritesheet itself
+  $spritesheet: width height image $spritesheet-sprites
+  */
+$logo-large-name: 'logo-large'
+$logo-large-x: 0px
+$logo-large-y: 0px
+$logo-large-offset-x: 0px
+$logo-large-offset-y: 0px
+$logo-large-width: 60px
+$logo-large-height: 60px
+$logo-large-total-width: 60px
+$logo-large-total-height: 60px
+$logo-large-image: '../images/sprites.png'
+$logo-large: (0px, 0px, 0px, 0px, 60px, 60px, 60px, 60px, '../images/sprites.png', 'logo-large', )
+$logo-large-2x-name: 'logo-large-2x'
+$logo-large-2x-x: 0px
+$logo-large-2x-y: 0px
+$logo-large-2x-offset-x: 0px
+$logo-large-2x-offset-y: 0px
+$logo-large-2x-width: 120px
+$logo-large-2x-height: 120px
+$logo-large-2x-total-width: 120px
+$logo-large-2x-total-height: 120px
+$logo-large-2x-image: '../images/sprites-2x.png'
+$logo-large-2x: (0px, 0px, 0px, 0px, 120px, 120px, 120px, 120px, '../images/sprites-2x.png', 'logo-large-2x', )
+$spritesheet-width: 60px
+$spritesheet-height: 60px
+$spritesheet-image: '../images/sprites.png'
+$spritesheet-sprites: ($logo-large, )
+$spritesheet: (60px, 60px, '../images/sprites.png', $spritesheet-sprites, )
+$retina-spritesheet-width: 120px
+$retina-spritesheet-height: 120px
+$retina-spritesheet-image: '../images/sprites-2x.png'
+$retina-spritesheet-sprites: ($logo-large-2x, )
+$retina-spritesheet: (120px, 120px, '../images/sprites-2x.png', $retina-spritesheet-sprites, )
+
+/*
+  These "retina group" variables are mappings for the naming and pairing of normal and retina sprites.
+
+  The list formatted variables are intended for mixins like `retina-sprite` and `retina-sprites`.
+  */
+$logo-large-group-name: 'logo-large'
+$logo-large-group: ('logo-large', $logo-large, $logo-large-2x, )
+$retina-groups: ($logo-large-group, )
+
+/*
+  The provided mixins are intended to be used with the array-like variables
+
+  .icon-home
+    @include sprite-width($icon-home)
+
+  .icon-email
+    @include sprite($icon-email)
+  */
+@mixin sprite-width($sprite)
+  width: nth($sprite, 5)
+
+@mixin sprite-height($sprite)
+  height: nth($sprite, 6)
+
+@mixin sprite-position($sprite)
+  $sprite-offset-x: nth($sprite, 3)
+  $sprite-offset-y: nth($sprite, 4)
+  background-position: $sprite-offset-x  $sprite-offset-y
+
+@mixin sprite-image($sprite)
+  $sprite-image: nth($sprite, 9)
+  background-image: url(#{$sprite-image})
+
+@mixin sprite($sprite)
+  @include sprite-image($sprite)
+  @include sprite-position($sprite)
+  @include sprite-width($sprite)
+  @include sprite-height($sprite)
+
+/*
+  The `retina-sprite` mixin sets up rules and a media query for a sprite/retina sprite.
+    It should be used with a "retina group" variable.
+
+  The media query is from CSS Tricks: https://css-tricks.com/snippets/css/retina-display-media-query/
+
+  $icon-home-group: ('icon-home', $icon-home, $icon-home-2x, )
+
+  .icon-home
+    @include retina-sprite($icon-home-group)
+  */
+@mixin sprite-background-size($sprite)
+  $sprite-total-width: nth($sprite, 7)
+  $sprite-total-height: nth($sprite, 8)
+  background-size: $sprite-total-width $sprite-total-height
+
+@mixin retina-sprite($retina-group)
+  $normal-sprite: nth($retina-group, 2)
+  $retina-sprite: nth($retina-group, 3)
+  @include sprite($normal-sprite)
+
+  @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi)
+    @include sprite-image($retina-sprite)
+    @include sprite-background-size($normal-sprite)
+
+/*
+  The `sprites` mixin generates identical output to the CSS template
+    but can be overridden inside of SASS
+
+  @include sprites($spritesheet-sprites)
+  */
+@mixin sprites($sprites)
+  @each $sprite in $sprites
+    $sprite-name: nth($sprite, 10)
+    .#{$sprite-name}
+      @include sprite($sprite)
+
+/*
+  The `retina-sprites` mixin generates a CSS rule and media query for retina groups
+    This yields the same output as CSS retina template but can be overridden in SASS
+
+  @include retina-sprites($retina-groups)
+  */
+@mixin retina-sprites($retina-groups)
+  @each $retina-group in $retina-groups
+    $sprite-name: nth($retina-group, 1)
+    .#{$sprite-name}
+      @include retina-sprite($retina-group)

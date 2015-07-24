@@ -46,6 +46,7 @@
     "grunt-contrib-watch": "^0.6.1",
     "grunt-gh-pages": "0.10.0",
     "grunt-sass": "^1.0.0",
+    "grunt-spritesmith": "^4.7.1",
     "grunt-ts": "^4.2.0",
     "highlight.js": "^8.6.0",
     "jshint-path-reporter": "^0.1.3"

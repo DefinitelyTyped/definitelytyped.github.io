@@ -8,6 +8,7 @@ module.exports = function (grunt) {
 	grunt.loadNpmTasks('grunt-gh-pages');
 	grunt.loadNpmTasks('grunt-sass');
 	grunt.loadNpmTasks('grunt-ts');
+	grunt.loadNpmTasks('grunt-spritesmith');
 
 	grunt.loadTasks('./tasks');
     grunt.renameTask('watch', 'grunt-watch');
@@ -99,7 +100,7 @@ module.exports = function (grunt) {
 			}
 		},
         ts: {
-            default : {
+            defaultdefault : {
                 files: [{
                     src: ['src/assets/scripts/**/*.ts'],
                     dest: 'src/files/assets/scripts/main.js'
@@ -110,6 +111,17 @@ module.exports = function (grunt) {
                 }
             }
         },
+		sprite:{
+			default: {
+				src: 'src/assets/images/**/*.png',
+				dest: 'src/files/assets/images/sprites.png',
+				destCss: 'src/assets/styles/dt/_sprites.sass',
+				imgPath: '../images/sprites.png',
+				retinaSrcFilter: 'src/assets/images/**/*-2x.png',
+				retinaDest: 'src/files/assets/images/sprites-2x.png',
+				retinaImgPath: '../images/sprites-2x.png'
+			}
+		},
         'grunt-watch': {
             sass: {
                 files: ['src/assets/styles/**/*'],
@@ -118,7 +130,11 @@ module.exports = function (grunt) {
             ts: {
                 files: ['src/assets/scripts/**/*'],
                 tasks: ['ts']
-            }
+            },
+			sprite: {
+				files: ['src/assets/images/**/*'],
+				tasks: ['sprite']
+			}
         }
 	});
 
