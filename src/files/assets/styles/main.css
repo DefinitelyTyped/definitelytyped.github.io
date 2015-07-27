@@ -1205,7 +1205,7 @@ ul.benefits li {
     background-image: url(../images/benefits-icons.png); }
     @media (-webkit-min-device-pixel-ratio: 1.5), (min--moz-device-pixel-ratio: 1.5), (-o-min-device-pixel-ratio: 3/2), (min-resolution: 1.5dppx) {
       ul.benefits li:before {
-        background-image: url(../images/benefits-icons@2x.png);
+        background-image: url(../images/benefits-icons-2x.png);
         background-size: 120px 360px; } }
   ul.benefits li.ide:before {
     background-position: 0 -120px; }
