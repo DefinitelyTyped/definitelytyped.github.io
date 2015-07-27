@@ -8,7 +8,7 @@ section: 'home'
     <div class="container">
         <%- @partial('header_nav') %>
         <div class="dt-jumbotron">
-            <h1>The repository for high quality <br><strong>TypeScript type definitions.</strong></h1>
+            <h1>The repository for high quality <br class="hidden-xs" /><strong>TypeScript type definitions.</strong></h1>
             <p class="dt-buttons">
                 <a href="<%= @site.github %>" class="dt-button github">GitHub repository</a>
                 <a href="/guides/contributing.html" class="dt-button guide">Contribution guide</a>

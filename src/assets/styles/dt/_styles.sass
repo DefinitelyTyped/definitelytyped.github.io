@@ -63,8 +63,14 @@ body
 
 .style-raleway-larger
 	font-family: $font-raleway
-	font-size: $size-larger
+	font-size: $size-larger * 0.7
 	font-weight: bold
+
+	@media (min-width: $screen-sm-min)
+		font-size: $size-larger * 0.85
+
+	@media (min-width: $screen-md-min)
+		font-size: $size-larger
 
 .style-raleway-huge
 	font-family: $font-raleway
