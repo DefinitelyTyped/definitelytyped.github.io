@@ -11,30 +11,26 @@
 
 .dt-button
 	@extend .style-raleway-normal
-	+transition(all 0.1s)
-	border-radius: 4px
+	+transition(background-color 0.1s)
+	+relative()
 	display: inline-block
+	overflow: hidden
+	border-radius: 4px
 	padding: 0 20px
 	height: 50px
-	background-color: $color-main
-	background-repeat: no-repeat
-	background-position: left center
-	color: $color-white
+	background: $color-main
+	color: $color-white !important
 	line-height: 50px
 	text-transform: uppercase
-	text-decoration: none
 
 	&:hover
 		background-color: #0b508b
 
-	&.github
-		padding-left: 75px
-		background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADwAAAA8CAMAAAANIilAAAACB1BMVEUAjesAJEEAecoAhd4AHjYAc8EAToUAi+cAaK8AiOIAeMgAi+gAUowAZakAYKEAh+EAPmsAXp8Ad8cAI0AAGjAAW5oAHjgAiOQAftMAdMMAc8AAJUIAiucAIj0ARXcAgNYAdsYAMlgALU8AHDMAe84AjOkAOGIAWpgAZKkAdMIAO2YAecsAjeoAabAAhNwAU40Ab7sAN2AAY6cAOWMAVpEAWZYAVpEAfM8AZ60ALlEAHTYANFoARncAHTUATIIAbbcAZasANV0AYaQARXYAGzMAUYoAITwAcLwALE0ARncAITwAPWoAJkQAfdAAVpIASn8ANFoAMFUAhuAAgdcAQnEAZqwAPGkAHDQAbLYAO2YAeMkAYqYAV5MAHzkAYaMAQXEASHwAPmsAXJwAQXAAS4EAY6YAdcUAUIgAdcQATYQAL1IAW5sAJUMAW5kAR3kAb7oASHsAhN0Ah+EAieUARHQAJ0YAcr8AGzIAcsAAieQAJkQAR3oAUosAMlcAQG4AJUIAGzMAJ0UAdsUAYqUAK0wAQW8AarIAgtkAM1oAOmUAQ3MAZKgAg9oAcb4AVI4AarMAMFQAGjEAIz8AQ3QAes0AMVYAUIcAR3oAfdEAHjgAUIcAS38AYKEAXJsAV5QAQG4Af9UAHTUAIDsALE4Ab7oAgtkAOWMAVI8ASX0AX6AAUYoAGS8AGjCD+ZoLAAAAq3RSTlPE+MzH/M/gxdTGzcXe1djG6NjN+f7a/MbKzs/4xfnlyc3v8/3LxOza1c7rzMTTyN7Q7Nbr3dvcy9Ty/O7l/OHR1e7X5f3f+dDz5Prp9svc4u/wx8nm1On90urN1tz71+fj6dnn4dbO387g8dr32uTQ48fHxeb2z/7Pxvfj3vDn9/72zdf059PI7+vm1sjQ3dPx/vnmzPDf5Mr74OLX2dzoyv3689HJ7N3j2N6h60eKAAACD0lEQVR4Xu3URW8cQRCG4ZpZ5vWC7WVGIzMzQ+LEDGFmZmZmZs6XH5msNbKyysjqycGnee+PqlUtFa1CcnJyt5QX9k7/DVSb7I51jNgPIFcd3VKyuHD28I6qoo4IgP2MuAyZ6pHVBkZcAZE6GLFaDFcy4rQYHqxhslUQrYLFWnaLY4ebARdBPJxmwAkAaBo3t7bvqjZ2Gas3lidnxwBgPQMeBsCVUnabATQwYCeAGSKNYlkWE9FOoIwBmwAuj2JxT1SwPb4+ohLgJgN+r0SIaOgY9gj4FDgvmYDhFdCatTaVKqjn+TAuF5KiG1oBz6I3RvOAmed5W0pVcFsE5w/Zeo5vDbq2GxHhiZLbNALWNbcQ9eHIUddF/bTKzUdF8PN9+lTgwMFDmsKBf38l0A+TwatTFNe4g6Ui2KIhobwpjCuyX1WHrmVwglYucXLQr9UHFBad5c8qtH5PmO2QFIw26oi8ycYzvbkPuXOc3TeaVrcQW4aZ820GyrSApTovkYRqcSVjr0Ko+5oUfR03clqddZjrnAihXwmtFHynCUvd9eQaMZCGmaR07/7Er8gDmDilGtZHyCFpPXYVPEE5V/8U1mcCllQD2u2ZySP/g+Mw+168hPUVXkvHU3gzx73FuxHMS7aTHz5qHZ8+I16LsS8SbX7oa+obKgvbMOkMf5eIYwai5h9EeT8TRBpaneTk5H4DtNnu8k73Pk0AAAAASUVORK5CYII=)
-
-		+high-dpi
-			background-image: url(#{$image-path}button-github@2x.png)
-			background-size: 60px 60px
-
+	&.github:before
+		+absolute(0, false, false, 0)
+		+retina-sprite($button-github-group)
+		content: ''
+		display: inline-block
 
 	&.guide
 		padding-left: 75px
