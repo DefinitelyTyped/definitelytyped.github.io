@@ -14,12 +14,20 @@
 // Styleguide 1.5
 
 html
-	font-smoothing: antialiased
 	text-rendering: optimizeLegibility
+	font-smoothing: antialiased
+	-webkit-font-smoothing: antialiased
+	-moz-font-smoothing: antialiased
 
 body
 	font-family: $font-default
-	font-size: $size-normal
+	font-size: $size-normal * 0.85
+
+	@media (min-width: $screen-sm-min)
+		font-size: $size-normal * 0.9
+
+	@media (min-width: $screen-md-min)
+		font-size: $size-normal
 
 .style-default-lead
 	font-family: $font-default

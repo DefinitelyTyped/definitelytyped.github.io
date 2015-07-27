@@ -9,6 +9,16 @@
 //
 // Styleguide 4.3
 
+=dt-button-with-icon($sprite-group)
+	padding-left: 75px
+
+	&:before
+		+retina-sprite($sprite-group)
+		+absolute(50%, false, false, 0)
+		content: ''
+		display: inline-block
+		margin-top: -30px
+
 .dt-button
 	@extend .style-raleway-normal
 	+transition(background-color 0.1s)
@@ -26,21 +36,13 @@
 	&:hover
 		background-color: #0b508b
 
-	&.github:before
-		+absolute(0, false, false, 0)
-		+retina-sprite($button-github-group)
-		content: ''
-		display: inline-block
+	&.github
+		+dt-button-with-icon($button-github-group)
 
 	&.guide
-		padding-left: 75px
+		+dt-button-with-icon($button-guides-group)
 		background-color: $color-main-dark
-		background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADwAAAA8CAYAAAA6/NlyAAACt0lEQVR4AezBgQAAAACAoP2pF6kCAACA27OXkKiiMIDjx0hFSzQwMUMMQl1IQQbSQwh6QWhUBBVYIoTQsgjDIoOK0jBqkxRkCBYJEr2kpEUFLUqx2pTkQmp6jVhBmtZUI379F7P4uOC767kjV/jNwm/1Z87MHL5r4686mIYanMAmZMJMG16mUzLaIEo/OnARZViKOTMhOA73IWMYRgAtOIqNyIjG4EbIJH1HG+pQijyvB5+F/Edh1Ho1uAKi3EYFGvEGYcgkvPBicBlEuQKjxCIPZZHZK/yBjCGEtV4LLsJfiFKCRJgRzEYuduMSuiFO2OO1z/AK9EOc8F4d60LMgxnBEYhDpde+pXMRhIxTEK2owjqkYhaKMQBR6mCQ5ZXgBeiCTEEvOjEEUe7AoBqDOGQ7OAlPIS7oQBIS0ANBs83gWLRAXBBQR3gxwhDb73ADxAV9WA4TkYYBCE7bCj4DcUEYxTDKGvyC4JaN4HKIS/bBKIvwEYJhFE13cDq+QVxwCkaZi3Y1r7Dxs7Qf4oJGGIcmNb9s6+LRCkEIB7EV1WjHb8gkPEQ8jHJczR8j3lZwFwR3YRxyUI4b+AwZh9eYD6OUqHk30m0uAL5AcB5mFClYjxq0IwRx6EEOjLISPyHoR77tjUcAguswE5CNvWhGEO+wGkbJxAcIhrEdxnbwPQi+TmHzmIJkGCXRcUU97JUl3jZIxHOsQizMFF2DRDR4aWsZg6sQpRN12IxUmAk6Bol4ggTvBANxuIAhiEMvbqIc2TBj2AWJeIsML++ll6ESj/AD4hDCM5xEoXPNgwIMQjCAgmhaxGehFE34BHFCN+qxBfkIqNnOaH7UkoINqMXLEY6+/l/VTHq2FIMlOIAH6Bv9Dh39wU4LsQP1OIcE+8H2+cF+sB/sB/vBfrAf7Af7wX6wH+wH2/EPE7nCCEpIJXoAAAAASUVORK5CYII=)
 		border: 1px solid $color-main
-
-		+high-dpi
-			background-image: url(#{$image-path}button-guides@2x.png)
-			background-size: 60px 60px
 
 		&:hover
 			background-color: #0b508b
