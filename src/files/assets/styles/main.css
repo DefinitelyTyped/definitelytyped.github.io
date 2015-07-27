@@ -1232,7 +1232,7 @@ ul.benefits li {
     padding-left: 75px; }
     .dt-button.github:before {
       background-image: url(../images/sprites.png);
-      background-position: 0px 0px;
+      background-position: -62px -124px;
       width: 60px;
       height: 60px;
       position: absolute;
@@ -1244,14 +1244,14 @@ ul.benefits li {
       @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
         .dt-button.github:before {
           background-image: url(../images/sprites-2x.png);
-          background-size: 236px 122px; } }
+          background-size: 298px 184px; } }
   .dt-button.guide {
     padding-left: 75px;
     background-color: #162943;
     border: 1px solid #0077d2; }
     .dt-button.guide:before {
       background-image: url(../images/sprites.png);
-      background-position: -62px 0px;
+      background-position: 0px -62px;
       width: 60px;
       height: 60px;
       position: absolute;
@@ -1263,7 +1263,7 @@ ul.benefits li {
       @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
         .dt-button.guide:before {
           background-image: url(../images/sprites-2x.png);
-          background-size: 236px 122px; } }
+          background-size: 298px 184px; } }
     .dt-button.guide:hover {
       background-color: #0b508b; }
 
@@ -1445,7 +1445,7 @@ ul.benefits li {
     vertical-align: middle; }
   .dt-header .dt-logo:before {
     background-image: url(../images/sprites.png);
-    background-position: -174px -26px;
+    background-position: -236px -26px;
     width: 32px;
     height: 32px;
     content: '';
@@ -1453,7 +1453,7 @@ ul.benefits li {
     @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
       .dt-header .dt-logo:before {
         background-image: url(../images/sprites-2x.png);
-        background-size: 236px 122px; } }
+        background-size: 298px 184px; } }
   .dt-header .dt-logo span {
     line-height: 1em;
     letter-spacing: 1px;
@@ -1464,23 +1464,23 @@ ul.benefits li {
       float: left; }
       .dt-header .dt-logo:before {
         background-image: url(../images/sprites.png);
-        background-position: -124px -26px;
+        background-position: -186px -26px;
         width: 48px;
         height: 48px; } }
     @media (min-width: 768px) and (-webkit-min-device-pixel-ratio: 2), (min-width: 768px) and (min-resolution: 192dpi) {
       .dt-header .dt-logo:before {
         background-image: url(../images/sprites-2x.png);
-        background-size: 236px 122px; } }
+        background-size: 298px 184px; } }
   @media (min-width: 992px) {
     .dt-header .dt-logo:before {
       background-image: url(../images/sprites.png);
-      background-position: 0px -62px;
+      background-position: 0px 0px;
       width: 60px;
       height: 60px; } }
   @media (min-width: 992px) and (-webkit-min-device-pixel-ratio: 2), (min-width: 992px) and (min-resolution: 192dpi) {
     .dt-header .dt-logo:before {
       background-image: url(../images/sprites-2x.png);
-      background-size: 236px 122px; } }
+      background-size: 298px 184px; } }
 
 .dt-header .dt-menu {
   list-style: none;
@@ -1556,7 +1556,7 @@ header.dt-header .dt-jumbotron {
     color: #fff; }
     .dt-footer h2.guides:before {
       background-image: url(../images/sprites.png);
-      background-position: -124px -76px;
+      background-position: -186px -76px;
       width: 20px;
       height: 20px;
       content: '';
@@ -1566,10 +1566,10 @@ header.dt-header .dt-jumbotron {
       @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
         .dt-footer h2.guides:before {
           background-image: url(../images/sprites-2x.png);
-          background-size: 236px 122px; } }
+          background-size: 298px 184px; } }
     .dt-footer h2.directory:before {
       background-image: url(../images/sprites.png);
-      background-position: -208px -26px;
+      background-position: -208px -76px;
       width: 20px;
       height: 20px;
       content: '';
@@ -1579,10 +1579,10 @@ header.dt-header .dt-jumbotron {
       @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
         .dt-footer h2.directory:before {
           background-image: url(../images/sprites-2x.png);
-          background-size: 236px 122px; } }
+          background-size: 298px 184px; } }
     .dt-footer h2.pages:before {
       background-image: url(../images/sprites.png);
-      background-position: -146px -76px;
+      background-position: -270px -26px;
       width: 20px;
       height: 20px;
       content: '';
@@ -1592,7 +1592,7 @@ header.dt-header .dt-jumbotron {
       @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
         .dt-footer h2.pages:before {
           background-image: url(../images/sprites-2x.png);
-          background-size: 236px 122px; } }
+          background-size: 298px 184px; } }
   .dt-footer li {
     margin: 0.25em 0; }
   .dt-footer a {
@@ -1628,7 +1628,7 @@ header.dt-header .dt-jumbotron {
     color: #fff; }
     .dt-footer ul.quick a:after {
       background-image: url(../images/sprites.png);
-      background-position: -168px -76px;
+      background-position: -230px -76px;
       width: 24px;
       height: 16px;
       position: absolute;
@@ -1643,7 +1643,7 @@ header.dt-header .dt-jumbotron {
       @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
         .dt-footer ul.quick a:after {
           background-image: url(../images/sprites-2x.png);
-          background-size: 236px 122px; } }
+          background-size: 298px 184px; } }
     .dt-footer ul.quick a:hover {
       background: #2d3b57;
       padding-left: 13px;
@@ -1667,7 +1667,7 @@ header.dt-header .dt-jumbotron {
     line-height: 24px; }
     .dt-love p.icons:before {
       background-image: url(../images/sprites.png);
-      background-position: -124px 0px;
+      background-position: -186px 0px;
       width: 112px;
       height: 24px;
       content: '';
@@ -1677,7 +1677,7 @@ header.dt-header .dt-jumbotron {
       @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
         .dt-love p.icons:before {
           background-image: url(../images/sprites-2x.png);
-          background-size: 236px 122px; } }
+          background-size: 298px 184px; } }
   .dt-love a {
     color: #939393;
     text-decoration: none; }
@@ -1897,7 +1897,7 @@ nav.menu a {
     text-decoration: underline; }
   .typography a.action:after {
     background-image: url(../images/sprites.png);
-    background-position: -168px -76px;
+    background-position: -230px -76px;
     width: 24px;
     height: 16px;
     content: '';
@@ -1906,7 +1906,7 @@ nav.menu a {
     @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
       .typography a.action:after {
         background-image: url(../images/sprites-2x.png);
-        background-size: 236px 122px; } }
+        background-size: 298px 184px; } }
 
 .typography img {
   display: block; }
