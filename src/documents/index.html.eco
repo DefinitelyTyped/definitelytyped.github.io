@@ -60,7 +60,7 @@ section: 'home'
             </p>
             <p><a href="http://www.tsdpm.com/" class="action">Find out more about TSD</a></p>
         </div>
-        <div class="col-md-6 medium-padding-left typography">
+        <div class="col-md-6 margin-top-sm-only medium-padding-left typography">
             <div class="shadow">
                 <img src="/media/index/get-nuget.png" class="responsive" />
             </div>

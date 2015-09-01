@@ -90,6 +90,7 @@ namespace dt.repository
 		 */
 		idle() {
 			this.set('mode', ViewMode.Idle);
+			this.set('query', '');
 			this.setResults([]);
 		}
 

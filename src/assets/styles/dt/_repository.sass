@@ -14,30 +14,28 @@
 
 	.field
 		display: table-cell
-		padding-left: 10px
 
 		&:first-child
 			width: 100%
-			padding-left: 0
 
 	button,
 	input
-		border-radius: 4px
-		height: 60px
-		padding: 0 15px
+		height: 45px
+		padding: 0
 		border: none
 		outline: none
-		line-height: 60px
+		line-height: 45px
 		vertical-align: top
-		font-size: $size-large
+		font-size: $size-normal
 
 	button
 		background: $color-main-darkest
 		color: $color-white
+		font-size: 0
+		transition: background-color 0.2s
 
-	input
-		width: 100%
-		background-color: $color-white
+		&:hover
+			background: $color-main-dark
 
 	.sword
 		display: table
@@ -52,38 +50,89 @@
 			width: 100%
 
 		input
+			width: 100%
+			padding: 0 15px
+			background-color: $color-white
 			border-radius: 4px 0 0 4px
 
 		button
 			padding: 0
-			border-radius: 0 4px 4px 0
 			font-size: 0
 			color: transparent
 
 			&:before
-				+retina-sprite($repository-search-group)
+				+retina-sprite($repository-sm-search-group)
 				content: ''
 				display: inline-block
 				vertical-align: top
 
 		&.has-sword button:before
-			+sprite-position($repository-closer)
+			+sprite-position($repository-sm-closer)
 
 	.all
 		white-space: nowrap
-		padding-left: 0
+		border-radius: 0 4px 4px 0
 
 		&:before
-			+retina-sprite($repository-all-group)
+			+retina-sprite($repository-sm-all-group)
 			content: ''
 			display: inline-block
 			vertical-align: top
 
+	@media (min-width: $screen-md-min)
+		.field:first-child
+			padding-right: 10px
+
+		button,
+		input
+			height: 50px
+			line-height: 50px
+			font-size: $size-lead
+
+		.sword
+			button
+				border-radius: 0 4px 4px 0
+
+				&:before
+					+retina-sprite($repository-md-search-group)
+
+			&.has-sword button:before
+				+sprite-position($repository-md-closer)
+
+		.all
+			padding-right: 15px
+			border-radius: 4px
+
+			&:before
+				+retina-sprite($repository-md-all-group)
+
+	@media (min-width: $screen-lg-min)
+		button,
+		input
+			height: 60px
+			line-height: 60px
+			font-size: $size-large
+
+		.sword
+			button
+				&:before
+					+retina-sprite($repository-lg-search-group)
+
+			&.has-sword button:before
+				+sprite-position($repository-lg-closer)
+
+		.all
+			&:before
+				+retina-sprite($repository-lg-all-group)
+
 .dt-repository-search-results
-	margin: 40px 0
+	margin: 20px 0
 
 	&.empty
 		display: none
+
+	@media (min-width: $screen-md-min)
+		margin: 40px 0
 
 
 .dt-repository-search-list
@@ -94,15 +143,17 @@
 		position: relative
 		color: $color-white
 		border-top: 2px solid #313d55
-		transition: background-color 0.2s, height 0.4s
+		transition: border-top-color 0.2s, height 0.4s
 
 		&:last-child
 			border-bottom: 2px solid #313d55
 
 		&:hover,
 		&.expanded
-			background: #313d55
 			border-top-color: $color-main-darker
+
+			.header
+				background: #313d55
 
 			& + li
 				border-top-color: $color-main-darker
@@ -120,50 +171,54 @@
 		&.collapsing .details
 			animation: fade-out 0.4s both
 
-	a
-		color: $color-white
-		text-decoration: none
-
-		&.download,
-		&.expand
-			+retina-sprite($repository-download-group)
-			content: ''
-			overflow: hidden
-			display: inline-block
-			font-size: 0
-			color: transparent
-			opacity: 0.8
-			transition: opacity 0.1s
-
-		&:hover
-			opacity: 1
-
-		&.download
-			+sprite-position($repository-download)
-
-		&.expand
-			+sprite-position($repository-goto)
-
 	.header
-		@extend .style-raleway-lead
+		+clearfix
 		text-align: right
-		padding: 0 20px
-		line-height: 0
+		padding: 15px
 		cursor: pointer
+		transition: background-color 0.2s
 
 		.title
+			@extend .style-raleway-lead
 			float: left
 			margin: 0
-			line-height: 60px
 			text-decoration: none
+
+		a
+			display: none
+			margin: 0 0 0 20px
+			color: $color-white
+			text-decoration: none
+			line-height: 50px
+			vertical-align: top
+
+			&:before
+				+retina-sprite($repository-download-group)
+				content: ''
+				display: inline-block
+				margin: 0 5px 0 0
+				opacity: 0.8
+				transition: opacity 0.1s
+				vertical-align: text-bottom
+
+			&:hover:before
+				opacity: 1
+
+			&.download:before
+				+sprite-position($repository-download)
+
+			&.github:before
+				+sprite-position($repository-github)
 
 	.details
 		position: absolute
 		width: 100%
-		padding: 0 20px
+		overflow: hidden
+		padding: 0 15px
 		visibility: hidden
 		box-sizing: border-box
 		-moz-box-sizing: border-box
+		background: rgba(#313d55, 0.5)
 
 		.row
 			margin-top: 20px
@@ -171,22 +226,90 @@
 		a
 			color: lighten($color-main-light, 20%)
 
+	@media (min-width: $screen-md-min)
+		.header
+			padding: 0 20px
+
+			.title
+				line-height: 50px
+
+			a
+				display: inline-block
+
+		.details
+			padding: 0 20px
+
+	@media (min-width: $screen-lg-min)
+		.header
+			.title
+				line-height: 60px
+
+			a
+				line-height: 60px
 
 .dt-repository-search-pagination
+	@extend .list-style-none
 	margin-top: 20px
 	text-align: center
+	font-size: 0
 
 	&.empty
 		display: none
 
 	li
 		display: inline-block
-		margin: 0 20px
+
+	a,
+	span
+		@extend .style-default-lead
+		display: inline-block
+		padding: 4px
+		min-width: 30px
+		text-decoration: none
+		text-align: center
+
+	span
+		color: rgba($color-main-light, 0.4)
 
 	a
-		@extend .style-raleway-large
-		text-decoration: none
 		color: $color-main-light
+		transition: color 0.2s
+
+		&:hover
+			color: lighten($color-main-light, 25%)
 
 	.current a
 		color: $color-white
+
+	.previous,
+	.next
+		a,
+		span
+			font-size: 0
+			color: transparent
+
+		span
+			opacity: 0.4
+
+		a:before,
+		span:before
+			+retina-sprite($pagination-next-group)
+			content: ''
+			display: inline-block
+
+		a:hover:before
+			+sprite-position($pagination-next-hover)
+
+	.previous
+		a:before,
+		span:before
+			+sprite-position($pagination-previous)
+
+		a:hover:before
+			+sprite-position($pagination-previous-hover)
+
+	@media (min-width: $screen-md-min)
+		a,
+		span
+			min-width: 40px
+			padding: 6px

@@ -2,8 +2,8 @@
     <script class="list-row-compact" type="text/template">
 		<div class="header">
 			<span class="title"><%= name %></span>
-			<a href="<%= info.reposUrl %>/raw/master/<%= path %>" class="download">Download</a>
-			<a href="#" class="expand">Details</a>
+			<a href="<%= info.reposUrl %>/raw/master/<%= path %>" class="download" download>Download</a>
+			<a href="<%= info.reposUrl %>/tree/master/<%= project %>" class="github">Open on GitHub</a>
 		</div>
     </script>
 
@@ -20,37 +20,39 @@
                         <dd><a href="http://www.nuget.org/packages/<%= project %>.TypeScript.DefinitelyTyped/">Definitions on NuGet</a></dd>
 
                         <% if (info.version) { %>
-                        <dt>Version</dt>
-                        <dd><%= info.version %></dd>
+							<dt>Version</dt>
+							<dd><%= info.version %></dd>
                         <% } %>
-                        <% if (info.references.length) { %>
-                        <dt>References</dt>
-                        <%_(info.references).each(function(reference) { %>
-                        <dd><%= reference %></dd>
-                        <% }); %>
+
+						<% if (info.references.length) { %>
+							<dt>References</dt>
+							<% _(info.references).each(function(reference) { %>
+								<dd><%= reference %></dd>
+							<% }); %>
                         <% } %>
+
                         <% if (info.authors.length) { %>
-                        <dt>Authors</dt>
-                        <%_(info.authors).each(function(author) { %>
-                        <dd>
-                            <% if (author.url) { %>
-                            <a href="<%= author.url %>"><%= author.name %></a>
-                            <% } else { %>
-                            <%= author.name %>
-                            <% } %>
-                        </dd>
-                        <% }); %>
+							<dt>Authors</dt>
+							<% _(info.authors).each(function(author) { %>
+								<dd>
+									<% if (author.url) { %>
+									<a href="<%= author.url %>"><%= author.name %></a>
+									<% } else { %>
+									<%= author.name %>
+									<% } %>
+								</dd>
+							<% }); %>
                         <% } %>
                     </dl>
                 </div>
-                <div class="col-md-9 typography">
+                <div class="col-md-9 margin-top-sm-only typography">
                     <% if (info.description) { %>
-                    <p><%= info.description %></p>
+                    	<p><%= info.description %></p>
                     <% } %>
 
                     <h3>GitHub</h3>
                     <p>You can download this package directly from GitHub:</p>
-                    <p><a href="<%= info.reposUrl %>/raw/master/<%= path %>"><%= info.reposUrl %>/raw/master/<%= path %></a></p>
+                    <p><a href="<%= info.reposUrl %>/raw/master/<%= path %>" download><%= info.reposUrl %>/raw/master/<%= path %></a></p>
 
                     <h3>TSD</h3>
                     <p>If you havent installed tsd yet, you can do so by running:</p>
@@ -67,7 +69,13 @@
     </script>
 
     <script class="pagination" type="text/template">
-        <li class="<%= className %>"><a href="#" data-index="<%= index %>"><%= label %></a></li>
+        <li class="<%= className %>">
+			<% if (typeof index !== 'undefined') { %>
+				<a href="#" data-index="<%= index %>"><%= label %></a>
+			<% } else { %>
+				<span><%= label %></span>
+			<% } %>
+		</li>
     </script>
 
     <div class="container">

@@ -18,7 +18,7 @@ namespace dt
 	/**
 	 * List of known vendor prefixes.
 	 */
-	var prefixes = ['MS', 'webkit', 'moz', 'o'];
+	var prefixes = ['MS', 'Webkit', 'Moz', 'O'];
 
 
 	/**
@@ -61,19 +61,12 @@ namespace dt
 	/**
 	 * Return the prefixed event name of the given event name.
 	 */
-	export function getPrefixedEvent(name:string):string {
-		return withDummyElement((el) => {
-			var lcName = name.toLowerCase();
-			if ('on' + name in el) return name;
-			if ('on' + lcName in el) return lcName;
-
-			for (var prefix of prefixes) {
-				if ('on' + prefix + name in el) return prefix + name;
-				if ('on' + prefix.toLowerCase() + lcName in el) return prefix.toLowerCase() + lcName;
-			}
-
-			return null;
-		});
+	export function getPrefixedEvent(styleName:string, fallback:string, mapping:any):string {
+		if (styleName in mapping) {
+			return mapping[styleName];
+		} else {
+			return fallback;
+		}
 	}
 
 
@@ -82,6 +75,10 @@ namespace dt
 	 */
 	withDummyElement(function() {
 		transitionStyle = getPrefixedStyle('transition');
-		transitionEndEvent = getPrefixedEvent('TransitionEnd');
+		transitionEndEvent = getPrefixedEvent(transitionStyle, 'transitionend', {
+			'OTransition':'otransitionend',
+			'MozTransition':'transitionend',
+			'WebkitTransition':'webkitTransitionEnd'
+		});
 	});
 }

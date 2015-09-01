@@ -69,9 +69,9 @@ namespace dt.repository
 			}
 
 			var current = Math.floor(model.resultsOffset / model.resultsPerPage);
-			var min = Math.max(0, current - 3);
-			var max = Math.min(model.resultsPages - 1, min + 6);
-			min     = Math.max(0, max - 6);
+			var min = Math.max(0, current - 2);
+			var max = Math.min(model.resultsPages - 1, min + 4);
+			min     = Math.max(0, max - 4);
 
 			return this.getItemsRange(current, min, max, model.resultsPages);
 		}
@@ -89,6 +89,11 @@ namespace dt.repository
 					label: '&lt;',
 					className: 'previous'
 				});
+			} else {
+				result.push({
+					label: '&lt;',
+					className: 'previous disabled'
+				});
 			}
 
 			for (var index = min; index <= max; index++) {
@@ -105,10 +110,15 @@ namespace dt.repository
 					label: '&gt;',
 					className: 'next'
 				});
+			} else {
+				result.push({
+					label: '&gt;',
+					className: 'next disabled'
+				});
 			}
 
 			return result;
-		}
+		}‚
 
 
 		/**

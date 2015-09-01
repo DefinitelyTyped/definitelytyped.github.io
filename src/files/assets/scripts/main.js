@@ -173,6 +173,7 @@ var dt;
             };
             ViewState.prototype.idle = function () {
                 this.set('mode', ViewMode.Idle);
+                this.set('query', '');
                 this.setResults([]);
             };
             ViewState.prototype.all = function () {
@@ -371,9 +372,9 @@ var dt;
                     return [];
                 }
                 var current = Math.floor(model.resultsOffset / model.resultsPerPage);
-                var min = Math.max(0, current - 3);
-                var max = Math.min(model.resultsPages - 1, min + 6);
-                min = Math.max(0, max - 6);
+                var min = Math.max(0, current - 2);
+                var max = Math.min(model.resultsPages - 1, min + 4);
+                min = Math.max(0, max - 4);
                 return this.getItemsRange(current, min, max, model.resultsPages);
             };
             Pagination.prototype.getItemsRange = function (current, min, max, count) {
@@ -383,6 +384,12 @@ var dt;
                         index: current - 1,
                         label: '&lt;',
                         className: 'previous'
+                    });
+                }
+                else {
+                    result.push({
+                        label: '&lt;',
+                        className: 'previous disabled'
                     });
                 }
                 for (var index = min; index <= max; index++) {
@@ -397,6 +404,12 @@ var dt;
                         index: current + 1,
                         label: '&gt;',
                         className: 'next'
+                    });
+                }
+                else {
+                    result.push({
+                        label: '&gt;',
+                        className: 'next disabled'
                     });
                 }
                 return result;
@@ -484,6 +497,9 @@ var dt;
                 this.delegateEvents({
                     'click button': 'onButtonClick'
                 });
+                if (this.input.value != '') {
+                    _.defer(function () { return _this.commit(); });
+                }
             }
             SwordField.prototype.commit = function () {
                 if (this.isCommiting)
@@ -636,7 +652,7 @@ var dt;
     dt.transitionStyle;
     dt.transitionEndEvent;
     var el;
-    var prefixes = ['MS', 'webkit', 'moz', 'o'];
+    var prefixes = ['MS', 'Webkit', 'Moz', 'O'];
     function withDummyElement(callback) {
         if (el) {
             return callback(el);
@@ -666,27 +682,22 @@ var dt;
         });
     }
     dt.getPrefixedStyle = getPrefixedStyle;
-    function getPrefixedEvent(name) {
-        return withDummyElement(function (el) {
-            var lcName = name.toLowerCase();
-            if ('on' + name in el)
-                return name;
-            if ('on' + lcName in el)
-                return lcName;
-            for (var _i = 0; _i < prefixes.length; _i++) {
-                var prefix = prefixes[_i];
-                if ('on' + prefix + name in el)
-                    return prefix + name;
-                if ('on' + prefix.toLowerCase() + lcName in el)
-                    return prefix.toLowerCase() + lcName;
-            }
-            return null;
-        });
+    function getPrefixedEvent(styleName, fallback, mapping) {
+        if (styleName in mapping) {
+            return mapping[styleName];
+        }
+        else {
+            return fallback;
+        }
     }
     dt.getPrefixedEvent = getPrefixedEvent;
     withDummyElement(function () {
         dt.transitionStyle = getPrefixedStyle('transition');
-        dt.transitionEndEvent = getPrefixedEvent('TransitionEnd');
+        dt.transitionEndEvent = getPrefixedEvent(dt.transitionStyle, 'transitionend', {
+            'OTransition': 'otransitionend',
+            'MozTransition': 'transitionend',
+            'WebkitTransition': 'webkitTransitionEnd'
+        });
     });
 })(dt || (dt = {}));
 var dt;

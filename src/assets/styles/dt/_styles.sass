@@ -19,7 +19,8 @@ html
 	-webkit-font-smoothing: antialiased
 	-moz-font-smoothing: antialiased
 
-body
+body,
+.style-default
 	font-family: $font-default
 	font-size: $size-normal * 0.85
 
@@ -31,8 +32,14 @@ body
 
 .style-default-lead
 	font-family: $font-default
-	font-size: $size-lead
+	font-size: $size-lead * 0.85
 	font-weight: normal
+
+	@media (min-width: $screen-sm-min)
+		font-size: $size-lead * 0.9
+
+	@media (min-width: $screen-md-min)
+		font-size: $size-lead
 
 .style-raleway-normal
 	font-family: $font-raleway
@@ -47,8 +54,14 @@ body
 
 .style-raleway-lead
 	font-family: $font-raleway
-	font-size: 20px
+	font-size: 16px
 	font-weight: bold
+
+	@media (min-width: $screen-sm-min)
+		font-size: 18px
+
+	@media (min-width: $screen-md-min)
+		font-size: 20px
 
 .style-raleway-large
 	font-family: $font-raleway

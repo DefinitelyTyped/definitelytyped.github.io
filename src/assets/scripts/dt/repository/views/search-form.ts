@@ -75,6 +75,11 @@ namespace dt.repository
 			this.delegateEvents({
 				'click button': 'onButtonClick'
 			});
+
+			// On browser back we might already have a value
+			if (this.input.value != '') {
+				_.defer(() => this.commit());
+			}
         }
 
 
