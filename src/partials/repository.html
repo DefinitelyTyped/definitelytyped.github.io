@@ -1,6 +1,77 @@
 <div class="dt-repository-search">
+    <script class="list-row-compact" type="text/template">
+		<div class="header">
+			<span class="title"><%= name %></span>
+			<a href="<%= info.reposUrl %>/raw/master/<%= path %>" class="download">Download</a>
+			<a href="#" class="expand">Details</a>
+		</div>
+    </script>
+
+    <script class="list-row-details" type="text/template">
+        <div class="details">
+            <div class="row typography">
+                <div class="col-md-3">
+                    <dl>
+                        <dt>Project</dt>
+                        <dd><a href="<%= info.projectUrl %>">Homepage</a></dd>
+
+                        <dt>Repositories</dt>
+                        <dd><a href="<%= info.reposUrl %>/tree/master/<%= project %>">Definitions on GitHub</a></dd>
+                        <dd><a href="http://www.nuget.org/packages/<%= project %>.TypeScript.DefinitelyTyped/">Definitions on NuGet</a></dd>
+
+                        <% if (info.version) { %>
+                        <dt>Version</dt>
+                        <dd><%= info.version %></dd>
+                        <% } %>
+                        <% if (info.references.length) { %>
+                        <dt>References</dt>
+                        <%_(info.references).each(function(reference) { %>
+                        <dd><%= reference %></dd>
+                        <% }); %>
+                        <% } %>
+                        <% if (info.authors.length) { %>
+                        <dt>Authors</dt>
+                        <%_(info.authors).each(function(author) { %>
+                        <dd>
+                            <% if (author.url) { %>
+                            <a href="<%= author.url %>"><%= author.name %></a>
+                            <% } else { %>
+                            <%= author.name %>
+                            <% } %>
+                        </dd>
+                        <% }); %>
+                        <% } %>
+                    </dl>
+                </div>
+                <div class="col-md-9">
+                    <% if (info.description) { %>
+                    <p><%= info.description %></p>
+                    <% } %>
+
+                    <h3>GitHub</h3>
+                    <p>You can download this package directly from GitHub:</p>
+                    <p><a href="<%= info.reposUrl %>/raw/master/<%= path %>"><%= info.reposUrl %>/raw/master/<%= path %></a></p>
+
+                    <h3>TSD</h3>
+                    <p>If you havent installed tsd yet, you can do so by running:</p>
+                    <pre><code>$ npm install tsd -g<br />$ tsd init</code></pre>
+                    <p>To install this package with <code>tsd</code>, run the following command:</p>
+                    <pre><code>$ tsd query <%= project %> -rosa install</code></pre>
+
+                    <h3>NuGet</h3>
+                    <p>To install this package with NuGet, run the following command:</p>
+                    <pre><code>$ Install-Package <%= project %>.TypeScript.DefinitelyTyped</code></pre>
+                </div>
+            </div>
+        </div>
+    </script>
+
+    <script class="pagination" type="text/template">
+        <li class="<%= className %>"><a href="#" data-index="<%= index %>"><%= label %></a></li>
+    </script>
+
     <div class="container">
-        <form class="search-form">
+        <form class="dt-repository-search-form">
             <div class="field">
                 <dl class="sword">
                     <dt><input class="query" placeholder="Search for a definition" /></dt>
@@ -11,80 +82,9 @@
                 <button class="all">All</button>
             </div>
         </form>
-        <div class="list empty">
-            <script class="list-row" type="text/template">
-                <li data-repository-id="<%= id %>">
-                    <div class="header">
-                        <span class="title"><%= name %></span>
-                        <a href="<%= info.reposUrl %>/raw/master/<%= path %>" class="download">Download</a>
-                        <a href="#" class="expand">Details</a>
-                    </div>
-                </li>
-            </script>
-            <script class="pagination" type="text/template">
-                <li><a href="#" data-page="<%= index %>"><%= display %></a></li>
-            </script>
-            <script class="list-details" type="text/template">
-                <div class="details">
-                    <div class="row typography">
-                        <div class="col-md-3">
-                            <dl>
-                                <dt>Project</dt>
-                                <dd><a href="<%= info.projectUrl %>">Homepage</a></dd>
-
-                                <dt>Repositories</dt>
-                                <dd><a href="<%= info.reposUrl %>/tree/master/<%= project %>">Definitions on GitHub</a></dd>
-                                <dd><a href="http://www.nuget.org/packages/<%= project %>.TypeScript.DefinitelyTyped/">Definitions on NuGet</a></dd>
-
-                                <% if (info.version) { %>
-                                <dt>Version</dt>
-                                <dd><%= info.version %></dd>
-                                <% } %>
-                                <% if (info.references.length) { %>
-                                <dt>References</dt>
-                                <%_(info.references).each(function(reference) { %>
-                                <dd><%= reference %></dd>
-                                <% }); %>
-                                <% } %>
-                                <% if (info.authors.length) { %>
-                                <dt>Authors</dt>
-                                <%_(info.authors).each(function(author) { %>
-                                <dd>
-                                    <% if (author.url) { %>
-                                    <a href="<%= author.url %>"><%= author.name %></a>
-                                    <% } else { %>
-                                    <%= author.name %>
-                                    <% } %>
-                                </dd>
-                                <% }); %>
-                                <% } %>
-                            </dl>
-                        </div>
-                        <div class="col-md-9">
-                            <% if (info.description) { %>
-                            <p><%= info.description %></p>
-                            <% } %>
-
-                            <h3>GitHub</h3>
-                            <p>You can download this package directly from GitHub:</p>
-                            <p><a href="<%= info.reposUrl %>/raw/master/<%= path %>"><%= info.reposUrl %>/raw/master/<%= path %></a></p>
-
-                            <h3>TSD</h3>
-                            <p>If you havent installed tsd yet, you can do so by running:</p>
-                            <pre><code>$ npm install tsd -g<br />$ tsd init</code></pre>
-                            <p>To install this package with <code>tsd</code>, run the following command:</p>
-                            <pre><code>$ tsd query <%= project %> -rosa install</code></pre>
-
-                            <h3>NuGet</h3>
-                            <p>To install this package with NuGet, run the following command:</p>
-                            <pre><code>$ Install-Package <%= project %>.TypeScript.DefinitelyTyped</code></pre>
-                        </div>
-                    </div>
-                </div>
-            </script>
-
-            <ul class="list-rows"></ul>
-            <ul class="list-pagination"></ul>
+        <div class="dt-repository-search-results empty">
+            <ul class="dt-repository-search-list"></ul>
+            <ul class="dt-repository-search-pagination"></ul>
         </div>
     </div>
 </div>

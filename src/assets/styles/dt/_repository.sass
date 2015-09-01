@@ -1,4 +1,3 @@
-
 // Repository
 //
 // Styleguide 5.1
@@ -8,80 +7,37 @@
 	padding: 0 0 30px 0
 	margin-bottom: 1px
 
-	.search-form
-		display: table
-		width: 100%
 
-		.field
-			display: table-cell
-			padding-left: 10px
+.dt-repository-search-form
+	display: table
+	width: 100%
 
-			&:first-child
-				width: 100%
-				padding-left: 0
+	.field
+		display: table-cell
+		padding-left: 10px
 
-
-		button, input
-			border-radius: 4px
-			height: 60px
-			padding: 0 15px
-			border: none
-			outline: none
-			line-height: 60px
-			vertical-align: top
-			font-size: $size-large
-
-		button
-			background: $color-main-darkest
-			color: $color-white
-
-		input
+		&:first-child
 			width: 100%
-			background-color: $color-white
+			padding-left: 0
 
-
-	button.search,
-	button.all:before,
-	a.download,
-	a.expand
-		content: ''
-		overflow: hidden
-		display: inline-block
-		width: 60px
+	button,
+	input
+		border-radius: 4px
 		height: 60px
-		background-image: url(#{$image-path}repository-icons.png)
-		text-indent: 1024px
+		padding: 0 15px
+		border: none
+		outline: none
+		line-height: 60px
+		vertical-align: top
+		font-size: $size-large
 
-		+high-dpi
-			background-image: url(#{$image-path}repository-icons@2x.png)
-			background-size: 60px 300px
+	button
+		background: $color-main-darkest
+		color: $color-white
 
-
-	&.has-sword button.search
-		background-position: 0 -60px
-
-	button.all
-		white-space: nowrap
-		padding-left: 0
-
-		&:before
-			background-position: 0 -120px
-
-
-	a.download
-		background-position: 0 -180px
-
-	a.expand
-		background-position: 0 -240px
-
-	a.download,
-	a.expand
-		+transition(opacity 0.1s)
-		opacity: 0.8
-
-		&:hover
-			opacity: 1
-
+	input
+		width: 100%
+		background-color: $color-white
 
 	.sword
 		display: table
@@ -99,102 +55,135 @@
 			border-radius: 4px 0 0 4px
 
 		button
+			padding: 0
 			border-radius: 0 4px 4px 0
+			font-size: 0
+			color: transparent
+
+			&:before
+				+retina-sprite($repository-search-group)
+				content: ''
+				display: inline-block
+				vertical-align: top
+
+		&.has-sword button:before
+			+sprite-position($repository-closer)
+
+	.all
+		white-space: nowrap
+		padding-left: 0
+
+		&:before
+			+retina-sprite($repository-all-group)
+			content: ''
+			display: inline-block
+			vertical-align: top
+
+.dt-repository-search-results
+	margin: 40px 0
+
+	&.empty
+		display: none
 
 
-	.list
-		margin: 40px 0
+.dt-repository-search-list
+	@extend .list-style-none
 
-		&.empty
-			display: none
+	li.list-item
+		overflow: hidden
+		position: relative
+		color: $color-white
+		border-top: 2px solid #313d55
+		transition: background-color 0.2s, height 0.4s
 
-		ul
-			@extend .list-style-none
+		&:last-child
+			border-bottom: 2px solid #313d55
 
+		&:hover,
+		&.expanded
+			background: #313d55
+			border-top-color: $color-main-darker
 
-	ul.list-rows
-		li
-			+transition(all 0.2s)
-			overflow: hidden
-			position: relative
-			color: $color-white
-			border-top: 2px solid #313d55
-
-			&:last-child
-				border-bottom: 2px solid #313d55
-
-			&:hover,
-			&.expanded
-				background: #313d55
+			& + li
 				border-top-color: $color-main-darker
 
-				& + li
-					border-top-color: $color-main-darker
+			&:last-child
+				border-bottom-color: $color-main-darker
 
-				&:last-child
-					border-bottom-color: $color-main-darker
+		&.expanded .details
+			position: static
+			visibility: visible
 
+		&.expanding .details
+			animation: fade-in 0.4s both
 
-			&.expanded
-				.details
-					position: static
-					visibility: visible
+		&.collapsing .details
+			animation: fade-out 0.4s both
 
+	a
+		color: $color-white
+		text-decoration: none
 
-			&.expanding .details
-				+animation(fade-in 0.2s)
-
-			&.collapsing .details
-				+animation(fade-out 0.2s)
-
-			a
-				color: $color-white
-				text-decoration: none
-
-			.header
-				@extend .style-raleway-lead
-				text-align: right
-				padding: 0 20px
-				line-height: 0
-				cursor: pointer
-
-				.title
-					float: left
-					margin: 0
-					line-height: 60px
-					text-decoration: none
-
-
-			.details
-				position: absolute
-				width: 100%
-				padding: 0 20px
-				visibility: hidden
-				box-sizing: border-box
-				-moz-box-sizing: border-box
-
-				.row
-					margin-top: 20px
-
-
-
-
-	ul.list-pagination
-		margin-top: 20px
-		text-align: center
-
-		&.empty
-			display: none
-
-		li
+		&.download,
+		&.expand
+			+retina-sprite($repository-download-group)
+			content: ''
+			overflow: hidden
 			display: inline-block
-			margin: 0 20px
+			font-size: 0
+			color: transparent
+			opacity: 0.8
+			transition: opacity 0.1s
 
-		a
-			@extend .style-raleway-large
+		&:hover
+			opacity: 1
+
+		&.download
+			+sprite-position($repository-download)
+
+		&.expand
+			+sprite-position($repository-goto)
+
+	.header
+		@extend .style-raleway-lead
+		text-align: right
+		padding: 0 20px
+		line-height: 0
+		cursor: pointer
+
+		.title
+			float: left
+			margin: 0
+			line-height: 60px
 			text-decoration: none
-			color: $color-main-light
 
-		.current a
-			color: $color-white
+	.details
+		position: absolute
+		width: 100%
+		padding: 0 20px
+		visibility: hidden
+		box-sizing: border-box
+		-moz-box-sizing: border-box
 
+		.row
+			margin-top: 20px
+
+
+.dt-repository-search-pagination
+	margin-top: 20px
+	text-align: center
+
+	&.empty
+		display: none
+
+	li
+		display: inline-block
+		margin: 0 20px
+
+	a
+		@extend .style-raleway-large
+		text-decoration: none
+		color: $color-main-light
+
+	.current a
+		color: $color-white

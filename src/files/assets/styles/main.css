@@ -1013,7 +1013,7 @@ hr {
   .col-lg-offset-12 {
     margin-left: 100%; } }
 
-.list-style-none, ul.benefits, .dt-footer ul, .dt-repository-search .list ul, nav.menu ul {
+.list-style-none, ul.benefits, .dt-footer ul, .dt-repository-search-list, nav.menu ul {
   list-style: none;
   margin: 0;
   padding: 0; }
@@ -1102,20 +1102,20 @@ body {
     .dt-header .dt-menu a, .dt-footer h2, .dt-footer ul.quick a, .typography h4, .typography h5, .typography h6, .typography a.action {
       font-size: 16px; } }
 
-.style-raleway-lead, .dt-repository-search ul.list-rows li .header, .typography .label {
+.style-raleway-lead, .dt-repository-search-list .header, .typography .label {
   font-family: "Raleway", sans-serif;
   font-size: 20px;
   font-weight: bold; }
 
-.style-raleway-large, .dt-header .dt-logo span, .dt-repository-search ul.list-pagination a, .typography h3 {
+.style-raleway-large, .dt-header .dt-logo span, .dt-repository-search-pagination a, .typography h3 {
   font-family: "Raleway", sans-serif;
   font-size: 21px;
   font-weight: bold; }
   @media (min-width: 768px) {
-    .style-raleway-large, .dt-header .dt-logo span, .dt-repository-search ul.list-pagination a, .typography h3 {
+    .style-raleway-large, .dt-header .dt-logo span, .dt-repository-search-pagination a, .typography h3 {
       font-size: 25.2px; } }
   @media (min-width: 992px) {
-    .style-raleway-large, .dt-header .dt-logo span, .dt-repository-search ul.list-pagination a, .typography h3 {
+    .style-raleway-large, .dt-header .dt-logo span, .dt-repository-search-pagination a, .typography h3 {
       font-size: 28px; } }
 
 .style-raleway-larger, header.dt-header .dt-jumbotron h1, .typography h2 {
@@ -1691,151 +1691,171 @@ header.dt-header .dt-jumbotron {
   background-color: #1a2e49;
   padding: 0 0 30px 0;
   margin-bottom: 1px; }
-  .dt-repository-search .search-form {
-    display: table;
-    width: 100%; }
-    .dt-repository-search .search-form .field {
-      display: table-cell;
-      padding-left: 10px; }
-      .dt-repository-search .search-form .field:first-child {
-        width: 100%;
-        padding-left: 0; }
-    .dt-repository-search .search-form button, .dt-repository-search .search-form input {
-      border-radius: 4px;
-      height: 60px;
-      padding: 0 15px;
-      border: none;
-      outline: none;
-      line-height: 60px;
-      vertical-align: top;
-      font-size: 28px; }
-    .dt-repository-search .search-form button {
-      background: #1c263d;
-      color: #fff; }
-    .dt-repository-search .search-form input {
+
+.dt-repository-search-form {
+  display: table;
+  width: 100%; }
+  .dt-repository-search-form .field {
+    display: table-cell;
+    padding-left: 10px; }
+    .dt-repository-search-form .field:first-child {
       width: 100%;
-      background-color: #fff; }
-  .dt-repository-search button.search,
-  .dt-repository-search button.all:before,
-  .dt-repository-search a.download,
-  .dt-repository-search a.expand {
-    content: '';
-    overflow: hidden;
-    display: inline-block;
-    width: 60px;
+      padding-left: 0; }
+  .dt-repository-search-form button,
+  .dt-repository-search-form input {
+    border-radius: 4px;
     height: 60px;
-    background-image: url(../images/repository-icons.png);
-    text-indent: 1024px; }
-    @media (-webkit-min-device-pixel-ratio: 1.5), (min--moz-device-pixel-ratio: 1.5), (-o-min-device-pixel-ratio: 3/2), (min-resolution: 1.5dppx) {
-      .dt-repository-search button.search,
-      .dt-repository-search button.all:before,
-      .dt-repository-search a.download,
-      .dt-repository-search a.expand {
-        background-image: url(../images/repository-icons@2x.png);
-        background-size: 60px 300px; } }
-  .dt-repository-search.has-sword button.search {
-    background-position: 0 -60px; }
-  .dt-repository-search button.all {
-    white-space: nowrap;
-    padding-left: 0; }
-    .dt-repository-search button.all:before {
-      background-position: 0 -120px; }
-  .dt-repository-search a.download {
-    background-position: 0 -180px; }
-  .dt-repository-search a.expand {
-    background-position: 0 -240px; }
-  .dt-repository-search a.download,
-  .dt-repository-search a.expand {
-    -webkit-transition: opacity 0.1s;
-    -o-transition: opacity 0.1s;
-    transition: opacity 0.1s;
-    opacity: 0.8; }
-    .dt-repository-search a.download:hover,
-    .dt-repository-search a.expand:hover {
-      opacity: 1; }
-  .dt-repository-search .sword {
+    padding: 0 15px;
+    border: none;
+    outline: none;
+    line-height: 60px;
+    vertical-align: top;
+    font-size: 28px; }
+  .dt-repository-search-form button {
+    background: #1c263d;
+    color: #fff; }
+  .dt-repository-search-form input {
+    width: 100%;
+    background-color: #fff; }
+  .dt-repository-search-form .sword {
     display: table;
     width: 100%;
     margin: 0; }
-    .dt-repository-search .sword dt, .dt-repository-search .sword dd {
+    .dt-repository-search-form .sword dt, .dt-repository-search-form .sword dd {
       display: table-cell;
       margin: 0; }
-    .dt-repository-search .sword dt {
+    .dt-repository-search-form .sword dt {
       width: 100%; }
-    .dt-repository-search .sword input {
+    .dt-repository-search-form .sword input {
       border-radius: 4px 0 0 4px; }
-    .dt-repository-search .sword button {
-      border-radius: 0 4px 4px 0; }
-  .dt-repository-search .list {
-    margin: 40px 0; }
-    .dt-repository-search .list.empty {
-      display: none; }
-  .dt-repository-search ul.list-rows li {
-    -webkit-transition: all 0.2s;
-    -o-transition: all 0.2s;
-    transition: all 0.2s;
-    overflow: hidden;
-    position: relative;
-    color: #fff;
-    border-top: 2px solid #313d55; }
-    .dt-repository-search ul.list-rows li:last-child {
-      border-bottom: 2px solid #313d55; }
-    .dt-repository-search ul.list-rows li:hover,
-    .dt-repository-search ul.list-rows li.expanded {
-      background: #313d55;
-      border-top-color: #1a2e49; }
-      .dt-repository-search ul.list-rows li:hover + li,
-      .dt-repository-search ul.list-rows li.expanded + li {
-        border-top-color: #1a2e49; }
-      .dt-repository-search ul.list-rows li:hover:last-child,
-      .dt-repository-search ul.list-rows li.expanded:last-child {
-        border-bottom-color: #1a2e49; }
-    .dt-repository-search ul.list-rows li.expanded .details {
-      position: static;
-      visibility: visible; }
-    .dt-repository-search ul.list-rows li.expanding .details {
-      -webkit-animation: fade-in 0.2s;
-      -o-animation: fade-in 0.2s;
-      animation: fade-in 0.2s; }
-    .dt-repository-search ul.list-rows li.collapsing .details {
-      -webkit-animation: fade-out 0.2s;
-      -o-animation: fade-out 0.2s;
-      animation: fade-out 0.2s; }
-    .dt-repository-search ul.list-rows li a {
-      color: #fff;
-      text-decoration: none; }
-    .dt-repository-search ul.list-rows li .header {
-      text-align: right;
-      padding: 0 20px;
-      line-height: 0;
-      cursor: pointer; }
-      .dt-repository-search ul.list-rows li .header .title {
-        float: left;
-        margin: 0;
-        line-height: 60px;
-        text-decoration: none; }
-    .dt-repository-search ul.list-rows li .details {
-      position: absolute;
-      width: 100%;
-      padding: 0 20px;
-      visibility: hidden;
-      box-sizing: border-box;
-      -moz-box-sizing: border-box; }
-      .dt-repository-search ul.list-rows li .details .row {
-        margin-top: 20px; }
-  .dt-repository-search ul.list-pagination {
-    margin-top: 20px;
-    text-align: center; }
-    .dt-repository-search ul.list-pagination.empty {
-      display: none; }
-    .dt-repository-search ul.list-pagination li {
+    .dt-repository-search-form .sword button {
+      padding: 0;
+      border-radius: 0 4px 4px 0;
+      font-size: 0;
+      color: transparent; }
+      .dt-repository-search-form .sword button:before {
+        background-image: url(../images/sprites.png);
+        background-position: -62px 0px;
+        width: 60px;
+        height: 60px;
+        content: '';
+        display: inline-block;
+        vertical-align: top; }
+        @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+          .dt-repository-search-form .sword button:before {
+            background-image: url(../images/sprites-2x.png);
+            background-size: 298px 184px; } }
+    .dt-repository-search-form .sword.has-sword button:before {
+      background-position: -124px -62px; }
+  .dt-repository-search-form .all {
+    white-space: nowrap;
+    padding-left: 0; }
+    .dt-repository-search-form .all:before {
+      background-image: url(../images/sprites.png);
+      background-position: 0px -124px;
+      width: 60px;
+      height: 60px;
+      content: '';
       display: inline-block;
-      margin: 0 20px; }
-    .dt-repository-search ul.list-pagination a {
-      text-decoration: none;
-      color: #6481a1; }
-    .dt-repository-search ul.list-pagination .current a {
-      color: #fff; }
+      vertical-align: top; }
+      @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+        .dt-repository-search-form .all:before {
+          background-image: url(../images/sprites-2x.png);
+          background-size: 298px 184px; } }
+
+.dt-repository-search-results {
+  margin: 40px 0; }
+  .dt-repository-search-results.empty {
+    display: none; }
+
+.dt-repository-search-list li.list-item {
+  overflow: hidden;
+  position: relative;
+  color: #fff;
+  border-top: 2px solid #313d55;
+  transition: background-color 0.2s, height 0.4s; }
+  .dt-repository-search-list li.list-item:last-child {
+    border-bottom: 2px solid #313d55; }
+  .dt-repository-search-list li.list-item:hover,
+  .dt-repository-search-list li.list-item.expanded {
+    background: #313d55;
+    border-top-color: #1a2e49; }
+    .dt-repository-search-list li.list-item:hover + li,
+    .dt-repository-search-list li.list-item.expanded + li {
+      border-top-color: #1a2e49; }
+    .dt-repository-search-list li.list-item:hover:last-child,
+    .dt-repository-search-list li.list-item.expanded:last-child {
+      border-bottom-color: #1a2e49; }
+  .dt-repository-search-list li.list-item.expanded .details {
+    position: static;
+    visibility: visible; }
+  .dt-repository-search-list li.list-item.expanding .details {
+    animation: fade-in 0.4s both; }
+  .dt-repository-search-list li.list-item.collapsing .details {
+    animation: fade-out 0.4s both; }
+
+.dt-repository-search-list a {
+  color: #fff;
+  text-decoration: none; }
+  .dt-repository-search-list a.download,
+  .dt-repository-search-list a.expand {
+    background-image: url(../images/sprites.png);
+    background-position: -124px 0px;
+    width: 60px;
+    height: 60px;
+    content: '';
+    overflow: hidden;
+    display: inline-block;
+    font-size: 0;
+    color: transparent;
+    opacity: 0.8;
+    transition: opacity 0.1s; }
+    @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+      .dt-repository-search-list a.download,
+      .dt-repository-search-list a.expand {
+        background-image: url(../images/sprites-2x.png);
+        background-size: 298px 184px; } }
+  .dt-repository-search-list a:hover {
+    opacity: 1; }
+  .dt-repository-search-list a.download {
+    background-position: -124px 0px; }
+  .dt-repository-search-list a.expand {
+    background-position: -62px -62px; }
+
+.dt-repository-search-list .header {
+  text-align: right;
+  padding: 0 20px;
+  line-height: 0;
+  cursor: pointer; }
+  .dt-repository-search-list .header .title {
+    float: left;
+    margin: 0;
+    line-height: 60px;
+    text-decoration: none; }
+
+.dt-repository-search-list .details {
+  position: absolute;
+  width: 100%;
+  padding: 0 20px;
+  visibility: hidden;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box; }
+  .dt-repository-search-list .details .row {
+    margin-top: 20px; }
+
+.dt-repository-search-pagination {
+  margin-top: 20px;
+  text-align: center; }
+  .dt-repository-search-pagination.empty {
+    display: none; }
+  .dt-repository-search-pagination li {
+    display: inline-block;
+    margin: 0 20px; }
+  .dt-repository-search-pagination a {
+    text-decoration: none;
+    color: #6481a1; }
+  .dt-repository-search-pagination .current a {
+    color: #fff; }
 
 nav.menu li {
   margin: 0.25em 0; }

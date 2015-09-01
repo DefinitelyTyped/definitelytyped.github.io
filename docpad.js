@@ -22,8 +22,9 @@ var docpadConfig = {
 				'/assets/styles/main.css'
 			],
 			scripts: [
-				'/assets/scripts/lib/jquery-min.js',
 				'/assets/scripts/lib/underscore-min.js',
+				'/assets/scripts/lib/backbone-min.js',
+				'/assets/scripts/lib/backbone.nativeview.js',
 				'/assets/scripts/main.js'
 			],
 			analytics: {
