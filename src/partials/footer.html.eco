@@ -4,7 +4,7 @@
             <div class="col-md-3 col-sm-6">
                 <h2 class="guides">Guides</h2>
                 <ul>
-                    <% for item in @getCollection('guides').sortArray(menuOrder: -1): %>
+                    <% for item in @getCollection('guides').sortArray(menuOrder: 1): %>
                     <li><a href="<%= item.url %>"><%- item.title or item.name %></a></li>
                     <% end %>
                 </ul>
@@ -12,7 +12,7 @@
             <div class="col-md-3 col-sm-6">
                 <h2 class="directory">Directory</h2>
                 <ul>
-                    <% for item in @getCollection('directory').sortArray(menuOrder: -1): %>
+                    <% for item in @getCollection('directory').sortArray(menuOrder: 1): %>
                     <li><a href="<%= item.url %>"><%- item.title or item.name %></a></li>
                     <% end %>
                 </ul>
@@ -20,7 +20,7 @@
             <div class="col-md-3 col-sm-6">
                 <h2 class="pages">Pages</h2>
                 <ul>
-                    <% for item in @getCollection('pages').sortArray(menuOrder: -1): %>
+                    <% for item in @getCollection('pages').sortArray(menuOrder: 1): %>
                     <li><a href="<%= item.url %>"><%- item.title or item.name %></a></li>
                     <% end %>
                 </ul>
