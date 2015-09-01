@@ -1,9 +1,24 @@
-
 // Typography
 //
 // Styleguide 4.1
 
+img
+	display: block
+
+	&.responsive
+		width: 100%
+		height: auto
+
 .typography
+	> *:first-child
+		margin-top: 0
+
+	> *:last-child
+		margin-bottom: 0
+
+	&.centered
+		text-align: center
+
 	h1
 		@extend .style-raleway-huge
 		margin: 1.5em 0 0.5em 0
@@ -73,14 +88,6 @@
 				display: inline-block
 				margin: 0 0 -1px 5px
 
-	img
-		display: block
-
-		&.responsive
-			width: 100%
-			height: auto
-
-
 	.shadow
 		+box-shadow(0, 0, 20px, 0.4)
 		border-radius: 4px
@@ -122,9 +129,6 @@
 		border: none
 		background: $color-black
 		text-align: left
-
-	.centered
-		text-align: center
 
 	.color-main
 		color: $color-main

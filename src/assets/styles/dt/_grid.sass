@@ -27,8 +27,8 @@
 // Styleguide 2.1
 
 .row
-	margin-top: 40px
-	margin-bottom: 40px
+	margin-top: 30px
+	margin-bottom: 30px
 
 	&.no-margin-top
 		margin-top: 0
@@ -37,70 +37,72 @@
 		margin-bottom: 0
 
 	&.medium-margin-top
-		margin-top: 60px
+		margin-top: 30px
 
 	&.medium-margin-bottom
-		margin-bottom: 60px
+		margin-bottom: 30px
 
 	&.large-margin-top
-		margin-top: 80px
+		margin-top: 40px
 
 	&.large-margin-bottom
-		margin-bottom: 80px
+		margin-bottom: 40px
 
-	&.table
-		display: table
-		width: 100%
-		margin-left: 0
-		margin-right: 0
+	@media (min-width: $screen-md-min)
+		margin-top: 40px
+		margin-bottom: 40px
 
-		> *
-			display: table-cell
-			vertical-align: middle
-			float: none
+		&.medium-margin-top
+			margin-top: 60px
 
-		> *:first-child
-			padding-left: 0
+		&.medium-margin-bottom
+			margin-bottom: 60px
 
-		> *:last-child
-			padding-right: 0
+		&.large-margin-top
+			margin-top: 80px
+
+		&.large-margin-bottom
+			margin-bottom: 80px
+
+		&.table
+			display: table
+			width: 100%
+			margin-left: 0
+			margin-right: 0
+
+			> *
+				display: table-cell
+				vertical-align: middle
+				float: none
+
+			> *:first-child
+				padding-left: 0
+
+			> *:last-child
+				padding-right: 0
 
 
-// Column widths
+// Columns
 //
 // Markup:
 // <div class="container">
 //   <div class="row">
-//     <div class="col width-12"><p class="box">12 columns</p></div>
-//   </div>
-//   <div class="row">
 //     <div class="col width-6"><p class="box">6 columns</p></div>
-//     <div class="col width-6"><p class="box">6 columns</p></div>
-//   </div>
-//   <div class="row">
-//     <div class="col width-4"><p class="box">4 columns</p></div>
-//     <div class="col width-4"><p class="box">4 columns</p></div>
-//     <div class="col width-4"><p class="box">4 columns</p></div>
-//   </div>
-//   <div class="row">
-//     <div class="col width-2"><p class="box">2 columns</p></div>
-//     <div class="col width-2"><p class="box">2 columns</p></div>
-//     <div class="col width-2"><p class="box">2 columns</p></div>
-//     <div class="col width-2"><p class="box">2 columns</p></div>
-//     <div class="col width-2"><p class="box">2 columns</p></div>
+//     <div class="col width-6 {$modifiers}"><p class="box">6 columns</p></div>
 //   </div>
 // </div>
 //
 // Styleguide 2.2
 
-.medium-padding-left
-	padding-left: 40px
+@media (min-width: $screen-md-min)
+	.medium-padding-left
+		padding-left: 40px
 
-.medium-padding-right
-	padding-right: 40px
+	.medium-padding-right
+		padding-right: 40px
 
 
-// Column offsets
+// Wrappers
 //
 // Markup:
 // <div class="container">
