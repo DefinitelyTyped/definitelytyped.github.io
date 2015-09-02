@@ -15,6 +15,10 @@ namespace dt
 			_(document.querySelectorAll('.dt-repository-search')).each((el:any) => {
 				new repository.Component({el});
 			});
+
+			_(document.querySelectorAll('.dt-header-stars')).each((el:any) => {
+				new stars.Component({el});
+			});
 		}
 	}
 

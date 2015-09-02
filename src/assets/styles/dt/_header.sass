@@ -26,7 +26,7 @@
 	position: relative
 	background-color: $color-main-dark
 
-	&.skyline
+	// &.skyline
 		overflow: hidden
 		background: $color-main-dark url(#{$image-path}header-stars.gif) center bottom
 		min-height: 300px
@@ -42,6 +42,15 @@
 			position: relative
 			z-index: 2
 
+	.dt-header-stars
+		+absolute(0, 0, 0, 0)
+		z-index: 1
+		width: 100%
+		height: 100%
+
+	> .container
+		position: relative
+		z-index: 2
 
 // Navigation bar
 //

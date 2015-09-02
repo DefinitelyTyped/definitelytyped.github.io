@@ -63,4 +63,12 @@ namespace dt
 			window.event.returnValue = false;
 		}
 	}
+
+
+	var supportPageOffset = window.pageXOffset !== undefined;
+	var isCSS1Compat = ((document.compatMode || "") === "CSS1Compat");
+
+	export function scrollTop() {
+		return supportPageOffset ? window.pageYOffset : isCSS1Compat ? document.documentElement.scrollTop : document.body.scrollTop;
+	}
 }

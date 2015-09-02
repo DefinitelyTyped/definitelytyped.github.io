@@ -129,7 +129,7 @@ module.exports = function (grunt) {
 					'src/files/assets/scripts/main-min.js': [
 						'src/files/assets/scripts/lib/underscore-min.js',
 						'src/files/assets/scripts/lib/backbone-min.js',
-						'src/files/assets/scripts/lib/underscore-min.js',
+						'src/files/assets/scripts/lib/backbone.nativeview.js',
 						'src/files/assets/scripts/main.js'
 					]
 				}

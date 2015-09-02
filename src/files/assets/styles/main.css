@@ -1409,22 +1409,18 @@ ul.benefits {
 .dt-header {
   position: relative;
   background-color: #162943; }
-  .dt-header.skyline {
-    overflow: hidden;
-    background: #162943 url(../images/header-stars.gif) center bottom;
-    min-height: 300px; }
-    .dt-header.skyline:before {
-      position: absolute;
-      right: 0;
-      bottom: 0;
-      left: 0;
-      content: '';
-      z-index: 1;
-      height: 365px;
-      background: url(../images/header-skyline.png) center bottom; }
-    .dt-header.skyline .container {
-      position: relative;
-      z-index: 2; }
+  .dt-header .dt-header-stars {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+    width: 100%;
+    height: 100%; }
+  .dt-header > .container {
+    position: relative;
+    z-index: 2; }
 
 .dt-header nav {
   position: relative;

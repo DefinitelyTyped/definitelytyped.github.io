@@ -556,6 +556,274 @@ var dt;
 })(dt || (dt = {}));
 var dt;
 (function (dt) {
+    var stars;
+    (function (stars) {
+        var Component = (function (_super) {
+            __extends(Component, _super);
+            function Component(options) {
+                var _this = this;
+                _super.call(this, options);
+                this.lastFrame = Date.now();
+                this.context = this.el.getContext('2d');
+                this.layers = [
+                    new StarGroupLayer({ parent: this, depth: 1, layers: [
+                            new StarLayer({ sprite: '/assets/images/skyline-dust.png', spriteHeight: 400, density: 0.25, useRandomTransform: true }),
+                            new StarLayer({ sprite: '/assets/images/skyline-stars-sm.png', spriteHeight: 10, density: 2 })
+                        ] }),
+                    new StarGroupLayer({ parent: this, depth: 0.666, layers: [
+                            new StarLayer({ sprite: '/assets/images/skyline-stars-md.png', spriteHeight: 10, density: 1 }),
+                        ] }),
+                    new CityLayer({ parent: this, sprite: '/assets/images/skyline-city-a.png', colorFrom: '#0d1724', colorTo: '#1a2e49', depth: 0.333 }),
+                    new CityLayer({ parent: this, sprite: '/assets/images/skyline-city-b.png', colorFrom: '#132237', colorTo: '#1a2e49', depth: 0 })
+                ];
+                dt.addEventListener(window, 'resize', _.throttle(function () { return _this.onResize(); }, 100));
+                this.onResize();
+                this.update();
+            }
+            Component.prototype.refresh = function () {
+                var ctx = this.context;
+                var width = this.width;
+                var height = this.height;
+                var tilt = Math.min(1, dt.scrollTop() / height) * Math.min(300, height * 0.5);
+                ctx.setTransform(1, 0, 0, 1, 0, 0);
+                ctx.clearRect(0, 0, width, height);
+                for (var _i = 0, _a = this.layers; _i < _a.length; _i++) {
+                    var layer = _a[_i];
+                    layer.draw(ctx, width, height, tilt);
+                }
+            };
+            Component.prototype.update = function () {
+                var _this = this;
+                var now = Date.now();
+                var delta = this.lastFrame - now;
+                for (var _i = 0, _a = this.layers; _i < _a.length; _i++) {
+                    var layer = _a[_i];
+                    layer.update(delta);
+                }
+                this.refresh();
+                this.lastFrame = now;
+                window.requestAnimationFrame(function () { return _this.update(); });
+            };
+            Component.prototype.onResize = function () {
+                var width = this.el.parentNode.offsetWidth;
+                var height = this.el.parentNode.offsetHeight;
+                if (this.width == width && this.height == height) {
+                    return;
+                }
+                this.el.width = this.width = width;
+                this.el.height = this.height = height;
+                for (var _i = 0, _a = this.layers; _i < _a.length; _i++) {
+                    var layer = _a[_i];
+                    layer.setSize(width, height);
+                }
+                this.refresh();
+            };
+            return Component;
+        })(Backbone.NativeView);
+        stars.Component = Component;
+        var Layer = (function () {
+            function Layer(options) {
+                this.depth = 1;
+                this.parent = options.parent;
+                if (options.depth !== void 0) {
+                    this.depth = options.depth;
+                }
+            }
+            Layer.prototype.update = function (delta) { };
+            Layer.prototype.draw = function (ctx, width, height, tilt) { };
+            Layer.prototype.setSize = function (width, height) { };
+            return Layer;
+        })();
+        var CityLayer = (function (_super) {
+            __extends(CityLayer, _super);
+            function CityLayer(options) {
+                _super.call(this, options);
+                this.width = 0;
+                this.height = 0;
+                this.isLoaded = false;
+                this.load(options.sprite, options.colorFrom, options.colorTo);
+            }
+            CityLayer.prototype.draw = function (ctx, width, height, tilt) {
+                if (!this.isLoaded) {
+                    return;
+                }
+                var offset = 0;
+                var scale = Math.min(1, width / this.width);
+                ctx.setTransform(scale, 0, 0, scale, 0, 0);
+                while (offset < width) {
+                    ctx.drawImage(this.sprite, offset / scale, (height + tilt * this.depth - this.height * scale) / scale);
+                    offset = Math.floor(offset + this.width);
+                }
+            };
+            CityLayer.prototype.load = function (src, colorFrom, colorTo) {
+                var _this = this;
+                var image = document.createElement('img');
+                var onLoaded = function () {
+                    dt.removeEventListener(image, 'load', onLoaded);
+                    var canvas = _this.sprite = document.createElement('canvas');
+                    canvas.width = _this.width = image.width;
+                    canvas.height = _this.height = image.height;
+                    var ctx = canvas.getContext('2d');
+                    var gradient = ctx.createLinearGradient(0, 0, 0, _this.height);
+                    gradient.addColorStop(0, colorFrom);
+                    gradient.addColorStop(1, colorTo);
+                    ctx.fillStyle = gradient;
+                    ctx.fillRect(0, 0, _this.width, _this.height);
+                    ctx.globalCompositeOperation = 'destination-in';
+                    ctx.drawImage(image, 0, 0);
+                    _this.isLoaded = true;
+                    _this.parent.refresh();
+                };
+                dt.addEventListener(image, 'load', onLoaded);
+                image.src = src;
+            };
+            return CityLayer;
+        })(Layer);
+        var StarGroupLayer = (function (_super) {
+            __extends(StarGroupLayer, _super);
+            function StarGroupLayer(options) {
+                var _this = this;
+                _super.call(this, options);
+                this.needsRefresh = true;
+                this.sprite = document.createElement('canvas');
+                this.context = this.sprite.getContext('2d');
+                _(options.layers).each(function (layer) { return layer.parent = _this; });
+                this.layers = options.layers;
+            }
+            StarGroupLayer.prototype.refresh = function () {
+                this.needsRefresh = true;
+                this.parent.refresh();
+            };
+            StarGroupLayer.prototype.draw = function (ctx, width, height, tilt) {
+                if (this.needsRefresh) {
+                    this.needsRefresh = false;
+                    var localCtx = this.context;
+                    localCtx.setTransform(1, 0, 0, 1, 0, 0);
+                    localCtx.clearRect(0, 0, width, height);
+                    for (var _i = 0, _a = this.layers; _i < _a.length; _i++) {
+                        var layer = _a[_i];
+                        layer.draw(localCtx, width, height);
+                    }
+                }
+                ctx.drawImage(this.sprite, 0, tilt * this.depth);
+            };
+            StarGroupLayer.prototype.setSize = function (width, height) {
+                this.sprite.width = width;
+                this.sprite.height = height;
+                this.needsRefresh = true;
+                for (var _i = 0, _a = this.layers; _i < _a.length; _i++) {
+                    var layer = _a[_i];
+                    layer.setSize(width, height);
+                }
+            };
+            return StarGroupLayer;
+        })(Layer);
+        var StarLayer = (function (_super) {
+            __extends(StarLayer, _super);
+            function StarLayer(options) {
+                _super.call(this, options);
+                this.sprites = [];
+                this.isLoaded = false;
+                this.density = 1;
+                this.count = 0;
+                this.positions = [];
+                this.shift = 0;
+                this.shift = options.spriteHeight * -0.5;
+                this.useRandomTransform = !!options.useRandomTransform;
+                if (options.density) {
+                    this.density = options.density;
+                }
+                this.load(options.sprite, options.spriteHeight);
+            }
+            StarLayer.prototype.draw = function (ctx, width, height, tilt) {
+                if (!this.isLoaded) {
+                    return;
+                }
+                var positions = this.positions;
+                var sprites = this.sprites;
+                var shift = this.shift;
+                var chunkSize = this.useRandomTransform ? 5 : 3;
+                for (var index = 0; index < this.count; index++) {
+                    var n = index * chunkSize;
+                    var sprite = sprites[positions[n]];
+                    var x = Math.round(width * positions[n + 1]);
+                    var y = Math.round(height * positions[n + 2]);
+                    ctx.setTransform(1, 0, 0, 1, x, y);
+                    if (this.useRandomTransform) {
+                        ctx.scale(positions[n + 3], positions[n + 3]);
+                        ctx.rotate(positions[n + 4]);
+                    }
+                    ctx.drawImage(sprite, shift, shift);
+                }
+                console.log('PAINTED!');
+            };
+            StarLayer.prototype.setSize = function (width, height) {
+                this.width = width;
+                this.height = height;
+                this.updatePositions();
+            };
+            StarLayer.prototype.updatePositions = function () {
+                if (!this.isLoaded) {
+                    return;
+                }
+                this.count = Math.round((this.width * this.height) / 2000 * this.density);
+                var chunkSize = this.useRandomTransform ? 5 : 3;
+                var positions = this.positions;
+                var count = this.count * chunkSize;
+                var index = positions.length;
+                var spriteCount = this.sprites.length;
+                while (index < count) {
+                    var spriteIndex = Math.floor(spriteCount * Math.random());
+                    if (spriteIndex >= spriteCount) {
+                        spriteIndex = spriteCount - 1;
+                    }
+                    positions.push(spriteIndex);
+                    positions.push(Math.random());
+                    positions.push(Math.random());
+                    if (this.useRandomTransform) {
+                        positions.push(0.75 + Math.random() * 1.25);
+                        positions.push(Math.random() * Math.PI);
+                    }
+                    index += chunkSize;
+                }
+            };
+            StarLayer.prototype.load = function (src, height) {
+                var _this = this;
+                var image = document.createElement('img');
+                var onStarsLoaded = function () {
+                    dt.removeEventListener(image, 'load', onStarsLoaded);
+                    var count = image.height / height;
+                    var width = image.width;
+                    for (var index = 0; index < count; index++) {
+                        var canvas = document.createElement('canvas');
+                        canvas.width = width;
+                        canvas.height = height;
+                        canvas.getContext('2d').drawImage(image, 0, index * -height);
+                        _this.sprites.push(canvas);
+                    }
+                    _this.isLoaded = true;
+                    _this.updatePositions();
+                    _this.parent.refresh();
+                };
+                dt.addEventListener(image, 'load', onStarsLoaded);
+                image.src = src;
+            };
+            return StarLayer;
+        })(Layer);
+    })(stars = dt.stars || (dt.stars = {}));
+})(dt || (dt = {}));
+(function (win) {
+    win.requestAnimationFrame = (function () {
+        return win.requestAnimationFrame ||
+            win.webkitRequestAnimationFrame ||
+            win.mozRequestAnimationFrame ||
+            function (callback) {
+                window.setTimeout(callback, 1000 / 60);
+            };
+    })();
+})(window);
+var dt;
+(function (dt) {
     function noTransition(el, callback) {
         if (!dt.transitionStyle)
             return callback();
@@ -665,6 +933,12 @@ var dt;
         }
     }
     dt.preventDefault = preventDefault;
+    var supportPageOffset = window.pageXOffset !== undefined;
+    var isCSS1Compat = ((document.compatMode || "") === "CSS1Compat");
+    function scrollTop() {
+        return supportPageOffset ? window.pageYOffset : isCSS1Compat ? document.documentElement.scrollTop : document.body.scrollTop;
+    }
+    dt.scrollTop = scrollTop;
 })(dt || (dt = {}));
 var dt;
 (function (dt) {
@@ -735,6 +1009,9 @@ var dt;
             }
             _(document.querySelectorAll('.dt-repository-search')).each(function (el) {
                 new dt.repository.Component({ el: el });
+            });
+            _(document.querySelectorAll('.dt-header-stars')).each(function (el) {
+                new dt.stars.Component({ el: el });
             });
         }
         return Application;
