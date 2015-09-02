@@ -26,7 +26,7 @@ namespace dt.repository
         sword:string;
         score:number;
         path:string;
-		references?:IRepositoryPackageReference;
+		references?:IRepositoryPackageReference[];
 		download?:string;
 		github?:string;
 		nuget?:string;

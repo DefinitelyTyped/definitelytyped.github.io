@@ -22,10 +22,7 @@ var docpadConfig = {
 				'/assets/styles/main.css'
 			],
 			scripts: [
-				'/assets/scripts/lib/underscore-min.js',
-				'/assets/scripts/lib/backbone-min.js',
-				'/assets/scripts/lib/backbone.nativeview.js',
-				'/assets/scripts/main.js'
+				'/assets/scripts/main-min.js'
 			],
 			analytics: {
 				id: 'UA-47495295-3',
@@ -99,7 +96,13 @@ var docpadConfig = {
 		development: {
 			templateData: {
 				site: {
-					url: false
+					url: false,
+					scripts: [
+						'/assets/scripts/lib/underscore-min.js',
+						'/assets/scripts/lib/backbone-min.js',
+						'/assets/scripts/lib/backbone.nativeview.js',
+						'/assets/scripts/main.js'
+					],
 				}
 			}
 		}

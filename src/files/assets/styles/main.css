@@ -177,14 +177,10 @@ th {
   padding: 0; }
 
 * {
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
   box-sizing: border-box; }
 
 *:before,
 *:after {
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
   box-sizing: border-box; }
 
 html {
@@ -239,7 +235,6 @@ img {
   border: 1px solid #ddd;
   border-radius: 4px;
   -webkit-transition: all 0.2s ease-in-out;
-  -o-transition: all 0.2s ease-in-out;
   transition: all 0.2s ease-in-out;
   display: inline-block;
   max-width: 100%;
@@ -1154,22 +1149,9 @@ body,
 
 .no-transition {
   -webkit-transition: none !important;
-  -o-transition: none !important;
   transition: none !important; }
 
 @-webkit-keyframes fade-in {
-  from {
-    opacity: 0; }
-  to {
-    opacity: 1; } }
-
-@-moz-keyframes fade-in {
-  from {
-    opacity: 0; }
-  to {
-    opacity: 1; } }
-
-@-ms-keyframes fade-in {
   from {
     opacity: 0; }
   to {
@@ -1182,20 +1164,6 @@ body,
     opacity: 1; } }
 
 @-webkit-keyframes fade-out {
-  from {
-    opacity: 1;
-    visibility: visible; }
-  to {
-    opacity: 0; } }
-
-@-moz-keyframes fade-out {
-  from {
-    opacity: 1;
-    visibility: visible; }
-  to {
-    opacity: 0; } }
-
-@-ms-keyframes fade-out {
   from {
     opacity: 1;
     visibility: visible; }
@@ -1224,7 +1192,7 @@ ul.benefits {
       width: 120px;
       height: 120px;
       background-image: url(../images/benefits-icons.png); }
-      @media (-webkit-min-device-pixel-ratio: 1.5), (min--moz-device-pixel-ratio: 1.5), (-o-min-device-pixel-ratio: 3/2), (min-resolution: 1.5dppx) {
+      @media (-webkit-min-device-pixel-ratio: 1.5), (min--moz-device-pixel-ratio: 1.5), (min-resolution: 1.5dppx) {
         ul.benefits li:before {
           background-image: url(../images/benefits-icons-2x.png);
           background-size: 120px 360px; } }
@@ -1235,7 +1203,6 @@ ul.benefits {
 
 .dt-button {
   -webkit-transition: background-color 0.1s;
-  -o-transition: background-color 0.1s;
   transition: background-color 0.1s;
   position: relative;
   display: inline-block;
@@ -1537,7 +1504,6 @@ ul.benefits {
       display: none; }
   .dt-header .dt-menu a {
     -webkit-transition: color 0.2s;
-    -o-transition: color 0.2s;
     transition: color 0.2s;
     margin: 0 7px;
     color: #6481a1;
@@ -1656,7 +1622,6 @@ header.dt-header .dt-jumbotron {
       border-bottom: none; }
   .dt-footer ul.quick a {
     -webkit-transition: background-color 0.1s, padding 0.1s;
-    -o-transition: background-color 0.1s, padding 0.1s;
     transition: background-color 0.1s, padding 0.1s;
     position: relative;
     display: block;
@@ -1672,7 +1637,6 @@ header.dt-header .dt-jumbotron {
       top: 15px;
       right: 15px;
       -webkit-transition: opacity 0.1s;
-      -o-transition: opacity 0.1s;
       transition: opacity 0.1s;
       content: '';
       display: block;
@@ -1749,7 +1713,8 @@ header.dt-header .dt-jumbotron {
     background: #1c263d;
     color: #fff;
     font-size: 0;
-    transition: background-color 0.2s; }
+    -webkit-transition: background-color 0.2s;
+            transition: background-color 0.2s; }
     .dt-repository-search-form button:hover {
       background: #162943; }
   .dt-repository-search-form .sword {
@@ -1874,7 +1839,8 @@ header.dt-header .dt-jumbotron {
   position: relative;
   color: #fff;
   border-top: 2px solid #313d55;
-  transition: border-top-color 0.2s, height 0.4s; }
+  -webkit-transition: border-top-color 0.2s, height 0.4s;
+          transition: border-top-color 0.2s, height 0.4s; }
   .dt-repository-search-list li.list-item:last-child {
     border-bottom: 2px solid #313d55; }
   .dt-repository-search-list li.list-item:hover,
@@ -1893,15 +1859,18 @@ header.dt-header .dt-jumbotron {
     position: static;
     visibility: visible; }
   .dt-repository-search-list li.list-item.expanding .details {
-    animation: fade-in 0.4s both; }
+    -webkit-animation: fade-in 0.4s both;
+            animation: fade-in 0.4s both; }
   .dt-repository-search-list li.list-item.collapsing .details {
-    animation: fade-out 0.4s both; }
+    -webkit-animation: fade-out 0.4s both;
+            animation: fade-out 0.4s both; }
 
 .dt-repository-search-list .header {
   text-align: right;
   padding: 15px;
   cursor: pointer;
-  transition: background-color 0.2s; }
+  -webkit-transition: background-color 0.2s;
+          transition: background-color 0.2s; }
   .dt-repository-search-list .header:before,
   .dt-repository-search-list .header:after {
     content: " ";
@@ -1928,7 +1897,8 @@ header.dt-header .dt-jumbotron {
       display: inline-block;
       margin: 0 5px 0 0;
       opacity: 0.8;
-      transition: opacity 0.1s;
+      -webkit-transition: opacity 0.1s;
+              transition: opacity 0.1s;
       vertical-align: text-bottom; }
       @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
         .dt-repository-search-list .header a:before {
@@ -1948,7 +1918,6 @@ header.dt-header .dt-jumbotron {
   padding: 0 15px;
   visibility: hidden;
   box-sizing: border-box;
-  -moz-box-sizing: border-box;
   background: rgba(49, 61, 85, 0.5); }
   .dt-repository-search-list .details .row {
     margin-top: 20px; }
@@ -2037,7 +2006,8 @@ header.dt-header .dt-jumbotron {
     color: rgba(100, 129, 161, 0.4); }
   .dt-repository-search-pagination a {
     color: #6481a1;
-    transition: color 0.2s; }
+    -webkit-transition: color 0.2s;
+            transition: color 0.2s; }
     .dt-repository-search-pagination a:hover {
       color: #b3c2d1; }
   .dt-repository-search-pagination .current a {
@@ -2169,7 +2139,6 @@ img {
         background-size: 283px 200px; } }
 
 .typography .shadow {
-  -webkit-box-shadow: 0, 0, 20px, 0.4;
   box-shadow: 0, 0, 20px, 0.4;
   border-radius: 4px; }
 

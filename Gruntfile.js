@@ -4,7 +4,9 @@ module.exports = function (grunt) {
 	grunt.loadNpmTasks('grunt-contrib-clean');
 	grunt.loadNpmTasks('grunt-contrib-copy');
 	grunt.loadNpmTasks('grunt-contrib-jshint');
+	grunt.loadNpmTasks('grunt-contrib-uglify');
 	grunt.loadNpmTasks('grunt-contrib-watch');
+	grunt.loadNpmTasks('grunt-autoprefixer');
 	grunt.loadNpmTasks('grunt-gh-pages');
 	grunt.loadNpmTasks('grunt-sass');
 	grunt.loadNpmTasks('grunt-ts');
@@ -99,6 +101,16 @@ module.exports = function (grunt) {
 				}
 			}
 		},
+		autoprefixer: {
+			options: {
+				browsers: ['> 1%', 'last 2 versions', 'ie 8', 'ie 9']
+			},
+			default: {
+				files: {
+					'src/files/assets/styles/main.css': 'src/files/assets/styles/main.css'
+				}
+			}
+		},
         ts: {
             defaultdefault : {
                 files: [{
@@ -111,6 +123,18 @@ module.exports = function (grunt) {
                 }
             }
         },
+		uglify: {
+			default: {
+				files: {
+					'src/files/assets/scripts/main-min.js': [
+						'src/files/assets/scripts/lib/underscore-min.js',
+						'src/files/assets/scripts/lib/backbone-min.js',
+						'src/files/assets/scripts/lib/underscore-min.js',
+						'src/files/assets/scripts/main.js'
+					]
+				}
+			}
+		},
 		sprite:{
 			default: {
 				src: 'src/assets/sprites/**/*.png',
@@ -126,11 +150,11 @@ module.exports = function (grunt) {
         'grunt-watch': {
             sass: {
                 files: ['src/assets/styles/**/*'],
-                tasks: ['sass']
+                tasks: ['sass', 'autoprefixer']
             },
             ts: {
                 files: ['src/assets/scripts/**/*'],
-                tasks: ['ts']
+                tasks: ['ts', 'uglify']
             },
 			sprite: {
 				files: ['src/assets/sprites/**/*'],
@@ -172,7 +196,9 @@ module.exports = function (grunt) {
 	grunt.registerTask('build', 'Build with production env.', [
 		'prep',
         'sass',
+		'autoprefixer',
         'ts',
+		'uglify',
 		'docpad:publish',
 		'copy:rootfiles'
 	]);
