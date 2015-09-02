@@ -223,8 +223,51 @@
 		.row
 			margin-top: 20px
 
+		h3
+			padding-bottom: 5px
+			border-bottom: 1px solid #313d55
+
 		a
 			color: lighten($color-main-light, 20%)
+
+		.downloads
+			list-style: none
+			margin: 1em 0
+			padding: 0
+
+		.external,
+		.download
+			position: relative
+			display: block
+			padding: 0 0 0 24px
+
+			&:before
+				content: ''
+				display: block
+				position: absolute
+				top: 3px
+				left: 0
+
+			span
+				display: block
+
+			.target
+				opacity: 0.5
+
+		.external
+			&:before
+				+retina-sprite($download-external-group)
+
+		.download
+			&:before
+				+retina-sprite($download-link-group)
+
+		a.download
+			&:hover
+				text-decoration: none
+
+				.source
+					text-decoration: underline
 
 	@media (min-width: $screen-md-min)
 		.header

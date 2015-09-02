@@ -1253,7 +1253,7 @@ ul.benefits {
     padding-left: 75px; }
     .dt-button.github:before {
       background-image: url(../images/sprites.png);
-      background-position: -62px -62px;
+      background-position: -124px -62px;
       width: 60px;
       height: 60px;
       position: absolute;
@@ -1272,7 +1272,7 @@ ul.benefits {
     border: 1px solid #0077d2; }
     .dt-button.guide:before {
       background-image: url(../images/sprites.png);
-      background-position: -124px -62px;
+      background-position: -62px -62px;
       width: 60px;
       height: 60px;
       position: absolute;
@@ -1820,13 +1820,13 @@ header.dt-header .dt-jumbotron {
         background-size: 283px 200px; } }
   @media (min-width: 992px) {
     .dt-repository-search-form .sword.has-sword button:before {
-      background-position: -186px -52px; }
+      background-position: -186px 0px; }
     .dt-repository-search-form .all {
       padding-right: 15px;
       border-radius: 4px; }
       .dt-repository-search-form .all:before {
         background-image: url(../images/sprites.png);
-        background-position: -186px 0px;
+        background-position: -186px -52px;
         width: 50px;
         height: 50px; } }
     @media (min-width: 992px) and (-webkit-min-device-pixel-ratio: 2), (min-width: 992px) and (min-resolution: 192dpi) {
@@ -1850,10 +1850,10 @@ header.dt-header .dt-jumbotron {
       background-size: 283px 200px; } }
   @media (min-width: 1200px) {
     .dt-repository-search-form .sword.has-sword button:before {
-      background-position: 0px -62px; }
+      background-position: -124px 0px; }
     .dt-repository-search-form .all:before {
       background-image: url(../images/sprites.png);
-      background-position: -124px 0px;
+      background-position: 0px -62px;
       width: 60px;
       height: 60px; } }
   @media (min-width: 1200px) and (-webkit-min-device-pixel-ratio: 2), (min-width: 1200px) and (min-resolution: 192dpi) {
@@ -1952,8 +1952,55 @@ header.dt-header .dt-jumbotron {
   background: rgba(49, 61, 85, 0.5); }
   .dt-repository-search-list .details .row {
     margin-top: 20px; }
+  .dt-repository-search-list .details h3 {
+    padding-bottom: 5px;
+    border-bottom: 1px solid #313d55; }
   .dt-repository-search-list .details a {
     color: #a3b5c8; }
+  .dt-repository-search-list .details .downloads {
+    list-style: none;
+    margin: 1em 0;
+    padding: 0; }
+  .dt-repository-search-list .details .external,
+  .dt-repository-search-list .details .download {
+    position: relative;
+    display: block;
+    padding: 0 0 0 24px; }
+    .dt-repository-search-list .details .external:before,
+    .dt-repository-search-list .details .download:before {
+      content: '';
+      display: block;
+      position: absolute;
+      top: 3px;
+      left: 0; }
+    .dt-repository-search-list .details .external span,
+    .dt-repository-search-list .details .download span {
+      display: block; }
+    .dt-repository-search-list .details .external .target,
+    .dt-repository-search-list .details .download .target {
+      opacity: 0.5; }
+  .dt-repository-search-list .details .external:before {
+    background-image: url(../images/sprites.png);
+    background-position: -186px -104px;
+    width: 16px;
+    height: 16px; }
+    @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+      .dt-repository-search-list .details .external:before {
+        background-image: url(../images/sprites-2x.png);
+        background-size: 283px 200px; } }
+  .dt-repository-search-list .details .download:before {
+    background-image: url(../images/sprites.png);
+    background-position: -264px -177px;
+    width: 16px;
+    height: 16px; }
+    @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+      .dt-repository-search-list .details .download:before {
+        background-image: url(../images/sprites-2x.png);
+        background-size: 283px 200px; } }
+  .dt-repository-search-list .details a.download:hover {
+    text-decoration: none; }
+    .dt-repository-search-list .details a.download:hover .source {
+      text-decoration: underline; }
 
 @media (min-width: 992px) {
   .dt-repository-search-list .header {
@@ -2009,7 +2056,7 @@ header.dt-header .dt-jumbotron {
   .dt-repository-search-pagination .next a:before,
   .dt-repository-search-pagination .next span:before {
     background-image: url(../images/sprites.png);
-    background-position: -264px -107px;
+    background-position: -204px -104px;
     width: 16px;
     height: 16px;
     content: '';
@@ -2028,7 +2075,7 @@ header.dt-header .dt-jumbotron {
   .dt-repository-search-pagination .previous span:before {
     background-position: -264px -81px; }
   .dt-repository-search-pagination .previous a:hover:before {
-    background-position: -264px -177px; }
+    background-position: -264px -107px; }
   @media (min-width: 992px) {
     .dt-repository-search-pagination a,
     .dt-repository-search-pagination span {

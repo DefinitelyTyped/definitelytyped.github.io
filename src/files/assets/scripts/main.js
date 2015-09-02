@@ -124,9 +124,28 @@ var dt;
             };
             Repository.prototype.setData = function (json) {
                 var data = JSON.parse(json);
+                var paths = {};
                 _(data.content).forEach(function (content, id) {
+                    paths[content.path] = id;
                     content.id = id;
                     content.sword = content.name.toLowerCase();
+                    content.download = content.info.reposUrl + '/raw/master/' + content.path;
+                    content.github = content.info.reposUrl + '/tree/master/' + content.project;
+                    content.nuget = 'http://www.nuget.org/packages/' + content.project + '.TypeScript.DefinitelyTyped/';
+                });
+                _(data.content).forEach(function (content, id) {
+                    content.references = _(content.info.references).map(function (path) {
+                        var result = { location: path };
+                        if (path.substr(0, 3) == '../') {
+                            path = path.substr(3);
+                        }
+                        if (path in paths) {
+                            var reference = data.content[paths[path]];
+                            result.name = reference.name;
+                            result.download = reference.download;
+                        }
+                        return result;
+                    });
                 });
                 data.content.sort(function (a, b) { return a.sword == b.sword ? 0 : (a.sword > b.sword ? 1 : -1); });
                 this.data = data;
@@ -646,6 +665,13 @@ var dt;
         }
     }
     dt.preventDefault = preventDefault;
+})(dt || (dt = {}));
+var dt;
+(function (dt) {
+    function wbrize(value) {
+        return value.split('/').join('/<wbr>');
+    }
+    dt.wbrize = wbrize;
 })(dt || (dt = {}));
 var dt;
 (function (dt) {

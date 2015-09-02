@@ -2,8 +2,8 @@
     <script class="list-row-compact" type="text/template">
 		<div class="header">
 			<span class="title"><%= name %></span>
-			<a href="<%= info.reposUrl %>/raw/master/<%= path %>" class="download" download>Download</a>
-			<a href="<%= info.reposUrl %>/tree/master/<%= project %>" class="github">Open on GitHub</a>
+			<a href="<%= download %>" class="download" download>Download</a>
+			<a href="<%= github %>" class="github">Open on GitHub</a>
 		</div>
     </script>
 
@@ -16,8 +16,8 @@
                         <dd><a href="<%= info.projectUrl %>">Homepage</a></dd>
 
                         <dt>Repositories</dt>
-                        <dd><a href="<%= info.reposUrl %>/tree/master/<%= project %>">Definitions on GitHub</a></dd>
-                        <dd><a href="http://www.nuget.org/packages/<%= project %>.TypeScript.DefinitelyTyped/">Definitions on NuGet</a></dd>
+                        <dd><a href="<%= github %>">Definitions on GitHub</a></dd>
+                        <dd><a href="<%= nuget %>">Definitions on NuGet</a></dd>
 
                         <% if (info.version) { %>
 							<dt>Version</dt>
@@ -36,9 +36,9 @@
 							<% _(info.authors).each(function(author) { %>
 								<dd>
 									<% if (author.url) { %>
-									<a href="<%= author.url %>"><%= author.name %></a>
+										<a href="<%= author.url %>"><%= author.name %></a>
 									<% } else { %>
-									<%= author.name %>
+										<%= author.name %>
 									<% } %>
 								</dd>
 							<% }); %>
@@ -52,13 +52,34 @@
 
                     <h3>GitHub</h3>
                     <p>You can download this package directly from GitHub:</p>
-                    <p><a href="<%= info.reposUrl %>/raw/master/<%= path %>" download><%= info.reposUrl %>/raw/master/<%= path %></a></p>
+                    <p><a href="<%= download %>" class="download" download><span class="source"><%= dt.wbrize(download) %></span></a></p>
+
+					<% if (references.length) { %>
+						<p>These dependencies must be downloaded separately to the following relative paths:</p>
+						<ul class="downloads">
+							<% _(references).each(function(reference) { %>
+								<li>
+									<% if (reference.download) { %>
+										<a href="<%= reference.download %>" class="download" download>
+											<span class="source"><%= dt.wbrize(reference.download) %></span>
+											<span class="target">to <%= reference.location %></span>
+										</a>
+									<% } else { %>
+										<span class="external">
+											<span class="source">External dependency</span>
+											<span class="target">to <%= reference.location %></span>
+										</span>
+									<% } %>
+								</li>
+							<% }); %>
+						</ul>
+					<% } %>
 
                     <h3>TSD</h3>
                     <p>If you havent installed tsd yet, you can do so by running:</p>
                     <pre><code>$ npm install tsd -g<br />$ tsd init</code></pre>
                     <p>To install this package with <code>tsd</code>, run the following command:</p>
-                    <pre><code>$ tsd query <%= project %> -rosa install</code></pre>
+                    <pre><code>$ tsd install <%= project %> --save</code></pre>
 
                     <h3>NuGet</h3>
                     <p>To install this package with NuGet, run the following command:</p>
