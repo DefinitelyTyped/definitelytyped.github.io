@@ -1,12 +1,8 @@
 <% renderMenu = (items) => %>
     <ul>
         <% for item in items: %>
-            <li<% if item.state: %> class="selected"<% end %>>
-                <% if item.state != 'current': %>
-                    <a href="<%= item.url %>"><%= item.title %></a>
-                <% else: %>
-                    <strong><%= item.title %></strong>
-                <% end %>
+            <li<% if item.state: %> class="<%= item.state %>"<% end %>>
+				<a href="<%= item.meta.redirect or item.url %>"><%= item.title %></a>
 
                 <% if item.children: %>
                     <%- renderMenu(item.children) %>

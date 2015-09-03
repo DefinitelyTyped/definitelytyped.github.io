@@ -133,10 +133,10 @@ img
 		color: $color-main
 
 	.lead
-		font-size: $size-lead
+		font-size: $size-lead * 0.8
 
 	h2 + .lead
-		margin-top: -0.4em
+		margin-top: 0
 
 	.message
 		border-radius: .325em
@@ -146,3 +146,14 @@ img
 		line-height: 1.33
 		font-size: .875em
 		color: rgba(0, 0, 0, .6)
+
+	@media (min-width: $screen-sm-min)
+		h2 + .lead
+			margin-top: -0.4em
+
+		.lead
+			font-size: $size-lead * 0.9
+
+	@media (min-width: $screen-md-min)
+		.lead
+			font-size: $size-lead

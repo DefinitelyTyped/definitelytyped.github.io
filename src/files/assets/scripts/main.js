@@ -6,6 +6,51 @@ var __extends = (this && this.__extends) || function (d, b) {
 };
 var dt;
 (function (dt) {
+    var menu;
+    (function (menu) {
+        var Component = (function (_super) {
+            __extends(Component, _super);
+            function Component(options) {
+                _super.call(this, _.defaults(options || {}, {
+                    events: {
+                        'click .menu-widget': 'onWidgetClick'
+                    }
+                }));
+                this.isExpanded = false;
+            }
+            Component.prototype.setTransition = function (transition, duration) {
+                var _this = this;
+                if (duration === void 0) { duration = 400; }
+                if (this.transition == transition)
+                    return;
+                if (this.transition) {
+                    clearTimeout(this.transitionTimeout);
+                    dt.removeClass(this.el, this.transition);
+                }
+                dt.addClass(this.el, transition);
+                this.transition = transition;
+                this.transitionTimeout = setTimeout(function () {
+                    dt.removeClass(_this.el, transition);
+                    _this.transition = _this.transitionTimeout = null;
+                }, duration);
+            };
+            Component.prototype.onWidgetClick = function () {
+                this.isExpanded = !this.isExpanded;
+                dt.toggleClass(document.documentElement, 'has-menu', this.isExpanded);
+                if (this.isExpanded) {
+                    this.setTransition('menu-fade-in', 750);
+                }
+                else {
+                    this.setTransition('menu-fade-out', 250);
+                }
+            };
+            return Component;
+        })(Backbone.NativeView);
+        menu.Component = Component;
+    })(menu = dt.menu || (dt.menu = {}));
+})(dt || (dt = {}));
+var dt;
+(function (dt) {
     var repository;
     (function (repository) {
         var Component = (function (_super) {
@@ -1144,6 +1189,9 @@ var dt;
             if (console && console.log) {
                 console.log('\n\nShow your stuff at https://github.com/DefinitelyTyped/definitelytyped.github.io\n\n');
             }
+            _(document.querySelectorAll('.dt-header')).each(function (el) {
+                new dt.menu.Component({ el: el });
+            });
             _(document.querySelectorAll('.dt-repository-search')).each(function (el) {
                 new dt.repository.Component({ el: el });
             });

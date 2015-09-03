@@ -59,6 +59,7 @@
 			padding: 0
 			font-size: 0
 			color: transparent
+			border-radius: 0 4px 4px 0
 
 			&:before
 				+retina-sprite($repository-sm-search-group)
@@ -70,19 +71,24 @@
 			+sprite-position($repository-sm-closer)
 
 	.all
-		white-space: nowrap
-		border-radius: 0 4px 4px 0
+		display: none
 
-		&:before
-			+retina-sprite($repository-sm-all-group)
-			content: ''
-			display: inline-block
-			vertical-align: top
-
-	@media (min-width: $screen-md-min)
+	@media (min-width: $screen-sm-min)
 		.field:first-child
 			padding-right: 10px
 
+		.all
+			display: inline-block
+			border-radius: 4px
+			white-space: nowrap
+
+			&:before
+				+retina-sprite($repository-sm-all-group)
+				content: ''
+				display: inline-block
+				vertical-align: top
+
+	@media (min-width: $screen-md-min)
 		button,
 		input
 			height: 50px
@@ -90,18 +96,14 @@
 			font-size: $size-lead
 
 		.sword
-			button
-				border-radius: 0 4px 4px 0
-
-				&:before
-					+retina-sprite($repository-md-search-group)
+			button:before
+				+retina-sprite($repository-md-search-group)
 
 			&.has-sword button:before
 				+sprite-position($repository-md-closer)
 
 		.all
 			padding-right: 15px
-			border-radius: 4px
 
 			&:before
 				+retina-sprite($repository-md-all-group)
@@ -114,9 +116,8 @@
 			font-size: $size-large
 
 		.sword
-			button
-				&:before
-					+retina-sprite($repository-lg-search-group)
+			button:before
+				+retina-sprite($repository-lg-search-group)
 
 			&.has-sword button:before
 				+sprite-position($repository-lg-closer)

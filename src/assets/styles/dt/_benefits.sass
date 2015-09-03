@@ -8,16 +8,15 @@ ul.benefits
 
 	li
 		position: relative
-		margin: 0 0 0 130px
+		padding: 0 0 0 130px
 
 		&:before
+			+absolute(50%, false, false, 0)
 			content: ''
 			display: block
-			position: absolute
-			left: -130px
-			top: 0
 			width: 120px
 			height: 120px
+			margin-top: -60px
 			background-image: url(#{$image-path}benefits-icons.png)
 
 			+high-dpi
@@ -30,3 +29,10 @@ ul.benefits
 
 		&.opensource:before
 			background-position: 0 -240px
+
+	@media (max-width: $screen-xs-max)
+		li
+			padding: 0
+
+			&:before
+				display: none

@@ -12,6 +12,10 @@ namespace dt
 				console.log('\n\nShow your stuff at https://github.com/DefinitelyTyped/definitelytyped.github.io\n\n');
 			}
 
+			_(document.querySelectorAll('.dt-header')).each((el:any) => {
+				new menu.Component({el});
+			});
+
 			_(document.querySelectorAll('.dt-repository-search')).each((el:any) => {
 				new repository.Component({el});
 			});

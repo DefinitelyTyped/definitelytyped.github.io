@@ -82,13 +82,39 @@
 	z-index: 3
 	font-size: 0
 	line-height: 60px
+	text-align: right
 
 	a
 		text-decoration: none
 
+	.menu-widget
+		display: inline-block
+		width: 60px
+		margin-right: -15px
+		padding: 0
+		background-color: transparent
+		border: none
+		outline: none
+		font-size: 0
+		text-align: center
+		color: transparent
+		vertical-align: top
+
+		&:before
+			+retina-sprite($repository-sm-all-group)
+			content: ''
+			display: inline-block
+			vertical-align: middle
+
+		&.close:before
+			+sprite-position($repository-sm-closer)
+
+
 	@media (min-width: $screen-sm-min)
 		line-height: 80px
-		text-align: right
+
+		.menu-widget
+			display: none
 
 	@media (min-width: $screen-md-min)
 		line-height: 100px
@@ -97,8 +123,9 @@
 // Logo
 //
 
-.dt-header .dt-logo
+.dt-header-logo
 	display: block
+	float: left
 
 	&:before,
 	span
@@ -118,8 +145,6 @@
 		font-weight: normal
 
 	@media (min-width: $screen-sm-min)
-		float: left
-
 		&:before
 			+retina-sprite($logo-medium-group)
 
@@ -131,55 +156,149 @@
 // Menu
 //
 
-.dt-header .dt-menu
-	list-style: none
-	margin: -10px 0 0 0
-	padding: 0 0 10px 35px
-	line-height: normal
-
-	li:before,
-	a
-		@extend .style-raleway-normal
-		display: inline-block
-		vertical-align: top
+.dt-header-menu
+	ul
+		list-style: none
+		margin: 0 -15px
+		padding: 0
 
 	li
-		display: inline
+		display: inline-block
+		font-family: $font-raleway
+		font-weight: bold
+		vertical-align: top
+		font-size: $size-normal * 0.9
 
 		&:before
 			content: '|'
 			color: #4c4668
 
-		&:first-child:before
+		&:first-child:before,
+		ul
 			display: none
-
-	a
-		+transition(color 0.2s)
-		margin: 0 7px
-		color: $color-main-light
-		letter-spacing: 1px
-		text-transform: uppercase
-
-		&:hover,
-		&.current
-			color: $color-main
-
-	@media (min-width: $screen-sm-min)
-		margin: 0 -15px
-		padding: 0
-		line-height: inherit
 
 		a
 			+relative()
+			display: inline-block
 			margin: 0 15px
 			vertical-align: top
+			color: $color-main-light
+			letter-spacing: 1px
+			text-transform: uppercase
+			transition: color 0.2s
 
-			&.current:before,
-			&.parent:before
+			&:hover
+				color: $color-main
+
+		&.current > a,
+		&.parent > a
+			color: $color-main
+
+			&:after
 				+absolute(0, 0, false, 0)
 				content: ''
 				height: 6px
 				background-color: $color-main
+
+	@media (max-width: $screen-xs-max)
+		+position(fixed, 0, 0, 0, 0)
+		z-index: 100
+		background-color: $color-main-dark
+		overflow: auto
+		font-size: $size-normal * 0.85
+		text-align: left
+		line-height: 1.5em
+		visibility: hidden
+		-webkit-overflow-scrolling: touch
+
+		.menu-header
+			margin: 0 15px
+			font-size: 0
+			line-height: 60px
+			text-align: right
+
+		ul
+			margin: 0 15px
+
+		li
+			display: block
+			font-size: $size-large * 0.75
+			margin: 20px 0
+
+			&:before
+				display: none
+
+			a
+				display: block
+				margin: 0
+				padding: 5px 0 5px 42px
+				color: $color-white
+
+			&.guides > a:before,
+			&.directory > a:before,
+			&.pages > a:before
+				+absolute(50%, false, false, 6px)
+				content: ''
+				margin-top: $footer-icon-guides-height * -0.5
+
+			&.guides > a:before
+				+retina-sprite($footer-icon-guides-group)
+
+			&.directory > a:before
+				+retina-sprite($footer-icon-directory-group)
+
+			&.pages > a:before
+				+retina-sprite($footer-icon-pages-group)
+
+			&.current > a,
+			&.parent > a
+				color: $color-main-light
+
+				&:after
+					display: none
+
+			ul
+				display: block
+				margin: 0
+				padding: 0 0 0 42px
+
+				li
+					margin: 0
+					font-family: $font-default
+					font-size: $size-normal * 0.85
+					font-weight: normal
+
+				a
+					padding: 5px 0
+					text-transform: none
+
+				ul
+					display: none
+					padding: 0 0 0 21px
+
+				.parent > ul,
+				.current > ul
+					display: block
+
+		@at-root .has-menu
+			overflow: hidden
+
+		.has-menu &
+			visibility: visible
+
+		.menu-fade-in &
+			animation: fade-in 0.25s both
+
+			@for $index from 1 to 8
+				> ul > li:nth-child(#{$index})
+					animation: mobile-menu-fade-in 0.5s #{0.1 + $index * 0.025}s cubic-bezier(0.1, 0.5, 0.1, 1) backwards
+
+		.menu-fade-out &
+			animation: fade-out 0.25s both
+
+	@media (min-width: $screen-md-min)
+		li
+			font-size: $size-normal
 
 
 // Jumbotron

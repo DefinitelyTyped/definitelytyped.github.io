@@ -1,10 +1,34 @@
-<nav>
-	<a class="dt-logo" href="<%= @site.home %>"><span>Definitely<strong>Typed</strong></span></a>
-    <ul class="dt-menu">
-		<% for item in @generateMenu(@document.url): %>
-			<li class="<%= item.meta.class %>">
-				<a class="<%= item.state %>" href="<%- item.meta.redirect or item.url %>"><%= item.title %></a>
+<% renderMenu = (items) => %>
+	<ul>
+		<% for item in items: %>
+			<li<% if item.state: %> class="<%= item.state %>"<% end %>>
+				<a href="<%- item.meta.redirect or item.url %>"><%= item.title %></a>
+
+				<% if item.children: %>
+					<%- renderMenu(item.children) %>
+				<% end %>
 			</li>
 		<% end %>
-    </ul>
+	</ul>
+<% end %>
+
+<nav>
+	<a class="dt-header-logo" href="<%= @site.home %>"><span>Definitely<strong>Typed</strong></span></a>
+	<button class="menu-widget open">Menu</button>
+
+	<div class="dt-header-menu">
+		<div class="menu-header visible-xs">
+			<a class="dt-header-logo" href="<%= @site.home %>"><span>Definitely<strong>Typed</strong></span></a>
+			<button class="menu-widget close">Close</button>
+		</div>
+
+		<ul>
+			<% for item in @generateMenu(@document.url): %>
+				<li class="<% if item.state: %><%= item.state %><% end %> <%= item.meta.class %>">
+					<a href="<%- item.meta.redirect or item.url %>"><%= item.title %></a>
+					<%- renderMenu(item.children) if item.children %>
+				</li>
+			<% end %>
+		</ul>
+	</div>
 </nav>

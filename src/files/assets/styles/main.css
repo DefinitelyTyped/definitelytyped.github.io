@@ -1084,7 +1084,7 @@ body,
 .style-default-lead, .dt-repository-search-pagination a,
 .dt-repository-search-pagination span {
   font-family: "Open Sans", sans-serif;
-  font-size: 20.4px;
+  font-size: 19.2px;
   font-weight: normal; }
   @media (min-width: 768px) {
     .style-default-lead, .dt-repository-search-pagination a,
@@ -1095,18 +1095,15 @@ body,
     .dt-repository-search-pagination span {
       font-size: 24px; } }
 
-.style-raleway-normal, .dt-button, .dt-header .dt-menu li:before,
-.dt-header .dt-menu a, .dt-footer h2, .dt-footer ul.quick a, .typography h4, .typography h5, .typography h6, .typography a.action {
+.style-raleway-normal, .dt-button, .dt-footer h2, .dt-footer ul.quick a, .typography h4, .typography h5, .typography h6, .typography a.action {
   font-family: "Raleway", sans-serif;
   font-size: 12.8px;
   font-weight: bold; }
   @media (min-width: 768px) {
-    .style-raleway-normal, .dt-button, .dt-header .dt-menu li:before,
-    .dt-header .dt-menu a, .dt-footer h2, .dt-footer ul.quick a, .typography h4, .typography h5, .typography h6, .typography a.action {
+    .style-raleway-normal, .dt-button, .dt-footer h2, .dt-footer ul.quick a, .typography h4, .typography h5, .typography h6, .typography a.action {
       font-size: 14.4px; } }
   @media (min-width: 992px) {
-    .style-raleway-normal, .dt-button, .dt-header .dt-menu li:before,
-    .dt-header .dt-menu a, .dt-footer h2, .dt-footer ul.quick a, .typography h4, .typography h5, .typography h6, .typography a.action {
+    .style-raleway-normal, .dt-button, .dt-footer h2, .dt-footer ul.quick a, .typography h4, .typography h5, .typography h6, .typography a.action {
       font-size: 16px; } }
 
 .style-raleway-lead, .dt-repository-search-list .header .title, .typography .label {
@@ -1120,15 +1117,15 @@ body,
     .style-raleway-lead, .dt-repository-search-list .header .title, .typography .label {
       font-size: 20px; } }
 
-.style-raleway-large, .dt-header .dt-logo span, .typography h3 {
+.style-raleway-large, .dt-header-logo span, .typography h3 {
   font-family: "Raleway", sans-serif;
   font-size: 21px;
   font-weight: bold; }
   @media (min-width: 768px) {
-    .style-raleway-large, .dt-header .dt-logo span, .typography h3 {
+    .style-raleway-large, .dt-header-logo span, .typography h3 {
       font-size: 25.2px; } }
   @media (min-width: 992px) {
-    .style-raleway-large, .dt-header .dt-logo span, .typography h3 {
+    .style-raleway-large, .dt-header-logo span, .typography h3 {
       font-size: 28px; } }
 
 .style-raleway-larger, header.dt-header .dt-jumbotron h1, .typography h2 {
@@ -1177,20 +1174,41 @@ body,
   to {
     opacity: 0; } }
 
+@-webkit-keyframes mobile-menu-fade-in {
+  from {
+    opacity: 0;
+    -webkit-transform: translate(0, 50px);
+            transform: translate(0, 50px); }
+  to {
+    opacity: 1;
+    -webkit-transform: translate(0, 0px);
+            transform: translate(0, 0px); } }
+
+@keyframes mobile-menu-fade-in {
+  from {
+    opacity: 0;
+    -webkit-transform: translate(0, 50px);
+            transform: translate(0, 50px); }
+  to {
+    opacity: 1;
+    -webkit-transform: translate(0, 0px);
+            transform: translate(0, 0px); } }
+
 ul.benefits {
   list-style: none;
   padding: 0 !important; }
   ul.benefits li {
     position: relative;
-    margin: 0 0 0 130px; }
+    padding: 0 0 0 130px; }
     ul.benefits li:before {
+      position: absolute;
+      top: 50%;
+      left: 0;
       content: '';
       display: block;
-      position: absolute;
-      left: -130px;
-      top: 0;
       width: 120px;
       height: 120px;
+      margin-top: -60px;
       background-image: url(../images/benefits-icons.png); }
       @media (-webkit-min-device-pixel-ratio: 1.5), (min--moz-device-pixel-ratio: 1.5), (min-resolution: 1.5dppx) {
         ul.benefits li:before {
@@ -1200,6 +1218,11 @@ ul.benefits {
       background-position: 0 -120px; }
     ul.benefits li.opensource:before {
       background-position: 0 -240px; }
+  @media (max-width: 767px) {
+    ul.benefits li {
+      padding: 0; }
+      ul.benefits li:before {
+        display: none; } }
 
 .dt-button {
   -webkit-transition: background-color 0.1s;
@@ -1472,24 +1495,53 @@ ul.benefits {
   position: relative;
   z-index: 3;
   font-size: 0;
-  line-height: 60px; }
+  line-height: 60px;
+  text-align: right; }
   .dt-header nav a {
     text-decoration: none; }
+  .dt-header nav .menu-widget {
+    display: inline-block;
+    width: 60px;
+    margin-right: -15px;
+    padding: 0;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    font-size: 0;
+    text-align: center;
+    color: transparent;
+    vertical-align: top; }
+    .dt-header nav .menu-widget:before {
+      background-image: url(../images/sprites.png);
+      background-position: -238px 0px;
+      width: 45px;
+      height: 45px;
+      content: '';
+      display: inline-block;
+      vertical-align: middle; }
+      @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+        .dt-header nav .menu-widget:before {
+          background-image: url(../images/sprites-2x.png);
+          background-size: 283px 200px; } }
+    .dt-header nav .menu-widget.close:before {
+      background-position: -102px -150px; }
   @media (min-width: 768px) {
     .dt-header nav {
-      line-height: 80px;
-      text-align: right; } }
+      line-height: 80px; }
+      .dt-header nav .menu-widget {
+        display: none; } }
   @media (min-width: 992px) {
     .dt-header nav {
       line-height: 100px; } }
 
-.dt-header .dt-logo {
-  display: block; }
-  .dt-header .dt-logo:before,
-  .dt-header .dt-logo span {
+.dt-header-logo {
+  display: block;
+  float: left; }
+  .dt-header-logo:before,
+  .dt-header-logo span {
     display: inline-block;
     vertical-align: middle; }
-  .dt-header .dt-logo:before {
+  .dt-header-logo:before {
     background-image: url(../images/sprites.png);
     background-position: -238px -47px;
     width: 32px;
@@ -1497,81 +1549,210 @@ ul.benefits {
     content: '';
     margin-right: 10px; }
     @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
-      .dt-header .dt-logo:before {
+      .dt-header-logo:before {
         background-image: url(../images/sprites-2x.png);
         background-size: 283px 200px; } }
-  .dt-header .dt-logo span {
+  .dt-header-logo span {
     line-height: 1em;
     letter-spacing: 1px;
     color: #fff;
     font-weight: normal; }
   @media (min-width: 768px) {
-    .dt-header .dt-logo {
-      float: left; }
-      .dt-header .dt-logo:before {
-        background-image: url(../images/sprites.png);
-        background-position: -52px -150px;
-        width: 48px;
-        height: 48px; } }
-    @media (min-width: 768px) and (-webkit-min-device-pixel-ratio: 2), (min-width: 768px) and (min-resolution: 192dpi) {
-      .dt-header .dt-logo:before {
-        background-image: url(../images/sprites-2x.png);
-        background-size: 283px 200px; } }
+    .dt-header-logo:before {
+      background-image: url(../images/sprites.png);
+      background-position: -52px -150px;
+      width: 48px;
+      height: 48px; } }
+  @media (min-width: 768px) and (-webkit-min-device-pixel-ratio: 2), (min-width: 768px) and (min-resolution: 192dpi) {
+    .dt-header-logo:before {
+      background-image: url(../images/sprites-2x.png);
+      background-size: 283px 200px; } }
   @media (min-width: 992px) {
-    .dt-header .dt-logo:before {
+    .dt-header-logo:before {
       background-image: url(../images/sprites.png);
       background-position: 0px 0px;
       width: 60px;
       height: 60px; } }
   @media (min-width: 992px) and (-webkit-min-device-pixel-ratio: 2), (min-width: 992px) and (min-resolution: 192dpi) {
-    .dt-header .dt-logo:before {
+    .dt-header-logo:before {
       background-image: url(../images/sprites-2x.png);
       background-size: 283px 200px; } }
 
-.dt-header .dt-menu {
+.dt-header-menu ul {
   list-style: none;
-  margin: -10px 0 0 0;
-  padding: 0 0 10px 35px;
-  line-height: normal; }
-  .dt-header .dt-menu li:before,
-  .dt-header .dt-menu a {
+  margin: 0 -15px;
+  padding: 0; }
+
+.dt-header-menu li {
+  display: inline-block;
+  font-family: "Raleway", sans-serif;
+  font-weight: bold;
+  vertical-align: top;
+  font-size: 14.4px; }
+  .dt-header-menu li:before {
+    content: '|';
+    color: #4c4668; }
+  .dt-header-menu li:first-child:before,
+  .dt-header-menu li ul {
+    display: none; }
+  .dt-header-menu li a {
+    position: relative;
     display: inline-block;
-    vertical-align: top; }
-  .dt-header .dt-menu li {
-    display: inline; }
-    .dt-header .dt-menu li:before {
-      content: '|';
-      color: #4c4668; }
-    .dt-header .dt-menu li:first-child:before {
-      display: none; }
-  .dt-header .dt-menu a {
-    -webkit-transition: color 0.2s;
-    transition: color 0.2s;
-    margin: 0 7px;
+    margin: 0 15px;
+    vertical-align: top;
     color: #6481a1;
     letter-spacing: 1px;
-    text-transform: uppercase; }
-    .dt-header .dt-menu a:hover,
-    .dt-header .dt-menu a.current {
+    text-transform: uppercase;
+    -webkit-transition: color 0.2s;
+            transition: color 0.2s; }
+    .dt-header-menu li a:hover {
       color: #0077d2; }
-  @media (min-width: 768px) {
-    .dt-header .dt-menu {
-      margin: 0 -15px;
-      padding: 0;
-      line-height: inherit; }
-      .dt-header .dt-menu a {
-        position: relative;
-        margin: 0 15px;
-        vertical-align: top; }
-        .dt-header .dt-menu a.current:before,
-        .dt-header .dt-menu a.parent:before {
-          position: absolute;
-          top: 0;
-          right: 0;
-          left: 0;
-          content: '';
-          height: 6px;
-          background-color: #0077d2; } }
+  .dt-header-menu li.current > a,
+  .dt-header-menu li.parent > a {
+    color: #0077d2; }
+    .dt-header-menu li.current > a:after,
+    .dt-header-menu li.parent > a:after {
+      position: absolute;
+      top: 0;
+      right: 0;
+      left: 0;
+      content: '';
+      height: 6px;
+      background-color: #0077d2; }
+
+@media (max-width: 767px) {
+  .dt-header-menu {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 100;
+    background-color: #162943;
+    overflow: auto;
+    font-size: 13.6px;
+    text-align: left;
+    line-height: 1.5em;
+    visibility: hidden;
+    -webkit-overflow-scrolling: touch; }
+    .dt-header-menu .menu-header {
+      margin: 0 15px;
+      font-size: 0;
+      line-height: 60px;
+      text-align: right; }
+    .dt-header-menu ul {
+      margin: 0 15px; }
+    .dt-header-menu li {
+      display: block;
+      font-size: 21px;
+      margin: 20px 0; }
+      .dt-header-menu li:before {
+        display: none; }
+      .dt-header-menu li a {
+        display: block;
+        margin: 0;
+        padding: 5px 0 5px 42px;
+        color: #fff; }
+      .dt-header-menu li.guides > a:before,
+      .dt-header-menu li.directory > a:before,
+      .dt-header-menu li.pages > a:before {
+        position: absolute;
+        top: 50%;
+        left: 6px;
+        content: '';
+        margin-top: -10px; }
+      .dt-header-menu li.guides > a:before {
+        background-image: url(../images/sprites.png);
+        background-position: -260px -133px;
+        width: 20px;
+        height: 20px; } }
+      @media (max-width: 767px) and (-webkit-min-device-pixel-ratio: 2), (max-width: 767px) and (min-resolution: 192dpi) {
+        .dt-header-menu li.guides > a:before {
+          background-image: url(../images/sprites-2x.png);
+          background-size: 283px 200px; } }
+
+@media (max-width: 767px) {
+      .dt-header-menu li.directory > a:before {
+        background-image: url(../images/sprites.png);
+        background-position: -238px -155px;
+        width: 20px;
+        height: 20px; } }
+      @media (max-width: 767px) and (-webkit-min-device-pixel-ratio: 2), (max-width: 767px) and (min-resolution: 192dpi) {
+        .dt-header-menu li.directory > a:before {
+          background-image: url(../images/sprites-2x.png);
+          background-size: 283px 200px; } }
+
+@media (max-width: 767px) {
+      .dt-header-menu li.pages > a:before {
+        background-image: url(../images/sprites.png);
+        background-position: -238px -133px;
+        width: 20px;
+        height: 20px; } }
+      @media (max-width: 767px) and (-webkit-min-device-pixel-ratio: 2), (max-width: 767px) and (min-resolution: 192dpi) {
+        .dt-header-menu li.pages > a:before {
+          background-image: url(../images/sprites-2x.png);
+          background-size: 283px 200px; } }
+
+@media (max-width: 767px) {
+      .dt-header-menu li.current > a,
+      .dt-header-menu li.parent > a {
+        color: #6481a1; }
+        .dt-header-menu li.current > a:after,
+        .dt-header-menu li.parent > a:after {
+          display: none; }
+      .dt-header-menu li ul {
+        display: block;
+        margin: 0;
+        padding: 0 0 0 42px; }
+        .dt-header-menu li ul li {
+          margin: 0;
+          font-family: "Open Sans", sans-serif;
+          font-size: 13.6px;
+          font-weight: normal; }
+        .dt-header-menu li ul a {
+          padding: 5px 0;
+          text-transform: none; }
+        .dt-header-menu li ul ul {
+          display: none;
+          padding: 0 0 0 21px; }
+        .dt-header-menu li ul .parent > ul,
+        .dt-header-menu li ul .current > ul {
+          display: block; }
+    .has-menu {
+      overflow: hidden; }
+    .has-menu .dt-header-menu {
+      visibility: visible; }
+    .menu-fade-in .dt-header-menu {
+      -webkit-animation: fade-in 0.25s both;
+              animation: fade-in 0.25s both; }
+      .menu-fade-in .dt-header-menu > ul > li:nth-child(1) {
+        -webkit-animation: mobile-menu-fade-in 0.5s 0.125s cubic-bezier(0.1, 0.5, 0.1, 1) backwards;
+                animation: mobile-menu-fade-in 0.5s 0.125s cubic-bezier(0.1, 0.5, 0.1, 1) backwards; }
+      .menu-fade-in .dt-header-menu > ul > li:nth-child(2) {
+        -webkit-animation: mobile-menu-fade-in 0.5s 0.15s cubic-bezier(0.1, 0.5, 0.1, 1) backwards;
+                animation: mobile-menu-fade-in 0.5s 0.15s cubic-bezier(0.1, 0.5, 0.1, 1) backwards; }
+      .menu-fade-in .dt-header-menu > ul > li:nth-child(3) {
+        -webkit-animation: mobile-menu-fade-in 0.5s 0.175s cubic-bezier(0.1, 0.5, 0.1, 1) backwards;
+                animation: mobile-menu-fade-in 0.5s 0.175s cubic-bezier(0.1, 0.5, 0.1, 1) backwards; }
+      .menu-fade-in .dt-header-menu > ul > li:nth-child(4) {
+        -webkit-animation: mobile-menu-fade-in 0.5s 0.2s cubic-bezier(0.1, 0.5, 0.1, 1) backwards;
+                animation: mobile-menu-fade-in 0.5s 0.2s cubic-bezier(0.1, 0.5, 0.1, 1) backwards; }
+      .menu-fade-in .dt-header-menu > ul > li:nth-child(5) {
+        -webkit-animation: mobile-menu-fade-in 0.5s 0.225s cubic-bezier(0.1, 0.5, 0.1, 1) backwards;
+                animation: mobile-menu-fade-in 0.5s 0.225s cubic-bezier(0.1, 0.5, 0.1, 1) backwards; }
+      .menu-fade-in .dt-header-menu > ul > li:nth-child(6) {
+        -webkit-animation: mobile-menu-fade-in 0.5s 0.25s cubic-bezier(0.1, 0.5, 0.1, 1) backwards;
+                animation: mobile-menu-fade-in 0.5s 0.25s cubic-bezier(0.1, 0.5, 0.1, 1) backwards; }
+      .menu-fade-in .dt-header-menu > ul > li:nth-child(7) {
+        -webkit-animation: mobile-menu-fade-in 0.5s 0.275s cubic-bezier(0.1, 0.5, 0.1, 1) backwards;
+                animation: mobile-menu-fade-in 0.5s 0.275s cubic-bezier(0.1, 0.5, 0.1, 1) backwards; }
+    .menu-fade-out .dt-header-menu {
+      -webkit-animation: fade-out 0.25s both;
+              animation: fade-out 0.25s both; } }
+
+@media (min-width: 992px) {
+  .dt-header-menu li {
+    font-size: 16px; } }
 
 header.dt-header .dt-jumbotron {
   padding: 30px 0;
@@ -1777,7 +1958,8 @@ header.dt-header .dt-jumbotron {
     .dt-repository-search-form .sword button {
       padding: 0;
       font-size: 0;
-      color: transparent; }
+      color: transparent;
+      border-radius: 0 4px 4px 0; }
       .dt-repository-search-form .sword button:before {
         background-image: url(../images/sprites.png);
         background-position: -149px -150px;
@@ -1793,45 +1975,46 @@ header.dt-header .dt-jumbotron {
     .dt-repository-search-form .sword.has-sword button:before {
       background-position: -102px -150px; }
   .dt-repository-search-form .all {
-    white-space: nowrap;
-    border-radius: 0 4px 4px 0; }
-    .dt-repository-search-form .all:before {
-      background-image: url(../images/sprites.png);
-      background-position: -238px 0px;
-      width: 45px;
-      height: 45px;
-      content: '';
-      display: inline-block;
-      vertical-align: top; }
-      @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
-        .dt-repository-search-form .all:before {
-          background-image: url(../images/sprites-2x.png);
-          background-size: 283px 200px; } }
-  @media (min-width: 992px) {
+    display: none; }
+  @media (min-width: 768px) {
     .dt-repository-search-form .field:first-child {
       padding-right: 10px; }
+    .dt-repository-search-form .all {
+      display: inline-block;
+      border-radius: 4px;
+      white-space: nowrap; }
+      .dt-repository-search-form .all:before {
+        background-image: url(../images/sprites.png);
+        background-position: -238px 0px;
+        width: 45px;
+        height: 45px;
+        content: '';
+        display: inline-block;
+        vertical-align: top; } }
+    @media (min-width: 768px) and (-webkit-min-device-pixel-ratio: 2), (min-width: 768px) and (min-resolution: 192dpi) {
+      .dt-repository-search-form .all:before {
+        background-image: url(../images/sprites-2x.png);
+        background-size: 283px 200px; } }
+  @media (min-width: 992px) {
     .dt-repository-search-form button,
     .dt-repository-search-form input {
       height: 50px;
       line-height: 50px;
       font-size: 24px; }
-    .dt-repository-search-form .sword button {
-      border-radius: 0 4px 4px 0; }
-      .dt-repository-search-form .sword button:before {
-        background-image: url(../images/sprites.png);
-        background-position: 0px -150px;
-        width: 50px;
-        height: 50px; } }
-    @media (min-width: 992px) and (-webkit-min-device-pixel-ratio: 2), (min-width: 992px) and (min-resolution: 192dpi) {
-      .dt-repository-search-form .sword button:before {
-        background-image: url(../images/sprites-2x.png);
-        background-size: 283px 200px; } }
+    .dt-repository-search-form .sword button:before {
+      background-image: url(../images/sprites.png);
+      background-position: 0px -150px;
+      width: 50px;
+      height: 50px; } }
+  @media (min-width: 992px) and (-webkit-min-device-pixel-ratio: 2), (min-width: 992px) and (min-resolution: 192dpi) {
+    .dt-repository-search-form .sword button:before {
+      background-image: url(../images/sprites-2x.png);
+      background-size: 283px 200px; } }
   @media (min-width: 992px) {
     .dt-repository-search-form .sword.has-sword button:before {
       background-position: -186px 0px; }
     .dt-repository-search-form .all {
-      padding-right: 15px;
-      border-radius: 4px; }
+      padding-right: 15px; }
       .dt-repository-search-form .all:before {
         background-image: url(../images/sprites.png);
         background-position: -186px -52px;
@@ -2227,10 +2410,10 @@ img {
   color: #0077d2; }
 
 .typography .lead {
-  font-size: 24px; }
+  font-size: 19.2px; }
 
 .typography h2 + .lead {
-  margin-top: -0.4em; }
+  margin-top: 0; }
 
 .typography .message {
   border-radius: .325em;
@@ -2241,17 +2424,12 @@ img {
   font-size: .875em;
   color: rgba(0, 0, 0, 0.6); }
 
-@media only screen and (max-width: 640px) {
-  .container.main {
-    margin-top: 20px;
-    margin-bottom: 30px; }
-  .typography h2 {
-    font-size: 24px; }
-    .typography h2 + .lead {
-      margin-top: 0; }
+@media (min-width: 768px) {
+  .typography h2 + .lead {
+    margin-top: -0.4em; }
   .typography .lead {
-    font-size: 16px; }
-  ul.benefits li {
-    margin: 0; }
-    ul.benefits li:before {
-      display: none; } }
+    font-size: 21.6px; } }
+
+@media (min-width: 992px) {
+  .typography .lead {
+    font-size: 24px; } }
