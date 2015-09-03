@@ -76,21 +76,6 @@ var docpadConfig = {
 		}
 	},
 	collections: {
-		pages: function() {
-			return this.getCollection('documents').findAllLive({
-				relativeOutDirPath: 'pages'
-			});
-		},
-		guides: function() {
-			return this.getCollection('documents').findAllLive({
-				relativeOutDirPath: 'guides'
-			});
-		},
-		directory: function() {
-			return this.getCollection('documents').findAllLive({
-				relativeOutDirPath: 'directory'
-			});
-		}
 	},
 	environments: {
 		development: {

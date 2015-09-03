@@ -1,7 +1,6 @@
 ---
-layout: 'directory'
+layout: 'content'
 title: 'Tools & Editors'
-section: 'directory'
 menuOrder: 1
 ---
 

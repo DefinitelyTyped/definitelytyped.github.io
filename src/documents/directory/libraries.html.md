@@ -1,7 +1,6 @@
 ---
-layout: 'directory'
+layout: 'content'
 title: 'Libraries'
-section: 'directory'
 menuOrder: 3
 ---
 

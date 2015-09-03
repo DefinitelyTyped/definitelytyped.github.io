@@ -10,9 +10,12 @@ layout: default
         </div>
     </div>
 	<div class="row">
-		<div class="col-md-12 typography">
+		<div class="col-md-3">
+			<%- @partial('menu.html.eco', {menuItems: @generateMenu(@document.url)}) %>
+		</div>
+		<div class="col-md-9 typography">
 			<%- @content %>
-            <%- @partial('contribute') %>
+			<%- @partial('contribute') %>
 		</div>
 	</div>
 </div>

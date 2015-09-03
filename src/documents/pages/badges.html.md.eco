@@ -1,7 +1,6 @@
 ---
-layout: 'page'
+layout: 'content'
 title: 'Badges'
-section: 'pages'
 menuOrder: 0
 ---
 

@@ -1,7 +1,6 @@
 ---
-layout: 'directory'
+layout: 'content'
 title: 'Learn TypeScript'
-section: 'directory'
 menuOrder: 0
 ---
 

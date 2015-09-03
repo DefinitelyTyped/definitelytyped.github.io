@@ -1,7 +1,6 @@
 ---
-layout: 'directory'
+layout: 'content'
 title: 'Projects'
-section: 'directory'
 menuOrder: 4
 ---
 

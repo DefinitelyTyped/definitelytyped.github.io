@@ -1,7 +1,6 @@
 ---
-layout: 'directory'
+layout: 'content'
 title: 'Discuss'
-section: 'directory'
 menuOrder: 2
 ---
 

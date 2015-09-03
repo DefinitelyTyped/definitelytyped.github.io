@@ -1563,7 +1563,8 @@ ul.benefits {
         position: relative;
         margin: 0 15px;
         vertical-align: top; }
-        .dt-header .dt-menu a.current:before {
+        .dt-header .dt-menu a.current:before,
+        .dt-header .dt-menu a.parent:before {
           position: absolute;
           top: 0;
           right: 0;

@@ -7,6 +7,7 @@
                 <% else: %>
                     <strong><%= item.title %></strong>
                 <% end %>
+
                 <% if item.children: %>
                     <%- renderMenu(item.children) %>
                 <% end %>
@@ -16,5 +17,9 @@
 <% end %>
 
 <nav class="menu">
-    <%= renderMenu @menuItems %>
+	<% for item in @menuItems: %>
+		<% if item.state: %>
+			<%= renderMenu item.children %>
+		<% end %>
+	<% end %>
 </nav>
