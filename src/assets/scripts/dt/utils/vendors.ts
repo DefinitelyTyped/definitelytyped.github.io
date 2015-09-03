@@ -1,6 +1,11 @@
 namespace dt
 {
 	/**
+	 * Vendor prefixed name of the transform style property.
+	 */
+	export var transformStyle:string;
+
+	/**
 	 * Vendor prefixed name of the transition style property.
 	 */
 	export var transitionStyle:string;
@@ -74,6 +79,7 @@ namespace dt
 	 * Find the required prefixed names.
 	 */
 	withDummyElement(function() {
+		transformStyle = getPrefixedStyle('transform');
 		transitionStyle = getPrefixedStyle('transition');
 		transitionEndEvent = getPrefixedEvent(transitionStyle, 'transitionend', {
 			'OTransition':'otransitionend',

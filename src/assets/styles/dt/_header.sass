@@ -26,9 +26,17 @@
 	position: relative
 	background-color: $color-main-dark
 
-	// &.skyline
-		overflow: hidden
-		background: $color-main-dark url(#{$image-path}header-stars.gif) center bottom
+	&.has-stars > .container
+		position: relative
+		z-index: 2
+
+.dt-header-stars
+	+absolute(0, 0, 0, 0)
+	overflow: hidden
+	z-index: 1
+
+	&.fallback
+		background: url(#{$image-path}skyline-fallback-stars.gif) center bottom
 		min-height: 300px
 
 		&:before
@@ -36,21 +44,35 @@
 			content: ''
 			z-index: 1
 			height: 365px
-			background: url(#{$image-path}header-skyline.png) center bottom
+			background: url(#{$image-path}skyline-fallback-city.png) center bottom
 
 		.container
 			position: relative
 			z-index: 2
 
-	.dt-header-stars
-		+absolute(0, 0, 0, 0)
-		z-index: 1
-		width: 100%
-		height: 100%
+	.dust,
+	.stars-sm,
+	.stars-md
+		+absolute(0, false, false, 0)
 
-	> .container
-		position: relative
-		z-index: 2
+	.city-a,
+	.city-b
+		+absolute(false, false, 0, 0)
+
+	.fx
+		+absolute(0, 0, 0, 0)
+
+		.star
+			+absolute()
+			width: 10px
+			height: 10px
+			margin: -5px 0 0 -5px
+			background: url($image-path + 'skyline-stars-md.png')
+
+		@for $index from 0 to 4
+			.strar-#{$index}
+				background-position: 0 #{$index * 10}px
+
 
 // Navigation bar
 //

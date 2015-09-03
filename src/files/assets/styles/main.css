@@ -1409,18 +1409,64 @@ ul.benefits {
 .dt-header {
   position: relative;
   background-color: #162943; }
-  .dt-header .dt-header-stars {
+  .dt-header.has-stars > .container {
+    position: relative;
+    z-index: 2; }
+
+.dt-header-stars {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  overflow: hidden;
+  z-index: 1; }
+  .dt-header-stars.fallback {
+    background: url(../images/skyline-fallback-stars.gif) center bottom;
+    min-height: 300px; }
+    .dt-header-stars.fallback:before {
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      content: '';
+      z-index: 1;
+      height: 365px;
+      background: url(../images/skyline-fallback-city.png) center bottom; }
+    .dt-header-stars.fallback .container {
+      position: relative;
+      z-index: 2; }
+  .dt-header-stars .dust,
+  .dt-header-stars .stars-sm,
+  .dt-header-stars .stars-md {
+    position: absolute;
+    top: 0;
+    left: 0; }
+  .dt-header-stars .city-a,
+  .dt-header-stars .city-b {
+    position: absolute;
+    bottom: 0;
+    left: 0; }
+  .dt-header-stars .fx {
     position: absolute;
     top: 0;
     right: 0;
     bottom: 0;
-    left: 0;
-    z-index: 1;
-    width: 100%;
-    height: 100%; }
-  .dt-header > .container {
-    position: relative;
-    z-index: 2; }
+    left: 0; }
+    .dt-header-stars .fx .star {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      margin: -5px 0 0 -5px;
+      background: url("../images/skyline-stars-md.png"); }
+    .dt-header-stars .fx .strar-0 {
+      background-position: 0 0px; }
+    .dt-header-stars .fx .strar-1 {
+      background-position: 0 10px; }
+    .dt-header-stars .fx .strar-2 {
+      background-position: 0 20px; }
+    .dt-header-stars .fx .strar-3 {
+      background-position: 0 30px; }
 
 .dt-header nav {
   position: relative;

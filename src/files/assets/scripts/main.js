@@ -563,253 +563,388 @@ var dt;
             function Component(options) {
                 var _this = this;
                 _super.call(this, options);
+                this.width = 0;
+                this.height = 0;
+                this.tilt = 0;
                 this.lastFrame = Date.now();
-                this.context = this.el.getContext('2d');
+                if (!dt.transformStyle || !Component.isCanvasSupported()) {
+                    dt.addClass(this.el, 'fallback');
+                    return;
+                }
                 this.layers = [
-                    new StarGroupLayer({ parent: this, depth: 1, layers: [
-                            new StarLayer({ sprite: '/assets/images/skyline-dust.png', spriteHeight: 400, density: 0.25, useRandomTransform: true }),
-                            new StarLayer({ sprite: '/assets/images/skyline-stars-sm.png', spriteHeight: 10, density: 2 })
-                        ] }),
-                    new StarGroupLayer({ parent: this, depth: 0.666, layers: [
-                            new StarLayer({ sprite: '/assets/images/skyline-stars-md.png', spriteHeight: 10, density: 1 }),
-                        ] }),
-                    new CityLayer({ parent: this, sprite: '/assets/images/skyline-city-a.png', colorFrom: '#0d1724', colorTo: '#1a2e49', depth: 0.333 }),
-                    new CityLayer({ parent: this, sprite: '/assets/images/skyline-city-b.png', colorFrom: '#132237', colorTo: '#1a2e49', depth: 0 })
+                    new stars.StarLayer({ className: 'dust', component: this, depth: 1.00, spriteSrc: '/assets/images/skyline-dust.png', spriteSize: 200, density: 0.25, isDust: true }),
+                    new stars.StarLayer({ className: 'stars-sm', component: this, depth: 0.90, spriteSrc: '/assets/images/skyline-stars-sm.png', spriteSize: 10, density: 1.50 }),
+                    this.fx = new stars.FXLayer({ className: 'fx', component: this, depth: 0.80, spriteSrc: '/assets/images/skyline-stars-md.png', spriteSize: 10, density: 2.00 }),
+                    new stars.StarLayer({ className: 'stars-md', component: this, depth: 0.70, spriteSrc: '/assets/images/skyline-stars-md.png', spriteSize: 10, density: 0.50 }),
+                    new stars.CityLayer({ className: 'city-a', component: this, depth: 0.33, spriteSrc: '/assets/images/skyline-city-a.png', colorFrom: '#0e1928', colorTo: '#1a2e49', offset: 300 }),
+                    new stars.CityLayer({ className: 'city-b', component: this, depth: 0.00, spriteSrc: '/assets/images/skyline-city-b.png', colorFrom: '#172942', colorTo: '#1a2e49' })
                 ];
                 dt.addEventListener(window, 'resize', _.throttle(function () { return _this.onResize(); }, 100));
                 this.onResize();
                 this.update();
             }
-            Component.prototype.refresh = function () {
-                var ctx = this.context;
-                var width = this.width;
-                var height = this.height;
-                var tilt = Math.min(1, dt.scrollTop() / height) * Math.min(300, height * 0.5);
-                ctx.setTransform(1, 0, 0, 1, 0, 0);
-                ctx.clearRect(0, 0, width, height);
-                for (var _i = 0, _a = this.layers; _i < _a.length; _i++) {
-                    var layer = _a[_i];
-                    layer.draw(ctx, width, height, tilt);
-                }
-            };
             Component.prototype.update = function () {
                 var _this = this;
                 var now = Date.now();
-                var delta = this.lastFrame - now;
-                for (var _i = 0, _a = this.layers; _i < _a.length; _i++) {
-                    var layer = _a[_i];
-                    layer.update(delta);
-                }
-                this.refresh();
+                this.fx.update(now - this.lastFrame);
                 this.lastFrame = now;
+                var tilt = Math.min(300, this.height * 0.5);
+                tilt *= Math.min(1, dt.scrollTop() / this.height);
+                if (this.tilt != tilt) {
+                    this.tilt = tilt;
+                    for (var _i = 0, _a = this.layers; _i < _a.length; _i++) {
+                        var layer = _a[_i];
+                        layer.setTilt(tilt);
+                    }
+                }
                 window.requestAnimationFrame(function () { return _this.update(); });
             };
+            Component.prototype.triggerMeasure = function () {
+                for (var _i = 0, _a = this.layers; _i < _a.length; _i++) {
+                    var layer = _a[_i];
+                    layer.setSize(this.width, this.height);
+                }
+            };
             Component.prototype.onResize = function () {
-                var width = this.el.parentNode.offsetWidth;
-                var height = this.el.parentNode.offsetHeight;
+                var width = this.el.offsetWidth;
+                var height = this.el.offsetHeight;
                 if (this.width == width && this.height == height) {
                     return;
                 }
-                this.el.width = this.width = width;
-                this.el.height = this.height = height;
-                for (var _i = 0, _a = this.layers; _i < _a.length; _i++) {
-                    var layer = _a[_i];
-                    layer.setSize(width, height);
-                }
-                this.refresh();
+                this.width = width;
+                this.height = height;
+                this.triggerMeasure();
+            };
+            Component.isCanvasSupported = function () {
+                var elem = document.createElement('canvas');
+                return !!(elem.getContext && elem.getContext('2d'));
             };
             return Component;
         })(Backbone.NativeView);
         stars.Component = Component;
-        var Layer = (function () {
+    })(stars = dt.stars || (dt.stars = {}));
+})(dt || (dt = {}));
+var dt;
+(function (dt) {
+    var stars;
+    (function (stars) {
+        var Layer = (function (_super) {
+            __extends(Layer, _super);
             function Layer(options) {
+                _super.call(this, options);
                 this.depth = 1;
-                this.parent = options.parent;
+                this.width = 0;
+                this.height = 0;
+                this.component = options.component;
+                this.component.el.appendChild(this.el);
                 if (options.depth !== void 0) {
                     this.depth = options.depth;
                 }
             }
-            Layer.prototype.update = function (delta) { };
-            Layer.prototype.draw = function (ctx, width, height, tilt) { };
-            Layer.prototype.setSize = function (width, height) { };
-            return Layer;
-        })();
-        var CityLayer = (function (_super) {
-            __extends(CityLayer, _super);
-            function CityLayer(options) {
-                _super.call(this, options);
-                this.width = 0;
-                this.height = 0;
-                this.isLoaded = false;
-                this.load(options.sprite, options.colorFrom, options.colorTo);
-            }
-            CityLayer.prototype.draw = function (ctx, width, height, tilt) {
-                if (!this.isLoaded) {
-                    return;
-                }
-                var offset = 0;
-                var scale = Math.min(1, width / this.width);
-                ctx.setTransform(scale, 0, 0, scale, 0, 0);
-                while (offset < width) {
-                    ctx.drawImage(this.sprite, offset / scale, (height + tilt * this.depth - this.height * scale) / scale);
-                    offset = Math.floor(offset + this.width);
+            Layer.prototype.setTilt = function (tilt) {
+                this.el.style[dt.transformStyle] = 'translate(0,' + (tilt * this.depth) + 'px)';
+            };
+            Layer.prototype.setSize = function (width, height) {
+                var size = this.measure({ width: width, height: height });
+                if (this.width != size.width || this.height != size.height) {
+                    this.width = width;
+                    this.height = height;
+                    this.draw();
                 }
             };
-            CityLayer.prototype.load = function (src, colorFrom, colorTo) {
-                var _this = this;
+            Layer.prototype.draw = function () { };
+            Layer.prototype.measure = function (size) {
+                return size;
+            };
+            return Layer;
+        })(Backbone.NativeView);
+        stars.Layer = Layer;
+        var CanvasLayer = (function (_super) {
+            __extends(CanvasLayer, _super);
+            function CanvasLayer(options) {
+                _super.call(this, _.defaults(options || {}, {
+                    tagName: 'canvas'
+                }));
+                this.context = this.el.getContext('2d');
+            }
+            CanvasLayer.prototype.measure = function (size) {
+                if (this.width != size.width || this.height != size.height) {
+                    this.el.width = size.width;
+                    this.el.height = size.height;
+                }
+                return size;
+            };
+            CanvasLayer.loadImage = function (src, callback) {
                 var image = document.createElement('img');
                 var onLoaded = function () {
                     dt.removeEventListener(image, 'load', onLoaded);
-                    var canvas = _this.sprite = document.createElement('canvas');
-                    canvas.width = _this.width = image.width;
-                    canvas.height = _this.height = image.height;
-                    var ctx = canvas.getContext('2d');
-                    var gradient = ctx.createLinearGradient(0, 0, 0, _this.height);
-                    gradient.addColorStop(0, colorFrom);
-                    gradient.addColorStop(1, colorTo);
-                    ctx.fillStyle = gradient;
-                    ctx.fillRect(0, 0, _this.width, _this.height);
-                    ctx.globalCompositeOperation = 'destination-in';
-                    ctx.drawImage(image, 0, 0);
-                    _this.isLoaded = true;
-                    _this.parent.refresh();
+                    callback(image);
                 };
                 dt.addEventListener(image, 'load', onLoaded);
                 image.src = src;
             };
-            return CityLayer;
+            return CanvasLayer;
         })(Layer);
-        var StarGroupLayer = (function (_super) {
-            __extends(StarGroupLayer, _super);
-            function StarGroupLayer(options) {
+        stars.CanvasLayer = CanvasLayer;
+    })(stars = dt.stars || (dt.stars = {}));
+})(dt || (dt = {}));
+var dt;
+(function (dt) {
+    var stars;
+    (function (stars) {
+        var CityLayer = (function (_super) {
+            __extends(CityLayer, _super);
+            function CityLayer(options) {
                 var _this = this;
                 _super.call(this, options);
-                this.needsRefresh = true;
-                this.sprite = document.createElement('canvas');
-                this.context = this.sprite.getContext('2d');
-                _(options.layers).each(function (layer) { return layer.parent = _this; });
-                this.layers = options.layers;
+                this.spriteWidth = 0;
+                this.spriteHeight = 0;
+                this.offset = 0;
+                this.scale = 1;
+                if (options.offset)
+                    this.offset = options.offset;
+                stars.CanvasLayer.loadImage(options.spriteSrc, function (image) {
+                    _this.setSprite(image, options.colorFrom, options.colorTo);
+                });
             }
-            StarGroupLayer.prototype.refresh = function () {
-                this.needsRefresh = true;
-                this.parent.refresh();
+            CityLayer.prototype.draw = function () {
+                if (!this.sprite)
+                    return;
+                var ctx = this.context;
+                var scale = this.scale;
+                var offset = -Math.abs(this.offset * scale);
+                ctx.clearRect(0, 0, this.width, this.height);
+                ctx.setTransform(scale, 0, 0, scale, 0, 0);
+                while (offset < this.width) {
+                    ctx.drawImage(this.sprite, offset / scale, 0);
+                    offset = Math.floor(offset + this.spriteWidth * scale);
+                }
             };
-            StarGroupLayer.prototype.draw = function (ctx, width, height, tilt) {
-                if (this.needsRefresh) {
-                    this.needsRefresh = false;
-                    var localCtx = this.context;
-                    localCtx.setTransform(1, 0, 0, 1, 0, 0);
-                    localCtx.clearRect(0, 0, width, height);
-                    for (var _i = 0, _a = this.layers; _i < _a.length; _i++) {
-                        var layer = _a[_i];
-                        layer.draw(localCtx, width, height);
+            CityLayer.prototype.measure = function (size) {
+                var scale = this.scale = Math.min(1, size.width / this.spriteWidth);
+                size.height = Math.floor(this.spriteHeight * scale);
+                return _super.prototype.measure.call(this, size);
+            };
+            CityLayer.prototype.setSprite = function (image, colorFrom, colorTo) {
+                var canvas = this.sprite = document.createElement('canvas');
+                var width = canvas.width = this.spriteWidth = image.naturalWidth;
+                var height = canvas.height = this.spriteHeight = image.naturalHeight;
+                var ctx = canvas.getContext('2d');
+                var gradient = ctx.createLinearGradient(0, 0, 0, height);
+                gradient.addColorStop(0, colorFrom);
+                gradient.addColorStop(1, colorTo);
+                ctx.fillStyle = gradient;
+                ctx.fillRect(0, 0, width, height);
+                ctx.globalCompositeOperation = 'destination-in';
+                ctx.drawImage(image, 0, 0);
+                this.component.triggerMeasure();
+            };
+            return CityLayer;
+        })(stars.CanvasLayer);
+        stars.CityLayer = CityLayer;
+    })(stars = dt.stars || (dt.stars = {}));
+})(dt || (dt = {}));
+var dt;
+(function (dt) {
+    var stars;
+    (function (stars) {
+        var FXLayer = (function (_super) {
+            __extends(FXLayer, _super);
+            function FXLayer(options) {
+                var _this = this;
+                _super.call(this, options);
+                this.stars = [];
+                this.density = 2;
+                stars.CanvasLayer.loadImage(options.spriteSrc, function (image) {
+                    _this.setSprite(image, options.spriteSize);
+                });
+            }
+            FXLayer.prototype.update = function (delta) {
+                if (!this.sprites)
+                    return;
+                var ctx = this.context;
+                var sprites = this.sprites;
+                var width = this.width;
+                var height = this.height;
+                ctx.clearRect(0, 0, width, height);
+                for (var _i = 0, _a = this.stars; _i < _a.length; _i++) {
+                    var star = _a[_i];
+                    star.update(ctx, delta, sprites, width, height);
+                }
+            };
+            FXLayer.prototype.setSprite = function (image, size) {
+                var count = image.height / size;
+                this.sprites = new Array(count);
+                for (var index = 0; index < count; index++) {
+                    var canvas = this.sprites[index] = document.createElement('canvas');
+                    canvas.width = canvas.height = size;
+                    canvas.getContext('2d').drawImage(image, 0, -index * size);
+                }
+            };
+            FXLayer.prototype.measure = function (size) {
+                size.height *= 0.7;
+                var count = Math.round((size.width * size.height) / 2000 * this.density);
+                while (this.stars.length < count) {
+                    this.stars.push(new FXStar({ parent: this }));
+                }
+                while (this.stars.length > count) {
+                    this.stars.pop();
+                }
+                return _super.prototype.measure.call(this, size);
+            };
+            return FXLayer;
+        })(stars.CanvasLayer);
+        stars.FXLayer = FXLayer;
+        var FXStar = (function () {
+            function FXStar(options) {
+                this.x = 0;
+                this.y = 0;
+                this.sprite = 0;
+                this.randomize();
+                this.parent = options.parent;
+                this.age += (Math.abs(this.age) + this.lifetime) * Math.random();
+            }
+            FXStar.prototype.update = function (ctx, delta, sprites, width, height) {
+                var age = this.age += delta;
+                if (age > this.lifetime) {
+                    this.randomize();
+                }
+                else if (age > 0) {
+                    var rel = age / this.lifetime;
+                    var opacity = 0.5 + ((Math.sin(age / this.frequency) + 1) * 0.25);
+                    if (rel < 0.25) {
+                        opacity *= rel * 4;
                     }
-                }
-                ctx.drawImage(this.sprite, 0, tilt * this.depth);
-            };
-            StarGroupLayer.prototype.setSize = function (width, height) {
-                this.sprite.width = width;
-                this.sprite.height = height;
-                this.needsRefresh = true;
-                for (var _i = 0, _a = this.layers; _i < _a.length; _i++) {
-                    var layer = _a[_i];
-                    layer.setSize(width, height);
+                    else if (rel > 0.75) {
+                        opacity *= (1 - rel) * 4;
+                    }
+                    ctx.globalAlpha = opacity;
+                    ctx.drawImage(sprites[this.sprite], Math.floor(this.x * width), Math.floor(this.y * height));
                 }
             };
-            return StarGroupLayer;
-        })(Layer);
+            FXStar.prototype.randomize = function () {
+                this.x = Math.random();
+                this.y = Math.random();
+                this.sprite = Math.min(9, Math.floor(Math.random() * 10));
+                this.age = -(1000 + Math.random() * 2000);
+                this.frequency = 150 + Math.random() * 300;
+                this.lifetime = 2000 + Math.random() * 4000;
+            };
+            return FXStar;
+        })();
+        stars.FXStar = FXStar;
+    })(stars = dt.stars || (dt.stars = {}));
+})(dt || (dt = {}));
+var dt;
+(function (dt) {
+    var stars;
+    (function (stars) {
         var StarLayer = (function (_super) {
             __extends(StarLayer, _super);
             function StarLayer(options) {
+                var _this = this;
                 _super.call(this, options);
-                this.sprites = [];
-                this.isLoaded = false;
-                this.density = 1;
-                this.count = 0;
                 this.positions = [];
-                this.shift = 0;
-                this.shift = options.spriteHeight * -0.5;
-                this.useRandomTransform = !!options.useRandomTransform;
-                if (options.density) {
-                    this.density = options.density;
-                }
-                this.load(options.sprite, options.spriteHeight);
+                this.count = 0;
+                this.offset = options.spriteSize * -0.5;
+                this.isDust = !!options.isDust;
+                this.density = options.density ? options.density : 1;
+                stars.CanvasLayer.loadImage(options.spriteSrc, function (image) {
+                    _this.setSprite(image, options.spriteSize);
+                });
             }
-            StarLayer.prototype.draw = function (ctx, width, height, tilt) {
-                if (!this.isLoaded) {
+            StarLayer.prototype.draw = function () {
+                if (!this.sprites)
                     return;
-                }
+                var ctx = this.context;
+                var count = this.count;
+                var width = this.width;
+                var height = this.height;
                 var positions = this.positions;
                 var sprites = this.sprites;
-                var shift = this.shift;
-                var chunkSize = this.useRandomTransform ? 5 : 3;
-                for (var index = 0; index < this.count; index++) {
-                    var n = index * chunkSize;
-                    var sprite = sprites[positions[n]];
-                    var x = Math.round(width * positions[n + 1]);
-                    var y = Math.round(height * positions[n + 2]);
+                var offset = this.offset;
+                var isDust = this.isDust;
+                var dataLength = isDust ? 5 : 3;
+                ctx.setTransform(1, 0, 0, 1, 0, 0);
+                ctx.clearRect(0, 0, width, height);
+                for (var index = 0; index < count; index++) {
+                    var at = index * dataLength;
+                    var sprite = sprites[positions[at]];
+                    var x = Math.round(width * positions[at + 1]);
+                    var y = Math.round(height * positions[at + 2]);
                     ctx.setTransform(1, 0, 0, 1, x, y);
-                    if (this.useRandomTransform) {
-                        ctx.scale(positions[n + 3], positions[n + 3]);
-                        ctx.rotate(positions[n + 4]);
+                    if (isDust) {
+                        var scale = positions[at + 3];
+                        ctx.scale(scale, scale);
+                        ctx.rotate(positions[at + 4]);
                     }
-                    ctx.drawImage(sprite, shift, shift);
+                    ctx.drawImage(sprite, offset, offset);
                 }
-                console.log('PAINTED!');
             };
-            StarLayer.prototype.setSize = function (width, height) {
-                this.width = width;
-                this.height = height;
-                this.updatePositions();
+            StarLayer.prototype.setSprite = function (image, size) {
+                var count = image.height / size;
+                this.sprites = new Array(count);
+                for (var index = 0; index < count; index++) {
+                    var canvas = this.sprites[index] = document.createElement('canvas');
+                    canvas.width = canvas.height = size;
+                    var ctx = canvas.getContext('2d');
+                    if (this.isDust) {
+                        var gradient = ctx.createLinearGradient(0, 0, size, size);
+                        gradient.addColorStop(0.25, StarLayer.GRADIENTS[index * 2]);
+                        gradient.addColorStop(0.75, StarLayer.GRADIENTS[index * 2 + 1]);
+                        ctx.fillStyle = gradient;
+                        ctx.fillRect(0, 0, size, size);
+                        ctx.globalAlpha = 0.05;
+                        ctx.globalCompositeOperation = 'destination-in';
+                        ctx.drawImage(image, 0, -index * size);
+                    }
+                    else {
+                        ctx.drawImage(image, 0, -index * size);
+                    }
+                }
+                this.precalculate();
+                this.draw();
             };
-            StarLayer.prototype.updatePositions = function () {
-                if (!this.isLoaded) {
+            StarLayer.prototype.measure = function (size) {
+                this.precalculate(size.width, size.height);
+                return _super.prototype.measure.call(this, size);
+            };
+            StarLayer.prototype.precalculate = function (width, height) {
+                if (width === void 0) { width = this.width; }
+                if (height === void 0) { height = this.height; }
+                if (!this.sprites)
                     return;
-                }
-                this.count = Math.round((this.width * this.height) / 2000 * this.density);
-                var chunkSize = this.useRandomTransform ? 5 : 3;
+                this.count = Math.round((width * height) / 2000 * this.density);
                 var positions = this.positions;
-                var count = this.count * chunkSize;
-                var index = positions.length;
+                var isDust = this.isDust;
                 var spriteCount = this.sprites.length;
-                while (index < count) {
+                var dataLength = isDust ? 5 : 3;
+                var required = dataLength * this.count;
+                var count = positions.length;
+                positions.length = required;
+                while (count < required) {
                     var spriteIndex = Math.floor(spriteCount * Math.random());
                     if (spriteIndex >= spriteCount) {
                         spriteIndex = spriteCount - 1;
                     }
-                    positions.push(spriteIndex);
-                    positions.push(Math.random());
-                    positions.push(Math.random());
-                    if (this.useRandomTransform) {
-                        positions.push(0.75 + Math.random() * 1.25);
-                        positions.push(Math.random() * Math.PI);
+                    positions[count] = spriteIndex;
+                    positions[count + 1] = Math.random();
+                    positions[count + 2] = Math.random();
+                    if (isDust) {
+                        positions[count + 3] = 1 + Math.random() * 2;
+                        positions[count + 4] = Math.random() * Math.PI * 2;
                     }
-                    index += chunkSize;
+                    count += dataLength;
                 }
             };
-            StarLayer.prototype.load = function (src, height) {
-                var _this = this;
-                var image = document.createElement('img');
-                var onStarsLoaded = function () {
-                    dt.removeEventListener(image, 'load', onStarsLoaded);
-                    var count = image.height / height;
-                    var width = image.width;
-                    for (var index = 0; index < count; index++) {
-                        var canvas = document.createElement('canvas');
-                        canvas.width = width;
-                        canvas.height = height;
-                        canvas.getContext('2d').drawImage(image, 0, index * -height);
-                        _this.sprites.push(canvas);
-                    }
-                    _this.isLoaded = true;
-                    _this.updatePositions();
-                    _this.parent.refresh();
-                };
-                dt.addEventListener(image, 'load', onStarsLoaded);
-                image.src = src;
-            };
+            StarLayer.GRADIENTS = [
+                '#ffffff', '#5e90e3',
+                '#9281df', '#4a0bb3',
+                '#81b4df', '#057c6d'
+            ];
             return StarLayer;
-        })(Layer);
+        })(stars.CanvasLayer);
+        stars.StarLayer = StarLayer;
     })(stars = dt.stars || (dt.stars = {}));
 })(dt || (dt = {}));
 (function (win) {
@@ -949,6 +1084,7 @@ var dt;
 })(dt || (dt = {}));
 var dt;
 (function (dt) {
+    dt.transformStyle;
     dt.transitionStyle;
     dt.transitionEndEvent;
     var el;
@@ -992,6 +1128,7 @@ var dt;
     }
     dt.getPrefixedEvent = getPrefixedEvent;
     withDummyElement(function () {
+        dt.transformStyle = getPrefixedStyle('transform');
         dt.transitionStyle = getPrefixedStyle('transition');
         dt.transitionEndEvent = getPrefixedEvent(dt.transitionStyle, 'transitionend', {
             'OTransition': 'otransitionend',

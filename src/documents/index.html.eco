@@ -4,8 +4,8 @@ title: 'Home'
 section: 'home'
 ---
 
-<header class="dt-header skyline">
-	<canvas class="dt-header-stars"></canvas>
+<header class="dt-header has-stars">
+	<div class="dt-header-stars"></div>
     <div class="container">
         <%- @partial('header_nav') %>
         <div class="dt-jumbotron">
