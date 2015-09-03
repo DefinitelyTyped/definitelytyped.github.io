@@ -6,5 +6,4 @@
 
 	ga('create', '<%- @site.analytics.id %>', '<%- @site.analytics.site %>');
 	ga('send', 'pageview');
-
 </script>
