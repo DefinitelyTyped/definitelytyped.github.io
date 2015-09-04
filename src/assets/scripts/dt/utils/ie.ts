@@ -5,7 +5,7 @@ namespace dt
 	 *
 	 * From http://codepen.io/gapcode/pen/vEJNZN
 	 */
-	export var ieVersion = (function() {
+	export var ieVersion = (function():any {
 		var ua = window.navigator.userAgent;
 		var msie = ua.indexOf('MSIE ');
 		if (msie > 0) {
