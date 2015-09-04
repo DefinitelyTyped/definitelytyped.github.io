@@ -68,7 +68,6 @@ namespace dt.repository
 			// Bind input events directly, they don't bubble
             this.input = this.el.querySelector('input');
 			addEventListener(this.input, 'input', () => this.onInputChanged());
-			addEventListener(this.input, 'change', () => this.onInputChanged());
 			addEventListener(this.input, 'keydown', (e) => this.onInputKeyDown(e));
 
 			this.listenTo(this.model, 'change:query', this.onQueryChanged);
@@ -134,7 +133,11 @@ namespace dt.repository
 		 */
         private onButtonClick(e:MouseEvent) {
 			preventDefault(e);
-			this.model.idle();
+			if (this.model.attributes.query != '') {
+				this.model.idle();
+			} else {
+				this.commit();
+			}
         }
     }
 }

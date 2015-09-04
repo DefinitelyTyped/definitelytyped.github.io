@@ -82,9 +82,13 @@ namespace dt
 
 	export function isValueSupported(name:string, value:string):boolean {
 		return withDummyElement((el) => {
-			if (!(name in el.style)) return false;
-			el.style[name] = value;
-			return el.style[name] == value;
+			try {
+				if (!(name in el.style)) return false;
+				el.style[name] = value;
+				return el.style[name] == value;
+			} catch (e) {
+				return false;
+			}
 		});
 	}
 

@@ -448,8 +448,8 @@ var dt;
                 }
             };
             ListItem.prototype.onHeaderClick = function (e) {
-                var el = e.target;
-                if (el.tagName == 'A')
+                var el = (e.target || e.srcElement);
+                if (el && el.tagName == 'A')
                     return;
                 dt.preventDefault(e);
                 this.setExpanded(!this.isExpanded);
@@ -612,7 +612,6 @@ var dt;
                 _super.call(this, options);
                 this.input = this.el.querySelector('input');
                 dt.addEventListener(this.input, 'input', function () { return _this.onInputChanged(); });
-                dt.addEventListener(this.input, 'change', function () { return _this.onInputChanged(); });
                 dt.addEventListener(this.input, 'keydown', function (e) { return _this.onInputKeyDown(e); });
                 this.listenTo(this.model, 'change:query', this.onQueryChanged);
                 this.delegateEvents({
@@ -650,7 +649,12 @@ var dt;
             };
             SwordField.prototype.onButtonClick = function (e) {
                 dt.preventDefault(e);
-                this.model.idle();
+                if (this.model.attributes.query != '') {
+                    this.model.idle();
+                }
+                else {
+                    this.commit();
+                }
             };
             return SwordField;
         })(Backbone.NativeView);
@@ -1165,7 +1169,7 @@ var dt;
         if (event && event.preventDefault) {
             event.preventDefault();
         }
-        else if (window.event && window.event.returnValue) {
+        else if (window.event && 'returnValue' in window.event) {
             window.event.returnValue = false;
         }
     }
@@ -1176,6 +1180,27 @@ var dt;
         return supportPageOffset ? window.pageYOffset : isCSS1Compat ? document.documentElement.scrollTop : document.body.scrollTop;
     }
     dt.scrollTop = scrollTop;
+})(dt || (dt = {}));
+var dt;
+(function (dt) {
+    dt.ieVersion = (function () {
+        var ua = window.navigator.userAgent;
+        var msie = ua.indexOf('MSIE ');
+        if (msie > 0) {
+            return parseInt(ua.substring(msie + 5, ua.indexOf('.', msie)), 10);
+        }
+        var trident = ua.indexOf('Trident/');
+        if (trident > 0) {
+            var rv = ua.indexOf('rv:');
+            return parseInt(ua.substring(rv + 3, ua.indexOf('.', rv)), 10);
+        }
+        var edge = ua.indexOf('Edge/');
+        if (edge > 0) {
+            return parseInt(ua.substring(edge + 5, ua.indexOf('.', edge)), 10);
+        }
+        return false;
+    })();
+    dt.toggleClass(document.documentElement, 'is-ie', !!dt.ieVersion);
 })(dt || (dt = {}));
 var dt;
 (function (dt) {
@@ -1232,10 +1257,15 @@ var dt;
     dt.getPrefixedEvent = getPrefixedEvent;
     function isValueSupported(name, value) {
         return withDummyElement(function (el) {
-            if (!(name in el.style))
+            try {
+                if (!(name in el.style))
+                    return false;
+                el.style[name] = value;
+                return el.style[name] == value;
+            }
+            catch (e) {
                 return false;
-            el.style[name] = value;
-            return el.style[name] == value;
+            }
         });
     }
     dt.isValueSupported = isValueSupported;

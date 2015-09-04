@@ -2032,7 +2032,8 @@ header.dt-header .dt-jumbotron {
   display: table;
   width: 100%; }
   .dt-repository-search-form .field {
-    display: table-cell; }
+    display: table-cell;
+    vertical-align: top; }
     .dt-repository-search-form .field:first-child {
       width: 100%; }
   .dt-repository-search-form button,
@@ -2058,7 +2059,8 @@ header.dt-header .dt-jumbotron {
     margin: 0; }
     .dt-repository-search-form .sword dt, .dt-repository-search-form .sword dd {
       display: table-cell;
-      margin: 0; }
+      margin: 0;
+      vertical-align: top; }
     .dt-repository-search-form .sword dt {
       width: 100%; }
     .dt-repository-search-form .sword input {
@@ -2225,11 +2227,14 @@ header.dt-header .dt-jumbotron {
     position: static;
     visibility: visible; }
   .dt-repository-search-list li.list-item.expanding .details {
-    -webkit-animation: fade-in 0.4s both;
-            animation: fade-in 0.4s both; }
+    -webkit-animation: fade-in 0.4s;
+            animation: fade-in 0.4s; }
+    .is-ie .dt-repository-search-list li.list-item.expanding .details {
+      -webkit-animation: none !important;
+              animation: none !important; }
   .dt-repository-search-list li.list-item.collapsing .details {
-    -webkit-animation: fade-out 0.4s both;
-            animation: fade-out 0.4s both; }
+    -webkit-animation: fade-out 0.4s;
+            animation: fade-out 0.4s; }
 
 .dt-repository-search-list .header {
   text-align: right;
@@ -2284,7 +2289,7 @@ header.dt-header .dt-jumbotron {
   padding: 0 15px;
   visibility: hidden;
   box-sizing: border-box;
-  background: rgba(49, 61, 85, 0.5); }
+  background: #25354f; }
   .dt-repository-search-list .details .row {
     margin-top: 20px; }
   .dt-repository-search-list .details h3 {
@@ -2432,6 +2437,12 @@ img {
   img.responsive {
     width: 100%;
     height: auto; }
+
+a {
+  outline: none !important; }
+
+*::-ms-clear {
+  display: none; }
 
 .typography > *:first-child {
   margin-top: 0 !important; }

@@ -14,6 +14,7 @@
 
 	.field
 		display: table-cell
+		vertical-align: top
 
 		&:first-child
 			width: 100%
@@ -45,6 +46,7 @@
 		dt, dd
 			display: table-cell
 			margin: 0
+			vertical-align: top
 
 		dt
 			width: 100%
@@ -200,10 +202,14 @@
 			visibility: visible
 
 		&.expanding .details
-			animation: fade-in 0.4s both
+			animation: fade-in 0.4s
+
+			// All IEs have a display bug, so just turn off the fade animation
+			.is-ie &
+				animation: none !important
 
 		&.collapsing .details
-			animation: fade-out 0.4s both
+			animation: fade-out 0.4s
 
 	.header
 		+clearfix
@@ -251,7 +257,7 @@
 		padding: 0 15px
 		visibility: hidden
 		box-sizing: border-box
-		background: rgba(#313d55, 0.5)
+		background: #25354f
 
 		.row
 			margin-top: 20px

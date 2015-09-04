@@ -59,7 +59,7 @@ namespace dt
 	export function preventDefault(event:any) {
 		if (event && event.preventDefault) {
 			event.preventDefault();
-		} else if (window.event && window.event.returnValue) {
+		} else if (window.event && 'returnValue' in window.event) {
 			window.event.returnValue = false;
 		}
 	}

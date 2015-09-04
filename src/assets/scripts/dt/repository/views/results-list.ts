@@ -167,8 +167,8 @@ namespace dt.repository
 		 * Triggered when the user clicks on the title of the row.
 		 */
 		private onHeaderClick(e:MouseEvent) {
-			var el = <HTMLElement>e.target;
-			if (el.tagName == 'A') return;
+			var el = <HTMLElement>(e.target || e.srcElement);
+			if (el && el.tagName == 'A') return;
 
 			preventDefault(e);
 			this.setExpanded(!this.isExpanded);
