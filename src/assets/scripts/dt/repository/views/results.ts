@@ -18,7 +18,7 @@ namespace dt.repository
 		/**
 		 * The current mode class set on the container.
 		 */
-		private mode:string = 'empty';
+		private mode:string = 'idle';
 
 
 

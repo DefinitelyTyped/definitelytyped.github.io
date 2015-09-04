@@ -129,12 +129,45 @@
 .dt-repository-search-results
 	margin: 20px 0
 
-	&.empty
+	&.idle
 		display: none
 
 	@media (min-width: $screen-md-min)
 		margin: 40px 0
 
+
+.dt-repository-search-loading
+	display: none
+	text-align: center
+	line-height: 40px
+	color: $color-white
+	font-weight: bold
+
+	.loading &
+		display: block
+
+	i,
+	span
+		display: inline-block
+		vertical-align: middle
+
+	i
+		width: 32px
+		height: 24px
+		margin-right: 8px
+		background: url(#{$image-path}loader.png)
+		animation: loading-animation 1.5s 0.25s steps(62, end) infinite
+
+.dt-repository-search-empty
+	display: none
+	color: $color-white
+	text-align: center
+
+	.empty &
+		display: block
+
+	.typography a
+		color: $color-main-light
 
 .dt-repository-search-list
 	@extend .list-style-none

@@ -1207,6 +1207,18 @@ body,
     -webkit-transform: translate(0, 0px);
             transform: translate(0, 0px); } }
 
+@-webkit-keyframes loading-animation {
+  from {
+    background-position: 0 0; }
+  to {
+    background-position: -1984px 0; } }
+
+@keyframes loading-animation {
+  from {
+    background-position: 0 0; }
+  to {
+    background-position: -1984px 0; } }
+
 ul.benefits {
   list-style: none;
   padding: 0 !important; }
@@ -2153,11 +2165,40 @@ header.dt-header .dt-jumbotron {
 
 .dt-repository-search-results {
   margin: 20px 0; }
-  .dt-repository-search-results.empty {
+  .dt-repository-search-results.idle {
     display: none; }
   @media (min-width: 992px) {
     .dt-repository-search-results {
       margin: 40px 0; } }
+
+.dt-repository-search-loading {
+  display: none;
+  text-align: center;
+  line-height: 40px;
+  color: #fff;
+  font-weight: bold; }
+  .loading .dt-repository-search-loading {
+    display: block; }
+  .dt-repository-search-loading i,
+  .dt-repository-search-loading span {
+    display: inline-block;
+    vertical-align: middle; }
+  .dt-repository-search-loading i {
+    width: 32px;
+    height: 24px;
+    margin-right: 8px;
+    background: url(../images/loader.png);
+    -webkit-animation: loading-animation 1.5s 0.25s steps(62, end) infinite;
+            animation: loading-animation 1.5s 0.25s steps(62, end) infinite; }
+
+.dt-repository-search-empty {
+  display: none;
+  color: #fff;
+  text-align: center; }
+  .empty .dt-repository-search-empty {
+    display: block; }
+  .dt-repository-search-empty .typography a {
+    color: #6481a1; }
 
 .dt-repository-search-list li.list-item {
   overflow: hidden;

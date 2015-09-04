@@ -111,9 +111,22 @@
                 <button class="all">All</button>
             </div>
         </form>
-        <div class="dt-repository-search-results empty">
+
+        <div class="dt-repository-search-results idle">
             <ul class="dt-repository-search-list"></ul>
             <ul class="dt-repository-search-pagination"></ul>
+			<div class="dt-repository-search-loading">
+				<i></i><span>Loading repository data...</span>
+			</div>
+			<div class="dt-repository-search-empty">
+				<div class="row">
+					<div class="col-md-6 col-md-offset-3 typography">
+						<h2>Nothing found here</h2>
+						<p>Maybe this definition is still missing.</p>
+						<p>Learn how to <a href="/guides/contributing.html">create a new definition</a> and how to push it to the <a href="<%= @site.github %>">repository</a> so the next one looking for it will find it here.</p>
+					</div>
+				</div>
+			</div>
         </div>
     </div>
 </div>

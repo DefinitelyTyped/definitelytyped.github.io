@@ -560,7 +560,7 @@ var dt;
             __extends(Results, _super);
             function Results(options) {
                 _super.call(this, options);
-                this.mode = 'empty';
+                this.mode = 'idle';
                 this.list = new repository.List({
                     el: this.el.querySelector('ul.dt-repository-search-list'),
                     model: this.model
