@@ -3,19 +3,12 @@
         <% for item in items: %>
             <li<% if item.state: %> class="<%= item.state %>"<% end %>>
 				<a href="<%= item.meta.redirect or item.url %>"><%= item.title %></a>
-
-                <% if item.children: %>
-                    <%- renderMenu(item.children) %>
-                <% end %>
+				<%- renderMenu(item.children) if item.state and item.children %>
             </li>
         <% end %>
     </ul>
 <% end %>
 
-<nav class="menu">
-	<% for item in @menuItems: %>
-		<% if item.state: %>
-			<%= renderMenu item.children %>
-		<% end %>
-	<% end %>
+<nav class="dt-menu">
+	<%- renderMenu(item.children) for item in @menuItems when item.state %>
 </nav>

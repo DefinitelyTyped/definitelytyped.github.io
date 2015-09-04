@@ -1,0 +1,60 @@
+// Menu
+//
+// Styleguide 4.2
+.sticky-wrap
+	position: relative
+
+.sticky-container
+	position: static
+
+.dt-menu
+	margin: 0 0 30px 0
+
+	ul
+		@extend .list-style-none
+
+		ul
+			a
+				padding-left: 36px
+
+			&:after
+				content: ''
+				display: block
+				height: 10px
+				border-left: 2px solid $color-accent
+
+	a
+		display: block
+		padding: 4px 0 4px 20px
+		color: rgba($color-black, 0.75)
+		text-decoration: none
+		border-left: 2px solid $color-accent
+
+		&:hover
+			text-decoration: underline
+
+	.parent > a
+		color: $color-black
+
+	.current > a
+		font-weight: bold
+		color: $color-black
+		border-left-color: $color-main
+
+@media (min-width: $screen-md-min)
+	.has-sticky .sticky-container
+		position: -webkit-sticky
+		position: sticky
+		top: 40px
+
+	.dt-menu
+		margin: -4px 0 0 -22px
+
+		&.sticky
+			position: fixed
+			top: 40px
+
+		&.bottom
+			position: absolute
+			bottom: 0
+

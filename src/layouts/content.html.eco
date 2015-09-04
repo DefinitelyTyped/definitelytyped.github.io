@@ -3,14 +3,20 @@ layout: default
 ---
 <%- @partial('header') %>
 
+<div class="accent">
+	<div class="container">
+		<div class="row dt-breadcrumb-row">
+			<div class="col-md-12 typography">
+				<%- @partial('breadcrumb.html.eco', {menuItems: @generateMenu(@document.url)}) %>
+				<h1><%- @document.title or @document.name %></h1>
+			</div>
+		</div>
+	</div>
+</div>
+
 <div class="container">
-    <div class="row">
-        <div class="col-md-12 typography">
-            <h1><%- @document.title or @document.name %></h1>
-        </div>
-    </div>
-	<div class="row">
-		<div class="col-md-3 hidden-xs">
+	<div class="row sticky-wrap">
+		<div class="col-md-3 sticky-container hidden-xs">
 			<%- @partial('menu.html.eco', {menuItems: @generateMenu(@document.url)}) %>
 		</div>
 		<div class="col-md-9 typography">

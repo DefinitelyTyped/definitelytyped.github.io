@@ -13,6 +13,10 @@ namespace dt
 			}
 
 			_(document.querySelectorAll('.dt-header')).each((el:any) => {
+				new navigation.Component({el});
+			});
+
+			_(document.querySelectorAll('.dt-menu')).each((el:any) => {
 				new menu.Component({el});
 			});
 

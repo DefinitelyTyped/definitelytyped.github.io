@@ -7,7 +7,7 @@
 					<% if item.children: %>
 						<ul>
 							<% for item in item.children: %>
-							<li><a href="<%= item.url %>"><%= item.title %></a></li>
+								<li><a href="<%= item.url %>"><%= item.title %></a></li>
 							<% end %>
 						</ul>
 					<% end %>

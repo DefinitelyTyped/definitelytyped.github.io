@@ -1,3 +1,4 @@
+@charset "UTF-8";
 @import "http://fonts.googleapis.com/css?family=Raleway:400,700|Open+Sans:400italic,400,700";
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
 html {
@@ -1008,7 +1009,7 @@ hr {
   .col-lg-offset-12 {
     margin-left: 100%; } }
 
-.list-style-none, .dt-footer ul, .dt-repository-search-list, .dt-repository-search-pagination, nav.menu ul {
+.list-style-none, .dt-menu ul, .dt-footer ul, .dt-repository-search-list, .dt-repository-search-pagination {
   list-style: none;
   margin: 0;
   padding: 0; }
@@ -1069,16 +1070,19 @@ html {
   -moz-font-smoothing: antialiased; }
 
 body,
-.style-default {
+.style-default, .dt-breadcrumb li,
+.typography ol.dt-breadcrumb li {
   font-family: "Open Sans", sans-serif;
   font-size: 13.6px; }
   @media (min-width: 768px) {
     body,
-    .style-default {
+    .style-default, .dt-breadcrumb li,
+    .typography ol.dt-breadcrumb li {
       font-size: 14.4px; } }
   @media (min-width: 992px) {
     body,
-    .style-default {
+    .style-default, .dt-breadcrumb li,
+    .typography ol.dt-breadcrumb li {
       font-size: 16px; } }
 
 .style-default-lead, .dt-repository-search-pagination a,
@@ -1141,8 +1145,17 @@ body,
 
 .style-raleway-huge, .typography h1 {
   font-family: "Raleway", sans-serif;
-  font-size: 48px;
+  font-size: 28.8px;
   font-weight: normal; }
+  @media (min-width: 768px) {
+    .style-raleway-huge, .typography h1 {
+      font-size: 38.4px; } }
+  @media (min-width: 992px) {
+    .style-raleway-huge, .typography h1 {
+      font-size: 43.2px; } }
+  @media (min-width: 1200px) {
+    .style-raleway-huge, .typography h1 {
+      font-size: 48px; } }
 
 .no-transition {
   -webkit-transition: none !important;
@@ -1224,6 +1237,48 @@ ul.benefits {
       ul.benefits li:before {
         display: none; } }
 
+.dt-breadcrumb,
+.typography ol.dt-breadcrumb {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-size: 0; }
+  .dt-breadcrumb li,
+  .typography ol.dt-breadcrumb li {
+    display: inline-block; }
+    .dt-breadcrumb li:before,
+    .typography ol.dt-breadcrumb li:before {
+      content: ' » ';
+      margin: 0 7px;
+      display: inline-block;
+      color: rgba(147, 147, 147, 0.75); }
+    .dt-breadcrumb li:first-child:before,
+    .typography ol.dt-breadcrumb li:first-child:before {
+      display: none; }
+  .dt-breadcrumb a,
+  .typography ol.dt-breadcrumb a {
+    color: #939393; }
+  .dt-breadcrumb + h1,
+  .typography ol.dt-breadcrumb + h1 {
+    margin-top: 5px;
+    margin-left: -2px; }
+  @media (min-width: 992px) {
+    .dt-breadcrumb + h1,
+    .typography ol.dt-breadcrumb + h1 {
+      margin-top: 3px;
+      margin-left: -3px; } }
+
+.row.dt-breadcrumb-row {
+  margin-top: 25px;
+  margin-bottom: 15px; }
+  @media (min-width: 992px) {
+    .row.dt-breadcrumb-row {
+      margin-top: 30px;
+      margin-bottom: 20px; } }
+  @media (min-width: 1200px) {
+    .row.dt-breadcrumb-row {
+      margin-top: 40px; } }
+
 .dt-button {
   -webkit-transition: background-color 0.1s;
   transition: background-color 0.1s;
@@ -1243,7 +1298,7 @@ ul.benefits {
     padding-left: 75px; }
     .dt-button.github:before {
       background-image: url(../images/sprites.png);
-      background-position: -124px -62px;
+      background-position: 0px -128px;
       width: 60px;
       height: 60px;
       position: absolute;
@@ -1255,14 +1310,14 @@ ul.benefits {
       @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
         .dt-button.github:before {
           background-image: url(../images/sprites-2x.png);
-          background-size: 283px 200px; } }
+          background-size: 258px 238px; } }
   .dt-button.guide {
     padding-left: 75px;
     background-color: #162943;
     border: 1px solid #0077d2; }
     .dt-button.guide:before {
       background-image: url(../images/sprites.png);
-      background-position: -62px -62px;
+      background-position: -62px -66px;
       width: 60px;
       height: 60px;
       position: absolute;
@@ -1274,7 +1329,7 @@ ul.benefits {
       @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
         .dt-button.guide:before {
           background-image: url(../images/sprites-2x.png);
-          background-size: 283px 200px; } }
+          background-size: 258px 238px; } }
     .dt-button.guide:hover {
       background-color: #0b508b; }
 
@@ -1513,7 +1568,7 @@ ul.benefits {
     vertical-align: top; }
     .dt-header nav .menu-widget:before {
       background-image: url(../images/sprites.png);
-      background-position: -238px 0px;
+      background-position: -97px -190px;
       width: 45px;
       height: 45px;
       content: '';
@@ -1522,9 +1577,9 @@ ul.benefits {
       @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
         .dt-header nav .menu-widget:before {
           background-image: url(../images/sprites-2x.png);
-          background-size: 283px 200px; } }
+          background-size: 258px 238px; } }
     .dt-header nav .menu-widget.close:before {
-      background-position: -102px -150px; }
+      background-position: -144px -190px; }
   @media (min-width: 768px) {
     .dt-header nav {
       line-height: 80px; }
@@ -1543,7 +1598,7 @@ ul.benefits {
     vertical-align: middle; }
   .dt-header-logo:before {
     background-image: url(../images/sprites.png);
-    background-position: -238px -47px;
+    background-position: -190px -156px;
     width: 32px;
     height: 32px;
     content: '';
@@ -1551,7 +1606,7 @@ ul.benefits {
     @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
       .dt-header-logo:before {
         background-image: url(../images/sprites-2x.png);
-        background-size: 283px 200px; } }
+        background-size: 258px 238px; } }
   .dt-header-logo span {
     line-height: 1em;
     letter-spacing: 1px;
@@ -1560,23 +1615,23 @@ ul.benefits {
   @media (min-width: 768px) {
     .dt-header-logo:before {
       background-image: url(../images/sprites.png);
-      background-position: -52px -150px;
+      background-position: 0px -190px;
       width: 48px;
       height: 48px; } }
   @media (min-width: 768px) and (-webkit-min-device-pixel-ratio: 2), (min-width: 768px) and (min-resolution: 192dpi) {
     .dt-header-logo:before {
       background-image: url(../images/sprites-2x.png);
-      background-size: 283px 200px; } }
+      background-size: 258px 238px; } }
   @media (min-width: 992px) {
     .dt-header-logo:before {
       background-image: url(../images/sprites.png);
-      background-position: 0px 0px;
+      background-position: -66px 0px;
       width: 60px;
       height: 60px; } }
   @media (min-width: 992px) and (-webkit-min-device-pixel-ratio: 2), (min-width: 992px) and (min-resolution: 192dpi) {
     .dt-header-logo:before {
       background-image: url(../images/sprites-2x.png);
-      background-size: 283px 200px; } }
+      background-size: 258px 238px; } }
 
 .dt-header-menu ul {
   list-style: none;
@@ -1663,35 +1718,35 @@ ul.benefits {
         margin-top: -10px; }
       .dt-header-menu li.guides > a:before {
         background-image: url(../images/sprites.png);
-        background-position: -260px -133px;
+        background-position: -136px -154px;
         width: 20px;
         height: 20px; } }
       @media (max-width: 767px) and (-webkit-min-device-pixel-ratio: 2), (max-width: 767px) and (min-resolution: 192dpi) {
         .dt-header-menu li.guides > a:before {
           background-image: url(../images/sprites-2x.png);
-          background-size: 283px 200px; } }
+          background-size: 258px 238px; } }
 
 @media (max-width: 767px) {
       .dt-header-menu li.directory > a:before {
         background-image: url(../images/sprites.png);
-        background-position: -238px -155px;
+        background-position: -158px -154px;
         width: 20px;
         height: 20px; } }
       @media (max-width: 767px) and (-webkit-min-device-pixel-ratio: 2), (max-width: 767px) and (min-resolution: 192dpi) {
         .dt-header-menu li.directory > a:before {
           background-image: url(../images/sprites-2x.png);
-          background-size: 283px 200px; } }
+          background-size: 258px 238px; } }
 
 @media (max-width: 767px) {
       .dt-header-menu li.pages > a:before {
         background-image: url(../images/sprites.png);
-        background-position: -238px -133px;
+        background-position: -114px -154px;
         width: 20px;
         height: 20px; } }
       @media (max-width: 767px) and (-webkit-min-device-pixel-ratio: 2), (max-width: 767px) and (min-resolution: 192dpi) {
         .dt-header-menu li.pages > a:before {
           background-image: url(../images/sprites-2x.png);
-          background-size: 283px 200px; } }
+          background-size: 258px 238px; } }
 
 @media (max-width: 767px) {
       .dt-header-menu li.current > a,
@@ -1771,6 +1826,50 @@ header.dt-header .dt-jumbotron {
     header.dt-header .dt-jumbotron {
       padding: 140px 0; } }
 
+.sticky-wrap {
+  position: relative; }
+
+.sticky-container {
+  position: static; }
+
+.dt-menu {
+  margin: 0 0 30px 0; }
+  .dt-menu ul ul a {
+    padding-left: 36px; }
+  .dt-menu ul ul:after {
+    content: '';
+    display: block;
+    height: 10px;
+    border-left: 2px solid #eee; }
+  .dt-menu a {
+    display: block;
+    padding: 4px 0 4px 20px;
+    color: rgba(0, 0, 0, 0.75);
+    text-decoration: none;
+    border-left: 2px solid #eee; }
+    .dt-menu a:hover {
+      text-decoration: underline; }
+  .dt-menu .parent > a {
+    color: #000; }
+  .dt-menu .current > a {
+    font-weight: bold;
+    color: #000;
+    border-left-color: #0077d2; }
+
+@media (min-width: 992px) {
+  .has-sticky .sticky-container {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 40px; }
+  .dt-menu {
+    margin: -4px 0 0 -22px; }
+    .dt-menu.sticky {
+      position: fixed;
+      top: 40px; }
+    .dt-menu.bottom {
+      position: absolute;
+      bottom: 0; } }
+
 .dt-footer {
   margin-top: 40px;
   background-color: #162943;
@@ -1783,7 +1882,7 @@ header.dt-header .dt-jumbotron {
     color: #fff; }
     .dt-footer h2.guides:before {
       background-image: url(../images/sprites.png);
-      background-position: -260px -133px;
+      background-position: -136px -154px;
       width: 20px;
       height: 20px;
       content: '';
@@ -1793,10 +1892,10 @@ header.dt-header .dt-jumbotron {
       @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
         .dt-footer h2.guides:before {
           background-image: url(../images/sprites-2x.png);
-          background-size: 283px 200px; } }
+          background-size: 258px 238px; } }
     .dt-footer h2.directory:before {
       background-image: url(../images/sprites.png);
-      background-position: -238px -155px;
+      background-position: -158px -154px;
       width: 20px;
       height: 20px;
       content: '';
@@ -1806,10 +1905,10 @@ header.dt-header .dt-jumbotron {
       @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
         .dt-footer h2.directory:before {
           background-image: url(../images/sprites-2x.png);
-          background-size: 283px 200px; } }
+          background-size: 258px 238px; } }
     .dt-footer h2.pages:before {
       background-image: url(../images/sprites.png);
-      background-position: -238px -133px;
+      background-position: -114px -154px;
       width: 20px;
       height: 20px;
       content: '';
@@ -1819,7 +1918,7 @@ header.dt-header .dt-jumbotron {
       @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
         .dt-footer h2.pages:before {
           background-image: url(../images/sprites-2x.png);
-          background-size: 283px 200px; } }
+          background-size: 258px 238px; } }
   .dt-footer li {
     margin: 0.25em 0; }
   .dt-footer a {
@@ -1854,7 +1953,7 @@ header.dt-header .dt-jumbotron {
     color: #fff; }
     .dt-footer ul.quick a:after {
       background-image: url(../images/sprites.png);
-      background-position: -238px -177px;
+      background-position: -191px -190px;
       width: 24px;
       height: 16px;
       position: absolute;
@@ -1868,7 +1967,7 @@ header.dt-header .dt-jumbotron {
       @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
         .dt-footer ul.quick a:after {
           background-image: url(../images/sprites-2x.png);
-          background-size: 283px 200px; } }
+          background-size: 258px 238px; } }
     .dt-footer ul.quick a:hover {
       background: #2d3b57;
       padding-left: 13px;
@@ -1892,7 +1991,7 @@ header.dt-header .dt-jumbotron {
     line-height: 24px; }
     .dt-love p.icons:before {
       background-image: url(../images/sprites.png);
-      background-position: 0px -124px;
+      background-position: -62px -128px;
       width: 112px;
       height: 24px;
       content: '';
@@ -1902,7 +2001,7 @@ header.dt-header .dt-jumbotron {
       @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
         .dt-love p.icons:before {
           background-image: url(../images/sprites-2x.png);
-          background-size: 283px 200px; } }
+          background-size: 258px 238px; } }
   .dt-love a {
     color: #939393;
     text-decoration: none; }
@@ -1962,7 +2061,7 @@ header.dt-header .dt-jumbotron {
       border-radius: 0 4px 4px 0; }
       .dt-repository-search-form .sword button:before {
         background-image: url(../images/sprites.png);
-        background-position: -149px -150px;
+        background-position: -50px -190px;
         width: 45px;
         height: 45px;
         content: '';
@@ -1971,9 +2070,9 @@ header.dt-header .dt-jumbotron {
         @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
           .dt-repository-search-form .sword button:before {
             background-image: url(../images/sprites-2x.png);
-            background-size: 283px 200px; } }
+            background-size: 258px 238px; } }
     .dt-repository-search-form .sword.has-sword button:before {
-      background-position: -102px -150px; }
+      background-position: -144px -190px; }
   .dt-repository-search-form .all {
     display: none; }
   @media (min-width: 768px) {
@@ -1985,7 +2084,7 @@ header.dt-header .dt-jumbotron {
       white-space: nowrap; }
       .dt-repository-search-form .all:before {
         background-image: url(../images/sprites.png);
-        background-position: -238px 0px;
+        background-position: -97px -190px;
         width: 45px;
         height: 45px;
         content: '';
@@ -1994,7 +2093,7 @@ header.dt-header .dt-jumbotron {
     @media (min-width: 768px) and (-webkit-min-device-pixel-ratio: 2), (min-width: 768px) and (min-resolution: 192dpi) {
       .dt-repository-search-form .all:before {
         background-image: url(../images/sprites-2x.png);
-        background-size: 283px 200px; } }
+        background-size: 258px 238px; } }
   @media (min-width: 992px) {
     .dt-repository-search-form button,
     .dt-repository-search-form input {
@@ -2003,27 +2102,27 @@ header.dt-header .dt-jumbotron {
       font-size: 24px; }
     .dt-repository-search-form .sword button:before {
       background-image: url(../images/sprites.png);
-      background-position: 0px -150px;
+      background-position: -190px -104px;
       width: 50px;
       height: 50px; } }
   @media (min-width: 992px) and (-webkit-min-device-pixel-ratio: 2), (min-width: 992px) and (min-resolution: 192dpi) {
     .dt-repository-search-form .sword button:before {
       background-image: url(../images/sprites-2x.png);
-      background-size: 283px 200px; } }
+      background-size: 258px 238px; } }
   @media (min-width: 992px) {
     .dt-repository-search-form .sword.has-sword button:before {
-      background-position: -186px 0px; }
+      background-position: -190px 0px; }
     .dt-repository-search-form .all {
       padding-right: 15px; }
       .dt-repository-search-form .all:before {
         background-image: url(../images/sprites.png);
-        background-position: -186px -52px;
+        background-position: -190px -52px;
         width: 50px;
         height: 50px; } }
     @media (min-width: 992px) and (-webkit-min-device-pixel-ratio: 2), (min-width: 992px) and (min-resolution: 192dpi) {
       .dt-repository-search-form .all:before {
         background-image: url(../images/sprites-2x.png);
-        background-size: 283px 200px; } }
+        background-size: 258px 238px; } }
   @media (min-width: 1200px) {
     .dt-repository-search-form button,
     .dt-repository-search-form input {
@@ -2032,25 +2131,25 @@ header.dt-header .dt-jumbotron {
       font-size: 28px; }
     .dt-repository-search-form .sword button:before {
       background-image: url(../images/sprites.png);
-      background-position: -62px 0px;
+      background-position: -128px -62px;
       width: 60px;
       height: 60px; } }
   @media (min-width: 1200px) and (-webkit-min-device-pixel-ratio: 2), (min-width: 1200px) and (min-resolution: 192dpi) {
     .dt-repository-search-form .sword button:before {
       background-image: url(../images/sprites-2x.png);
-      background-size: 283px 200px; } }
+      background-size: 258px 238px; } }
   @media (min-width: 1200px) {
     .dt-repository-search-form .sword.has-sword button:before {
-      background-position: -124px 0px; }
+      background-position: -128px 0px; }
     .dt-repository-search-form .all:before {
       background-image: url(../images/sprites.png);
-      background-position: 0px -62px;
+      background-position: 0px -66px;
       width: 60px;
       height: 60px; } }
   @media (min-width: 1200px) and (-webkit-min-device-pixel-ratio: 2), (min-width: 1200px) and (min-resolution: 192dpi) {
     .dt-repository-search-form .all:before {
       background-image: url(../images/sprites-2x.png);
-      background-size: 283px 200px; } }
+      background-size: 258px 238px; } }
 
 .dt-repository-search-results {
   margin: 20px 0; }
@@ -2116,7 +2215,7 @@ header.dt-header .dt-jumbotron {
     vertical-align: top; }
     .dt-repository-search-list .header a:before {
       background-image: url(../images/sprites.png);
-      background-position: -238px -81px;
+      background-position: -62px -154px;
       width: 24px;
       height: 24px;
       content: '';
@@ -2129,13 +2228,13 @@ header.dt-header .dt-jumbotron {
       @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
         .dt-repository-search-list .header a:before {
           background-image: url(../images/sprites-2x.png);
-          background-size: 283px 200px; } }
+          background-size: 258px 238px; } }
     .dt-repository-search-list .header a:hover:before {
       opacity: 1; }
     .dt-repository-search-list .header a.download:before {
-      background-position: -238px -81px; }
+      background-position: -62px -154px; }
     .dt-repository-search-list .header a.github:before {
-      background-position: -238px -107px; }
+      background-position: -88px -154px; }
 
 .dt-repository-search-list .details {
   position: absolute;
@@ -2176,22 +2275,22 @@ header.dt-header .dt-jumbotron {
       opacity: 0.5; }
   .dt-repository-search-list .details .external:before {
     background-image: url(../images/sprites.png);
-    background-position: -186px -104px;
+    background-position: -242px 0px;
     width: 16px;
     height: 16px; }
     @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
       .dt-repository-search-list .details .external:before {
         background-image: url(../images/sprites-2x.png);
-        background-size: 283px 200px; } }
+        background-size: 258px 238px; } }
   .dt-repository-search-list .details .download:before {
     background-image: url(../images/sprites.png);
-    background-position: -264px -177px;
+    background-position: -209px -208px;
     width: 16px;
     height: 16px; }
     @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
       .dt-repository-search-list .details .download:before {
         background-image: url(../images/sprites-2x.png);
-        background-size: 283px 200px; } }
+        background-size: 258px 238px; } }
   .dt-repository-search-list .details a.download:hover {
     text-decoration: none; }
     .dt-repository-search-list .details a.download:hover .source {
@@ -2252,7 +2351,7 @@ header.dt-header .dt-jumbotron {
   .dt-repository-search-pagination .next a:before,
   .dt-repository-search-pagination .next span:before {
     background-image: url(../images/sprites.png);
-    background-position: -204px -104px;
+    background-position: -242px -18px;
     width: 16px;
     height: 16px;
     content: '';
@@ -2263,29 +2362,20 @@ header.dt-header .dt-jumbotron {
       .dt-repository-search-pagination .next a:before,
       .dt-repository-search-pagination .next span:before {
         background-image: url(../images/sprites-2x.png);
-        background-size: 283px 200px; } }
+        background-size: 258px 238px; } }
   .dt-repository-search-pagination .previous a:hover:before,
   .dt-repository-search-pagination .next a:hover:before {
-    background-position: -260px -155px; }
+    background-position: -191px -208px; }
   .dt-repository-search-pagination .previous a:before,
   .dt-repository-search-pagination .previous span:before {
-    background-position: -264px -81px; }
+    background-position: -224px -156px; }
   .dt-repository-search-pagination .previous a:hover:before {
-    background-position: -264px -107px; }
+    background-position: -217px -190px; }
   @media (min-width: 992px) {
     .dt-repository-search-pagination a,
     .dt-repository-search-pagination span {
       min-width: 40px;
       padding: 6px; } }
-
-nav.menu li {
-  margin: 0.25em 0; }
-
-nav.menu a {
-  color: #000;
-  text-decoration: none; }
-  nav.menu a:hover {
-    text-decoration: underline; }
 
 img {
   display: block; }
@@ -2294,10 +2384,10 @@ img {
     height: auto; }
 
 .typography > *:first-child {
-  margin-top: 0; }
+  margin-top: 0 !important; }
 
 .typography > *:last-child {
-  margin-bottom: 0; }
+  margin-bottom: 0 !important; }
 
 .typography.centered {
   text-align: center; }
@@ -2353,7 +2443,7 @@ img {
     text-decoration: underline; }
   .typography a.action:after {
     background-image: url(../images/sprites.png);
-    background-position: -238px -177px;
+    background-position: -191px -190px;
     width: 24px;
     height: 16px;
     content: '';
@@ -2362,27 +2452,36 @@ img {
     @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
       .typography a.action:after {
         background-image: url(../images/sprites-2x.png);
-        background-size: 283px 200px; } }
+        background-size: 258px 238px; } }
 
 .typography .shadow {
   box-shadow: 0, 0, 20px, 0.4;
   border-radius: 4px; }
 
-.typography code {
-  background-color: rgba(0, 0, 0, 0.02);
-  border: 1px solid rgba(0, 0, 0, 0.2);
-  font-family: 'Courier New', 'source-code-pro', monospace;
-  vertical-align: middle;
-  display: inline-block;
-  margin: 0.05em 0.05em;
-  padding: 0em 0.25em;
-  font-size: 0.9em;
-  line-height: normal; }
+.typography code,
+.typography pre {
+  font-family: 'Lucida Console', Monaco, monospace;
+  line-height: 1.5em;
+  color: #333333; }
 
-.typography pre code {
-  display: block;
-  font-size: 0.9em;
-  padding: 0.5em 0.5em; }
+.typography code {
+  padding: 3px 5px;
+  border-radius: 5px;
+  background-color: #eee;
+  font-size: 0.8em; }
+
+.typography pre {
+  overflow: auto;
+  padding: 20px 25px;
+  background-color: #eee;
+  border-radius: 7px;
+  font-size: 0.9em; }
+  .typography pre code {
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    border-radius: 0;
+    font-size: 1em; }
 
 .typography blockquote {
   padding-left: 20px;
@@ -2416,13 +2515,29 @@ img {
   margin-top: 0; }
 
 .typography .message {
-  border-radius: .325em;
-  padding: 1em;
+  position: relative;
+  border-radius: 5px;
+  padding: 20px 25px 20px 100px;
+  min-height: 84px;
   margin: 1em 0;
   background-color: #eee;
   line-height: 1.33;
-  font-size: .875em;
-  color: rgba(0, 0, 0, 0.6); }
+  font-size: .875em; }
+  .typography .message:before {
+    position: absolute;
+    top: 50%;
+    left: 20px;
+    background-image: url(../images/sprites.png);
+    background-position: 0px 0px;
+    width: 64px;
+    height: 64px;
+    content: '';
+    display: block;
+    margin-top: -32px; }
+    @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+      .typography .message:before {
+        background-image: url(../images/sprites-2x.png);
+        background-size: 258px 238px; } }
 
 @media (min-width: 768px) {
   .typography h2 + .lead {

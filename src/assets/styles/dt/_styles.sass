@@ -87,6 +87,14 @@ body,
 
 .style-raleway-huge
 	font-family: $font-raleway
-	font-size: $size-huge
+	font-size: $size-huge * 0.6
 	font-weight: normal
 
+	@media (min-width: $screen-sm-min)
+		font-size: $size-huge * 0.8
+
+	@media (min-width: $screen-md-min)
+		font-size: $size-huge * 0.9
+
+	@media (min-width: $screen-lg-min)
+		font-size: $size-huge

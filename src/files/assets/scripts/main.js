@@ -8,6 +8,63 @@ var dt;
 (function (dt) {
     var menu;
     (function (menu) {
+        var MenuState;
+        (function (MenuState) {
+            MenuState[MenuState["Top"] = 0] = "Top";
+            MenuState[MenuState["Sticky"] = 1] = "Sticky";
+            MenuState[MenuState["Bottom"] = 2] = "Bottom";
+        })(MenuState || (MenuState = {}));
+        var Component = (function (_super) {
+            __extends(Component, _super);
+            function Component(options) {
+                var _this = this;
+                _super.call(this, options);
+                this.state = MenuState.Top;
+                if (dt.hasPositionSticky) {
+                    dt.addClass(document.body, 'has-sticky');
+                    return;
+                }
+                dt.addEventListener(window, 'scroll', function () { return _this.onScroll(); });
+                dt.addEventListener(window, 'resize', function () { return _this.onResize(); });
+                FontFaceOnload('Open Sans', { success: function () { return _this.onResize(); } });
+                FontFaceOnload('Raleway', { success: function () { return _this.onResize(); } });
+                this.onResize();
+            }
+            Component.prototype.setState = function (value) {
+                if (this.state == value)
+                    return;
+                dt.removeClass(this.el, MenuState[this.state].toLowerCase());
+                this.state = value;
+                dt.addClass(this.el, MenuState[this.state].toLowerCase());
+            };
+            Component.prototype.onScroll = function () {
+                var at = dt.scrollTop();
+                if (at < this.min) {
+                    this.setState(MenuState.Top);
+                }
+                else if (at > this.max) {
+                    this.setState(MenuState.Bottom);
+                }
+                else {
+                    this.setState(MenuState.Sticky);
+                }
+            };
+            Component.prototype.onResize = function () {
+                var el = (this.el.parentNode);
+                this.min = el.getBoundingClientRect().top + dt.scrollTop() - 40;
+                var el = (el.parentNode);
+                this.max = this.min + el.offsetHeight - this.el.offsetHeight + 4;
+                this.onScroll();
+            };
+            return Component;
+        })(Backbone.NativeView);
+        menu.Component = Component;
+    })(menu = dt.menu || (dt.menu = {}));
+})(dt || (dt = {}));
+var dt;
+(function (dt) {
+    var navigation;
+    (function (navigation) {
         var Component = (function (_super) {
             __extends(Component, _super);
             function Component(options) {
@@ -46,8 +103,8 @@ var dt;
             };
             return Component;
         })(Backbone.NativeView);
-        menu.Component = Component;
-    })(menu = dt.menu || (dt.menu = {}));
+        navigation.Component = Component;
+    })(navigation = dt.navigation || (dt.navigation = {}));
 })(dt || (dt = {}));
 var dt;
 (function (dt) {
@@ -1132,6 +1189,7 @@ var dt;
     dt.transformStyle;
     dt.transitionStyle;
     dt.transitionEndEvent;
+    dt.hasPositionSticky;
     var el;
     var prefixes = ['MS', 'Webkit', 'Moz', 'O'];
     function withDummyElement(callback) {
@@ -1172,7 +1230,17 @@ var dt;
         }
     }
     dt.getPrefixedEvent = getPrefixedEvent;
+    function isValueSupported(name, value) {
+        return withDummyElement(function (el) {
+            if (!(name in el.style))
+                return false;
+            el.style[name] = value;
+            return el.style[name] == value;
+        });
+    }
+    dt.isValueSupported = isValueSupported;
     withDummyElement(function () {
+        dt.hasPositionSticky = isValueSupported('position', 'sticky') || isValueSupported('position', '-webkit-sticky');
         dt.transformStyle = getPrefixedStyle('transform');
         dt.transitionStyle = getPrefixedStyle('transition');
         dt.transitionEndEvent = getPrefixedEvent(dt.transitionStyle, 'transitionend', {
@@ -1190,6 +1258,9 @@ var dt;
                 console.log('\n\nShow your stuff at https://github.com/DefinitelyTyped/definitelytyped.github.io\n\n');
             }
             _(document.querySelectorAll('.dt-header')).each(function (el) {
+                new dt.navigation.Component({ el: el });
+            });
+            _(document.querySelectorAll('.dt-menu')).each(function (el) {
                 new dt.menu.Component({ el: el });
             });
             _(document.querySelectorAll('.dt-repository-search')).each(function (el) {

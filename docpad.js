@@ -86,6 +86,7 @@ var docpadConfig = {
 						'/assets/scripts/lib/underscore-min.js',
 						'/assets/scripts/lib/backbone-min.js',
 						'/assets/scripts/lib/backbone.nativeview.js',
+						'/assets/scripts/lib/fontfaceonload.js',
 						'/assets/scripts/main.js'
 					],
 				}

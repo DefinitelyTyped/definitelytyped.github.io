@@ -11,10 +11,10 @@ img
 
 .typography
 	> *:first-child
-		margin-top: 0
+		margin-top: 0 !important
 
 	> *:last-child
-		margin-bottom: 0
+		margin-bottom: 0 !important
 
 	&.centered
 		text-align: center
@@ -91,21 +91,31 @@ img
 		+box-shadow(0, 0, 20px, 0.4)
 		border-radius: 4px
 
-	code
-		background-color: rgba(0, 0, 0, 0.02)
-		border: 1px solid rgba(0, 0, 0, 0.2)
-		font-family: 'Courier New', 'source-code-pro', monospace
-		vertical-align: middle
-		display: inline-block
-		margin: 0.05em 0.05em
-		padding: 0.0em 0.25em
-		font-size: 0.9em
-		line-height: normal
+	code,
+	pre
+		font-family: 'Lucida Console', Monaco, monospace
+		line-height: 1.5em
+		color: lighten($color-black, 20%)
 
-	pre code
-		display: block
+	code
+		padding: 3px 5px
+		border-radius: 5px
+		background-color: $color-accent
+		font-size: 0.8em
+
+	pre
+		overflow: auto
+		padding: 20px 25px
+		background-color: $color-accent
+		border-radius: 7px
 		font-size: 0.9em
-		padding: 0.5em 0.5em
+
+		code
+			background-color: transparent
+			border: none
+			padding: 0
+			border-radius: 0
+			font-size: 1em
 
 	blockquote
 		padding-left: 20px
@@ -139,13 +149,21 @@ img
 		margin-top: 0
 
 	.message
-		border-radius: .325em
-		padding: 1em
+		+relative()
+		border-radius: 5px
+		padding: 20px 25px 20px 100px
+		min-height: $message-height + 20
 		margin: 1em 0
 		background-color: $color-accent
 		line-height: 1.33
 		font-size: .875em
-		color: rgba(0, 0, 0, .6)
+
+		&:before
+			+absolute(50%, false, false, 20px)
+			+retina-sprite($message-group)
+			content: ''
+			display: block
+			margin-top: $message-height * -0.5
 
 	@media (min-width: $screen-sm-min)
 		h2 + .lead

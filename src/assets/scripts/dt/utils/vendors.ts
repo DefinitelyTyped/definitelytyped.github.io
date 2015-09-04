@@ -16,6 +16,11 @@ namespace dt
 	export var transitionEndEvent:string;
 
 	/**
+	 * Does the browser support the sticky position?
+	 */
+	export var hasPositionSticky:boolean;
+
+	/**
 	 * Temporary div for testing style and avent names.
 	 */
 	var el:HTMLDivElement;
@@ -75,10 +80,20 @@ namespace dt
 	}
 
 
+	export function isValueSupported(name:string, value:string):boolean {
+		return withDummyElement((el) => {
+			if (!(name in el.style)) return false;
+			el.style[name] = value;
+			return el.style[name] == value;
+		});
+	}
+
+
 	/**
 	 * Find the required prefixed names.
 	 */
 	withDummyElement(function() {
+		hasPositionSticky = isValueSupported('position', 'sticky') || isValueSupported('position', '-webkit-sticky');
 		transformStyle = getPrefixedStyle('transform');
 		transitionStyle = getPrefixedStyle('transition');
 		transitionEndEvent = getPrefixedEvent(transitionStyle, 'transitionend', {

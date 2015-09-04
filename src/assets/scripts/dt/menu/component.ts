@@ -1,24 +1,23 @@
 namespace dt.menu
 {
+	enum MenuState
+	{
+		Top,
+		Sticky,
+		Bottom
+	}
+
+
 	/**
-	 * Menu helper for mobile expanding/collapsing of the menu.
+	 * Sticky menu helper.
 	 */
 	export class Component extends Backbone.NativeView<any>
 	{
-		/**
-		 * Class name of the current transition.
-		 */
-		private transition:string;
+		private min:number;
 
-		/**
-		 * Timeout of the current transition.
-		 */
-		private transitionTimeout:number;
+		private max:number;
 
-		/**
-		 * Is the menu currently expanded?
-		 */
-		isExpanded:boolean = false;
+		private state:MenuState = MenuState.Top;
 
 
 
@@ -26,46 +25,62 @@ namespace dt.menu
 		 * Create a new menu Component instance.
 		 */
 		constructor(options?:Backbone.ViewOptions<any>) {
-			super(_.defaults(options || {}, {
-				events: {
-					'click .menu-widget': 'onWidgetClick'
-				}
-			}));
-		}
+			super(options);
 
-
-		/**
-		 * Set a transition class on this row.
-		 */
-		private setTransition(transition:string, duration:number = 400) {
-			if (this.transition == transition) return;
-			if (this.transition) {
-				clearTimeout(this.transitionTimeout);
-				removeClass(this.el, this.transition);
+			if (hasPositionSticky) {
+				addClass(document.body, 'has-sticky');
+				return;
 			}
 
-			addClass(this.el, transition);
+			addEventListener(window, 'scroll', () => this.onScroll());
+			addEventListener(window, 'resize', () => this.onResize());
 
-			this.transition = transition;
-			this.transitionTimeout = setTimeout(() => {
-				removeClass(this.el, transition);
-				this.transition = this.transitionTimeout = null;
-			}, duration);
+			FontFaceOnload('Open Sans', { success: () => this.onResize() });
+			FontFaceOnload('Raleway', { success: () => this.onResize() });
+
+			this.onResize();
 		}
 
 
 		/**
-		 * Triggered when the user clicks onto a menu widget.
+		 * Set the sticky state of this menu.
 		 */
-		onWidgetClick() {
-			this.isExpanded = !this.isExpanded;
-			toggleClass(document.documentElement, 'has-menu', this.isExpanded);
+		setState(value:MenuState) {
+			if (this.state == value) return;
 
-			if (this.isExpanded) {
-				this.setTransition('menu-fade-in', 750);
+			removeClass(this.el, MenuState[this.state].toLowerCase());
+			this.state = value;
+			addClass(this.el, MenuState[this.state].toLowerCase());
+		}
+
+
+		/**
+		 * Triggered when the user scrolls the document.
+		 */
+		private onScroll() {
+			var at = scrollTop();
+
+			if (at < this.min) {
+				this.setState(MenuState.Top);
+			} else if (at > this.max) {
+				this.setState(MenuState.Bottom);
 			} else {
-				this.setTransition('menu-fade-out', 250);
+				this.setState(MenuState.Sticky);
 			}
+		}
+
+
+		/**
+		 * Triggered when the window has been resized.
+		 */
+		private onResize() {
+			var el = <HTMLElement>(this.el.parentNode);
+			this.min = el.getBoundingClientRect().top + scrollTop() - 40;
+
+			var el = <HTMLElement>(el.parentNode);
+			this.max = this.min + el.offsetHeight - this.el.offsetHeight + 4;
+
+			this.onScroll();
 		}
 	}
 }

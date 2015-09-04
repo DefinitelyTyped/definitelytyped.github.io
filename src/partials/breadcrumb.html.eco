@@ -1,0 +1,13 @@
+<% renderBreadcrumb = (items) => %>
+	<% for item in items: %>
+		<% if item.state == 'parent': %>
+			<li><a href="<%= item.meta.redirect or item.url %>"><%= item.title %></a></li>
+			<%- renderBreadcrumb(item.children) if item.children %>
+		<% end %>
+	<% end %>
+<% end %>
+
+<ol class="dt-breadcrumb">
+	<li><a href="/index.html">Homepage</a></li>
+	<%- renderBreadcrumb(@menuItems) %>
+</ol>

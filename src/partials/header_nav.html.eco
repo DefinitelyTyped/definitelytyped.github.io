@@ -3,10 +3,7 @@
 		<% for item in items: %>
 			<li<% if item.state: %> class="<%= item.state %>"<% end %>>
 				<a href="<%- item.meta.redirect or item.url %>"><%= item.title %></a>
-
-				<% if item.children: %>
-					<%- renderMenu(item.children) %>
-				<% end %>
+				<%- renderMenu(item.children) if item.children %>
 			</li>
 		<% end %>
 	</ul>
