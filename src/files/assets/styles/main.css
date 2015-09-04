@@ -1263,7 +1263,7 @@ ul.benefits {
       content: ' » ';
       margin: 0 7px;
       display: inline-block;
-      color: rgba(147, 147, 147, 0.75); }
+      color: #aaa; }
     .dt-breadcrumb li:first-child:before,
     .typography ol.dt-breadcrumb li:first-child:before {
       display: none; }
@@ -1740,6 +1740,12 @@ ul.benefits {
         margin: 0;
         padding: 5px 0 5px 42px;
         color: #fff; }
+        .dt-header-menu li a:after {
+          display: none !important;
+          content: none !important; }
+        .dt-header-menu li a:active,
+        .dt-header-menu li a:focus {
+          text-decoration: underline; }
       .dt-header-menu li.guides > a:before,
       .dt-header-menu li.directory > a:before,
       .dt-header-menu li.pages > a:before {
@@ -1784,9 +1790,6 @@ ul.benefits {
       .dt-header-menu li.current > a,
       .dt-header-menu li.parent > a {
         color: #6481a1; }
-        .dt-header-menu li.current > a:after,
-        .dt-header-menu li.parent > a:after {
-          display: none; }
       .dt-header-menu li ul {
         display: block;
         margin: 0;

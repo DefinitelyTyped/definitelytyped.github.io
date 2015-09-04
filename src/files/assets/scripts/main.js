@@ -872,10 +872,21 @@ var dt;
                 var _this = this;
                 _super.call(this, options);
                 this.stars = [];
+                this.actors = [];
                 this.density = 2;
                 stars.CanvasLayer.loadImage(options.spriteSrc, function (image) {
                     _this.setSprite(image, options.spriteSize);
                 });
+                var probability = 0;
+                setInterval(function () {
+                    if (Math.random() < probability) {
+                        _this.actors.push(new FXFallingStar(_this));
+                        probability = 0;
+                    }
+                    else {
+                        probability += 0.01;
+                    }
+                }, 1000);
             }
             FXLayer.prototype.update = function (delta) {
                 if (!this.sprites)
@@ -884,10 +895,22 @@ var dt;
                 var sprites = this.sprites;
                 var width = this.width;
                 var height = this.height;
+                ctx.setTransform(1, 0, 0, 1, 0, 0);
                 ctx.clearRect(0, 0, width, height);
                 for (var _i = 0, _a = this.stars; _i < _a.length; _i++) {
                     var star = _a[_i];
                     star.update(ctx, delta, sprites, width, height);
+                }
+                var index = 0;
+                var length = this.actors.length;
+                while (index < length) {
+                    if (this.actors[index].update(ctx, delta, width, height)) {
+                        index += 1;
+                    }
+                    else {
+                        this.actors.splice(index, 1);
+                        length -= 1;
+                    }
                 }
             };
             FXLayer.prototype.setSprite = function (image, size) {
@@ -951,6 +974,49 @@ var dt;
             return FXStar;
         })();
         stars.FXStar = FXStar;
+        var FXFallingStar = (function () {
+            function FXFallingStar(layer) {
+                this.age = 0;
+                this.lifetime = 1000 + Math.random() * 1000;
+                this.x = Math.random() * layer.width;
+                this.y = Math.random() * -layer.height;
+                var direction = (0.1 + Math.random() * 0.2) * Math.PI;
+                var speed = 700 + Math.random() * 200;
+                this.velocityX = Math.cos(direction) * speed;
+                this.velocityY = Math.sin(direction) * speed;
+                if (!FXFallingStar.SPRITE) {
+                    var image = document.createElement('img');
+                    image.src = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAALCAQAAACXQxZfAAAArUlEQVR4AdWSRRaDAAxEcXeXfXuCyq5+tJ57OnV3z8dh+MkD4YMF8e0CSAvEe1QQNzl5AfOXFQo0qJAhXmlFJgpU6HsYRL+YXyhSdJFA2+8GVBMDJizYcBAiWOETb7Hlnri8b1DD/DmJgQGmaGOCIY/6Z2iiRoOUSBckiFESqqlx2IoG+bxERUJFdGISdW+SYAP7v28SkX6+jDz/TaQr8cf+ro2Y2yt53ibCf9cMKX/RB0+qYx0AAAAASUVORK5CYII=';
+                    var canvas = FXFallingStar.SPRITE = document.createElement('canvas');
+                    canvas.width = image.naturalWidth;
+                    canvas.height = image.naturalHeight;
+                    canvas.getContext('2d').drawImage(image, 0, 0);
+                }
+            }
+            FXFallingStar.prototype.update = function (ctx, delta, width, height) {
+                this.age += delta;
+                var power = this.age / this.lifetime;
+                var advance = delta / 1000;
+                this.velocityX -= this.velocityX * 0.95 * advance * power;
+                this.velocityY += 100 * advance * power;
+                var x = this.x + this.velocityX * advance;
+                var y = this.y + this.velocityY * advance;
+                ctx.globalAlpha = (1 - Math.cos(power * Math.PI * 2)) * 0.5;
+                ctx.setTransform(1, 0, 0, 1, x, y);
+                ctx.rotate(Math.atan2(this.y - y, this.x - x));
+                ctx.drawImage(FXFallingStar.SPRITE, 5, 5);
+                if (this.age > this.lifetime) {
+                    return false;
+                }
+                else {
+                    this.x = x;
+                    this.y = y;
+                    return true;
+                }
+            };
+            return FXFallingStar;
+        })();
+        stars.FXFallingStar = FXFallingStar;
     })(stars = dt.stars || (dt.stars = {}));
 })(dt || (dt = {}));
 var dt;

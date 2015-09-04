@@ -253,6 +253,14 @@
 				padding: 5px 0 5px 42px
 				color: $color-white
 
+				&:after
+					display: none !important
+					content: none !important
+
+				&:active,
+				&:focus
+					text-decoration: underline
+
 			&.guides > a:before,
 			&.directory > a:before,
 			&.pages > a:before
@@ -272,9 +280,6 @@
 			&.current > a,
 			&.parent > a
 				color: $color-main-light
-
-				&:after
-					display: none
 
 			ul
 				display: block
