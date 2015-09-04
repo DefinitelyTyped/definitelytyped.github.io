@@ -2468,7 +2468,7 @@ img {
   line-height: 1.5em; }
 
 .typography ul, .typography ol {
-  padding-left: 22px; }
+  padding-left: 20px; }
 
 .typography ul ul, .typography ul ol, .typography ol ul, .typography ol ol {
   margin: 0 0 1em 0; }
@@ -2538,14 +2538,13 @@ img {
   border-left: 2px solid #eee; }
 
 .typography input {
-  border-radius: .325em;
+  border-radius: 4px;
   width: 100%;
   margin: 0;
-  padding: 0.65em 1em;
-  border: 1px solid #eee;
+  padding: 5px 10px;
+  border: 1px solid #c6c6c6;
   outline: 0;
-  font-size: 1em;
-  color: rgba(0, 0, 0, 0.7); }
+  color: #333333; }
 
 .typography hr {
   margin: 3em 0 0.75em 0;

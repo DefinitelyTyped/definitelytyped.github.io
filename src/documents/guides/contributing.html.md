@@ -5,33 +5,54 @@ menuOrder: 0
 ---
 
 <div class="message">
-    This guide covers contributing **definitions**. For information on contributing to the **website** go the <a href="/pages/website-contributions.html">website update guide</a>.
+    This guide covers contributing **definitions**. For information on contributing to the **website** go
+    the <a href="/pages/website-contributions.html">website update guide</a>.
 </div>
+
+
+## Creating a definition file
+
+The official TypeScript wiki on codeplex.com has a
+[great article](https://typescript.codeplex.com/wikipage?title=Writing%20Definition%20%28.d.ts%29%20Files)
+on how to write a good type declaration file. It is recommended you read this as it covers some
+important choices.
 
 
 ## Quality Criteria
 
 To ensure the quality of `DefinitelyTyped` repository, the typings must meet the following criteria:
 
+
 ## Naming the file
 
-Try to use a simple lowercase identifier as name of the definition file, like `library.d.ts` or `node-hoge.d.ts`. To keep naming conflicts to a minimum please use the package name as used in the [npm](https://www.npmjs.org/) package registry. The only exception here should be NuGet / Windows oriented code as they use a camel-case convention.
+Try to use a simple lowercase identifier as name of the definition file, like `library.d.ts` or
+`node-hoge.d.ts`. To keep naming conflicts to a minimum please use the package name as used in the
+[npm](https://www.npmjs.org/) package registry. The only exception here should be NuGet / Windows
+oriented code as they use a camel-case convention.
 
-If the library is published to multiple package managers (npm, bower, yam, NuGet, component etc) but under different names then also use the npm name.
+If the library is published to multiple package managers (npm, bower, yam, NuGet, component etc) but
+under different names then also use the npm name.
 
-If the library is not published on npm use a new identifier, as long as it doesn't shadow an existing npm name.
+If the library is not published on npm use a new identifier, as long as it doesn't shadow an
+existing npm name.
+
 
 ### Version
 
-In case there are multiple versions supported, the latest one will be without a version number in the file name. Older versions will be in the form of `library-1.2.0.d.ts` where the postfix should resemble a valid [semantic version](http://semver.org/) number (semver).
+In case there are multiple versions supported, the latest one will be without a version number in the
+file name. Older versions will be in the form of `library-1.2.0.d.ts` where the postfix should
+resemble a valid [semantic version](http://semver.org/) number (semver).
+
 
 ### Location
 
 The typing must be placed in a folder. The folder name must be similar to library name.
 
-Example: `qunit.d.ts` in in a folder named `qunit`
+**Example:** `qunit.d.ts` in in a folder named `qunit`
 
-In general the definition should be a single `.d.ts` file, but exceptions can be made for large libraries (~ >1000 LOC).
+In general the definition should be a single `.d.ts` file, but exceptions can be made for
+large libraries (~ >1000 LOC).
+
 
 ## Content
 
@@ -55,13 +76,18 @@ If the version of the library is known then add it as a semver to the label.
 // Definitions: https://github.com/borisyankov/DefinitelyTyped
 ````
 
+
 ### Namespacing
 
-* Be careful to use a module to avoid conflicts to your internal interfaces and the interfaces from another typings. See [best practices](/guides/best-practices.html) and [the TypeScript wiki](https://typescript.codeplex.com/wikipage?title=Writing%20Definition%20%28.d.ts%29%20Files) for some tips.
+Be careful to use a module to avoid conflicts to your internal interfaces and the interfaces from
+another typings. See [best practices](/guides/best-practices.html) and
+[the TypeScript wiki](https://typescript.codeplex.com/wikipage?title=Writing%20Definition%20%28.d.ts%29%20Files)
+for some tips.
 
-> The [`jQuery.bbq` typing](<%-@site.github%>/blob/master/jquery.bbq/jquery.bbq.d.ts) has the interfaces in a module named `JQueryBbq`
+> The [`jQuery.bbq` typing](<%-@site.github%>/blob/master/jquery.bbq/jquery.bbq.d.ts) has the
+> interfaces in a module named `JQueryBbq`
 
-Example:
+#### Example:
 
 ````typescript
 module JQueryBbq {
@@ -78,50 +104,77 @@ interface JQueryStatic {
 
 See the [best practices](/guides/best-practices.html) for more info on how to structure a definition file.
 
+
 ### Documentation
 
 Take advantage of TypeScript [JSDoc support](http://blogs.msdn.com/b/typescript/archive/2013/01/21/announcing-typescript-0-8-2.aspx).
 
+
 ## Tests
 
-The typing must have tests in a files called `library-tests.ts`. The tests are not runnable in the TDD way but contain code that should compile with no errors, usually taken from the documentation samples of the library.
+The typing must have tests in a files called `library-tests.ts`. The tests are not runnable in the TDD way but
+contain code that should compile with no errors, usually taken from the documentation samples of the library.
 
-Example: `backbone.d.ts` has a test file named `backbone-tests.ts`, with this [example of a real test file](<%- @site.github %>/blob/master/backbone/backbone-tests.ts).
+Example: `backbone.d.ts` has a test file named `backbone-tests.ts`, with this
+[example of a real test file](<%- @site.github %>/blob/master/backbone/backbone-tests.ts).
 
-There are a few ways to test changes:
+#### There are a few ways to test changes:
 
 1. Simply compile the test file:
-    * `tsc --noImplicitAny your/code-tests.ts`
-    * `tsc --noImplicitAny --module commonjs your/code-tests.ts`
+
+   ````bash
+   tsc --noImplicitAny your/code-tests.ts
+   tsc --noImplicitAny --module commonjs your/code-tests.ts
+   ````
+
 2. Run `npm test` before sending your pull request.
-    * If you created new files add them to git so the tester picks them as changes.
-    * Tests must be run from the DefinitelyTyped project's root directory.
-    * You'll need to run `npm update` once to download the packages required by the test suite.
+
+   If you created new files add them to git so the tester picks them as changes. Tests must be run from the
+   DefinitelyTyped project's root directory.
+
+   You'll need to run `npm update` once to download the packages required by the test suite.
+
 3. Enable Travis on your DT fork and test online.
-    * See note below on how to enable this.
-    * This takes a few steps to do but is faster for big cascading changes (like changing JQuery)
+
+   See note below on how to enable this. This takes a few steps to do but is faster for big cascading
+   changes (like changing JQuery)
+
 4. Depend on the automated test on Travis that runs after you send a PR.
-    * If you need many attempts to fix errors then please flatten the history and clean the commit message.
 
-You can use a `tscparams` file to specify custom compiler arguments e.g. [atom/atom-tests.ts.tscparams](<%-@site.github%>/blob/master/atom/atom-tests.ts.tscparams)
+   If you need many attempts to fix errors then please flatten the history and clean the commit message.
 
-Note: By default `npm test` only runs tests for the changed / new definition files. To run all tests just execute `npm run all`.
+You can use a `tscparams` file to specify custom compiler arguments e.g.
+[atom/atom-tests.ts.tscparams](<%-@site.github%>/blob/master/atom/atom-tests.ts.tscparams)
+
+Note: By default `npm test` only runs tests for the changed / new definition files.
+To run all tests just execute `npm run all`.
+
 
 ## Code style
 
-* At this point we do not enforce a specific *general* code style, but we do like idiomatic code in each *individual* file.
-* When creating a new definition file the author is free to choose either tabs or 4-space indentation ([discussion](https://github.com/borisyankov/DefinitelyTyped/issues/1709) on github).
-* Choice between Unix or Windows linebreaks is not enforced, as node.js doesn't care for it either way. Try to keep it idiomatic per file.
-* When editing an existing file please maintain the existing style as much as possible, this includes indenting, separator whitespace, bracing etc..
+* At this point we do not enforce a specific *general* code style, but we do like idiomatic
+  code in each *individual* file.
+* When creating a new definition file the author is free to choose either tabs or 4-space indentation
+  ([discussion](https://github.com/borisyankov/DefinitelyTyped/issues/1709) on github).
+  Choice between Unix or Windows linebreaks is not enforced, as node.js doesn't care for it either way.
+  Try to keep it idiomatic per file.
+* When editing an existing file please maintain the existing style as much as possible, this includes
+  indenting, separator whitespace, bracing etc..
+
+  It is discouraged to reformat existing code as it breaks git attribution.
+
 * Do not use fancy code alignments or smart-tabs; instead keep things plain and simple.
-* It is discouraged to reformat existing code (as it breaks git attribution).
 * When preparing a Pull Request please check git diff (locally or on github) for unnecessary changes.
-* Regard the typing folder in your project as external resource and exclude it from your linter/formatter workflow, just like any library file.
+* Regard the typing folder in your project as external resource and exclude it from your linter/formatter
+  workflow, just like any library file.
+
 
 ## Contributors link
 
 [CONTRIBUTORS.md](<%-@site.github%>/blob/master/CONTRIBUTORS.md) will update automatically.
 
+
 ### Note
 
-Keep in mind the repos is a community project with a wide range on quality in contributions and moderation; so there may be the occasional rule violation or historical artifact.
+Keep in mind the repos is a community project with a wide range on quality in contributions and moderation;
+so there may be the occasional rule violation or historical artifact.
