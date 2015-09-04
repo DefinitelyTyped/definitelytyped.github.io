@@ -2249,6 +2249,15 @@ header.dt-header .dt-jumbotron {
   .dt-repository-search-list .details h3 {
     padding-bottom: 5px;
     border-bottom: 1px solid #313d55; }
+  .dt-repository-search-list .details code {
+    color: #fff;
+    background-color: #313d55; }
+  .dt-repository-search-list .details pre {
+    padding: 10px 15px;
+    background-color: #313d55; }
+    .dt-repository-search-list .details pre code {
+      color: #fff;
+      background-color: transparent; }
   .dt-repository-search-list .details a {
     color: #a3b5c8; }
   .dt-repository-search-list .details .downloads {
@@ -2466,7 +2475,7 @@ img {
 
 .typography code {
   padding: 3px 5px;
-  border-radius: 5px;
+  border-radius: 4px;
   background-color: #eee;
   font-size: 0.8em; }
 
@@ -2474,7 +2483,7 @@ img {
   overflow: auto;
   padding: 20px 25px;
   background-color: #eee;
-  border-radius: 7px;
+  border-radius: 4px;
   font-size: 0.9em; }
   .typography pre code {
     background-color: transparent;
