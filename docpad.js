@@ -1,7 +1,7 @@
 /* jshint -W014 */
 
 var docpadConfig = {
-    ignoreCustomPatterns: /\.d\.ts$/i,
+    ignoreCustomPatterns: /\.ts$|\.sass|\.scss|\.psd|\.fla$/i,
 	templateData: {
 		site: {
 			url: 'http://definitelytyped.org',

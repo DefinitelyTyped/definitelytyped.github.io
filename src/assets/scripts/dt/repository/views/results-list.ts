@@ -95,8 +95,12 @@ namespace dt.repository
 			super(_.defaults(options || {}, {
 				tagName: 'li',
 				className: 'list-item',
+				attributes: {
+					tabindex: 0
+				},
 				events: {
-					'click .header': 'onHeaderClick'
+					'click .header': 'onHeaderClick',
+					'keydown': 'onKeyDown'
 				}
 			}));
 
@@ -172,6 +176,18 @@ namespace dt.repository
 
 			preventDefault(e);
 			this.setExpanded(!this.isExpanded);
+			this.el.blur();
+		}
+
+
+		/**
+		 * Triggered when a key has been pressed above the element.
+		 */
+		private onKeyDown(e:KeyboardEvent) {
+			if (e.srcElement != this.el) return;
+			if (e.keyCode == 13) {
+				this.setExpanded(!this.isExpanded);
+			}
 		}
 	}
 }

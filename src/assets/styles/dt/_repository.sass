@@ -35,8 +35,10 @@
 		font-size: 0
 		transition: background-color 0.2s
 
+		&:focus,
+		&:active,
 		&:hover
-			background: $color-main-dark
+			background: $color-main
 
 	.sword
 		display: table
@@ -185,8 +187,11 @@
 			border-bottom: 2px solid #313d55
 
 		&:hover,
+		&:focus,
+		&:active,
 		&.expanded
 			border-top-color: $color-main-darker
+			outline: 0
 
 			.header
 				background: #313d55
@@ -197,9 +202,14 @@
 			&:last-child
 				border-bottom-color: $color-main-darker
 
-		&.expanded .details
-			position: static
-			visibility: visible
+		&.expanded
+			&:focus .header,
+			&:active .header
+				background: lighten(#313d55, 5%)
+
+			.details
+				position: static
+				visibility: visible
 
 		&.expanding .details
 			animation: fade-in 0.4s
@@ -240,6 +250,10 @@
 				opacity: 0.8
 				transition: opacity 0.1s
 				vertical-align: text-bottom
+
+			&:focus,
+			&:active
+				text-decoration: underline
 
 			&:hover:before
 				opacity: 1
@@ -368,6 +382,10 @@
 	a
 		color: $color-main-light
 		transition: color 0.2s
+
+		&:focus,
+		&:active
+			text-decoration: underline
 
 		&:hover
 			color: lighten($color-main-light, 25%)

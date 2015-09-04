@@ -77,7 +77,9 @@
 		color: #a1a7b0
 		text-decoration: none
 
-		&:hover
+		&:hover,
+		&:active,
+		&:focus
 			text-decoration: underline
 
 	@media (min-width: $screen-sm-min)
@@ -137,6 +139,8 @@
 			display: block
 			opacity: 0
 
+		&:active,
+		&:focus,
 		&:hover
 			background: #2d3b57
 			padding-left: 13px

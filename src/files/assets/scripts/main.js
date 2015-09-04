@@ -397,8 +397,12 @@ var dt;
                 _super.call(this, _.defaults(options || {}, {
                     tagName: 'li',
                     className: 'list-item',
+                    attributes: {
+                        tabindex: 0
+                    },
                     events: {
-                        'click .header': 'onHeaderClick'
+                        'click .header': 'onHeaderClick',
+                        'keydown': 'onKeyDown'
                     }
                 }));
                 this.el.innerHTML = this.compactTemplate(this.model);
@@ -453,6 +457,14 @@ var dt;
                     return;
                 dt.preventDefault(e);
                 this.setExpanded(!this.isExpanded);
+                this.el.blur();
+            };
+            ListItem.prototype.onKeyDown = function (e) {
+                if (e.srcElement != this.el)
+                    return;
+                if (e.keyCode == 13) {
+                    this.setExpanded(!this.isExpanded);
+                }
             };
             return ListItem;
         })(Backbone.NativeView);

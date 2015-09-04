@@ -126,22 +126,29 @@
 .dt-header-logo
 	display: block
 	float: left
+	color: $color-white
 
-	&:before,
-	span
-		display: inline-block
-		vertical-align: middle
+	&:hover
+		color: $color-white
+
+	&:active,
+	&:focus
+		color: lighten($color-main-light, 30%)
 
 	&:before
 		+retina-sprite($logo-small-group)
 		content: ''
 		margin-right: 10px
 
+	&:before,
+	span
+		display: inline-block
+		vertical-align: middle
+
 	span
 		@extend .style-raleway-large
 		line-height: 1em
 		letter-spacing: 1px
-		color: $color-white
 		font-weight: normal
 
 	@media (min-width: $screen-sm-min)
@@ -187,18 +194,30 @@
 			text-transform: uppercase
 			transition: color 0.2s
 
+			&:after
+				+absolute(0, 0, false, 0)
+				content: ''
+				height: 6px
+				background-color: $color-main
+				visibility: hidden
+
 			&:hover
 				color: $color-main
+
+			&:active:after,
+			&:focus:after
+				visibility: visible
 
 		&.current > a,
 		&.parent > a
 			color: $color-main
 
 			&:after
-				+absolute(0, 0, false, 0)
-				content: ''
-				height: 6px
-				background-color: $color-main
+				visibility: visible
+
+			&:active:after,
+			&:focus:after
+				background-color: $color-white
 
 	@media (max-width: $screen-xs-max)
 		+position(fixed, 0, 0, 0, 0)
