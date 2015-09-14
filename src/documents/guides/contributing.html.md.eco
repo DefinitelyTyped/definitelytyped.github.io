@@ -117,6 +117,9 @@ Note: By default `npm test` only runs tests for the changed / new definition fil
 * When preparing a Pull Request please check git diff (locally or on github) for unnecessary changes.
 * Regard the typing folder in your project as external resource and exclude it from your linter/formatter workflow, just like any library file.
 
+## Private APIs
+We do not support exposing *undocumented* internal implementation details of libraries in `.d.ts` files. We follow this more strictly for *popular* libraries with good documentation e.g. jquery, angular, node etc.
+
 ## Contributors link
 
 [CONTRIBUTORS.md](<%-@site.github%>/blob/master/CONTRIBUTORS.md) will update automatically.
