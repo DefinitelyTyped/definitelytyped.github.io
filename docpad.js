@@ -4,11 +4,11 @@ var docpadConfig = {
 	templateData: {
 		site: {
 			url: 'http://definitelytyped.org',
-			github: 'https://github.com/borisyankov/DefinitelyTyped',
-			ref: 'github.com/borisyankov/DefinitelyTyped',
+			github: 'https://github.com/DefinitelyTyped/DefinitelyTyped',
+			ref: 'github.com/DefinitelyTyped/DefinitelyTyped',
 			home: '/',
 			gh: {
-				user: 'borisyankov',
+				user: 'DefinitelyTyped',
 				repo: 'DefinitelyTyped'
 			},
 			oldUrls: [],
