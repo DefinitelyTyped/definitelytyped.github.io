@@ -42,7 +42,7 @@ The typing must have a header with the following format:
 // Type definitions for [LIBRARY NAME]
 // Project: [LIBRARY URL]
 // Definitions by: [AUTHOR NAME] <[AUTHOR URL]>
-// Definitions: https://github.com/borisyankov/DefinitelyTyped
+// Definitions: https://github.com/DefinitelyTyped/DefinitelyTyped
 ````
 
 If the version of the library is known then add it as a semver to the label.
@@ -51,7 +51,7 @@ If the version of the library is known then add it as a semver to the label.
 // Type definitions for Backbone v0.9.10
 // Project: http://backbonejs.org/
 // Definitions by: Boris Yankov <https://github.com/borisyankov/>
-// Definitions: https://github.com/borisyankov/DefinitelyTyped
+// Definitions: https://github.com/DefinitelyTyped/DefinitelyTyped
 ````
 
 ### Namespacing
@@ -109,7 +109,7 @@ Note: By default `npm test` only runs tests for the changed / new definition fil
 ## Code style
 
 * At this point we do not enforce a specific *general* code style, but we do like idiomatic code in each *individual* file.
-* When creating a new definition file the author is free to choose either tabs or 4-space indentation ([discussion](https://github.com/borisyankov/DefinitelyTyped/issues/1709) on github).
+* When creating a new definition file the author is free to choose either tabs or 4-space indentation ([discussion](https://github.com/DefinitelyTyped/DefinitelyTyped/issues/1709) on github).
 * Choice between Unix or Windows linebreaks is not enforced, as node.js doesn't care for it either way. Try to keep it idiomatic per file.
 * When editing an existing file please maintain the existing style as much as possible, this includes indenting, separator whitespace, bracing etc..
 * Do not use fancy code alignments or smart-tabs; instead keep things plain and simple.
