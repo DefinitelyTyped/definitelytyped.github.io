@@ -7,7 +7,6 @@
 		<div class="column">
 			<a href="<%= @site.home %>">Home</a>
 			- <a href="<%= @site.github %>">GitHub</a>
-			- <a href="<%= @link.tsd.web %>">TSD</a>
 			- <a href="http://nuget.org/packages?q=DefinitelyTyped">NuGet</a>
 		</div>
 	</div>

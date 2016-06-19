@@ -40,10 +40,6 @@ var docpadConfig = {
 			}
 		},
 		link: {
-			tsd: {
-				web: 'http://definitelytyped.org/tsd/',
-				npm: 'https://www.npmjs.org/package/tsd'
-			}
 		},
 		getPreparedTitle: function() {
 			if (this.document.title) {
