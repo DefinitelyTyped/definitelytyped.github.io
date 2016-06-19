@@ -5,7 +5,6 @@ title: 'Tools & Editors'
 
 ## General
 
-* [TSD](https://github.com/Diullei/tsd) Definitions package manager
 * [TypeLITE](http://type.litesolutions.net/) Generate TypeScript interfaces from .NET classes
 
 
