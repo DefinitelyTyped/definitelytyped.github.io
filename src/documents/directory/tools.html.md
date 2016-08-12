@@ -43,3 +43,4 @@ title: 'Tools & Editors'
 * [sublime-typescript](https://github.com/raph-amiard/sublime-typescript)
 * [typescript-tools](https://github.com/clausreinke/typescript-tools) CLI access to TypeScript language services; Vim plugin
 * [atom-typescript](https://atom.io/packages/atom-typescript) TypeScript support for Atom editor
+* [brackets-typescript](https://github.com/zaggino/brackets-typescript) TypeScript support for Brackets editor
