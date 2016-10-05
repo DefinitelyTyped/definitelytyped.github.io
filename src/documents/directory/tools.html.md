@@ -29,6 +29,7 @@ title: 'Tools & Editors'
 
 ## IDE with TypeScript Support
 
+* [Alm](http://alm.tools/)
 * [TypeScript Playground](http://www.typescriptlang.org/Playground/)
 * [Visual Studio](http://www.microsoft.com/visualstudio/eng)
 * [WebStorm](http://www.jetbrains.com/webstorm/)
