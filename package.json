@@ -24,17 +24,13 @@
       "url": "https://raw.github.com/DefinitelyTyped/definitelytyped.github/master/LICENSE-MIT.txt"
     }
   ],
-  "engines": {
-    "node": ">= 0.10.0 < 0.11.0",
-    "npm": "1.3"
-  },
   "scripts": {
     "test": "grunt test"
   },
   "dependencies": {},
   "devDependencies": {
-    "docpad": "~6.64.0",
-    "docpad-plugin-eco": "~2.0.3",
+    "docpad": "~6.79.0",
+    "docpad-plugin-eco": "~2.1.0",
     "docpad-plugin-marked": "~2.2.0",
     "docpad-plugin-partials": "~2.9.0",
     "docpad-plugin-less": "~2.4.1",
