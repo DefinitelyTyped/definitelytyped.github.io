@@ -24,10 +24,6 @@
       "url": "https://raw.github.com/DefinitelyTyped/definitelytyped.github/master/LICENSE-MIT.txt"
     }
   ],
-  "engines": {
-    "node": ">= 0.10.0 < 0.11.0",
-    "npm": "1.3"
-  },
   "scripts": {
     "test": "grunt test"
   },
