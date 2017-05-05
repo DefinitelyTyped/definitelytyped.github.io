@@ -5,6 +5,7 @@ title: 'Tools & Editors'
 
 ## General
 
+* [TypeSearch](https://microsoft.github.io/TypeSearch/) Searches @types packages from npm
 * [TypeLITE](http://type.litesolutions.net/) Generate TypeScript interfaces from .NET classes
 
 

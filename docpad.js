@@ -40,6 +40,9 @@ var docpadConfig = {
 			}
 		},
 		link: {
+			typesearch: {
+				web: 'https://microsoft.github.io/TypeSearch/'
+			}
 		},
 		getPreparedTitle: function() {
 			if (this.document.title) {

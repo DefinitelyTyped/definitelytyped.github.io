@@ -3,6 +3,7 @@
 	<a class="item" href="/guides.html"><i class="wrench icon"></i> Guides</a>
 	<a class="item" href="/directory.html"><i class="unordered list icon"></i> Directory</a>
 	<a class="item" href="<%= @site.github %>"><i class="github icon"></i> Repository</a>
+	<a class="item" href="<%= @link.typesearch.web %>"><i class="search icon"></i> TypeSearch</a>
 	<a class="item" href="http://nuget.org/packages?q=DefinitelyTyped"><i class="download disk icon"></i> NuGet</a>
 <!--
 	<div class="right menu">
