@@ -78,7 +78,7 @@ module.exports = function (grunt) {
 	grunt.registerTask('check-deploy', function() {
 		this.requires(['build']);
 
-		if (process.env.TRAVIS === 'true' && process.env.TRAVIS_SECURE_ENV_VARS === 'true' && process.env.TRAVIS_PULL_REQUEST === 'false') {
+		if (process.env.TRAVIS === 'true' && process.env.TRAVIS_PULL_REQUEST === 'false') {
 			grunt.log.writeln('executing deployment');
 			grunt.task.run('gh-pages:deploy');
 		}
