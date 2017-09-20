@@ -6,6 +6,3 @@ script:
 branches:
   only:
   - source
-env:
-  global:
-    secure: KuDklAAo6eC6CmQe4rd5scbkeeO9GSssw+Gpeu9Z+7QfmyoO6ep97g3XRM32fXAsTXg7Ev9agIMRm4eCnYDr8IOTJ/ZbX95kZ9e95MBeUnCOCARx8Spm0OX3k2+o7f/yuL3j6fsoCsEaSK3JGqfpeWYv8xCmorDwyC2ILhpPawk=
