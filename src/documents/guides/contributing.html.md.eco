@@ -28,7 +28,7 @@ In case there are multiple versions supported, the latest one will be without a 
 
 The typing must be placed in a folder. The folder name must be similar to library name.
 
-Example: `qunit.d.ts` in in a folder named `qunit`
+Example: `qunit.d.ts` in a folder named `qunit`
 
 In general the definition should be a single `.d.ts` file, but exceptions can be made for large libraries (~ >1000 LOC).
 
