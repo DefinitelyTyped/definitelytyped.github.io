@@ -25,7 +25,8 @@
     }
   ],
   "scripts": {
-    "test": "grunt test"
+    "test": "grunt test",
+    "deploy": "grunt deploy"
   },
   "dependencies": {},
   "devDependencies": {
