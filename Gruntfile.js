@@ -3,7 +3,6 @@ module.exports = function (grunt) {
 
 	grunt.loadNpmTasks('grunt-contrib-clean');
 	grunt.loadNpmTasks('grunt-contrib-copy');
-	grunt.loadNpmTasks('grunt-contrib-jshint');
 	grunt.loadNpmTasks('grunt-gh-pages');
 
 	grunt.loadTasks('./tasks');
@@ -27,16 +26,6 @@ module.exports = function (grunt) {
 			out: [
 				'out/**/*'
 			]
-		},
-		jshint: {
-			options: grunt.util._.extend(grunt.file.readJSON('.jshintrc'), {
-				reporter: './node_modules/jshint-path-reporter',
-				node: true
-			}),
-			support: {
-				src: ['Gruntfile.js', 'docpad.js']
-			},
-			source: ['src/documents/scripts/**/*.js']
 		},
 		copy: {
 			rootfiles: {
@@ -101,8 +90,6 @@ module.exports = function (grunt) {
 	//
 	grunt.registerTask('prep', 'Clean and prepare.', [
 		'clean:out',
-		'jshint:support',
-		'jshint:source',
 	]);
 
 	grunt.registerTask('test', 'Build in development env and run tests.', [

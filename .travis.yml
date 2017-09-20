@@ -1,10 +1,8 @@
 language: node_js
 node_js:
-- '0.12'
-before_install:
-- npm install -g grunt-cli
+- 8
 script:
-- grunt deploy
+- ./node_modules/.bin/grunt deploy
 branches:
   only:
   - source
