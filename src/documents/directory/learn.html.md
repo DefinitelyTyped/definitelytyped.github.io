@@ -7,7 +7,7 @@ title: 'Learn TypeScript'
 
 * [Official website](http://www.typescriptlang.org)
 * [Codeplex project site](http://typescript.codeplex.com)
-* [DefinitelyTyped](<%-@site.github%>)
+* [DefinitelyTyped](<%- @site.github %>)
 
 
 ## Language
