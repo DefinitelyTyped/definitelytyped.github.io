@@ -7,7 +7,7 @@ title: 'Learn TypeScript'
 
 * [Official website](http://www.typescriptlang.org)
 * [Codeplex project site](http://typescript.codeplex.com)
-* [DefinitelyTyped](<%- @site.github %>)
+* [DefinitelyTyped][]
 
 
 ## Language
@@ -52,3 +52,5 @@ title: 'Learn TypeScript'
 
 * [TypeScript Fundamentals @ PluralSight](http://pluralsight.com/training/Courses/TableOfContents/typescript)
 * [Introduction to TypeScript @ edX](https://www.edx.org/course/introduction-typescript-microsoft-dev201x)
+
+[DefinitelyTyped]: <<%- @site.github %>>
