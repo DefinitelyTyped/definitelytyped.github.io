@@ -89,9 +89,11 @@ Example: `backbone.d.ts` has a test file named `backbone-tests.ts`, with this [e
 
 There are a few ways to test changes:
 
+1. Create a folder of your project and go at it:
+    * `npm run new-package your-project-folder`
+    * `cd your-project-folder`
 1. Simply compile the test file:
-    * `tsc --noImplicitAny your/code-tests.ts`
-    * `tsc --noImplicitAny --module commonjs your/code-tests.ts`
+    * `tsc`
 1. Run `npm test` before sending your pull request.
     * If you created new files add them to git so the tester picks them as changes.
     * Tests must be run from the DefinitelyTyped project's root directory.
