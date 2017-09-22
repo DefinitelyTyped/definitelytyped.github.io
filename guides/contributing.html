@@ -60,19 +60,7 @@
     This guide covers contributing <strong>definitions</strong>. For information on contributing to the <strong>website</strong> go the <a href="/pages/website-contributions.html">website update guide</a>.
 </div>
 
-
-<h2 id="quality-criteria"  class="ui header">Quality Criteria</h2>
-<p>To ensure the quality of <code>DefinitelyTyped</code> repository, the typings must meet the following criteria:</p>
-<h2 id="naming-the-file"  class="ui header">Naming the file</h2>
-<p>Try to use a simple lowercase identifier as name of the definition file, like <code>library.d.ts</code> or <code>node-hoge.d.ts</code>. To keep naming conflicts to a minimum please use the package name as used in the <a href="https://www.npmjs.org/">npm</a> package registry. The only exception here should be NuGet / Windows oriented code as they use a camel-case convention.</p>
-<p>If the library is published to multiple package managers (npm, bower, yam, NuGet, component etc) but under different names then also use the npm name.</p>
-<p>If the library is not published on npm use a new identifier, as long as it doesn&#39;t shadow an existing npm name.</p>
-<h3 id="version"  class="ui header">Version</h3>
-<p>In case there are multiple versions supported, the latest one will be without a version number in the file name. Older versions will be in the form of <code>library-1.2.0.d.ts</code> where the postfix should resemble a valid <a href="http://semver.org/">semantic version</a> number (semver).</p>
-<h3 id="location"  class="ui header">Location</h3>
-<p>The typing must be placed in a folder. The folder name must be similar to library name.</p>
-<p>Example: <code>qunit.d.ts</code> in a folder named <code>qunit</code></p>
-<p>In general the definition should be a single <code>.d.ts</code> file, but exceptions can be made for large libraries (~ &gt;1000 LOC).</p>
+<p>see <a href="https://github.com/DefinitelyTyped/DefinitelyTyped#how-can-i-contribute">README.md</a> and <a href="https://github.com/DefinitelyTyped/DefinitelyTyped/blob/master/.github/PULL_REQUEST_TEMPLATE.md">PULL_REQUEST_TEMPLATE.md</a> first.</p>
 <h2 id="content"  class="ui header">Content</h2>
 <h3 id="header"  class="ui header">Header</h3>
 <p>The typing must have a header with the following format:</p>
@@ -103,26 +91,6 @@
 }
 </code></pre>
 <p>See the <a href="/guides/best-practices.html">best practices</a> for more info on how to structure a definition file.</p>
-<h3 id="documentation"  class="ui header">Documentation</h3>
-<p>Take advantage of TypeScript <a href="http://blogs.msdn.com/b/typescript/archive/2013/01/21/announcing-typescript-0-8-2.aspx">JSDoc support</a>.</p>
-<h2 id="tests"  class="ui header">Tests</h2>
-<p>The typing must have tests in a files called <code>library-tests.ts</code>. The tests are not runnable in the TDD way but contain code that should compile with no errors, usually taken from the documentation samples of the library.</p>
-<p>Example: <code>backbone.d.ts</code> has a test file named <code>backbone-tests.ts</code>, with this <a href="https://github.com/DefinitelyTyped/DefinitelyTyped/blob/master/backbone/backbone-tests.ts">example of a real test file</a>.</p>
-<p>There are a few ways to test changes:</p>
-<div class="ui ordered list"><div class="ui item">Simply compile the test file:<div class="ui list"><div class="ui item"><code>tsc --noImplicitAny your/code-tests.ts</code></div>
-<div class="ui item"><code>tsc --noImplicitAny --module commonjs your/code-tests.ts</code></div>
-</div></div>
-<div class="ui item">Run <code>npm test</code> before sending your pull request.<div class="ui list"><div class="ui item">If you created new files add them to git so the tester picks them as changes.</div>
-<div class="ui item">Tests must be run from the DefinitelyTyped project&#39;s root directory.</div>
-<div class="ui item">You&#39;ll need to run <code>npm update</code> once to download the packages required by the test suite.</div>
-</div></div>
-<div class="ui item">Enable Travis on your DT fork and test online.<div class="ui list"><div class="ui item">See note below on how to enable this.</div>
-<div class="ui item">This takes a few steps to do but is faster for big cascading changes (like changing JQuery)</div>
-</div></div>
-<div class="ui item">Depend on the automated test on Travis that runs after you send a PR.<div class="ui list"><div class="ui item">If you need many attempts to fix errors then please flatten the history and clean the commit message.</div>
-</div></div>
-</div><p>You can use a <code>tscparams</code> file to specify custom compiler arguments e.g. <a href="https://github.com/DefinitelyTyped/DefinitelyTyped/blob/master/atom/atom-tests.ts.tscparams">atom/atom-tests.ts.tscparams</a></p>
-<p>Note: By default <code>npm test</code> only runs tests for the changed / new definition files. To run all tests just execute <code>npm run all</code>.</p>
 <h2 id="code-style"  class="ui header">Code style</h2>
 <div class="ui list"><div class="ui item">At this point we do not enforce a specific <em>general</em> code style, but we do like idiomatic code in each <em>individual</em> file.</div>
 <div class="ui item">When creating a new definition file the author is free to choose either tabs or 4-space indentation (<a href="https://github.com/DefinitelyTyped/DefinitelyTyped/issues/1709">discussion</a> on github).</div>
@@ -134,8 +102,6 @@
 <div class="ui item">Regard the typing folder in your project as external resource and exclude it from your linter/formatter workflow, just like any library file.</div>
 </div><h2 id="private-apis"  class="ui header">Private APIs</h2>
 <p>We do not support exposing <em>undocumented</em> internal implementation details of libraries in <code>.d.ts</code> files. We follow this more strictly for <em>popular</em> libraries with good documentation e.g. jquery, angular, node etc.</p>
-<h2 id="contributors-link"  class="ui header">Contributors link</h2>
-<p><a href="https://github.com/DefinitelyTyped/DefinitelyTyped/blob/master/CONTRIBUTORS.md">CONTRIBUTORS.md</a> will update automatically.</p>
 <h3 id="note"  class="ui header">Note</h3>
 <p>Keep in mind the repos is a community project with a wide range on quality in contributions and moderation; so there may be the occasional rule violation or historical artifact.</p>
 
