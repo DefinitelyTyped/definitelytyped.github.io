@@ -52,17 +52,6 @@ var foo = new Date();
 foo.newMember = 123; // okay
 ```
 
-### Getter / Setter
-Instead of :
-```typescript
-declare function duration(value?: number): any;
-```
-better to do:
-```typescript
-declare function duration(): number;
-declare function duration(value: number): void;
-```
-
 ### Fluent
 Pretty self explanatory:
 ```typescript
