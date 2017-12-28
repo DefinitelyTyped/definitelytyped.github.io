@@ -3,14 +3,14 @@ layout: 'guide'
 title: 'Best practices'
 ---
 
-This is a guide to the best practices to follow when creating typing files.  There are a variety of different ways that typing files can be constructed.  Different approaches can be used - this is intended as a guide to what approaches make sense in certain scenarios.
+This is a guide to the best practices to follow when creating typing files. There are a variety of different ways that typing files can be constructed. Different approaches can be used - this is intended as a guide to what approaches make sense in certain scenarios.
 
-Also, it's a steer on how to deal with limitations in TypeScript.  As much as it hurts to say it, TypeScript v1.0 is not flawless.  There are certain minor flaws / shortcomings in the language which have implicatations for how typings are created.  Here we will detail those limitations, how they can be worked around at present and how you can best vote for improvements in the language on the [TypeScript site](//typescript.codeplex.com).
+Also, it's a steer on how to deal with limitations in TypeScript. As much as it hurts to say it, TypeScript v1.0 is not flawless. There are certain minor flaws / shortcomings in the language which have implications for how typings are created. Here we will detail those limitations, how they can be worked around at present and how you can best vote for improvements in the language on the [TypeScript site](//typescript.codeplex.com).
 
 ### Ghost modules
 Also called `non-instantiated modules`. Instead of polluting the global namespace with many interfaces, it is okay to create a module that contains *interfaces only*. This does not introduce a variable on the global namespace (see safety in below sample) and this module can only be used for *types*.
 ````typescript
-// this pattern has 3 name in top level
+// this pattern has 3 names in top level
 interface NodeFoo { }
 interface NodeBar { }
 interface NodeBuzz { }
@@ -25,7 +25,7 @@ declare module NodeJS {
 // safety!
 var n = NodeJS; // TS Error : Could not find symbol NodeJS
 ````
-This also allows you to open up further customization in external modules as interfaces declared *inside* external module declarations cannot be extended e.g. the following is good as people can customize `foo` further in other library definitions.
+This also allows you to open up further customization in external modules as interfaces declared *inside* external module declarations cannot be extended. The following is a good example as people can customize `foo` further in other library definitions.
 ```typescript
 // Usage when declaring an external module
 declare module 'foo' {
