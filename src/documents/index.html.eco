@@ -7,7 +7,18 @@ title: 'Home'
 	<h2 class="header">
 		Usage
 	</h2>
-	<p>Include a line like this:</p>
+	
+	<h3>
+		npm
+	</h3>
+	<p>This is the preferred method. This is only available for TypeScript 2.0+ users. For example:<p>
+	<pre><code>npm install --save-dev @types/jquery</code></pre>
+	<p>The types should then be automatically included by the compiler. See more in the <a href="http://www.typescriptlang.org/docs/handbook/declaration-files/consumption.html">handbook</a>.</p>
+	
+	<h3>
+		Triple-Slash Directives
+	</h3>
+	<p>Download a declaration file from <a href="<%= @site.github %>">the repository</a> and include a line like this:</p>
 	<pre><code>/// &lt;reference path="jquery/jquery.d.ts" /&gt;</code></pre>
 </div>
 
