@@ -25,7 +25,7 @@ The typing must have a header with the following format:
 If the version of the library is known then add it as a semver to the label.
 
 ````
-// Type definitions for Backbone v0.9.10
+// Type definitions for Backbone 0.9
 // Project: http://backbonejs.org/
 // Definitions by: Boris Yankov <https://github.com/borisyankov/>
 // Definitions: https://github.com/DefinitelyTyped/DefinitelyTyped
