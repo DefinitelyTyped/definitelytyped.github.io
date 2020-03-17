@@ -16,7 +16,7 @@ interface NodeBar { }
 interface NodeBuzz { }
 
 // this ghost module has 1 name in top level
-declare module NodeJS {
+declare namespace NodeJS {
     interface Foo { }
     interface Bar { }
     interface Buzz { }
