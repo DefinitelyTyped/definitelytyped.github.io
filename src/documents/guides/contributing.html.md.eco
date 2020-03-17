@@ -68,6 +68,10 @@ See the [best practices](/guides/best-practices.html) for more info on how to st
 ## Private APIs
 We do not support exposing *undocumented* internal implementation details of libraries in `.d.ts` files. We follow this more strictly for *popular* libraries with good documentation e.g. jquery, angular, node etc.
 
+### Publishing
+
+After your pull request has been merged, your NPM package should be updated within a few hours. If it's been more than 24 hours, ping @RyanCavanaugh and @sandersn on the PR to investigate.
+
 ### Note
 
 Keep in mind the repos is a community project with a wide range on quality in contributions and moderation; so there may be the occasional rule violation or historical artifact.
