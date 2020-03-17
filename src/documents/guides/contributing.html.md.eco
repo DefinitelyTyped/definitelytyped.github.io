@@ -70,7 +70,7 @@ We do not support exposing *undocumented* internal implementation details of lib
 
 ### Publishing
 
-After your pull request has been merged, your NPM package should be updated within a few hours. If it's been more than 24 hours, ping @RyanCavanaugh and @andy-ms on the PR to investigate.
+After your pull request has been merged, your NPM package should be updated within a few hours. If it's been more than 24 hours, ping @RyanCavanaugh and @sandersn on the PR to investigate.
 
 ### Note
 
