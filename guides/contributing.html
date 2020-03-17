@@ -77,10 +77,10 @@
 </code></pre><h3 id="namespacing"  class="ui header">Namespacing</h3>
 <div class="ui list"><div class="ui item">Be careful to use a module to avoid conflicts to your internal interfaces and the interfaces from another typings. See <a href="/guides/best-practices.html">best practices</a> and <a href="https://github.com/Microsoft/TypeScript-Handbook/blob/master/pages/declaration%20files/Introduction.md">the TypeScript wiki</a> for some tips.</div>
 </div><blockquote>
-<p>The <a href="https://github.com/DefinitelyTyped/DefinitelyTyped/blob/master/types/jquery.bbq/index.d.ts"><code>jQuery.bbq</code> typing</a> has the interfaces in a module named <code>JQueryBbq</code></p>
+<p>The <a href="https://github.com/DefinitelyTyped/DefinitelyTyped/blob/master/types/jquery.bbq/index.d.ts"><code>jQuery.bbq</code> typing</a> has the interfaces in a namespace named <code>JQueryBbq</code></p>
 </blockquote>
 <p>Example:</p>
-<pre><code class="lang-typescript"><span class="hljs-keyword">module</span> JQueryBbq {
+<pre><code class="lang-typescript">namespace JQueryBbq {
     <span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">JQuery</span> {</span>
         <span class="hljs-comment">//...</span>
     }
