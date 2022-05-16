@@ -116,4 +116,4 @@ var b = foo({ x: 5 }); // b: Parent
 var y: any;
 var c = foo(y); // c: any
 ```
-[Related issue on Codeplex(vote)](https://typescript.codeplex.com/workitem/2442)
+[Related issue on Codeplex](https://web.archive.org/web/20170624122025/https://typescript.codeplex.com/workitem/2442)
