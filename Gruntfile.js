@@ -7,19 +7,6 @@ module.exports = function (grunt) {
 
 	grunt.loadTasks('./tasks');
 
-	function getDeployMessage() {
-		var ret = '\n\n';
-		if (process.env.TRAVIS !== 'true') {
-			ret += 'did not run on travis-ci';
-			return ret;
-		}
-		ret += 'branch:       ' + (process.env.TRAVIS_BRANCH || '<unknown>') + '\n';
-		ret += 'SHA:          ' + (process.env.TRAVIS_COMMIT || '<unknown>') + '\n';
-		ret += 'range SHA:    ' + (process.env.TRAVIS_COMMIT_RANGE || '<unknown>') + '\n';
-		ret += 'build id:     ' + (process.env.TRAVIS_BUILD_ID || '<unknown>') + '\n';
-		ret += 'build number: ' + (process.env.TRAVIS_BUILD_NUMBER || '<unknown>') + '\n';
-		return ret;
-	}
 	grunt.initConfig({
 		pkg: grunt.file.readJSON('package.json'),
 		clean: {
@@ -47,8 +34,8 @@ module.exports = function (grunt) {
 			},
 			deploy: {
 				options: {
-					repo: 'https://' + process.env.GH_TOKEN + '@github.com/DefinitelyTyped/definitelytyped.github.io.git',
-					message: 'publish (auto)' + getDeployMessage(),
+					repo: 'https://' + process.env.GITHUB_TOKEN + '@github.com/DefinitelyTyped/definitelytyped.github.io.git',
+					message: 'publish (auto)',
 					silent: true,
 					user: {
 						name: 'dt-bot',
@@ -78,7 +65,7 @@ module.exports = function (grunt) {
 	grunt.registerTask('check-deploy', function() {
 		this.requires(['build']);
 
-		if (process.env.TRAVIS === 'true' && process.env.TRAVIS_PULL_REQUEST === 'false') {
+		if (process.env.GITHUB_ACTIONS === 'true' && process.env.GITHUB_REF === 'refs/heads/source') {
 			grunt.log.writeln('executing deployment');
 			grunt.task.run('gh-pages:deploy');
 		}
