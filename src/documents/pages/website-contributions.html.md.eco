@@ -17,6 +17,6 @@ The repository with the site content is located at [github.com/DefinitelyTyped/d
 
 This site is generated using [docpad](http://docpad.org), a static site generator complete with watch tasks and a LiveReload development server.
 
-The automated build runs [Grunt](http://www.gruntjs.com) on [Travis-CI](https://travis-ci.org/DefinitelyTyped/definitelytyped.github.io.svg?branch=source).
+The automated build runs [Grunt](http://www.gruntjs.com) on [GitHub Actions](https://github.com/DefinitelyTyped/definitelytyped.github.io/actions).
 
 See the [readme](https://github.com/DefinitelyTyped/definitelytyped.github.io/blob/source/README.md) for more detailed information and feel free to post a [ticket](https://github.com/DefinitelyTyped/definitelytyped.github.io/issues) if you have any questions.

@@ -30,10 +30,6 @@ If you need multiple tries to make it work then please flatten your commits so t
 
 It is recommended to split your contributions for different JS packages into their own git branches so you can have multiple pending PR's.
 
-## Travis CI for your DT fork
-
-You can enable Travis for your own DT fork if you like: go to [Travis](https://travis-ci.org/) and sign-up for free if you haven't yet. Then go to your [account](https://travis-ci.org/profile) and enable your DT fork. This will run Travis same as on DT and allows you to experiment freely. You can review your fork's build status via the menu on the left side of the [Travis homepage](https://travis-ci.org/) after you enabled the hook AND pushed some code to the repo.
-
 ## Large contributions and changes
 
 If you plan to start a new definition make sure to check the issues first and/or leave a message that you are working on it so you're not do duplicating work. Coordination with fellow users is always recommended.
