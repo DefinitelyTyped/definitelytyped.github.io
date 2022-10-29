@@ -3,7 +3,6 @@ module.exports = function (grunt) {
 
 	grunt.loadNpmTasks('grunt-contrib-clean');
 	grunt.loadNpmTasks('grunt-contrib-copy');
-	grunt.loadNpmTasks('grunt-gh-pages');
 
 	grunt.loadTasks('./tasks');
 
@@ -20,30 +19,6 @@ module.exports = function (grunt) {
 				dest: 'out/'
 			}
 		},
-		'gh-pages': {
-			options: {
-				base: 'out',
-				branch: 'master'
-			},
-			publish: {
-				options: {
-					repo: 'https://github.com/DefinitelyTyped/definitelytyped.github.io.git',
-					message: 'publish (cli)'
-				},
-				src: ['**']
-			},
-			deploy: {
-				options: {
-					repo: 'https://' + process.env.GITHUB_TOKEN + '@github.com/' + process.env.GITHUB_REPOSITORY + '.git',
-					message: 'publish (auto)',
-					user: {
-						name: 'dt-bot',
-						email: 'definitelytypedbot@gmail.com'
-					}
-				},
-				src: ['**']
-			}
-		},
 		docpad: {
 			options: require('./docpad'),
 			generate: {
@@ -58,18 +33,6 @@ module.exports = function (grunt) {
 			run: {
 				action: 'run'
 			}
-		}
-	});
-
-	grunt.registerTask('check-deploy', function() {
-		this.requires(['build']);
-
-		if (process.env.GITHUB_ACTIONS === 'true' && process.env.GITHUB_REF === 'refs/heads/source') {
-			grunt.log.writeln('executing deployment');
-			grunt.task.run('gh-pages:deploy');
-		}
-		else {
-			grunt.log.writeln('skipping deployment');
 		}
 	});
 
@@ -93,16 +56,6 @@ module.exports = function (grunt) {
 		'prep',
 		'docpad:publish',
 		'copy:rootfiles'
-	]);
-
-	grunt.registerTask('publish', 'Build and push to master using CLI.', [
-		'build',
-		'gh-pages:publish'
-	]);
-
-	grunt.registerTask('deploy', 'Build with production env for bot.', [
-		'build',
-		'check-deploy'
 	]);
 
 	grunt.registerTask('default', ['build']);
