@@ -26,8 +26,6 @@ jobs:
         with:
           node-version: 8
           cache: yarn
-      - name: Setup Pages
-        uses: actions/configure-pages@v2
       - name: Install dependencies
         run: yarn
       - name: Build with DocPad
