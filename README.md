@@ -6,6 +6,7 @@ The [master](https://github.com/DefinitelyTyped/definitelytyped.github.io/tree/m
 
 The site build with [Grunt](http://www.gruntjs.com) and generated using [docpad](http://docpad.org), a static site generator complete with watch tasks, development server with LiveReload and [many plugins](http://docpad.org/docs/plugins).
 
+
 ## Edit online
 
 1. Use the github web interface to quickly make text edits like updating the [guides](/guides.html) and the [directory](/directory.html). Github will create a fork and you can modify content without leaving your browser.
@@ -21,7 +22,7 @@ If you like to use your own tools you can follow these steps:
 
 1. Checkout the `source` branch.
 
-1. If you already have a checkout make sure you pull the latest revision.
+1. If you already have a checkout make sure you pull the latest revision. 
 
 1. Locate the content your want to change in `./src/documents`. Most of the editable content is in markdown format (some with a `.eco` template filter).
 
@@ -67,15 +68,15 @@ Use grunt to run various commands.
 
 1. The main tasks are:
 
-   1. Run `grunt clean` - remove all generated content.
+	1. Run `grunt clean` - remove all generated content.
 
-   1. Run `grunt watch` - regenerate and start a watch with LiveReload server at [http://localhost:9778/](http://localhost:9778/)
+	1. Run `grunt watch` - regenerate and start a watch with LiveReload server at [http://localhost:9778/](http://localhost:9778/)
 
-   1. Run `grunt build` - regenerate the site for production environment (best to stop the watch if you have it active).
+	1. Run `grunt build` - regenerate the site for production environment (best to stop the watch if you have it active).
 
-   1. Run `grunt publish` - build and push to github `master` (live at [definitelytyped.org](http://definitelytyped.org/)). This will ask for your github credentials so you need commit access to the repository (otherwise send a PR with the your source). Make sure you also push the changes to `source`.
+	1. Run `grunt publish` - build and push to github `master` (live at [definitelytyped.org](http://definitelytyped.org/)). This will ask for your github credentials so you need commit access to the repository (otherwise send a PR with the your source). Make sure you also push the changes to `source`.
 
-   1. See `grunt -h` or the `Gruntfile.js` for additional commands.
+	1. See `grunt -h` or the `Gruntfile.js` for additional commands.
 
 
 ### Publish the changes
