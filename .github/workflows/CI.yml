@@ -29,7 +29,7 @@ jobs:
       - name: Install dependencies
         run: yarn
       - name: Build with DocPad
-        run: yarn deploy
+        run: yarn build
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
         with:
