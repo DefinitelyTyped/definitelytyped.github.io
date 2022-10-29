@@ -18,3 +18,5 @@ jobs:
           cache: yarn
       - run: yarn
       - run: yarn deploy
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
