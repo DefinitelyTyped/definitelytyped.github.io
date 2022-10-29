@@ -2,7 +2,7 @@ name: CI
 
 on:
   push:
-    branches: [source]
+    branches: [source, ci-test]
 
   workflow_dispatch:
 
