@@ -34,7 +34,7 @@ module.exports = function (grunt) {
 			},
 			deploy: {
 				options: {
-					repo: 'https://' + process.env.GITHUB_TOKEN + '@' + process.env.GITHUB_SERVER_URL + '/' + process.env.GITHUB_REPOSITORY + '.git',
+					repo: 'https://' + process.env.GITHUB_TOKEN + '@github.com/' + process.env.GITHUB_REPOSITORY + '.git',
 					message: 'publish (auto)',
 					user: {
 						name: 'dt-bot',
