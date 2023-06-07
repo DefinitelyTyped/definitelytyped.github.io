@@ -6,7 +6,7 @@ title: 'Learn TypeScript'
 ## Resources
 
 * [Official website](http://www.typescriptlang.org)
-* [Codeplex project site](http://typescript.codeplex.com)
+* [Typescript GitHub repository](https://github.com/microsoft/TypeScript)
 * [DefinitelyTyped](<%- @site.github %>)
 
 
@@ -15,7 +15,7 @@ title: 'Learn TypeScript'
 * [TypeScript Playground](http://www.typescriptlang.org/playground)
 * [TypeScript Tutorial](http://www.typescriptlang.org/tutorial)
 * [TypeScript Handbook](http://www.typescriptlang.org/handbook)
-* [TypeScript Documentation](https://typescript.codeplex.com/documentation)
+* [TypeScript Documentation](https://www.typescriptlang.org/docs/)
 * [TypeScript Specification](http://www.typescriptlang.org/Content/TypeScript%20Language%20Specification.pdf)
 
 

@@ -5,7 +5,7 @@ title: 'Discuss'
 
 TypeScript on:
 
-* [CodePlex](http://typescript.codeplex.com/discussions) (official discussion forums)
+* [TypeScript Community](https://www.typescriptlang.org/community) (links to online communities and meetup groups)
 * [StackOverflow](http://stackoverflow.com/questions/tagged/typescript)
 * [MSDN](http://blogs.msdn.com/b/typescript/)
 * [Twitter](https://twitter.com/search?q=%23typescript)
