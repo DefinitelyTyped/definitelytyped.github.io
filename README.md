@@ -1,10 +1,10 @@
-# definitelytyped.github.io [![Build Status](https://travis-ci.org/DefinitelyTyped/definitelytyped.github.io.svg?branch=source)](https://travis-ci.org/DefinitelyTyped/definitelytyped.github.io)
+# definitelytyped.github.io
 
 > Website content for [definitelytyped.org](http://definitelytyped.org).
 
 The [master](https://github.com/DefinitelyTyped/definitelytyped.github.io/tree/master) branch holds live github.io content generated from the [source](https://github.com/DefinitelyTyped/definitelytyped.github.io/tree/source) branch.
 
-The site build with [Grunt](http://www.gruntjs.com) and generated using [docpad](http://docpad.org), a static site generator complete with watch tasks, development server with LiveReload and [many plugins](http://docpad.org/docs/plugins). Publishing happens using [grunt-gh-pages](https://github.com/tschaub/grunt-gh-pages).
+The site build with [Grunt](http://www.gruntjs.com) and generated using [docpad](http://docpad.org), a static site generator complete with watch tasks, development server with LiveReload and [many plugins](http://docpad.org/docs/plugins).
 
 
 ## Edit online
@@ -32,7 +32,7 @@ If you like to use your own tools you can follow these steps:
 
 1. Send a pull request to the `source` branch.
 
-1. After review a committer will merge and Travis-CI will republish the site.
+1. After review a committer will merge and GitHub Actions will republish the site.
 
 1. See below for the steps to get a local preview (this is not essential for simple markdown edits).
 
@@ -85,9 +85,9 @@ Use grunt to run various commands.
 
 1. If you like some feedback first then use a fork (or branch).
 
-1. The every commit that lands on `source` will automatically be rebuild and deployed via Travis-CI.
+1. The every commit that lands on `source` will automatically be rebuild and deployed via GitHub Actions.
 
-1. Give Travis a minute or two to deploy the site, then verify your changes.
+1. Give GitHub Actions a minute or two to deploy the site, then verify your changes.
 
 1. Optional: Fix some typos.
 

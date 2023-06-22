@@ -76,7 +76,7 @@ array-find-index@^1.0.1:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/array-find-index/-/array-find-index-1.0.2.tgz#df010aa1287e164bbda6f9723b0a96a1ec4187a1"
 
-asap@^2.0.0, asap@~2.0.3:
+asap@~2.0.3:
   version "2.0.6"
   resolved "https://registry.yarnpkg.com/asap/-/asap-2.0.6.tgz#e50347611d7e690943208bbdafebcbc2fb866d46"
 
@@ -87,12 +87,6 @@ asn1@~0.2.3:
 assert-plus@1.0.0, assert-plus@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/assert-plus/-/assert-plus-1.0.0.tgz#f12e0f3c5d77b0b1cdd9146942e4e96c1e4dd525"
-
-async@2.0.1:
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/async/-/async-2.0.1.tgz#b709cc0280a9c36f09f4536be823c838a9049e25"
-  dependencies:
-    lodash "^4.8.0"
 
 async@^1.4.0, async@^1.5.2, async@~1.5.2:
   version "1.5.2"
@@ -264,25 +258,6 @@ coffee-script@>=1.2.0, coffee-script@^1.10.0, coffee-script@^1.12.5, coffee-scri
 coffee-script@~1.10.0:
   version "1.10.0"
   resolved "https://registry.yarnpkg.com/coffee-script/-/coffee-script-1.10.0.tgz#12938bcf9be1948fa006f92e0c4c9e81705108c0"
-
-collections@^2.0.1:
-  version "2.0.3"
-  resolved "https://registry.yarnpkg.com/collections/-/collections-2.0.3.tgz#7657125e84a4086a2dc797ff2d696d819a720fb5"
-  dependencies:
-    mini-map "^1.0.0"
-    pop-arrayify "^1.0.0"
-    pop-clear "^1.0.0"
-    pop-clone "^1.0.1"
-    pop-compare "^1.0.0"
-    pop-equals "^1.0.0"
-    pop-has "^1.0.0"
-    pop-hash "^1.0.0"
-    pop-iterate "^1.0.1"
-    pop-observe "^2.0.2"
-    pop-swap "^1.0.0"
-    pop-zip "^1.0.0"
-    regexp-escape "0.0.1"
-    weak-map "^1.0.4"
 
 color-convert@^0.5.0:
   version "0.5.3"
@@ -904,16 +879,6 @@ fresh@0.3.0:
   version "0.3.0"
   resolved "https://registry.yarnpkg.com/fresh/-/fresh-0.3.0.tgz#651f838e22424e7566de161d8358caa199f83d4f"
 
-fs-extra@^0.30.0:
-  version "0.30.0"
-  resolved "https://registry.yarnpkg.com/fs-extra/-/fs-extra-0.30.0.tgz#f233ffcc08d4da7d432daa449776989db1df93f0"
-  dependencies:
-    graceful-fs "^4.1.2"
-    jsonfile "^2.1.0"
-    klaw "^1.0.0"
-    path-is-absolute "^1.0.0"
-    rimraf "^2.2.8"
-
 fs.realpath@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/fs.realpath/-/fs.realpath-1.0.0.tgz#1504ad2523158caa40db4a2787cb01411994ea4f"
@@ -977,13 +942,9 @@ glob@~7.0.0:
     once "^1.3.0"
     path-is-absolute "^1.0.0"
 
-graceful-fs@*, graceful-fs@^4.1.2, graceful-fs@^4.1.4, graceful-fs@^4.1.6, graceful-fs@^4.1.9:
+graceful-fs@*, graceful-fs@^4.1.2, graceful-fs@^4.1.4:
   version "4.1.11"
   resolved "https://registry.yarnpkg.com/graceful-fs/-/graceful-fs-4.1.11.tgz#0e8bdfe4d1ddb8854d64e04ea7c00e2a026e5658"
-
-graceful-fs@4.1.5:
-  version "4.1.5"
-  resolved "https://registry.yarnpkg.com/graceful-fs/-/graceful-fs-4.1.5.tgz#f4745e8caed5e0dd2ef21bb5e2d229a32e8093c0"
 
 grunt-cli@^1.2.0, grunt-cli@~1.2.0:
   version "1.2.0"
@@ -1007,17 +968,6 @@ grunt-contrib-copy@^1.0.0:
   dependencies:
     chalk "^1.1.1"
     file-sync-cmp "^0.1.0"
-
-grunt-gh-pages@^2.0.0:
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/grunt-gh-pages/-/grunt-gh-pages-2.0.0.tgz#c82f48d7b6f8491be42694f5c2c93b1308fa777b"
-  dependencies:
-    async "2.0.1"
-    fs-extra "^0.30.0"
-    graceful-fs "4.1.5"
-    q "0.9.3"
-    q-io "2.0.2"
-    url-safe "^2.0.0"
 
 grunt-known-options@~1.1.0:
   version "1.1.0"
@@ -1258,12 +1208,6 @@ json-stringify-safe@~5.0.1:
   version "5.0.1"
   resolved "https://registry.yarnpkg.com/json-stringify-safe/-/json-stringify-safe-5.0.1.tgz#1296a2d58fd45f19a0f6ce01d65701e2c735b6eb"
 
-jsonfile@^2.1.0:
-  version "2.4.0"
-  resolved "https://registry.yarnpkg.com/jsonfile/-/jsonfile-2.4.0.tgz#3736a2b428b87bbda0cc83b53fa3d633a35c2ae8"
-  optionalDependencies:
-    graceful-fs "^4.1.6"
-
 jsonify@~0.0.0:
   version "0.0.0"
   resolved "https://registry.yarnpkg.com/jsonify/-/jsonify-0.0.0.tgz#2c74b6ee41d93ca51b7b5aaee8f503631d252a73"
@@ -1276,12 +1220,6 @@ jsprim@^1.2.2:
     extsprintf "1.3.0"
     json-schema "0.2.3"
     verror "1.10.0"
-
-klaw@^1.0.0:
-  version "1.3.1"
-  resolved "https://registry.yarnpkg.com/klaw/-/klaw-1.3.1.tgz#4088433b46b3b1ba259d78785d8e96f73ba02439"
-  optionalDependencies:
-    graceful-fs "^4.1.9"
 
 kuler@0.0.x:
   version "0.0.0"
@@ -1319,10 +1257,6 @@ load-json-file@^1.0.0:
     pify "^2.0.0"
     pinkie-promise "^2.0.0"
     strip-bom "^2.0.0"
-
-lodash@^4.8.0:
-  version "4.17.4"
-  resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.4.tgz#78203a4d1c328ae1d86dca6460e369b57f4055ae"
 
 lodash@~3.10.1:
   version "3.10.1"
@@ -1404,14 +1338,6 @@ mime@1.3.4:
 mime@^1.2.11, mime@^1.3.4:
   version "1.4.0"
   resolved "https://registry.yarnpkg.com/mime/-/mime-1.4.0.tgz#69e9e0db51d44f2a3b56e48b7817d7d137f1a343"
-
-mimeparse@^0.1.4:
-  version "0.1.4"
-  resolved "https://registry.yarnpkg.com/mimeparse/-/mimeparse-0.1.4.tgz#dafb02752370fd226093ae3152c271af01ac254a"
-
-mini-map@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/mini-map/-/mini-map-1.0.0.tgz#9641e0115d99b3dc13711cf8cfda4c8199893f4e"
 
 "minimatch@2 || 3", minimatch@^3.0.2, minimatch@^3.0.4, minimatch@~3.0.0:
   version "3.0.4"
@@ -1567,63 +1493,6 @@ pinkie@^2.0.0:
   version "2.0.4"
   resolved "https://registry.yarnpkg.com/pinkie/-/pinkie-2.0.4.tgz#72556b80cfa0d48a974e80e77248e80ed4f7f870"
 
-pop-arrayify@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/pop-arrayify/-/pop-arrayify-1.0.0.tgz#65522b3fe3ae21be4f8e8b2b9e44634c15a6c481"
-
-pop-clear@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/pop-clear/-/pop-clear-1.0.0.tgz#fc8164fc85f89f288f23b936b6801ea822ae4586"
-
-pop-clone@^1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/pop-clone/-/pop-clone-1.0.1.tgz#618d462497e96d06f9cda315b325cca3a2636038"
-  dependencies:
-    mini-map "^1.0.0"
-    pop-equals "^1.0.0"
-
-pop-compare@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/pop-compare/-/pop-compare-1.0.0.tgz#c732e22c27f0cfab80a217d45e7722b5ce151820"
-
-pop-equals@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/pop-equals/-/pop-equals-1.0.0.tgz#90414f8fda71a37f881d1e5e3a2e02ef0c3b7e0b"
-  dependencies:
-    mini-map "^1.0.0"
-
-pop-has@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/pop-has/-/pop-has-1.0.0.tgz#9b226b59b960ab65eab0b412dd5570dce90e651c"
-  dependencies:
-    pop-equals "^1.0.0"
-
-pop-hash@^1.0.0:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/pop-hash/-/pop-hash-1.0.1.tgz#bcd69454bd2f99ded20b5fc8a2b93d6b5fab44cc"
-  dependencies:
-    weak-map "^1.0.5"
-
-pop-iterate@^1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/pop-iterate/-/pop-iterate-1.0.1.tgz#ceacfdab4abf353d7a0f2aaa2c1fc7b3f9413ba3"
-
-pop-observe@^2.0.2:
-  version "2.0.2"
-  resolved "https://registry.yarnpkg.com/pop-observe/-/pop-observe-2.0.2.tgz#5acb5ac6f24c7c6ffab2c32151b0adb740eef363"
-  dependencies:
-    pop-equals "^1.0.0"
-    pop-has "^1.0.0"
-    pop-swap "^1.0.0"
-
-pop-swap@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/pop-swap/-/pop-swap-1.0.0.tgz#88b440553e085d0179d32255b09f93aab9890c66"
-
-pop-zip@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/pop-zip/-/pop-zip-1.0.0.tgz#3dc114007b2cece74ff3b8cea73eb120c70db056"
-
 predefine@0.1.x:
   version "0.1.2"
   resolved "https://registry.yarnpkg.com/predefine/-/predefine-0.1.2.tgz#2aa92b4496bc1f8554e43a45f76bfbe50d33d37f"
@@ -1679,36 +1548,9 @@ prr@~0.0.0:
   version "0.0.0"
   resolved "https://registry.yarnpkg.com/prr/-/prr-0.0.0.tgz#1a84b85908325501411853d0081ee3fa86e2926a"
 
-punycode@1.3.2:
-  version "1.3.2"
-  resolved "https://registry.yarnpkg.com/punycode/-/punycode-1.3.2.tgz#9653a036fb7c1ee42342f2325cceefea3926c48d"
-
 punycode@^1.4.1:
   version "1.4.1"
   resolved "https://registry.yarnpkg.com/punycode/-/punycode-1.4.1.tgz#c0d5a63b2718800ad8e1eb0fa5269c84dd41845e"
-
-q-io@2.0.2:
-  version "2.0.2"
-  resolved "https://registry.yarnpkg.com/q-io/-/q-io-2.0.2.tgz#19334ce4a94bdabff8d9d3015f3d3b72c9be3bf5"
-  dependencies:
-    collections "^2.0.1"
-    mime "^1.2.11"
-    mimeparse "^0.1.4"
-    q "^2.0.1"
-    qs "^0.6.6"
-    url2 "^1.0.1"
-
-q@0.9.3:
-  version "0.9.3"
-  resolved "https://registry.yarnpkg.com/q/-/q-0.9.3.tgz#404eabbad0d031ed35fcb53f7c5bc06283b4e74c"
-
-q@^2.0.1:
-  version "2.0.3"
-  resolved "https://registry.yarnpkg.com/q/-/q-2.0.3.tgz#75b8db0255a1a5af82f58c3f3aaa1efec7d0d134"
-  dependencies:
-    asap "^2.0.0"
-    pop-iterate "^1.0.1"
-    weak-map "^1.0.5"
 
 qs@2.3.3:
   version "2.3.3"
@@ -1717,10 +1559,6 @@ qs@2.3.3:
 qs@4.0.0:
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/qs/-/qs-4.0.0.tgz#c31d9b74ec27df75e543a86c78728ed8d4623607"
-
-qs@^0.6.6:
-  version "0.6.6"
-  resolved "https://registry.yarnpkg.com/qs/-/qs-0.6.6.tgz#6e015098ff51968b8a3c819001d5f2c89bc4b107"
 
 qs@~6.5.1:
   version "6.5.1"
@@ -1795,10 +1633,6 @@ redent@^1.0.0:
 reduce-component@1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/reduce-component/-/reduce-component-1.0.1.tgz#e0c93542c574521bea13df0f9488ed82ab77c5da"
-
-regexp-escape@0.0.1:
-  version "0.0.1"
-  resolved "https://registry.yarnpkg.com/regexp-escape/-/regexp-escape-0.0.1.tgz#3f326a062d8f7596b2914929550aac77eaf8de75"
 
 repeating@^2.0.0:
   version "2.0.1"
@@ -2192,22 +2026,6 @@ unpipe@1.0.0, unpipe@~1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/unpipe/-/unpipe-1.0.0.tgz#b2bf4ee8514aae6165b4817829d21b2ef49904ec"
 
-url-safe@^2.0.0:
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/url-safe/-/url-safe-2.0.0.tgz#dcd46de4666a7546ee43ea906ac175daa626de9e"
-
-url2@^1.0.1:
-  version "1.0.4"
-  resolved "https://registry.yarnpkg.com/url2/-/url2-1.0.4.tgz#df2284ae15c749ba809751510e5e25da9ebb80d8"
-  dependencies:
-    url "0.10.2"
-
-url@0.10.2:
-  version "0.10.2"
-  resolved "https://registry.yarnpkg.com/url/-/url-0.10.2.tgz#68621d6929ea1cad344ebf135d82fcf7eb1a7469"
-  dependencies:
-    punycode "1.3.2"
-
 utils-merge@1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/utils-merge/-/utils-merge-1.0.0.tgz#0294fb922bb9375153541c4f7096231f287c8af8"
@@ -2255,10 +2073,6 @@ watchr@^2.4.13:
     scandirectory "^2.5.0"
     taskgroup "^5.0.1"
     typechecker "^4.3.0"
-
-weak-map@^1.0.4, weak-map@^1.0.5:
-  version "1.0.5"
-  resolved "https://registry.yarnpkg.com/weak-map/-/weak-map-1.0.5.tgz#79691584d98607f5070bd3b70a40e6bb22e401eb"
 
 which@~1.2.1:
   version "1.2.14"
