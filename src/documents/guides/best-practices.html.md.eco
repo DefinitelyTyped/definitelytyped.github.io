@@ -37,7 +37,7 @@ declare module 'foo' {
 
 ### Extending built-in types
 There isn't a way to add *static members* to native objects at the moment as `lib.d.ts` defines them as a `var Date:{/*members*/}` and `var`s are not extendable.
- Two solutions are proposed to the TS team. Either [use interfaces instead of var in lib.d.ts (vote)](https://typescript.codeplex.com/workitem/1085) and/or [make variables/classes open ended (vote)](https://typescript.codeplex.com/workitem/917)
+ Two solutions are proposed to the TS team. Either [use interfaces instead of var in lib.d.ts (vote)](https://web.archive.org/web/20170624125029/https://typescript.codeplex.com/workitem/1085) and/or [make variables/classes open ended (vote)](https://web.archive.org/web/20170624162922/https://typescript.codeplex.com/workitem/917)
 
 For adding members to *instances* of native types there are relevant interfaces in available in `lib.d.ts` e.g.
 
