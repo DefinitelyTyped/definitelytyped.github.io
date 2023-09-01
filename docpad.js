@@ -13,8 +13,8 @@ var docpadConfig = {
 			},
 			oldUrls: [],
 			title: 'DefinitelyTyped',
-			description: 'The repository for high quality TypeScript type definitions',
-			tagline: 'The repository for high quality TypeScript type definitions',
+			description: 'The repository for high-quality TypeScript type definitions',
+			tagline: 'The repository for high-quality TypeScript type definitions',
 			keywords: 'typescript, type, definition, declaration, repository, typing',
 			styles: [
 				'/styles/semantic.min.css',
