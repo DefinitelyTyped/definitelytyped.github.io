@@ -37,7 +37,7 @@ If you like to use your own tools you can follow these steps:
 1. See below for the steps to get a local preview (this is not essential for simple markdown edits).
 
 
-## Edit the site
+## Edit site
 
 To do structural authoring with a build-preview you can follow the development flow.
 
